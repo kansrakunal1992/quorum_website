@@ -1024,12 +1024,160 @@
       line-height: 1.65;
     }
 
+    /* ══ DECISION EXAMPLES ══════════════════════════════════════ */
+    .dec-examples {
+      margin-bottom: 58px;
+    }
+
+    .dec-ex-intro {
+      margin-bottom: 32px;
+    }
+
+    .dec-ex-intro p {
+      font-size: 15px;
+      color: var(--t3);
+      line-height: 1.85;
+      max-width: 620px;
+    }
+
+    .dec-ex-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--b0);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .dec-col {
+      padding: 36px 38px;
+      background: var(--card);
+    }
+
+    .dec-col + .dec-col {
+      border-left: 1px solid var(--b0);
+      background: var(--card2);
+    }
+
+    .dec-col-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .dec-col-label.yes { color: var(--gold); }
+    .dec-col-label.no  { color: var(--t5); }
+
+    .dec-item {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--b0);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .dec-item:last-child { border-bottom: none; }
+
+    .dec-mk {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .dec-mk.y { color: var(--gold); }
+    .dec-mk.n { color: var(--t5); }
+
+    .dec-item-body {}
+
+    .dec-item-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--t1);
+      line-height: 1.4;
+      margin-bottom: 3px;
+    }
+
+    .dec-item-note {
+      font-size: 12px;
+      color: var(--t4);
+      line-height: 1.55;
+    }
+
+    /* ══ FEATURE TILES ══════════════════════════════════════════ */
+    .feature-tiles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 56px;
+      margin-bottom: 4px;
+    }
+
+    .ft {
+      border: 1px solid var(--b0);
+      border-radius: var(--radius);
+      padding: 28px 28px 26px;
+      background: var(--card);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .ft::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-alpha), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .ft:hover { border-color: var(--b2); }
+    .ft:hover::before { opacity: 1; }
+
+    .ft-icon {
+      font-size: 20px;
+      margin-bottom: 14px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .ft-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .ft-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--t0);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .ft-body {
+      font-size: 12.5px;
+      color: var(--t4);
+      line-height: 1.75;
+    }
+
     /* ══ RESPONSIVE additions ════════════════════════════════════ */
     @media (max-width: 980px) {
       .engine-grid { grid-template-columns: 1fr; }
       .not-chatbot { grid-template-columns: 1fr; }
       .nc-col + .nc-col { border-left: none; border-top: 1px solid var(--b0); }
       .rm-body { grid-template-columns: 1fr; gap: 20px; }
+      .dec-ex-grid { grid-template-columns: 1fr; }
+      .dec-col + .dec-col { border-left: none; border-top: 1px solid var(--b0); }
+      .feature-tiles { grid-template-columns: 1fr; }
     }
 
     /* ══ RESPONSIVE ═════════════════════════════════════════════ */
@@ -1266,6 +1414,111 @@
       <p style="font-size:16px; color:var(--t3); line-height:1.9; padding-top:8px;">Not reports. Not summaries. Specific, structural observations about how you actually make decisions — derived from what you actually brought, and what actually happened afterwards.</p>
     </div>
 
+    <!-- ── DECISION EXAMPLES ──────────────────────────────────── -->
+    <div class="dec-examples r">
+      <div class="dec-ex-intro">
+        <span class="eyebrow" style="margin-bottom:14px">What to bring</span>
+        <p>Quorum is built for decisions where the cost of a bad call is high relative to the cost of thinking it through. Below is a guide to what belongs — and what doesn't.</p>
+      </div>
+      <div class="dec-ex-grid">
+        <div class="dec-col">
+          <span class="dec-col-label yes">Bring this →</span>
+
+          <div class="dec-item">
+            <span class="dec-mk y">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Exit and liquidity decisions</div>
+              <div class="dec-item-note">Selling equity, accepting an acquisition offer, secondary sale timing. High irreversibility, identity stakes, and information asymmetry — the exact conditions the rule engine flags and the Council is built for.</div>
+            </div>
+          </div>
+
+          <div class="dec-item">
+            <span class="dec-mk y">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Capital allocation and investment decisions</div>
+              <div class="dec-item-note">Deploying from a family office, investing in a new venture, taking on debt. The Investor and Risk Architect advisors run in parallel; pattern-matching to prior capital decisions is often where the insight sits.</div>
+            </div>
+          </div>
+
+          <div class="dec-item">
+            <span class="dec-mk y">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Succession and ownership structure</div>
+              <div class="dec-item-note">Passing control, bringing in external management, restructuring family stakes. Decisions where the stakeholder map is complex and unstated relationship dynamics matter as much as the numbers.</div>
+            </div>
+          </div>
+
+          <div class="dec-item">
+            <span class="dec-mk y">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Key people decisions</div>
+              <div class="dec-item-note">Bringing on a co-founder, separating from a founding partner, making a critical leadership hire. Decisions with irreversible relationship consequences Quorum can surface before they become apparent.</div>
+            </div>
+          </div>
+
+          <div class="dec-item">
+            <span class="dec-mk y">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Career and identity pivots</div>
+              <div class="dec-item-note">Leaving a role, launching a new venture, stepping back. Decisions where the identity stakes are as high as the financial ones — the Mirror and Elder advisors are built precisely for this.</div>
+            </div>
+          </div>
+
+          <div class="dec-item">
+            <span class="dec-mk y">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Decisions you keep circling but not resolving</div>
+              <div class="dec-item-note">If you've been sitting with the same question for weeks, Quorum will surface why — often a prior dependency that has to be resolved first, or a value conflict you haven't named.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dec-col">
+          <span class="dec-col-label no">Not this →</span>
+
+          <div class="dec-item">
+            <span class="dec-mk n">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Operational and tactical minutiae</div>
+              <div class="dec-item-note">Which vendor to use for a minor contract, what to name a feature, which agency to hire for a campaign. If a bad call costs less than a few hours to reverse, Quorum is the wrong tool.</div>
+            </div>
+          </div>
+
+          <div class="dec-item">
+            <span class="dec-mk n">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Decisions with a clear right answer you already know</div>
+              <div class="dec-item-note">If you're looking for validation of a decision you've already made, the Council will surface that — and will likely be more honest about it than the people around you.</div>
+            </div>
+          </div>
+
+          <div class="dec-item">
+            <span class="dec-mk n">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Pure information deficits</div>
+              <div class="dec-item-note">"I don't know enough about X to decide" isn't a decision problem — it's a research problem. Quorum will flag this structurally (the rule engine may issue a redirect), but it's not a substitute for due diligence.</div>
+            </div>
+          </div>
+
+          <div class="dec-item">
+            <span class="dec-mk n">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Questions seeking a single correct answer</div>
+              <div class="dec-item-note">Quorum doesn't produce verdicts. It produces the best analysis from six distinct frames, followed by a synthesis lean. If you need certainty, you need different information — not more analysis.</div>
+            </div>
+          </div>
+
+          <div class="dec-item">
+            <span class="dec-mk n">—</span>
+            <div class="dec-item-body">
+              <div class="dec-item-title">Deeply personal decisions without stakes</div>
+              <div class="dec-item-note">Where to holiday. What to cook for dinner. Quorum is calibrated for decisions where the structural architecture matters — reversibility, identity stakes, counterparty dynamics. Low-stakes personal choices don't benefit from six advisors.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- 01 Contradiction -->
     <div class="mc r">
       <div class="mc-inner">
@@ -1353,8 +1606,8 @@
         </div>
       </div>
     </div>
-    <!-- 04 Calibration — teaser state -->
-    <div class="mc mc-locked r">
+    <!-- 04 Calibration — live state (Sprint 15a) -->
+    <div class="mc r">
       <div class="mc-inner">
         <div>
           <p class="mc-num">04 — Confidence Calibration</p>
@@ -1362,11 +1615,11 @@
           <p class="mc-body">Every session begins with a single question: how confident are you in this decision right now? Months later, Quorum asks again — knowing what actually happened. Over time, a precise picture forms: not just where your confidence is reliable, but the specific conditions under which you consistently overestimate your own certainty.</p>
           <div class="calib-activates">
             <span class="ca-dot"></span>
-            Activates as your decision record builds
+            Builds after 3 logged outcomes
           </div>
         </div>
-        <div class="calib-locked-wrap">
-          <div class="calib-chart calib-blur">
+        <div>
+          <div class="calib-chart">
             <div class="cc-hd">
               <span class="demo-tag" style="color:var(--gold); font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase;">Calibration profile</span>
               <span class="demo-tag ct" style="font-family:'DM Mono',monospace; font-size:9px; color:var(--t5); letter-spacing:0.1em; text-transform:uppercase;">— decisions · — outcomes</span>
@@ -1417,14 +1670,34 @@
               <strong style="color:var(--gold); font-weight:400;">Finding:</strong> Your confidence is well-calibrated on financial decisions. When identity or pressure is involved, you consistently overestimate certainty by 3–4 points.
             </div>
           </div>
-          <div class="calib-overlay">
-            <div class="calib-lock-inner">
-              <div class="calib-lock-icon">◎</div>
-              <p class="calib-lock-msg">This picture takes time to form.<br/>Bring decisions. It builds itself.</p>
-            </div>
-          </div>
         </div>
       </div>
+    </div>
+
+    <!-- ── ADDITIONAL LIVE FEATURES ──────────────────────────── -->
+    <div class="feature-tiles r d1">
+
+      <div class="ft">
+        <div class="ft-icon">◎</div>
+        <span class="ft-label">Mirror · Behavioral Alerts</span>
+        <div class="ft-title">Patterns flagged before you notice them</div>
+        <div class="ft-body">As your decision record builds, Quorum detects behavioral signals automatically — decisions you keep opening but never resolve, urgency patterns that don't match your actual timelines, consistency gaps between your stated principles and your actions. Surfaced in the Mirror layer without you having to ask.</div>
+      </div>
+
+      <div class="ft">
+        <div class="ft-icon">↗</div>
+        <span class="ft-label">Decision Brief · PDF Export</span>
+        <div class="ft-title">Every decision, exportable as a private record</div>
+        <div class="ft-body">After a session, Quorum generates a structured PDF brief: the decision text, the structural profile, all six advisor analyses, the synthesis, and the examiner's questions. Shareable with a board, a partner, or kept as a private decision log. Built for situations where a paper trail matters.</div>
+      </div>
+
+      <div class="ft">
+        <div class="ft-icon">⊙</div>
+        <span class="ft-label">Mirror · Decision Timeline</span>
+        <div class="ft-title">Your full decision record, structured and searchable</div>
+        <div class="ft-body">Every decision you bring is stored with its structural profile — decision type, stakes level, reversibility, the rule mode it triggered. The Mirror Timeline gives you a precise, private ledger of how you've been deciding — not a journal, a structured analytical record that compounds with every session.</div>
+      </div>
+
     </div>
 
   </div>
