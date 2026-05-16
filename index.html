@@ -160,6 +160,33 @@
 
     .nav-right { display: flex; align-items: center; gap: 22px; }
 
+    /* Billing toggle pill (Monthly / Annual) */
+    .billing-toggle {
+      display:         inline-flex;
+      background:      var(--bg-card, #111);
+      border:          1px solid var(--border-mid, rgba(255,255,255,0.1));
+      border-radius:   999px;
+      padding:         4px;
+      gap:             2px;
+    }
+    .bt-opt {
+      padding:         8px 20px;
+      border:          none;
+      border-radius:   999px;
+      background:      transparent;
+      color:           var(--t3, rgba(255,255,255,0.45));
+      font-size:       13px;
+      font-family:     inherit;
+      cursor:          pointer;
+      transition:      all 0.2s;
+      white-space:     nowrap;
+    }
+    .bt-opt.active {
+      background:      rgba(201,168,76,0.13);
+      color:           #c9a84c;
+      font-weight:     600;
+    }
+
     /* Theme pill toggle */
     .toggle {
       position: relative;
@@ -1755,50 +1782,58 @@
     <div class="sh r">
       <span class="eyebrow">Access</span>
       <h2 class="display" style="font-size: clamp(42px,5vw,68px); margin-top:16px; max-width:440px;">Private<br />by design.</h2>
-      <p style="margin-top:20px; font-size:16px; color:var(--t3); max-width:380px; line-height:1.85;">Not a subscription product. Access is limited and intentional.</p>
+      <p style="margin-top:20px; font-size:16px; color:var(--t3); max-width:380px; line-height:1.85;">Not a mass-market product. Access is limited and intentional.</p>
     </div>
-    <div class="pg">
-      <div class="pc r d1">
-        <div class="pc-tier">Free · always</div>
-        <div class="pc-price">₹0</div>
-        <div class="pc-cadence">Council + Examiner + Synthesis</div>
-        <ul class="pc-list">
-          <li>Structural analysis before Council runs (14 dimensions)</li>
-          <li>Full six-advisor Council — enriched by structural profile</li>
-          <li>Examiner — structural intervention, not generic questions</li>
-          <li>Directional synthesis</li>
-          <li>Decision Timeline (≥5 sessions)</li>
-          <li>Behavioral alerts</li>
-        </ul>
-        <a href="https://app.quorumvault.org" target="_blank" class="pc-btn o">Open Quorum →</a>
+    <div>
+      <!-- Billing toggle pill -->
+      <div style="display:flex; justify-content:center; margin-bottom:28px;">
+        <div class="billing-toggle" id="billingToggle">
+          <button class="bt-opt active" id="btMonthly" onclick="setBilling('monthly')">Monthly</button>
+          <button class="bt-opt" id="btAnnual" onclick="setBilling('annual')">Annual &middot; 2 months free</button>
+        </div>
       </div>
-      <div class="pc feat r d2">
-        <div class="pc-badge">Most used</div>
-        <div class="pc-tier">Mirror unlock</div>
-        <div class="pc-price"><sub>₹</sub>4,999</div>
-        <div class="pc-cadence">One-time · lifetime access</div>
-        <ul class="pc-list">
-          <li>Bias Fingerprint — exact conditions that activate your patterns</li>
-          <li>Confidence Calibration — where your certainty is reliable vs. not</li>
-          <li>Decision Independence Score</li>
-          <li>Decision Rules library — your implicit principles, extracted</li>
-          <li>Contradiction Detector — when you violate your own rules</li>
-          <li>All future Mirror features</li>
-        </ul>
-        <button class="pc-btn g" onclick="openModal('mirror')">Unlock Mirror →</button>
-      </div>
-      <div class="pc r d3">
-        <div class="pc-tier">Live advisory</div>
-        <div class="pc-price"><sub>₹</sub>25,000</div>
-        <div class="pc-cadence">Per session · founder-led</div>
-        <ul class="pc-list">
-          <li>45-minute private advisory session</li>
-          <li>Founder-run with full context</li>
-          <li>Formatted Decision Brief PDF</li>
-          <li>Mirror unlock included</li>
-          <li>Follow-up synthesis within 24 hrs</li>
-        </ul>
-        <button class="pc-btn o" onclick="openModal('live')">Request session →</button>
+      <div class="pg">
+        <div class="pc r d1">
+          <div class="pc-tier">Free · always</div>
+          <div class="pc-price">₹0</div>
+          <div class="pc-cadence">Council + Examiner + Synthesis</div>
+          <ul class="pc-list">
+            <li>Structural analysis before Council runs (14 dimensions)</li>
+            <li>Full six-advisor Council — enriched by structural profile</li>
+            <li>Examiner — structural intervention, not generic questions</li>
+            <li>Directional synthesis</li>
+            <li>Mirror preview after 3 decisions</li>
+          </ul>
+          <a href="https://app.quorumvault.org" target="_blank" class="pc-btn o">Open Quorum →</a>
+        </div>
+        <div class="pc feat r d2">
+          <div class="pc-badge" id="mirrorBadge">Most used</div>
+          <div class="pc-tier">Mirror</div>
+          <div class="pc-price" id="mirrorPrice"><sub>₹</sub>1,499</div>
+          <div class="pc-cadence" id="mirrorCadence">/month · cancel anytime</div>
+          <ul class="pc-list">
+            <li>Bias Fingerprint — exact conditions that activate your patterns</li>
+            <li>Confidence Calibration — where your certainty is reliable vs. not</li>
+            <li>Decision Independence Score</li>
+            <li>Decision Rules library — your implicit principles, extracted</li>
+            <li>Contradiction Detector — when you violate your own rules</li>
+            <li>All future Mirror features</li>
+          </ul>
+          <button class="pc-btn g" onclick="openModal('mirror')">Subscribe to Mirror →</button>
+        </div>
+        <div class="pc r d3">
+          <div class="pc-tier">Live advisory</div>
+          <div class="pc-price"><sub>₹</sub>25,000</div>
+          <div class="pc-cadence">Per session · founder-led</div>
+          <ul class="pc-list">
+            <li>45-minute private advisory session</li>
+            <li>Founder-run with full context</li>
+            <li>Formatted Decision Brief PDF</li>
+            <li>Mirror subscription included (12 months)</li>
+            <li>Follow-up synthesis within 24 hrs</li>
+          </ul>
+          <button class="pc-btn o" onclick="openModal('live')">Request session →</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1849,14 +1884,14 @@
 
       <div class="interest-grid">
         <div class="interest-opt" data-val="mirror" onclick="selectInterest(this)">
-          <div class="io-price">₹4,999 · one-time</div>
-          <div class="io-label">Mirror Unlock</div>
-          <div class="io-desc">Bias fingerprint, independence score, contradiction detector and all future features.</div>
+          <div class="io-price">₹1,499/mo · or ₹9,999/yr</div>
+          <div class="io-label">Mirror Subscription</div>
+          <div class="io-desc">Bias fingerprint, independence score, contradiction detector and all future Mirror features.</div>
         </div>
         <div class="interest-opt" data-val="live" onclick="selectInterest(this)">
           <div class="io-price">₹25,000 · per session</div>
           <div class="io-label">Live Advisory</div>
-          <div class="io-desc">45-min founder-led session. Includes decision brief and Mirror unlock.</div>
+          <div class="io-desc">45-min founder-led session. Includes decision brief and 12-month Mirror subscription.</div>
         </div>
         <div class="interest-opt" data-val="explore" onclick="selectInterest(this)">
           <div class="io-price">Free · always</div>
@@ -2014,6 +2049,28 @@
   let   currentStep = 1
   let   selectedInterest = null
 
+  // ── Billing toggle (Monthly / Annual) ──────────────────────────────────────
+  let currentBilling = 'monthly'
+  function setBilling(plan) {
+    currentBilling = plan
+    document.getElementById('btMonthly').classList.toggle('active', plan === 'monthly')
+    document.getElementById('btAnnual').classList.toggle('active', plan === 'annual')
+
+    const priceEl   = document.getElementById('mirrorPrice')
+    const cadenceEl = document.getElementById('mirrorCadence')
+    const badgeEl   = document.getElementById('mirrorBadge')
+
+    if (plan === 'annual') {
+      priceEl.innerHTML   = '<sub>₹</sub>9,999'
+      cadenceEl.textContent = '/year · 2 months free'
+      badgeEl.textContent   = 'Best value'
+    } else {
+      priceEl.innerHTML   = '<sub>₹</sub>1,499'
+      cadenceEl.textContent = '/month · cancel anytime'
+      badgeEl.textContent   = 'Most used'
+    }
+  }
+
   function openModal(preset) {
     currentStep = 1
     showStep(1)
@@ -2129,7 +2186,7 @@
       // Success messaging based on interest
       const msgs = {
         live:    'We\'ll review your decision and reach out within 48 hours. Live sessions are capped, so we\'ll confirm availability when we write.',
-        mirror:  'We\'ll send you your Mirror unlock token via email within 24 hours. You can start bringing decisions immediately.',
+        mirror:  'We\'ll send you your Mirror subscription link within 24 hours. You can start bringing decisions immediately — your profile builds from session one.',
         explore: 'You can open Quorum right now and bring the decision you described — the Council runs free, no token required.',
         other:   'We\'ll read your request and respond personally within 48 hours.'
       }
