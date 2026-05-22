@@ -286,6 +286,58 @@
 
     .hero-note { font-size: 12px; color: var(--t5); letter-spacing: 0.04em; line-height: 1.7; }
 
+    /* Hero decision input */
+    .hero-input-wrap {
+      --d: 0.62s;
+      margin-top: 52px;
+      max-width: 600px;
+      width: 100%;
+    }
+    .hero-textarea {
+      width: 100%;
+      min-height: 118px;
+      background: var(--card);
+      border: 1px solid var(--b1);
+      border-radius: var(--radius-sm);
+      color: var(--t1);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14.5px;
+      line-height: 1.75;
+      padding: 16px 20px;
+      resize: none;
+      outline: none;
+      transition: border-color 0.2s, var(--trans);
+    }
+    .hero-textarea::placeholder { color: var(--t4); }
+    .hero-textarea:focus { border-color: var(--b2); }
+    .hero-input-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-convene {
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 32px;
+      background: var(--gold);
+      color: var(--bg);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-convene:hover { background: var(--gold-hi); transform: translateY(-2px); }
+    .hero-input-note {
+      font-size: 11.5px;
+      color: var(--t5);
+      letter-spacing: 0.04em;
+      line-height: 1.65;
+    }
+
     /* ══ TWO-COL ════════════════════════════════════════════════ */
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
 
@@ -1213,6 +1265,8 @@
       .wrap      { padding: 0 24px; }
       .rule      { margin: 0 24px; }
       #hero      { padding: 130px 24px 90px; }
+      .hero-input-wrap { max-width: 100%; }
+      .hero-textarea   { font-size: 14px; min-height: 100px; }
       .nav-links { display: none; }
       .two, .mc-inner, .moments-intro { grid-template-columns: 1fr; gap: 40px; }
       .advisor-grid { grid-template-columns: repeat(3,1fr); }
@@ -1262,9 +1316,17 @@
   <p class="hero-sub h-up">
     Quorum is a private advisory system for high-stakes decisions. Six advisors analyse every decision you bring. Over time, something more valuable emerges — a precise, private picture of how <em>you specifically</em> make choices, where your confidence outpaces your judgment, and what you keep getting wrong.
   </p>
-  <div class="hero-cta h-up">
-    <button class="btn-cta" id="heroModal">Request a session →</button>
-    <span class="hero-note">By referral or application only.</span>
+  <div class="hero-input-wrap h-up">
+    <textarea
+      class="hero-textarea"
+      id="heroDecision"
+      placeholder="Describe a decision you're facing — a career move, a financial call, a founder's dilemma, a relationship inflection point. The more specific, the sharper the analysis."
+      rows="4"
+    ></textarea>
+    <div class="hero-input-actions">
+      <button class="btn-convene" onclick="conveneCouncil()">Convene the Council →</button>
+      <span class="hero-input-note">Free · No account needed to start</span>
+    </div>
   </div>
 </section>
 
@@ -2089,6 +2151,22 @@
   }
 
   document.getElementById('openModal').addEventListener('click', () => openModal())
+  // ── Hero decision input → pre-populate app ────────────────────────────────
+  function conveneCouncil() {
+    const text = (document.getElementById('heroDecision').value || '').trim()
+    const base = 'https://app.quorumvault.org'
+    if (text) {
+      window.open(base + '?d=' + encodeURIComponent(text), '_blank')
+    } else {
+      window.open(base, '_blank')
+    }
+  }
+
+  // Allow Ctrl/Cmd+Enter to submit from textarea
+  document.getElementById('heroDecision').addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') conveneCouncil()
+  })
+
   document.getElementById('heroModal').addEventListener('click', () => openModal())
   document.getElementById('closeModal').addEventListener('click', closeModal)
 
