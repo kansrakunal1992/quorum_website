@@ -477,6 +477,16 @@
       transition: opacity 0.32s ease;
     }
 
+    .modal-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 580px;
+      transform: translateY(24px) scale(0.97);
+      transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .modal-overlay.open .modal-wrapper { transform: none; }
+
     [data-theme="light"] .modal-overlay { background: rgba(30,40,60,0.55); }
 
     .modal-overlay.open {
@@ -494,17 +504,13 @@
       overflow-y: auto;
       padding: 52px 52px 48px;
       position: relative;
-      transform: translateY(24px) scale(0.97);
-      transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
     }
 
     [data-theme="light"] .modal-box { background: var(--card); }
 
-    .modal-overlay.open .modal-box { transform: none; }
-
     .modal-close {
       position: absolute;
-      top: 22px; right: 22px;
+      top: 0; right: -46px;
       width: 34px; height: 34px;
       border-radius: 50%;
       border: 1px solid var(--b1);
@@ -514,6 +520,7 @@
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: border-color 0.2s, color 0.2s;
+      z-index: 10;
     }
 
     .modal-close:hover { border-color: var(--t3); color: var(--t1); }
@@ -1272,9 +1279,12 @@
       footer { flex-direction: column; gap: 14px; text-align: center; }
       .demo-body { grid-template-columns: 1fr; }
       .demo-col + .demo-col { border-left: none; border-top: 1px solid var(--b0); }
-      .modal-box { padding: 40px 28px 36px; }
+      .modal-box { padding: 40px 28px 36px; padding-top: 56px; }
       .interest-grid { grid-template-columns: 1fr; }
       .field-row { grid-template-columns: 1fr; }
+      /* On mobile, modal-wrapper is full-width so no room outside — move button inside */
+      .modal-close { position: absolute; top: 14px; right: 14px; }
+      .modal-overlay { padding: 16px; }
     }
   </style>
 </head>
@@ -1922,9 +1932,11 @@
      SESSION REQUEST MODAL
 ══════════════════════════════════════════════════════════════ -->
 <div class="modal-overlay" id="sessionModal" role="dialog" aria-modal="true" aria-label="Request a session">
-  <div class="modal-box" id="modalBox">
+  <div class="modal-wrapper">
 
     <button class="modal-close" id="closeModal" aria-label="Close">✕</button>
+
+  <div class="modal-box" id="modalBox">
 
     <!-- Progress -->
     <div class="modal-progress">
@@ -2041,11 +2053,9 @@
       </div>
     </div>
 
-  </div>
+  </div><!-- /.modal-box -->
+  </div><!-- /.modal-wrapper -->
 </div>
-
-
-<script>
   /* ── SUPABASE CONFIG ─────────────────────────────────────────
      Replace these values with your actual Supabase project URL
      and anon public key. Both are safe to expose in the browser.
