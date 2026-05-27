@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quorum — Private Decision Intelligence</title>
-  <meta name="description" content="A private decision intelligence system for founders, CXOs, and family office principals. Six advisors. Structural analysis before advice runs. Your judgment, compounding over time." />
+  <title>Quorum — The Judgment Operating System</title>
+  <meta name="description" content="The first operating system for human judgment. Quorum integrates multiple perspectives into coherent judgment — and builds a permanent, calibrated record of how you decide. For founders, CXOs, and principals where the cost of a wrong call is measured in crores." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
@@ -1397,6 +1397,251 @@
     @media (max-width: 980px) {
       .macro-grid { grid-template-columns: 1fr; }
     }
+
+    /* ══ EXAMINER STANDALONE ═════════════════════════════════════ */
+    .examiner-standalone {
+      margin-top: 72px;
+      padding: 72px 64px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 24px;
+      background: linear-gradient(150deg, var(--gold-alpha) 0%, var(--card) 65%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    [data-theme="light"] .examiner-standalone {
+      border-color: rgba(154,112,32,0.28);
+      background: linear-gradient(150deg, rgba(154,112,32,0.07) 0%, var(--card) 65%);
+    }
+
+    .examiner-standalone::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 8%, rgba(201,168,76,0.55) 42%, rgba(201,168,76,0.55) 58%, transparent 92%);
+    }
+
+    [data-theme="light"] .examiner-standalone::before {
+      background: linear-gradient(90deg, transparent 8%, rgba(154,112,32,0.4) 42%, rgba(154,112,32,0.4) 58%, transparent 92%);
+    }
+
+    .es-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 52px;
+    }
+
+    .es-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .es-headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(30px, 3.2vw, 46px);
+      font-weight: 300;
+      color: var(--t0);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0;
+    }
+
+    .es-body {
+      font-size: 15px;
+      color: var(--t3);
+      line-height: 1.88;
+      padding-top: 8px;
+    }
+
+    .es-body p { margin-bottom: 18px; }
+    .es-body p:last-child { margin-bottom: 0; }
+
+    .es-output {
+      border: 1px solid var(--b1);
+      border-radius: var(--radius);
+      background: var(--inset);
+      overflow: hidden;
+    }
+
+    [data-theme="light"] .es-output { background: var(--bg2); }
+
+    .es-output-hd {
+      padding: 13px 26px;
+      border-bottom: 1px solid var(--b0);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .es-output-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .es-output-mode {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--t5);
+      background: var(--b0);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .es-output-body { padding: 32px 26px 28px; }
+
+    .es-output-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--t1);
+      line-height: 1.62;
+      margin-bottom: 16px;
+    }
+
+    .es-output-note {
+      font-size: 12px;
+      color: var(--t4);
+      line-height: 1.72;
+    }
+
+    .es-claim {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--b0);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .es-claim-item {
+      font-size: 13px;
+      color: var(--t4);
+      line-height: 1.7;
+    }
+
+    .es-claim-item strong {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 980px) {
+      .examiner-standalone { padding: 44px 28px; }
+      .es-header { grid-template-columns: 1fr; gap: 28px; }
+      .es-claim { grid-template-columns: 1fr; gap: 20px; }
+    }
+
+    /* ══ WHO IT'S FOR ════════════════════════════════════════════ */
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .who-card {
+      border: 1px solid var(--b0);
+      border-radius: var(--radius);
+      padding: 46px 42px;
+      background: var(--card);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .who-card.primary {
+      border-color: rgba(201,168,76,0.38);
+      background: linear-gradient(150deg, var(--gold-alpha) 0%, var(--card) 58%);
+    }
+
+    [data-theme="light"] .who-card.primary {
+      border-color: rgba(154,112,32,0.3);
+      background: linear-gradient(150deg, rgba(154,112,32,0.07) 0%, var(--card) 58%);
+    }
+
+    .who-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-alpha), transparent);
+    }
+
+    .who-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .who-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--t0);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+
+    .who-desc {
+      font-size: 14px;
+      color: var(--t3);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+
+    .who-examples {
+      list-style: none;
+      border-top: 1px solid var(--b0);
+      padding-top: 20px;
+    }
+
+    .who-examples li {
+      font-size: 13px;
+      color: var(--t4);
+      padding: 9px 0;
+      border-bottom: 1px solid var(--b0);
+      display: flex;
+      gap: 10px;
+      line-height: 1.58;
+    }
+
+    .who-examples li:last-child { border-bottom: none; }
+
+    .who-examples li::before {
+      content: '—';
+      color: var(--gold);
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 980px) {
+      .who-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -1406,10 +1651,10 @@
   <a href="#" class="logo">Quoru<span>m</span></a>
 
   <ul class="nav-links">
-    <li><a href="#council">The Council</a></li>
+    <li><a href="#judgment-gap">The gap</a></li>
     <li><a href="#engine">How it thinks</a></li>
-    <li><a href="#moments">What it surfaces</a></li>
-    <li><a href="#how">How it works</a></li>
+    <li><a href="#council">The Council</a></li>
+    <li><a href="#moments">Mirror</a></li>
     <li><a href="#pricing">Access</a></li>
   </ul>
 
@@ -1539,7 +1784,7 @@
   <div class="s">
     <div class="two r">
       <div>
-        <span class="eyebrow" style="margin-bottom:20px">Why it's not a chatbot</span>
+        <span class="eyebrow" style="margin-bottom:20px">The coherence layer</span>
         <h2 class="display" style="font-size: clamp(38px,3.8vw,56px);">Every decision is read before it's answered.</h2>
       </div>
       <div class="prose" style="padding-top: 8px;">
@@ -1585,27 +1830,73 @@
     <div class="not-chatbot r d3">
       <div class="nc-col">
         <span class="nc-label dim">Any AI tool</span>
-        <div class="nc-item"><span class="mk x">—</span>Reads what you wrote</div>
-        <div class="nc-item"><span class="mk x">—</span>Generates advice from your text</div>
-        <div class="nc-item"><span class="mk x">—</span>No memory of prior decisions</div>
-        <div class="nc-item"><span class="mk x">—</span>Same advice regardless of decision type</div>
-        <div class="nc-item"><span class="mk x">—</span>Cannot tell you a decision isn't ready</div>
-        <div class="nc-item"><span class="mk x">—</span>Starts from zero every session</div>
+        <div class="nc-item"><span class="mk x">—</span>Adds another input to an already fragmented picture</div>
+        <div class="nc-item"><span class="mk x">—</span>Produces analysis. Does not resolve the contradiction between analyses.</div>
+        <div class="nc-item"><span class="mk x">—</span>No structural read — responds to what you wrote, not what the decision actually is</div>
+        <div class="nc-item"><span class="mk x">—</span>Same response architecture regardless of decision type or stakes</div>
+        <div class="nc-item"><span class="mk x">—</span>Cannot tell you a decision isn't ready to be made</div>
+        <div class="nc-item"><span class="mk x">—</span>Starts from zero. Builds no model of how you specifically decide.</div>
       </div>
       <div class="nc-col">
         <span class="nc-label bright">Quorum</span>
-        <div class="nc-item"><span class="mk c">—</span>Classifies the structure of your decision first</div>
-        <div class="nc-item"><span class="mk c">—</span>Advice shaped by what the decision actually is</div>
-        <div class="nc-item"><span class="mk c">—</span>Builds a structural record across every session</div>
-        <div class="nc-item"><span class="mk c">—</span>Analysis changes based on decision type and your history</div>
-        <div class="nc-item"><span class="mk c">—</span>Can stop a decision entirely if it's premature</div>
-        <div class="nc-item"><span class="mk c">—</span>Gets more accurate about you with every decision</div>
+        <div class="nc-item"><span class="mk c">—</span>Integrates perspectives into a single coherent judgment position</div>
+        <div class="nc-item"><span class="mk c">—</span>Resolves fragmentation — one synthesis, traceable to structural factors</div>
+        <div class="nc-item"><span class="mk c">—</span>Classifies the structure of your decision before any advisor responds</div>
+        <div class="nc-item"><span class="mk c">—</span>Analysis shaped by what the decision structurally is, not just what you wrote</div>
+        <div class="nc-item"><span class="mk c">—</span>Can stop a decision entirely if a prior question makes it premature</div>
+        <div class="nc-item"><span class="mk c">—</span>Builds a permanent judgment record — gets more accurate about you with every session</div>
       </div>
     </div>
 
   </div>
 </div>
 
+
+<hr class="rule" />
+
+<!-- ══ THE EXAMINER ════════════════════════════════════════════════ -->
+<div class="wrap" id="examiner">
+  <div class="s">
+    <div class="examiner-standalone r">
+      <div class="es-header">
+        <div>
+          <span class="es-eyebrow">The Examiner · Structural intervention</span>
+          <h2 class="es-headline">The only system that will tell you a decision isn't ready.</h2>
+        </div>
+        <div class="es-body">
+          <p>Every advisor — human or AI — gives you their best read on the question you brought. None of them are structurally equipped to tell you the question itself is wrong, or that a prior decision has to be resolved before this one can be answered cleanly.</p>
+          <p>Quorum's Examiner does this routinely. Before synthesis fires, it reads the structural profile. If a prior unresolved dependency exists, or if specific missing information would change the framing entirely — the Council's output is marked provisional. A different question surfaces first.</p>
+        </div>
+      </div>
+
+      <div class="es-output">
+        <div class="es-output-hd">
+          <span class="es-output-tag">Examiner · Live output</span>
+          <span class="es-output-mode">Synthesis held</span>
+        </div>
+        <div class="es-output-body">
+          <p class="es-output-text">"Before we can give useful analysis on whether to exit, there is a prior question that has not been resolved: what you would replace this with, and what financial floor you need to remain at. Running the analysis now would produce a recommendation that will not hold when those answers arrive. The Council's read is provisional until then."</p>
+          <p class="es-output-note">Synthesis is blocked. The Council's analysis is marked provisional. The Examiner surfaces the one question that actually has to be answered first — not a checklist, not a form. A structural finding.</p>
+        </div>
+      </div>
+
+      <div class="es-claim">
+        <div class="es-claim-item">
+          <strong>No advisor gives you this</strong>
+          An advisor gives you their best read on the decision you brought. Quorum tells you whether the decision you brought is the right question — before analysis runs.
+        </div>
+        <div class="es-claim-item">
+          <strong>Not a hedge. A finding.</strong>
+          The Examiner does not equivocate. When it issues a redirect, it cites the specific structural condition that makes the current decision unanswerable. You know exactly why.
+        </div>
+        <div class="es-claim-item">
+          <strong>Some decisions get stopped entirely</strong>
+          The rule engine can block synthesis, gate it behind one critical question, or mark the Council's output provisional. The mode depends on what the structural analysis finds — not on your framing.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <hr class="rule" />
 
@@ -1670,7 +1961,7 @@
   <div class="s">
     <div class="moments-intro r">
       <div>
-        <span class="eyebrow" style="margin-bottom:18px">What Quorum surfaces</span>
+        <span class="eyebrow" style="margin-bottom:18px">What the Judgment OS produces</span>
         <h2 class="display" style="font-size: clamp(40px,4.5vw,62px);">The moments that change how you decide.</h2>
       </div>
       <p style="font-size:16px; color:var(--t3); line-height:1.9; padding-top:8px;">Not reports. Not summaries. Specific, structural observations about how you actually make decisions — derived from what you actually brought, and what actually happened afterwards.</p>
@@ -1698,7 +1989,7 @@
             <span class="dec-mk y">—</span>
             <div class="dec-item-body">
               <div class="dec-item-title">Capital allocation and investment decisions</div>
-              <div class="dec-item-note">Deploying from a family office, investing in a new venture, taking on debt. The Investor and Risk Architect advisors run in parallel; pattern-matching to prior capital decisions is often where the insight sits.</div>
+              <div class="dec-item-note">Deploying from a family office, investing in a new venture, taking on debt. The Risk Architect and Pattern Analyst run in parallel; structural matching to prior capital decisions in your record is often where the real insight sits.</div>
             </div>
           </div>
 
@@ -1941,23 +2232,23 @@
 
       <div class="ft">
         <div class="ft-icon">◎</div>
-        <span class="ft-label">Mirror · Behavioral Alerts</span>
+        <span class="ft-label">Mirror · Behavioral alerts</span>
         <div class="ft-title">Patterns flagged before you notice them</div>
-        <div class="ft-body">As your decision record builds, Quorum detects behavioral signals automatically — decisions you keep opening but never resolve, urgency patterns that don't match your actual timelines, consistency gaps between your stated principles and your actions. Surfaced in the Mirror layer without you having to ask.</div>
+        <div class="ft-body">As your decision record builds, your Judgment OS detects behavioral signals automatically — decisions you keep opening but never resolve, urgency patterns that don't match your actual timelines, gaps between your stated principles and your actions. Surfaced without you having to ask. Not a report — an alert.</div>
       </div>
 
       <div class="ft">
         <div class="ft-icon">↗</div>
-        <span class="ft-label">Decision Brief · PDF Export</span>
-        <div class="ft-title">Every decision, exportable as a private record</div>
-        <div class="ft-body">After a session, Quorum generates a structured PDF brief: the decision text, the structural profile, all six advisor analyses, the synthesis, and the examiner's questions. Shareable with a board, a partner, or kept as a private decision log. Built for situations where a paper trail matters.</div>
+        <span class="ft-label">Decision Brief · Private record</span>
+        <div class="ft-title">Every decision record, exportable</div>
+        <div class="ft-body">After each decision record closes, Quorum generates a structured PDF brief: the structural profile, all six Council analyses, the Examiner's intervention, and the synthesis. Shareable with a board or co-founder, or kept as a private decision log. Built for situations where a paper trail matters and a clean record of your reasoning has value.</div>
       </div>
 
       <div class="ft">
         <div class="ft-icon">⊙</div>
-        <span class="ft-label">Mirror · Decision Timeline</span>
-        <div class="ft-title">Your full decision record, structured and searchable</div>
-        <div class="ft-body">Every decision you bring is stored with its structural profile — decision type, stakes level, reversibility, the rule mode it triggered. The Mirror Timeline gives you a precise, private ledger of how you've been deciding — not a journal, a structured analytical record that compounds with every session.</div>
+        <span class="ft-label">Mirror · Decision record timeline</span>
+        <div class="ft-title">Your full judgment history, structured and searchable</div>
+        <div class="ft-body">Every decision record you add is stored with its structural profile — decision type, stakes level, reversibility, the rule mode it triggered. The Mirror Timeline gives you a precise, private ledger of how you have been deciding — not a journal, a structured analytical record that compounds in accuracy with every session.</div>
       </div>
 
     </div>
@@ -2004,6 +2295,50 @@
         <div class="step-tag">Mirror · Judgment OS</div>
         <div class="step-name">Mirror</div>
         <div class="step-desc">The part that compounds. Every decision record feeds your Judgment OS — building a calibrated picture of how you think, where your confidence is reliable, and where it consistently fails you. Bias Fingerprint. Confidence Calibration. Contradiction Detector. Implicit Rules. What Keeps Coming Up. This is the product.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ WHO IT'S FOR ════════════════════════════════════════════════ -->
+<div class="wrap" id="who">
+  <div class="s">
+    <div class="two r">
+      <div>
+        <span class="eyebrow" style="margin-bottom:20px">Who it's for</span>
+        <h2 class="display" style="font-size: clamp(38px,3.8vw,56px);">Built for the individual. Designed to scale to the institution.</h2>
+      </div>
+      <div class="prose" style="padding-top:8px;">
+        <p>Quorum starts with a single person and a single decision. Over time, it becomes infrastructure — a permanent, compounding record of how they think. That is where it becomes interesting to the organizations they lead and the firms that back them.</p>
+        <p>Every major management capability was adopted by individuals before it was adopted by institutions. Judgment infrastructure is the same pattern.</p>
+      </div>
+    </div>
+
+    <div class="who-grid r d1">
+      <div class="who-card primary">
+        <span class="who-type">Individual access</span>
+        <h3 class="who-title">The founder, CXO,<br />or principal who decides<br />everything else.</h3>
+        <p class="who-desc">Quorum is built for the person at the apex — where the cost of a bad call is measured in crores, not lakhs, and where no one around you is structurally positioned to tell you what you don't want to hear. Your judgment record compounds from the first decision you bring.</p>
+        <ul class="who-examples">
+          <li>Founders facing exits, pivots, or capital structure decisions</li>
+          <li>CXOs navigating succession, leadership separation, or board-level choices</li>
+          <li>Family office principals making allocation and succession calls</li>
+          <li>Operators who have outgrown their existing advisory infrastructure</li>
+        </ul>
+      </div>
+
+      <div class="who-card">
+        <span class="who-type">Institutional access</span>
+        <h3 class="who-title">The firm that needs its<br />principals' judgment<br />to be measurable.</h3>
+        <p class="who-desc">A PE firm with twelve portfolio founders has twelve judgment systems operating in the dark. A family office with three principals has three. Quorum makes the decision quality of key people visible, improvable, and structurally defended — not as a governance checkbox, but as infrastructure for the people whose calls determine returns.</p>
+        <ul class="who-examples">
+          <li>PE and VC firms deploying Quorum across portfolio founders</li>
+          <li>Family offices licensing the Judgment OS for multiple principals</li>
+          <li>Boards mandating structured decision infrastructure for key executives</li>
+          <li>Advisory firms building Quorum into their client engagement model</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -2369,7 +2704,7 @@
 
   const qualPatterns = [
     { rx: /exit|sell|acqui/i,    msg: 'Exit decisions are among the most irreversible Quorum handles. The Council will surface what the numbers don\'t — timing, identity, and what comes after.' },
-    { rx: /invest|capital|fund/i, msg: 'Capital allocation decisions benefit most from the Investor and Risk Architect running in parallel. Pattern-matching to prior decisions is often where the insight is.' },
+    { rx: /invest|capital|fund/i, msg: 'Capital allocation decisions benefit most from the Risk Architect and Pattern Analyst running in parallel. Structural matching to prior capital decisions in your record is often where the real insight sits.' },
     { rx: /join|leave|resign|career/i, msg: 'Career pivots carry hidden costs that rarely get priced in. The Mirror and Elder advisors tend to surface the ones that matter most.' },
     { rx: /partner|co-found|hire/i, msg: 'Partnership decisions are where the Stakeholder Mirror advisor does its most important work — the unstated dynamics and incentive misalignments.' },
     { rx: /start|launch|venture|startup/i, msg: 'New ventures benefit from the Risk Architect\'s irreversibility mapping. The question isn\'t just viability — it\'s what you\'re foreclosing on.' },
