@@ -1,0 +1,17 @@
+# Quorum — Vulnerability Disclosure Policy
+# https://quorumvault.org/.well-known/security.txt
+# Per RFC 9116
+
+Contact: mailto:security@quorumvault.org
+Expires: 2027-06-07T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://quorumvault.org/.well-known/security.txt
+
+# Scope
+# In-scope: app.quorumvault.org, quorumvault.org, all API endpoints, auth flow
+# Out-of-scope: Third-party services (Supabase, Railway, Anthropic, DeepSeek)
+
+# Response commitments
+# Acknowledgement: within 5 business days
+# Critical issue remediation target: 30 days
+# We do not pursue legal action against researchers acting in good faith.
