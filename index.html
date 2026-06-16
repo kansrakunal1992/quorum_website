@@ -1432,6 +1432,39 @@
 
     [data-theme="light"] .jg-callout { border-color: rgba(154,112,32,0.25); }
 
+    /* ══ SDR SECONDARY CTA — "talk it through first" ══════════════ */
+    .sdr-cta-wrap {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--b0);
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .sdr-cta-text {
+      font-size: 14px;
+      color: var(--t4);
+      line-height: 1.6;
+    }
+    .sdr-cta-link {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold-lo);
+      padding-bottom: 1px;
+      transition: var(--trans);
+      white-space: nowrap;
+    }
+    .sdr-cta-link:hover {
+      color: var(--gold-hi);
+      border-bottom-color: var(--gold-hi);
+    }
+    @media (max-width: 720px) {
+      .sdr-cta-wrap { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+
     /* ══ PRICING SUB-LABELS + SCARCITY ═══════════════════════════ */
     .pc-tier-sub {
       font-family: 'DM Sans', sans-serif;
@@ -2112,6 +2145,11 @@
     </div>
     <div class="jg-callout r d1">
       "The first session is analysis. The tenth is a mirror. The fiftieth is infrastructure — a calibrated, permanent record of how you make the calls that determine everything else."
+    </div>
+
+    <div class="sdr-cta-wrap r d1">
+      <span class="sdr-cta-text">Not sure if your situation fits?</span>
+      <a href="https://quorumgtm-production.up.railway.app/?source=website" target="_blank" rel="noopener" class="sdr-cta-link">Talk it through first →</a>
     </div>
   </div>
 </div>
@@ -2798,7 +2836,7 @@
           <div class="pc-badge" id="mirrorBadge">Best value</div>
           <div class="pc-tier">Mirror</div>
           <div class="pc-tier-sub">Your Judgment Operating System — the part that compounds</div>
-          <div class="pc-price" id="mirrorPrice"><sub>₹</sub>39,999</div>
+          <div class="pc-price" id="mirrorPrice"><sub>₹</sub>9,999</div>
           <div class="pc-cadence" id="mirrorCadence">/year · 2 months free</div>
           <ul class="pc-list">
             <li>Bias Fingerprint — how and when your patterns activate, specific to your decision history</li>
@@ -2881,7 +2919,7 @@
 
       <div class="interest-grid">
         <div class="interest-opt" data-val="mirror" onclick="selectInterest(this)">
-          <div class="io-price">₹39,999/yr · or ₹3,999/mo</div>
+          <div class="io-price">₹9,999/yr · or ₹1,499/mo</div>
           <div class="io-label">Mirror — Judgment OS access</div>
           <div class="io-desc">Your private judgment operating system. Bias Fingerprint, Confidence Calibration, Contradiction Detector, and all future Mirror capabilities.</div>
         </div>
@@ -3146,11 +3184,11 @@
     const badgeEl   = document.getElementById('mirrorBadge')
 
     if (plan === 'annual') {
-      priceEl.innerHTML   = '<sub>₹</sub>39,999'
+      priceEl.innerHTML   = '<sub>₹</sub>9,999'
       cadenceEl.textContent = '/year · 2 months free'
       badgeEl.textContent   = 'Best value'
     } else {
-      priceEl.innerHTML   = '<sub>₹</sub>3,999'
+      priceEl.innerHTML   = '<sub>₹</sub>1,499'
       cadenceEl.textContent = '/month · cancel anytime'
       badgeEl.textContent   = 'Most used'
     }
