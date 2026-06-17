@@ -2836,7 +2836,7 @@
           <div class="pc-badge" id="mirrorBadge">Best value</div>
           <div class="pc-tier">Mirror</div>
           <div class="pc-tier-sub">Your Judgment Operating System — the part that compounds</div>
-          <div class="pc-price" id="mirrorPrice"><sub>₹</sub>9,999</div>
+          <div class="pc-price" id="mirrorPrice"><sub>₹</sub>39,999</div>
           <div class="pc-cadence" id="mirrorCadence">/year · 2 months free</div>
           <ul class="pc-list">
             <li>Bias Fingerprint — how and when your patterns activate, specific to your decision history</li>
@@ -2850,18 +2850,16 @@
           <button class="pc-btn g" onclick="openModal('mirror')">Access Mirror →</button>
         </div>
         <div class="pc r d3">
-          <div class="pc-tier">Live advisory</div>
-          <div class="pc-price"><sub>₹</sub>25,000</div>
-          <div class="pc-cadence">Per session · founder-led</div>
+          <div class="pc-tier">Advisory</div>
+          <div class="pc-price">By application</div>
+          <div class="pc-cadence">Founder-led · reviewed individually</div>
           <ul class="pc-list">
-            <li>45-minute private session with the founder — who has read your full decision record before you arrive</li>
-            <li>Structural analysis and Council run before the session, not during it</li>
-            <li>Formatted Decision Brief PDF — a private paper trail for decisions that warrant one</li>
-            <li>Mirror (Judgment OS) — full year included</li>
-            <li>Follow-up synthesis within 24 hours</li>
+            <li>A standing relationship, not a one-off call — for decisions where the cost of being wrong is measured in crores</li>
+            <li>The founder reviews your decision record directly before responding</li>
+            <li>Pricing shared once we've understood the decision — not published here</li>
           </ul>
           <button class="pc-btn o" onclick="openModal('live')">Request advisory access →</button>
-          <div class="pc-scarcity">4 sessions per week · Reviewed individually<br/>Not all decisions are a fit</div>
+          <div class="pc-scarcity">Reviewed individually<br/>Not all decisions are a fit</div>
         </div>
       </div>
     </div>
@@ -2919,14 +2917,14 @@
 
       <div class="interest-grid">
         <div class="interest-opt" data-val="mirror" onclick="selectInterest(this)">
-          <div class="io-price">₹9,999/yr · or ₹1,499/mo</div>
+          <div class="io-price">₹39,999/yr · or ₹3,999/mo</div>
           <div class="io-label">Mirror — Judgment OS access</div>
           <div class="io-desc">Your private judgment operating system. Bias Fingerprint, Confidence Calibration, Contradiction Detector, and all future Mirror capabilities.</div>
         </div>
         <div class="interest-opt" data-val="live" onclick="selectInterest(this)">
-          <div class="io-price">₹25,000 · per session</div>
-          <div class="io-label">Live Advisory</div>
-          <div class="io-desc">45-min founder-led session. Your full decision record is read before you arrive. Includes Decision Brief and full-year Mirror (Judgment OS) access.</div>
+          <div class="io-price">By application</div>
+          <div class="io-label">Advisory</div>
+          <div class="io-desc">A standing, founder-led relationship for decisions where the cost of being wrong is measured in crores. Pricing shared once we understand the decision.</div>
         </div>
         <div class="interest-opt" data-val="explore" onclick="selectInterest(this)">
           <div class="io-price">Free · always</div>
@@ -3184,11 +3182,11 @@
     const badgeEl   = document.getElementById('mirrorBadge')
 
     if (plan === 'annual') {
-      priceEl.innerHTML   = '<sub>₹</sub>9,999'
+      priceEl.innerHTML   = '<sub>₹</sub>39,999'
       cadenceEl.textContent = '/year · 2 months free'
       badgeEl.textContent   = 'Best value'
     } else {
-      priceEl.innerHTML   = '<sub>₹</sub>1,499'
+      priceEl.innerHTML   = '<sub>₹</sub>3,999'
       cadenceEl.textContent = '/month · cancel anytime'
       badgeEl.textContent   = 'Most used'
     }
@@ -3310,7 +3308,7 @@
       await insertSessionRequest(payload)
       // Success messaging based on interest
       const msgs = {
-        live:    'We\'ll review your decision record and reach out within 48 hours. Live advisory is capped at 4 sessions per week — we\'ll confirm availability when we write.',
+        live:    'We\'ll review your decision record and reach out within 48 hours to discuss Advisory access.',
         mirror:  'We\'ll send your Mirror (Judgment OS) access link within 24 hours. Your judgment record begins building from the first decision you bring.',
         explore: 'You can open Quorum now and add the decision you described. The structural analysis and Council run free — your record starts from session one.',
         other:   'We\'ll read your request and respond personally within 48 hours.'
