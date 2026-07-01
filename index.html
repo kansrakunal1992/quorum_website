@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quorum — The Judgment Operating System</title>
-  <meta name="description" content="The first operating system for human judgment. Quorum integrates multiple perspectives into coherent judgment — and builds a permanent, calibrated record of how you decide. For founders, CXOs, and principals where the cost of a wrong call is measured in crores." />
+  <meta name="description" content="Quorum turns high-stakes judgment into a compounding record — not just another source of advice. It integrates multiple perspectives into one coherent position, and keeps a permanent, calibrated account of how you decide. For founders, CXOs, and principals where the cost of a wrong call is measured in crores." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
@@ -1740,6 +1740,84 @@
     @media (max-width: 980px) {
       .who-grid { grid-template-columns: 1fr; }
     }
+
+    /* ══ BEFORE / AFTER THE RECORD ═════════════════════════════════ */
+    .wq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .wq-card {
+      border: 1px solid var(--b0);
+      border-radius: var(--radius);
+      padding: 38px 36px;
+      background: var(--card);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .wq-card:hover { border-color: var(--b2); }
+
+    .wq-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-alpha), transparent);
+    }
+
+    .wq-role {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--t4);
+      margin-bottom: 26px;
+    }
+
+    .wq-row { padding-left: 18px; border-left: 2px solid var(--b1); }
+    .wq-row + .wq-row { margin-top: 26px; }
+    .wq-row.wq-after { border-left-color: var(--gold); }
+
+    .wq-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--t5);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .wq-row.wq-after .wq-tag { color: var(--gold); }
+
+    .wq-row p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--t3);
+      line-height: 1.55;
+    }
+
+    .wq-row.wq-after p { color: var(--t1); }
+    [data-theme="light"] .wq-row.wq-after p { color: var(--t0); }
+
+    .wq-note {
+      margin-top: 28px;
+      font-size: 11px;
+      color: var(--t5);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 980px) {
+      .wq-grid { grid-template-columns: 1fr; }
+      .wq-card { padding: 32px 26px; }
+    }
+
     /* ══ MOBILE NAV BUTTON — compact version shown on mobile ════ */
     .btn-request-mobile {
       display: none;
@@ -2080,7 +2158,7 @@
   <div class="hero-aura"></div>
   <div class="hero-body">
     <div class="hero-left">
-      <span class="eyebrow h-up hero-eye">The judgment operating system</span>
+      <span class="eyebrow h-up hero-eye">Judgment, made into a record</span>
       <h1 class="display hero-hl h-up">
         Every business<br />process has been<br />systematized.<br /><em>Judgment is<br />the last one.</em>
       </h1>
@@ -2797,6 +2875,70 @@
         </ul>
       </div>
     </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ BEFORE / AFTER THE RECORD ═══════════════════════════════════ -->
+<div class="wrap" id="scenarios">
+  <div class="s">
+    <div class="r" style="max-width:640px;">
+      <span class="eyebrow" style="margin-bottom:20px">Before and after the record</span>
+      <h2 class="display" style="font-size: clamp(38px,3.8vw,56px);">Same decision. What changes is whether you can go back to it.</h2>
+    </div>
+
+    <div class="wq-grid r d1">
+      <div class="wq-card">
+        <div class="wq-role">Founder — weighing an acquisition offer</div>
+        <div class="wq-row wq-before">
+          <span class="wq-tag">Without a record</span>
+          <p>"I still don't fully know why I turned down the first offer and took the second. I've told the story so many times it's stopped being the truth."</p>
+        </div>
+        <div class="wq-row wq-after">
+          <span class="wq-tag">With the record</span>
+          <p>"I can open the actual session — the assumptions I made, what the Risk Architect pushed back on, the moment my answer changed. Not a memory. A record."</p>
+        </div>
+      </div>
+
+      <div class="wq-card">
+        <div class="wq-role">Family office principal — allocating capital</div>
+        <div class="wq-row wq-before">
+          <span class="wq-tag">Without a record</span>
+          <p>"Every allocation lived in its own silo. Nobody, including me, could tell you if this quarter's calls quietly contradicted last year's."</p>
+        </div>
+        <div class="wq-row wq-after">
+          <span class="wq-tag">With the record</span>
+          <p>"The match caught it before I signed — a near-identical trade-off from eighteen months earlier, and exactly how it played out."</p>
+        </div>
+      </div>
+
+      <div class="wq-card">
+        <div class="wq-role">Operator — bringing on a co-founder</div>
+        <div class="wq-row wq-before">
+          <span class="wq-tag">Without a record</span>
+          <p>"We were three weeks from signing before the incentive mismatch actually surfaced — and only because it had already blown up."</p>
+        </div>
+        <div class="wq-row wq-after">
+          <span class="wq-tag">With the record</span>
+          <p>"The Stakeholder Mirror flagged it in the first session. We renegotiated the split before it turned into a resentment neither of us could name."</p>
+        </div>
+      </div>
+
+      <div class="wq-card">
+        <div class="wq-role">CXO — considering stepping back</div>
+        <div class="wq-row wq-before">
+          <span class="wq-tag">Without a record</span>
+          <p>"I'd explain it differently every time someone asked. Burnout. Timing. The market. I never landed on the real reason."</p>
+        </div>
+        <div class="wq-row wq-after">
+          <span class="wq-tag">With the record</span>
+          <p>"The Mirror showed me this was the third time in a year the same pattern had surfaced. That was the answer I'd been avoiding."</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="wq-note">Composite scenarios illustrating the decisions Quorum is built for — not individual client case files.</p>
   </div>
 </div>
 
