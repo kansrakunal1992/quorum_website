@@ -336,6 +336,32 @@
       .hero-right { align-items: flex-start; }
     }
 
+    /* Hero intro video — hidden by default, shown only once the file
+       loads successfully. Falls back to nothing (current text-only
+       hero) if /videos/quorum-intro.mp4 hasn't been uploaded yet. */
+    .hero-video-wrap {
+      display: none;
+      width: 100%;
+      max-width: 900px;
+      margin: 64px auto 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--b1);
+      background: var(--card);
+      box-shadow: 0 30px 80px -30px rgba(0,0,0,0.5);
+    }
+    .hero-video-wrap.ready { display: block; }
+    .hero-video-wrap video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: var(--inset);
+    }
+    @media (max-width: 760px) {
+      .hero-video-wrap { margin-top: 44px; }
+    }
+
     /* ══ TWO-COL ════════════════════════════════════════════════ */
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
 
@@ -2174,6 +2200,26 @@
       <p class="hero-open-note">Free · Add your first decision record</p>
     </div>
   </div>
+
+  <!-- Intro video — placeholder. Upload the final MP4 on Railway at
+       /videos/quorum-intro.mp4 (and, optionally, captions at
+       /videos/quorum-intro.vtt). Until a file exists at that path,
+       the wrapper stays display:none and the hero looks exactly as
+       it does today — no broken player, no layout shift. -->
+  <div class="hero-video-wrap" id="heroVideoWrap">
+    <video
+      id="heroVideo"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/videos/quorum-intro-poster.jpg"
+    >
+      <source src="/videos/quorum-intro.mp4" type="video/mp4" />
+      <track kind="captions" src="/videos/quorum-intro.vtt" srclang="en" label="English" default />
+    </video>
+  </div>
 </section>
 
 <hr class="rule" />
@@ -3551,6 +3597,23 @@
   /* Show banner after 900 ms on first visit */
   ;(function initConsent() {
     if (!getConsent()) setTimeout(showBanner, 900)
+  })()
+
+  /* ── Hero intro video — reveal only if the file actually loads ──
+     If /videos/quorum-intro.mp4 hasn't been uploaded yet (404 on
+     Railway), 'error' fires and the wrap simply stays hidden —
+     the hero defaults to its current text-only view. */
+  ;(function initHeroVideo() {
+    const wrap  = document.getElementById('heroVideoWrap')
+    const video = document.getElementById('heroVideo')
+    if (!wrap || !video) return
+
+    video.addEventListener('loadeddata', () => wrap.classList.add('ready'))
+    video.addEventListener('error', () => wrap.classList.remove('ready'), true)
+    // <source> 404s surface here rather than on the video element itself
+    video.querySelectorAll('source').forEach(s => {
+      s.addEventListener('error', () => wrap.classList.remove('ready'))
+    })
   })()
 
   /* Smooth scroll for anchor links */
