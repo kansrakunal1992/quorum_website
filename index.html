@@ -3864,17 +3864,26 @@
   }
   initOptionalVideo('heroVideoWrap', 'heroVideo')  // Video 1 — above the fold, needs to be eager
 
-  /* ── Lazy version, for below-the-fold video (Video 2) ────────────
+  /* ── Lazy version, for below-the-fold video (Video 2, Video 3) ────
      On a slow connection the hero video alone already uses up a fair
      chunk of available bandwidth. This one doesn't even attach a
      <source> — and so doesn't download a single byte — until the
      section is about to scroll into view, and even then preload="none"
      means only headers are fetched (for the 404 check), not the file,
-     until the person actually presses play. */
-  function initLazyVideo(wrapId, videoId, mp4Src) {
-    const wrap  = document.getElementById(wrapId)
-    const video = document.getElementById(videoId)
-    if (!wrap || !video) return
+     until the person actually presses play.
+
+     IMPORTANT: we observe the outer SECTION (sectionId) for viewport
+     proximity, not the inner video wrap (wrapId). The inner wrap is
+     display:none until the video is ready — and an element with no
+     box/size can never be reported as "intersecting" by
+     IntersectionObserver, so watching it directly means activate()
+     never fires and the video never loads. The outer section is a
+     normal, always-rendered block, so it's the correct thing to watch. */
+  function initLazyVideo(sectionId, wrapId, videoId, mp4Src) {
+    const section = document.getElementById(sectionId)
+    const wrap    = document.getElementById(wrapId)
+    const video   = document.getElementById(videoId)
+    if (!section || !wrap || !video) return
 
     video.addEventListener('loadeddata', () => wrap.classList.add('ready'))
     video.addEventListener('error', () => wrap.classList.remove('ready'), true)
@@ -3885,6 +3894,7 @@
       const source = document.createElement('source')
       source.src  = mp4Src
       source.type = 'video/mp4'
+      source.addEventListener('error', () => wrap.classList.remove('ready'))
       video.insertBefore(source, video.firstChild)
       video.load()
     }
@@ -3895,13 +3905,13 @@
           if (entry.isIntersecting) { activate(); io.disconnect() }
         })
       }, { rootMargin: '300px' })  // start the check a bit before it's actually visible
-      io.observe(wrap)
+      io.observe(section)
     } else {
       activate()  // very old browsers without IntersectionObserver — just load it
     }
   }
-  initLazyVideo('researchVideoWrap', 'researchVideo', '/videos/quorum-research.mp4')
-  initLazyVideo('explainerVideoWrap', 'explainerVideo', '/videos/quorum-explainer.mp4')
+  initLazyVideo('research-video', 'researchVideoWrap', 'researchVideo', '/videos/quorum-research.mp4')
+  initLazyVideo('how', 'explainerVideoWrap', 'explainerVideo', '/videos/quorum-explainer.mp4')
 
   /* Smooth scroll for anchor links */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
