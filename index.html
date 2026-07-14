@@ -2615,14 +2615,19 @@
     </div>
 
     <div class="research-video-wrap" id="researchVideoWrap">
+      <!-- No <source> here on purpose — see initLazyVideo() below. It gets
+           injected only once this section scrolls near the viewport, so
+           nothing downloads on page load, and preload="none" means even
+           then it's just headers, not the file itself, until someone
+           presses play. Meaningful on 3G/4G where the eager hero video
+           already uses up the connection's budget. -->
       <video
         id="researchVideo"
         controls
         playsinline
-        preload="metadata"
+        preload="none"
         poster="/videos/quorum-research-poster.jpg"
       >
-        <source src="/videos/quorum-research.mp4" type="video/mp4" />
         <track kind="captions" src="/videos/quorum-research.vtt" srclang="en" label="English" default />
       </video>
     </div>
@@ -3813,8 +3818,45 @@
       s.addEventListener('error', () => wrap.classList.remove('ready'))
     })
   }
-  initOptionalVideo('heroVideoWrap', 'heroVideo')          // Video 1 — intro/self-help
-  initOptionalVideo('researchVideoWrap', 'researchVideo')  // Video 2 — research explainer
+  initOptionalVideo('heroVideoWrap', 'heroVideo')  // Video 1 — above the fold, needs to be eager
+
+  /* ── Lazy version, for below-the-fold video (Video 2) ────────────
+     On a slow connection the hero video alone already uses up a fair
+     chunk of available bandwidth. This one doesn't even attach a
+     <source> — and so doesn't download a single byte — until the
+     section is about to scroll into view, and even then preload="none"
+     means only headers are fetched (for the 404 check), not the file,
+     until the person actually presses play. */
+  function initLazyVideo(wrapId, videoId, mp4Src) {
+    const wrap  = document.getElementById(wrapId)
+    const video = document.getElementById(videoId)
+    if (!wrap || !video) return
+
+    video.addEventListener('loadeddata', () => wrap.classList.add('ready'))
+    video.addEventListener('error', () => wrap.classList.remove('ready'), true)
+
+    function activate() {
+      if (video.dataset.activated) return
+      video.dataset.activated = 'true'
+      const source = document.createElement('source')
+      source.src  = mp4Src
+      source.type = 'video/mp4'
+      video.insertBefore(source, video.firstChild)
+      video.load()
+    }
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { activate(); io.disconnect() }
+        })
+      }, { rootMargin: '300px' })  // start the check a bit before it's actually visible
+      io.observe(wrap)
+    } else {
+      activate()  // very old browsers without IntersectionObserver — just load it
+    }
+  }
+  initLazyVideo('researchVideoWrap', 'researchVideo', '/videos/quorum-research.mp4')
 
   /* Smooth scroll for anchor links */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
