@@ -394,6 +394,29 @@
       background: var(--inset);
     }
 
+    /* Explainer video — Video 3, placed inside "How Quorum Works" (#how),
+       right below the section headline and above the 5-step breakdown.
+       Same load/404 fallback + lazy pattern as the research video. */
+    .explainer-video-wrap {
+      display: none;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 56px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--b1);
+      background: var(--card);
+      box-shadow: 0 30px 80px -30px rgba(0,0,0,0.5);
+    }
+    .explainer-video-wrap.ready { display: block; }
+    .explainer-video-wrap video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: var(--inset);
+    }
+
     /* ══ TWO-COL ════════════════════════════════════════════════ */
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
 
@@ -2301,6 +2324,7 @@
     <li><a href="#engine">How it thinks</a></li>
     <li><a href="#council">The Council</a></li>
     <li><a href="#moments">Mirror</a></li>
+    <li><a href="#how">How it works</a></li>
     <li><a href="#pricing">Access</a></li>
   </ul>
 
@@ -3047,6 +3071,26 @@
       <span class="eyebrow">The process</span>
       <h2 class="display" style="font-size: clamp(42px,5vw,68px); margin-top:16px; max-width:420px;">One decision.<br />Five layers.</h2>
     </div>
+
+    <!-- Explainer video — Video 3. Upload the final MP4 on Railway at
+         /videos/quorum-explainer.mp4 (same directory as server.js), plus
+         optionally /videos/quorum-explainer-poster.jpg and
+         /videos/quorum-explainer.vtt. This section sits well below the
+         fold, so it loads lazily (see initLazyVideo below) and stays
+         display:none — no layout shift, nothing broken — until the file
+         actually exists at that path. -->
+    <div class="explainer-video-wrap" id="explainerVideoWrap">
+      <video
+        id="explainerVideo"
+        controls
+        playsinline
+        preload="none"
+        poster="/videos/quorum-explainer-poster.jpg"
+      >
+        <track kind="captions" src="/videos/quorum-explainer.vtt" srclang="en" label="English" default />
+      </video>
+    </div>
+
     <div class="steps r d1">
       <div class="step">
         <div class="step-n">00</div>
@@ -3857,6 +3901,7 @@
     }
   }
   initLazyVideo('researchVideoWrap', 'researchVideo', '/videos/quorum-research.mp4')
+  initLazyVideo('explainerVideoWrap', 'explainerVideo', '/videos/quorum-explainer.mp4')
 
   /* Smooth scroll for anchor links */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
