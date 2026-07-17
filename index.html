@@ -337,6 +337,22 @@
       .hero-right { align-items: flex-start; }
     }
 
+    /* CTA that lives directly under the hero video (Video 1). Hidden by
+       default; shown only once #heroVideoWrap has loaded, via the sync
+       script below (near the other video init calls). If the video
+       never loads, this block stays hidden and the original hero-right
+       CTA is what shows — today's layout, unchanged. */
+    .hero-video-cta {
+      display: none;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .hero-video-cta.show { display: flex; }
+    @media (max-width: 760px) {
+      .hero-video-cta { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+
     /* Hero intro video — hidden by default, shown only once the file
        loads successfully. Falls back to nothing (current text-only
        hero) if /videos/quorum-intro.mp4 hasn't been uploaded yet.
@@ -394,6 +410,24 @@
       background: var(--inset);
     }
 
+    /* CTA directly below the research video (Video 2). New — there was
+       no CTA here before. Hidden by default; the adjacent-sibling
+       selector shows it only once .research-video-wrap picks up the
+       .ready class (video loaded successfully). No video, no CTA. */
+    .research-video-cta {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 800px;
+      margin: 28px auto 0;
+    }
+    .research-video-wrap.ready + .research-video-cta { display: flex; }
+    @media (max-width: 760px) {
+      .research-video-cta { flex-direction: column; gap: 10px; }
+    }
+
     /* Explainer video — Video 3, placed inside "How Quorum Works" (#how),
        right below the section headline and above the 5-step breakdown.
        Same load/404 fallback + lazy pattern as the research video. */
@@ -401,7 +435,7 @@
       display: none;
       width: 100%;
       max-width: 960px;
-      margin: 0 0 56px;
+      margin: 0 0 24px;
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--b1);
@@ -415,6 +449,24 @@
       aspect-ratio: 16 / 9;
       object-fit: cover;
       background: var(--inset);
+    }
+
+    /* CTA directly below the explainer video (Video 3). New — there was
+       no CTA here before. Hidden by default; the adjacent-sibling
+       selector shows it only once .explainer-video-wrap picks up the
+       .ready class (video loaded successfully). No video, no CTA. */
+    .explainer-video-cta {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 56px;
+    }
+    .explainer-video-wrap.ready + .explainer-video-cta { display: flex; }
+    @media (max-width: 760px) {
+      .explainer-video-cta { flex-direction: column; gap: 10px; margin-bottom: 40px; }
     }
 
     /* ══ TWO-COL ════════════════════════════════════════════════ */
@@ -2372,11 +2424,24 @@
         </video>
       </div>
 
+      <!-- CTA shown directly under the hero video once it's loaded (see
+           hero-video-cta sync script near the other video scripts below).
+           Hidden by default — if the video never loads, this stays hidden
+           and the original hero-right CTA (unchanged) is what's visible,
+           exactly as before this change. -->
+      <div class="hero-video-cta" id="heroVideoCta">
+        <a href="https://app.quorumvault.org" target="_blank" class="btn-open-quorum">
+          Open Quorum
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+        <p class="hero-open-note">Free · Add your first decision record</p>
+      </div>
+
       <p class="hero-sub h-up">
         AI has made analysis abundant and coherence scarce. Quorum is not another source of perspective — it is the system that integrates them. At the level where the cost of being wrong is measured in crores, the absence of a genuine feedback loop is its own risk factor. Every decision you bring is read structurally before any advisor responds. Over time, something more valuable builds: a permanent, calibrated record of how <em>you specifically</em> think, where your judgment is reliable, and where it consistently fails you.
       </p>
     </div>
-    <div class="hero-right h-up">
+    <div class="hero-right h-up" id="heroRightCta">
       <a href="https://app.quorumvault.org" target="_blank" class="btn-open-quorum">
         Open Quorum
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
@@ -2654,6 +2719,17 @@
       >
         <track kind="captions" src="/videos/quorum-research.vtt" srclang="en" label="English" default />
       </video>
+    </div>
+
+    <!-- New CTA — shown only once the research video above has loaded
+         (see .research-video-cta CSS). No video, no CTA; nothing changes
+         from today's layout if the file isn't uploaded yet. -->
+    <div class="research-video-cta">
+      <a href="https://app.quorumvault.org" target="_blank" class="btn-open-quorum">
+        Open Quorum
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p class="hero-open-note">Free · Add your first decision record</p>
     </div>
   </div>
 </div>
@@ -3089,6 +3165,17 @@
       >
         <track kind="captions" src="/videos/quorum-explainer.vtt" srclang="en" label="English" default />
       </video>
+    </div>
+
+    <!-- New CTA — shown only once the explainer video above has loaded
+         (see .explainer-video-cta CSS). No video, no CTA; nothing changes
+         from today's layout if the file isn't uploaded yet. -->
+    <div class="explainer-video-cta">
+      <a href="https://app.quorumvault.org" target="_blank" class="btn-open-quorum">
+        Open Quorum
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p class="hero-open-note">Free · Add your first decision record</p>
     </div>
 
     <div class="steps r d1">
@@ -3863,6 +3950,29 @@
     })
   }
   initOptionalVideo('heroVideoWrap', 'heroVideo')  // Video 1 — above the fold, needs to be eager
+
+  /* ── Hero CTA reposition (Video 1 only) ───────────────────────────
+     Once the hero video has actually loaded, show the CTA that sits
+     directly below it (#heroVideoCta) and hide the original hero-right
+     CTA (#heroRightCta) so it isn't duplicated. If the video never
+     loads — or errors after loading — #heroRightCta stays visible in
+     its original spot, i.e. today's layout, completely unchanged. A
+     MutationObserver (rather than hooking into the video events above)
+     keeps this decoupled from initOptionalVideo, so it stays correct
+     even if that function's fallback logic changes later. */
+  ;(function () {
+    const wrap = document.getElementById('heroVideoWrap')
+    const videoCta = document.getElementById('heroVideoCta')
+    const rightCta = document.getElementById('heroRightCta')
+    if (!wrap || !videoCta || !rightCta) return
+    const sync = () => {
+      const ready = wrap.classList.contains('ready')
+      videoCta.classList.toggle('show', ready)
+      rightCta.style.display = ready ? 'none' : ''
+    }
+    new MutationObserver(sync).observe(wrap, { attributes: true, attributeFilter: ['class'] })
+    sync()
+  })()
 
   /* ── Lazy version, for below-the-fold video (Video 2, Video 3) ────
      On a slow connection the hero video alone already uses up a fair
