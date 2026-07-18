@@ -9,6 +9,9 @@
  *      using server-side credentials (never exposed in HTML)
  *   3. Serve /privacy, /cookies, /terms, /security as the same page
  *      stub until S3 builds proper legal pages
+ *   4. Serve /kunal and /abhilash as short, shareable URLs for the
+ *      founders' digital business cards (card-kunal.html /
+ *      card-abhilash.html)
  *
  * Required Railway environment variables (set in website project):
  *   SUPABASE_URL         — https://your-project.supabase.co
@@ -697,6 +700,22 @@ app.get('/security', (_req, res) => res.send(LEGAL_SHELL('Security & Trust', `
     <p>You can export or delete your data at any time via the <a href="${APP_URL}/settings/privacy" target="_blank" rel="noopener">Privacy Center</a>. For full details see the <a href="/privacy">Privacy Policy</a>.</p>
   </div>
 `)))
+
+/* ── Digital business cards — short, shareable URLs ───────────────── */
+// e.g. quorumvault.org/kunal instead of the raw .html filename. Must be
+// defined before the catch-all fallback below. If either file is ever
+// removed, this 404s cleanly rather than falling through to index.html.
+app.get('/kunal', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'card-kunal.html'), (err) => {
+    if (err) res.status(404).send('Not found')
+  })
+})
+
+app.get('/abhilash', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'card-abhilash.html'), (err) => {
+    if (err) res.status(404).send('Not found')
+  })
+})
 
 /* ── Fallback → index.html ────────────────────────────────────────── */
 app.get('*', (_req, res) => {
