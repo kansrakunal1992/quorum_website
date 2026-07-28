@@ -1401,6 +1401,57 @@
       line-height: 1.75;
     }
 
+    /* ══ AT A GLANCE STRIP ══════════════════════════════════════ */
+    .glance-label {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--t4);
+      margin-bottom: 20px;
+    }
+    .glance-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border: 1px solid var(--b0);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .glance-step {
+      display: flex;
+      flex-direction: column;
+      padding: 22px 18px;
+      border-right: 1px solid var(--b0);
+      background: var(--card);
+    }
+    .glance-step:last-child { border-right: none; }
+    .glance-n {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .glance-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--t0);
+      letter-spacing: 0.01em;
+      margin-bottom: 6px;
+    }
+    .glance-desc {
+      font-size: 12.5px;
+      color: var(--t4);
+      line-height: 1.6;
+    }
+    @media (max-width: 860px) {
+      .glance-strip { grid-template-columns: 1fr; }
+      .glance-step { border-right: none; border-bottom: 1px solid var(--b0); }
+      .glance-step:last-child { border-bottom: none; }
+    }
+
     /* ══ MACRO MOMENT ═══════════════════════════════════════════ */
     .macro-grid {
       display: grid;
@@ -1526,6 +1577,33 @@
     }
 
     /* ══ JUDGMENT GAP ════════════════════════════════════════════ */
+    .gap-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--b0);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .gap-table th, .gap-table td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--b0);
+      font-size: 14px;
+    }
+    .gap-table th {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--t4);
+      font-weight: 500;
+      background: var(--card);
+    }
+    .gap-table td { color: var(--t3); }
+    .gap-table td.gap-fn { color: var(--t0); font-weight: 500; }
+    .gap-table tr:last-child td { border-bottom: none; }
+    .gap-table tr.gap-highlight td { color: var(--gold); font-weight: 500; }
+
     .jg-callout {
       margin-top: 48px;
       padding: 32px 40px;
@@ -2455,6 +2533,42 @@
 
 <hr class="rule" />
 
+<!-- ══ AT A GLANCE ═════════════════════════════════════════════════ -->
+<div class="wrap" id="glance">
+  <div class="s">
+    <span class="glance-label">In short — how a decision moves through Quorum</span>
+    <div class="glance-strip">
+      <div class="glance-step">
+        <span class="glance-n">00</span>
+        <span class="glance-name">Structural Read</span>
+        <span class="glance-desc">Scored for reversibility, stakes, and time pressure — before any advisor responds.</span>
+      </div>
+      <div class="glance-step">
+        <span class="glance-n">01</span>
+        <span class="glance-name">The Council</span>
+        <span class="glance-desc">Six advisors respond, each from a distinct structural lens.</span>
+      </div>
+      <div class="glance-step">
+        <span class="glance-n">02</span>
+        <span class="glance-name">The Examiner</span>
+        <span class="glance-desc">If something's unresolved, the decision is held — not just discussed.</span>
+      </div>
+      <div class="glance-step">
+        <span class="glance-n">03</span>
+        <span class="glance-name">Synthesis</span>
+        <span class="glance-desc">A directional call integrating all six views — not a summary.</span>
+      </div>
+      <div class="glance-step">
+        <span class="glance-n">04</span>
+        <span class="glance-name">Mirror</span>
+        <span class="glance-desc">Every session adds to a permanent record that compounds.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
 <!-- ══ THE MACRO MOMENT ════════════════════════════════════════════ -->
 <div class="wrap" id="macro">
   <div class="s">
@@ -2503,8 +2617,19 @@
         <h2 class="display" style="font-size: clamp(38px,3.8vw,56px);">Every major business capability has been formalized. This one hasn't.</h2>
       </div>
       <div class="prose" style="padding-top:8px;">
-        <p>Finance has ERP. Hiring has structured assessment. Risk has governance frameworks. In every case, formalization created enormous value — not by replacing the human, but by giving them a feedback loop they had never had.</p>
-        <p>The judgment of the person at the top runs on intuition, ad hoc advice, and a feedback loop that is six months long, heavily distorted by outcome bias, and invisible to the person exercising it. This is the most consequential process in any organization. It is also the only one that has never been instrumented.</p>
+        <p style="margin-bottom:22px;">In every case, formalization created enormous value — not by replacing the human, but by giving them a feedback loop they had never had.</p>
+        <table class="gap-table">
+          <thead>
+            <tr><th>Function</th><th>Formalized as</th><th>Feedback loop</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="gap-fn">Finance</td><td>ERP</td><td>Continuous</td></tr>
+            <tr><td class="gap-fn">Hiring</td><td>Structured assessment</td><td>Every decision</td></tr>
+            <tr><td class="gap-fn">Risk</td><td>Governance frameworks</td><td>Continuous</td></tr>
+            <tr class="gap-highlight"><td class="gap-fn">Judgment</td><td>—</td><td>None. Until now.</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:24px;">The judgment of the person at the top runs on intuition, ad hoc advice, and a feedback loop that is six months long, heavily distorted by outcome bias, and invisible to the person exercising it. This is the most consequential process in any organization. It is also the only one that has never been instrumented.</p>
         <p class="hi">Quorum is the first system built for judgment — not advice.</p>
       </div>
     </div>
