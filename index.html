@@ -1452,6 +1452,41 @@
       .glance-step:last-child { border-bottom: none; }
     }
 
+    /* ══ FAQ ════════════════════════════════════════════════════ */
+    .faq-list { max-width: 720px; }
+    .faq-item {
+      border-bottom: 1px solid var(--b0);
+    }
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 2px;
+      cursor: pointer;
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--t0);
+      list-style: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--t4);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p {
+      margin: 0 0 24px;
+      font-size: 14px;
+      color: var(--t3);
+      line-height: 1.8;
+      max-width: 640px;
+    }
+
     /* ══ MACRO MOMENT ═══════════════════════════════════════════ */
     .macro-grid {
       display: grid;
@@ -2458,16 +2493,17 @@
     <li><a href="#moments">Mirror</a></li>
     <li><a href="#how">How it works</a></li>
     <li><a href="#pricing">Access</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
 
   <div class="nav-right">
-    <button class="btn-request-mobile" id="openModalMobile" onclick="document.getElementById('sessionModal').classList.add('open')">Advisory →</button>
+    <button class="btn-request-mobile" id="openModalMobile" onclick="document.getElementById('sessionModal').classList.add('open')">Get access →</button>
     <button class="toggle" id="themeBtn" aria-label="Toggle light/dark mode">
       <div class="toggle-thumb"></div>
       <span class="toggle-label l">☀</span>
       <span class="toggle-label r">☾</span>
     </button>
-    <button class="btn-request" id="openModal">Request advisory access</button>
+    <button class="btn-request" id="openModal">Get access</button>
   </div>
 </nav>
 
@@ -3425,7 +3461,7 @@
     <div class="sh r">
       <span class="eyebrow">Access</span>
       <h2 class="display" style="font-size: clamp(42px,5vw,68px); margin-top:16px; max-width:440px;">Infrastructure,<br />not a service.</h2>
-      <p style="margin-top:20px; font-size:16px; color:var(--t3); max-width:420px; line-height:1.85;">Quorum is not priced by the session. The foundation layer runs free. The Judgment OS compounds from session one. Advisory access is for decisions where the cost of being wrong is measured in crores, not lakhs. Most people start by bringing one real decision to the free tier — that's the whole point.</p>
+      <p style="margin-top:20px; font-size:16px; color:var(--t3); max-width:420px; line-height:1.85;">Quorum is not priced by the session. The foundation layer runs free. The Judgment OS compounds from session one. Elite is for individuals; Private is for organizations that need their own infrastructure. Most people start by bringing one real decision to the free tier — that's the whole point.</p>
     </div>
     <div>
       <!-- Billing toggle pill -->
@@ -3450,11 +3486,11 @@
           <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=pricing_foundation" target="_blank" class="pc-btn o">Open Quorum →</a>
         </div>
         <div class="pc feat r d2">
-          <div class="pc-badge" id="mirrorBadge">Best value</div>
-          <div class="pc-tier">Mirror</div>
-          <div class="pc-tier-sub">Your Judgment Operating System — the part that compounds</div>
-          <div class="pc-price" id="mirrorPrice"><sub>₹</sub>39,999</div>
-          <div class="pc-cadence" id="mirrorCadence">/year · 2 months free</div>
+          <div class="pc-badge" id="eliteBadge">Best value</div>
+          <div class="pc-tier">Elite</div>
+          <div class="pc-tier-sub">Includes Mirror — your Judgment Operating System, the part that compounds</div>
+          <div class="pc-price" id="elitePrice"><sub>₹</sub>29,999</div>
+          <div class="pc-cadence" id="eliteCadence">/year · 2 months free</div>
           <ul class="pc-list">
             <li>Bias Fingerprint — how and when your patterns activate, specific to your decision history</li>
             <li>Confidence Calibration — the gap between how confident you were and how right you were</li>
@@ -3464,21 +3500,93 @@
             <li>Decision Independence Score — how much this decision came from you, not from the room</li>
             <li>All future Mirror capabilities</li>
           </ul>
-          <button class="pc-btn g" onclick="openModal('mirror')">Access Mirror →</button>
+          <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=pricing_elite" target="_blank" class="pc-btn g">Get Elite →</a>
         </div>
         <div class="pc r d3">
-          <div class="pc-tier">Advisory</div>
-          <div class="pc-price">By application</div>
-          <div class="pc-cadence">Founder-led · reviewed individually</div>
+          <div class="pc-tier">Private</div>
+          <div class="pc-tier-sub">Your own infrastructure. Your choice of model.</div>
+          <div class="pc-price"><sub>₹</sub>9,999</div>
+          <div class="pc-cadence">/user/mo · starting price, scoped to your org</div>
           <ul class="pc-list">
-            <li>A standing relationship, not a one-off call — for decisions where the cost of being wrong is measured in crores</li>
-            <li>The founder reviews your decision record directly before responding</li>
-            <li>Pricing shared once we've understood the decision — not published here</li>
+            <li>Runs entirely inside your own infrastructure — nothing leaves it</li>
+            <li>Choose your self-hosted model family: Qwen or Mistral</li>
+            <li>Everything in Elite, deployed at organizational scale</li>
+            <li>Pricing scoped to your organization's size and needs</li>
           </ul>
-          <button class="pc-btn o" onclick="openModal('live')">Request advisory access →</button>
-          <div class="pc-scarcity">Reviewed individually<br/>Not all decisions are a fit</div>
+          <button class="pc-btn o" onclick="openModal('private')">Talk to us about Private →</button>
+          <div class="pc-scarcity">Reviewed individually<br/>Scoped to your organization</div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ FAQ ═════════════════════════════════════════════════════════ -->
+<div class="wrap" id="faq">
+  <div class="s">
+    <div class="r" style="max-width:640px; margin-bottom:36px;">
+      <span class="eyebrow" style="margin-bottom:20px">Frequently asked</span>
+      <h2 class="display" style="font-size: clamp(38px,3.8vw,56px);">Questions worth answering directly.</h2>
+    </div>
+    <div class="faq-list r d1">
+      <details class="faq-item">
+        <summary>Is Quorum just a chatbot?</summary>
+        <p>No. Before any advisor responds, your decision is read at a structural level — what kind of decision this is, not just what you typed. A chatbot routes your text straight to a model; Quorum doesn't.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How private is my data?</summary>
+        <p>Your raw inputs are encrypted at the field level. You can export or delete your full data on request at any time. Nothing about your decisions is used in a case study or shared externally without your explicit, opt-in consent.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I share a decision with someone?</summary>
+        <p>If you choose to — export a private PDF brief for a board or co-founder, or share a link to just the verdict. Both are entirely optional; nothing is shared unless you decide to.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Who is Quorum actually built for?</summary>
+        <p>Founders, CXOs, and family office principals — people making decisions where being wrong is expensive. It isn't built for everyday, low-stakes choices.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What does it cost?</summary>
+        <p>The Council — the core six-advisor session — is free. Elite adds Mirror, which compounds insight across your decisions over time, for ₹2,999/mo or ₹29,999/yr. Private is a custom enterprise deployment, starting at ₹9,999/user/month — priced once we understand your organization's needs.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What's the difference between the Council and Mirror?</summary>
+        <p>The Council is the six-advisor session you get on any single decision. Mirror is the layer underneath it that compounds across sessions — your bias fingerprint, calibration over time, recurring patterns — and unlocks once you have enough decision history for it to be meaningful.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What AI models power Quorum?</summary>
+        <p>Quorum uses different models for different plans, matched to what each plan is for. Free runs on Mistral Small end-to-end — strong reasoning at a cost that keeps the free tier sustainable for everyone. Elite pairs Mistral Small for fast reasoning with Claude Sonnet for Quorum's deepest analysis — Council Synthesis, Mirror, and long-term pattern-reading. Private runs entirely inside your own infrastructure, on either self-hosted Qwen or self-hosted Mistral, whichever you choose.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why doesn't every plan use the same model?</summary>
+        <p>Because each plan optimizes for a different goal. Free is built to be accessible to everyone while staying sustainable. Elite is built for the highest-quality personal decision intelligence. Private is built for complete ownership and enterprise deployment. The model each plan runs on follows from that goal — it isn't the goal itself; Quorum's judgment quality is what you're actually buying.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I cancel Elite or Private anytime?</summary>
+        <p>Elite is a straightforward self-serve monthly or annual subscription — cancel whenever you like, no lock-in. Private is a custom enterprise arrangement, so changes or cancellation go through your account contact rather than a self-service button.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does Quorum give financial or legal advice?</summary>
+        <p>No. Quorum is a decision intelligence tool, not a licensed financial or legal advisor. The final call — and any financial or legal decision — is always yours; consult a qualified professional for those specifically.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens to my data if I stop using Quorum?</summary>
+        <p>You can export everything tied to your account or request full deletion at any time from account settings.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does the Council actually decide what each advisor says?</summary>
+        <p>Your decision is first tagged structurally — the kind of decision it is, what it structurally resembles from your own history — and each of the six advisors responds from that read, not from a single generic model pass.</p>
+      </details>
+      <details class="faq-item">
+        <summary>If I push back on one advisor, do the others find out?</summary>
+        <p>Yes, automatically. A challenge is treated as new information for the whole council, not a private exchange with one advisor — so it reaches all six. Each advisor still reassesses it independently through its own lens and may keep, strengthen, weaken, or reverse its position; sharing the information never means they share a conclusion. The Council synthesizes once, after every advisor has had a chance to weigh in.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I use Quorum on my phone?</summary>
+        <p>Yes — it's a web app you can install to your home screen directly from your browser. No app-store download needed.</p>
+      </details>
     </div>
   </div>
 </div>
@@ -3493,7 +3601,7 @@
     <p class="r d2" style="font-size:17px; color:var(--t3); max-width:500px; margin:0 auto 56px; line-height:1.9;">Bring a real decision. Not a hypothetical. Something where being wrong costs you something. The structural analysis and Council run free. The Judgment OS begins accumulating from decision one.</p>
     <div class="r d3" style="display:flex; gap:18px; justify-content:center; flex-wrap:wrap; align-items:center;">
       <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=final_cta" target="_blank" class="btn-cta">Open Quorum →</a>
-      <button class="btn-request" onclick="openModal()">Request advisory access</button>
+      <button class="btn-request" onclick="openModal()">Get access</button>
     </div>
   </div>
 </div>
@@ -3514,7 +3622,7 @@
 <!-- ══════════════════════════════════════════════════════════════
      SESSION REQUEST MODAL
 ══════════════════════════════════════════════════════════════ -->
-<div class="modal-overlay" id="sessionModal" role="dialog" aria-modal="true" aria-label="Request advisory access">
+<div class="modal-overlay" id="sessionModal" role="dialog" aria-modal="true" aria-label="Get access to Quorum">
   <div class="modal-inner">
     <button class="modal-close" id="closeModal" aria-label="Close">✕</button>
     <div class="modal-box" id="modalBox">
@@ -3530,25 +3638,20 @@
     <div class="modal-step active" id="step1">
       <p class="modal-eyebrow">Step 1 of 3</p>
       <h2 class="modal-title">What brings<br />you here?</h2>
-      <p class="modal-sub">Select the access you're interested in. You can always change this later.</p>
+      <p class="modal-sub">Select the option that fits. You can always change this later.</p>
 
       <div class="interest-grid">
-        <div class="interest-opt" data-val="mirror" onclick="selectInterest(this)">
-          <div class="io-price">₹39,999/yr · or ₹3,999/mo</div>
-          <div class="io-label">Mirror — Judgment OS access</div>
-          <div class="io-desc">Your private judgment operating system. Bias Fingerprint, Confidence Calibration, Contradiction Detector, and all future Mirror capabilities.</div>
-        </div>
-        <div class="interest-opt" data-val="live" onclick="selectInterest(this)">
-          <div class="io-price">By application</div>
-          <div class="io-label">Advisory</div>
-          <div class="io-desc">A standing, founder-led relationship for decisions where the cost of being wrong is measured in crores. Pricing shared once we understand the decision.</div>
+        <div class="interest-opt" data-val="private" onclick="selectInterest(this)">
+          <div class="io-price">Starting at ₹9,999/user/mo</div>
+          <div class="io-label">Private — enterprise deployment</div>
+          <div class="io-desc">A custom, self-hosted deployment for your firm — your own infrastructure, your choice of model. Pricing is scoped to your organization's size and needs.</div>
         </div>
         <div class="interest-opt" data-val="explore" onclick="selectInterest(this)">
           <div class="io-price">Free · always</div>
           <div class="io-label">Just Exploring</div>
           <div class="io-desc">Open Quorum and bring a real decision. The Council runs free, no commitment.</div>
         </div>
-        <div class="interest-opt" data-val="other" onclick="selectInterest(this)">
+        <div class="interest-opt" data-val="other" onclick="selectInterest(this)" style="grid-column: 1 / -1;">
           <div class="io-price">Let's talk</div>
           <div class="io-label">Something Else</div>
           <div class="io-desc">Partnership, enterprise, or a use case that doesn't fit the above.</div>
@@ -3561,25 +3664,25 @@
       </div>
     </div>
 
-    <!-- STEP 2: The decision (qualification + scarcity) -->
+    <!-- STEP 2: More detail (qualification) -->
     <div class="modal-step" id="step2">
       <p class="modal-eyebrow">Step 2 of 3</p>
-      <h2 class="modal-title">Tell us about<br />the decision.</h2>
-      <p class="modal-sub">We read every request personally. What you share here helps us understand whether a live session adds to what the system already surfaces — or whether Quorum itself is the right starting point.</p>
+      <h2 class="modal-title">Tell us<br />more.</h2>
+      <p class="modal-sub">We read every request personally. For a Private deployment, tell us about your organization; for anything else, tell us what you're trying to solve.</p>
 
       <div class="field">
-        <label for="decisionInput">The decision you're facing</label>
-        <textarea id="decisionInput" placeholder="E.g. I'm considering exiting a business I've built for 8 years. The offer is fair but I'm not sure the timing is right. There's a potential new venture I'd want to pursue but it's pre-revenue..." oninput="onDecisionInput(this)"></textarea>
+        <label for="decisionInput">What are you working with?</label>
+        <textarea id="decisionInput" placeholder="E.g. We're a family office with 3 principals evaluating a self-hosted deployment... — or — I'm considering exiting a business I've built for 8 years and want to understand if Quorum is the right fit..." oninput="onDecisionInput(this)"></textarea>
       </div>
 
       <!-- Qualification signal — shown after enough text -->
       <div class="qual-box qual-warning" id="qualBox">
         <div class="qual-tag">Signal detected</div>
-        <div class="qual-text" id="qualText">This looks like the kind of decision Quorum is built for. High-stakes, irreversible, with personal and financial dimensions in tension. A live session would likely surface things you haven't considered yet.</div>
+        <div class="qual-text" id="qualText">This looks like the kind of scenario Quorum is built for — high-stakes, with real structure to it. We'll follow up with next steps.</div>
       </div>
 
       <div class="scarcity-note">
-        <strong>Live sessions are capped at 4 per week.</strong> We review requests in the order they arrive and reach out within 48 hours if your decision is a fit.
+        <strong>We review every request individually.</strong> We read requests in the order they arrive and reach out within 48 hours.
       </div>
 
       <div class="modal-actions">
@@ -3642,7 +3745,7 @@
         <div class="success-icon">◆</div>
         <h2 class="success-title">Request<br />received.</h2>
         <p class="success-body" id="successBody">We'll review your decision and reach out within 48 hours. In the meantime, you can open Quorum and bring the same decision — the Council runs free.</p>
-        <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=advisory_success" target="_blank" class="btn-cta" style="display:inline-block; margin-bottom:24px;">Open Quorum →</a><br/>
+        <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=modal_success" target="_blank" class="btn-cta" style="display:inline-block; margin-bottom:24px;">Open Quorum →</a><br/>
         <button class="success-close" onclick="closeModal()">Close this window</button>
       </div>
     </div>
@@ -3794,16 +3897,16 @@
     document.getElementById('btMonthly').classList.toggle('active', plan === 'monthly')
     document.getElementById('btAnnual').classList.toggle('active', plan === 'annual')
 
-    const priceEl   = document.getElementById('mirrorPrice')
-    const cadenceEl = document.getElementById('mirrorCadence')
-    const badgeEl   = document.getElementById('mirrorBadge')
+    const priceEl   = document.getElementById('elitePrice')
+    const cadenceEl = document.getElementById('eliteCadence')
+    const badgeEl   = document.getElementById('eliteBadge')
 
     if (plan === 'annual') {
-      priceEl.innerHTML   = '<sub>₹</sub>39,999'
+      priceEl.innerHTML   = '<sub>₹</sub>29,999'
       cadenceEl.textContent = '/year · 2 months free'
       badgeEl.textContent   = 'Best value'
     } else {
-      priceEl.innerHTML   = '<sub>₹</sub>3,999'
+      priceEl.innerHTML   = '<sub>₹</sub>2,999'
       cadenceEl.textContent = '/month · cancel anytime'
       badgeEl.textContent   = 'Most used'
     }
@@ -3874,7 +3977,7 @@
     { rx: /start|launch|venture|startup/i, msg: 'New ventures benefit from the Risk Architect\'s irreversibility mapping. The question isn\'t just viability — it\'s what you\'re foreclosing on.' },
   ]
 
-  const DEFAULT_QUAL = 'This looks like the kind of decision Quorum is built for. High-stakes, with personal and financial dimensions in tension. A live session would likely surface things you haven\'t considered yet.'
+  const DEFAULT_QUAL = 'This looks like the kind of scenario Quorum is built for — high-stakes, with real structure to it. We\'ll follow up with next steps.'
 
   function onDecisionInput(el) {
     const v = el.value.trim()
@@ -3925,12 +4028,11 @@
       await insertSessionRequest(payload)
       // Success messaging based on interest
       const msgs = {
-        live:    'We\'ll review your decision record and reach out within 48 hours to discuss Advisory access.',
-        mirror:  'We\'ll send your Mirror (Judgment OS) access link within 24 hours. Your judgment record begins building from the first decision you bring.',
+        private: 'We\'ll review your deployment request and reach out within 48 hours to scope next steps for a Private deployment.',
         explore: 'You can open Quorum now and add the decision you described. The structural analysis and Council run free — your record starts from session one.',
         other:   'We\'ll read your request and respond personally within 48 hours.'
       }
-      document.getElementById('successBody').textContent = msgs[selectedInterest] || msgs.live
+      document.getElementById('successBody').textContent = msgs[selectedInterest] || msgs.private
       showStep('success')
     } catch (err) {
       errDiv.textContent = 'Something went wrong. Please try again in a moment.'
