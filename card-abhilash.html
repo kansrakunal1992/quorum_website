@@ -572,9 +572,13 @@
       trigger.href = BOOKING_PAGE_URL
       fallback.href = BOOKING_PAGE_URL
 
+      let iframeLoaded = false
       function open(e) {
         e.preventDefault()
-        if (!iframe.src) iframe.src = BOOKING_EMBED_URL // lazy-load on first open
+        if (!iframeLoaded) {
+          iframe.src = BOOKING_EMBED_URL // lazy-load on first open
+          iframeLoaded = true
+        }
         modal.classList.add('open')
         document.body.style.overflow = 'hidden'
       }

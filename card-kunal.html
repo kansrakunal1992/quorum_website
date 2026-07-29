@@ -559,7 +559,7 @@
       // PAGE_URL  = the normal booking page link (Copy link)
       // EMBED_URL = the "Website embed → Inline booking page" src URL
       const BOOKING_PAGE_URL  = 'https://calendar.app.google/GLdTck1JnX4KvN9W6'
-      const BOOKING_EMBED_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1QN6X7RJi0QNjgw1s_xTLXGwyXhVImUFD-hPePC17zqw1WwWG9ukKNxGu3V8VUl6fng7JRABl1?gv=true'
+      const BOOKING_EMBED_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1QN6X7RJi0QNjgw1s_xTLXGwyXhVImUFD-hPePC17zqw1WwWG9ukKNxGu3V8VUl6fng7JRABl1?gv=true%22'
 
       const trigger  = document.getElementById('bookTrigger')
       const modal    = document.getElementById('bookingModal')
@@ -572,9 +572,13 @@
       trigger.href = BOOKING_PAGE_URL
       fallback.href = BOOKING_PAGE_URL
 
+      let iframeLoaded = false
       function open(e) {
         e.preventDefault()
-        if (!iframe.src) iframe.src = BOOKING_EMBED_URL // lazy-load on first open
+        if (!iframeLoaded) {
+          iframe.src = BOOKING_EMBED_URL // lazy-load on first open
+          iframeLoaded = true
+        }
         modal.classList.add('open')
         document.body.style.overflow = 'hidden'
       }
