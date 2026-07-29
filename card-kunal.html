@@ -189,22 +189,24 @@
   /* ── CTAs ── */
   .cta-row {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     width: 100%;
     margin-top: 24px;
   }
   .btn-open-quorum, .btn-meet {
-    flex: 1;
+    width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 12px;
+    text-align: center;
+    padding: 14px 16px;
     border-radius: var(--radius-sm);
     font-family: 'DM Sans', sans-serif;
     font-size: 13.5px;
     font-weight: 500;
     letter-spacing: 0.02em;
-    white-space: nowrap;
+    white-space: normal;
     transition: background 0.2s, color 0.2s, transform 0.15s, border-color 0.2s;
   }
   .btn-open-quorum {
@@ -362,6 +364,74 @@
     display: flex; align-items: center; justify-content: center;
   }
 
+  /* ── Booking hint (below CTA row) ── */
+  .booking-hint {
+    width: 100%;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--t4);
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* ══ BOOKING MODAL ═══════════════════════════════════════════════ */
+  .booking-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2100;
+    background: rgba(1,2,8,0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .booking-modal-overlay.open { opacity: 1; pointer-events: all; }
+  .booking-modal-inner {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    transform: translateY(16px) scale(0.97);
+    transition: transform 0.36s cubic-bezier(0.22,1,0.36,1);
+  }
+  .booking-modal-overlay.open .booking-modal-inner { transform: none; }
+  .booking-modal-box {
+    width: 100%;
+    height: min(680px, 78dvh);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--b1);
+    background: #fff;
+  }
+  .booking-modal-box iframe { display: block; width: 100%; height: 100%; border: 0; }
+  .booking-modal-close {
+    position: absolute;
+    top: -44px; right: 0;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--b1);
+    background: var(--card);
+    color: var(--t3);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .booking-modal-fallback {
+    display: block;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    color: var(--t4);
+    margin-top: 10px;
+  }
+
   @media (max-width: 400px) {
     .card { padding: 32px 20px 28px; }
     .card-name { font-size: 28px; }
@@ -394,10 +464,12 @@
 
       <div class="cta-row">
         <a href="https://app.quorumvault.org?utm_source=founder_card&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=kunal_card" target="_blank" class="btn-open-quorum">Open Quorum</a>
-        <!-- TODO: swap for a Calendly/booking link once set up — mailto
-             is a functional placeholder in the meantime. -->
-        <a href="mailto:kunal@quorumvault.org?subject=Meeting%20request&body=Hi%20Kunal,%0D%0A%0D%0AI'd%20like%20to%20find%20time%20to%20talk." class="btn-meet">Book a meeting</a>
+        <!-- Calendar-driven booking: real href is the Google Calendar
+             booking page (works with JS disabled); JS intercepts the
+             click to open it in the in-page modal instead. -->
+        <a href="#" id="bookTrigger" class="btn-meet">Book a 30-minute Decision Session</a>
       </div>
+      <p class="booking-hint">Bring one real decision you're currently thinking through. That's all you need.</p>
 
       <div class="record">
         <div class="record-label">The record</div>
@@ -448,6 +520,17 @@
     </div>
   </div>
 
+  <!-- Booking lightbox — Google Calendar appointment schedule, inline embed -->
+  <div class="booking-modal-overlay" id="bookingModal">
+    <div class="booking-modal-inner">
+      <button class="booking-modal-close" id="bookingModalClose" aria-label="Close">✕</button>
+      <div class="booking-modal-box">
+        <iframe id="bookingIframe" src="" title="Book a 30-minute Decision Session with Kunal Kansra" loading="lazy"></iframe>
+      </div>
+      <a class="booking-modal-fallback" id="bookingFallbackLink" href="#" target="_blank" rel="noopener">Trouble loading? Open booking page directly ↗</a>
+    </div>
+  </div>
+
   <script>
     (function () {
       const trigger = document.getElementById('filmTrigger')
@@ -463,6 +546,41 @@
       function close() {
         modal.classList.remove('open')
         video.pause()
+      }
+      trigger.addEventListener('click', open)
+      closeBtn.addEventListener('click', close)
+      modal.addEventListener('click', (e) => { if (e.target === modal) close() })
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close() })
+    })()
+
+    ;(function () {
+      // ── CONFIG: replace with Kunal's real Google Calendar appointment
+      // schedule links once created (see setup steps shared separately).
+      // PAGE_URL  = the normal booking page link (Copy link)
+      // EMBED_URL = the "Website embed → Inline booking page" src URL
+      const BOOKING_PAGE_URL  = 'https://calendar.app.google/GLdTck1JnX4KvN9W6'
+      const BOOKING_EMBED_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1QN6X7RJi0QNjgw1s_xTLXGwyXhVImUFD-hPePC17zqw1WwWG9ukKNxGu3V8VUl6fng7JRABl1?gv=true'
+
+      const trigger  = document.getElementById('bookTrigger')
+      const modal    = document.getElementById('bookingModal')
+      const closeBtn = document.getElementById('bookingModalClose')
+      const iframe   = document.getElementById('bookingIframe')
+      const fallback = document.getElementById('bookingFallbackLink')
+      if (!trigger || !modal || !iframe) return
+
+      // Real href so the button still works as a plain link if JS fails.
+      trigger.href = BOOKING_PAGE_URL
+      fallback.href = BOOKING_PAGE_URL
+
+      function open(e) {
+        e.preventDefault()
+        if (!iframe.src) iframe.src = BOOKING_EMBED_URL // lazy-load on first open
+        modal.classList.add('open')
+        document.body.style.overflow = 'hidden'
+      }
+      function close() {
+        modal.classList.remove('open')
+        document.body.style.overflow = ''
       }
       trigger.addEventListener('click', open)
       closeBtn.addEventListener('click', close)
