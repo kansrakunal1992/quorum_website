@@ -856,6 +856,103 @@
     .btn-next:hover { background: var(--gold-hi); transform: translateY(-1px); }
     .btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
+    /* Decision-length hint — live feedback under the Step 2 textarea */
+    .decision-hint {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.03em;
+      color: var(--t5);
+      margin-top: 8px;
+      transition: color 0.2s;
+    }
+    .decision-hint.met { color: var(--gold); }
+
+    /* Inline "book directly" CTA — shown once decision text clears the threshold */
+    .decision-book-cta {
+      display: none;
+      margin-top: 16px;
+      padding: 18px 20px;
+      border: 1px solid var(--b1);
+      border-radius: var(--radius-sm);
+      background: var(--card);
+    }
+    .decision-book-cta.show { display: block; }
+    .dbc-label { font-size: 12.5px; color: var(--t3); line-height: 1.6; margin-bottom: 12px; }
+    .dbc-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .dbc-btn {
+      flex: 1 1 auto;
+      min-width: 170px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 12px 14px;
+      background: transparent;
+      color: var(--t2);
+      border: 1px solid var(--b1);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .dbc-btn:hover { border-color: var(--gold); color: var(--gold-hi); background: var(--gold-alpha); }
+
+    /* ══ BOOKING MODAL (shared — Kunal / Abhilash) ═══════════════════ */
+    .booking-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2100;
+      background: rgba(1,2,8,0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    [data-theme="light"] .booking-modal-overlay { background: rgba(30,40,60,0.6); }
+    .booking-modal-overlay.open { opacity: 1; pointer-events: all; }
+    .booking-modal-inner {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      transform: translateY(16px) scale(0.97);
+      transition: transform 0.36s cubic-bezier(0.22,1,0.36,1);
+    }
+    .booking-modal-overlay.open .booking-modal-inner { transform: none; }
+    .booking-modal-box {
+      width: 100%;
+      height: min(680px, 78dvh);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--b1);
+      background: #fff;
+    }
+    .booking-modal-box iframe { display: block; width: 100%; height: 100%; border: 0; }
+    .booking-modal-close {
+      position: absolute;
+      top: -44px; right: 0;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--b1);
+      background: var(--card);
+      color: var(--t3);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .booking-modal-fallback {
+      display: block;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.05em;
+      color: var(--t4);
+      margin-top: 10px;
+    }
+
     /* Success state */
     .modal-success {
       text-align: center;
@@ -3673,12 +3770,22 @@
       <div class="field">
         <label for="decisionInput">What are you working with?</label>
         <textarea id="decisionInput" placeholder="E.g. We're a family office with 3 principals evaluating a self-hosted deployment... — or — I'm considering exiting a business I've built for 8 years and want to understand if Quorum is the right fit..." oninput="onDecisionInput(this)"></textarea>
+        <p class="decision-hint" id="decisionHint">Needs at least 80 characters — enough for us (or a live session) to actually work with.</p>
       </div>
 
       <!-- Qualification signal — shown after enough text -->
       <div class="qual-box qual-warning" id="qualBox">
         <div class="qual-tag">Signal detected</div>
         <div class="qual-text" id="qualText">This looks like the kind of scenario Quorum is built for — high-stakes, with real structure to it. We'll follow up with next steps.</div>
+      </div>
+
+      <!-- Direct-booking option — only shown once the decision text qualifies -->
+      <div class="decision-book-cta" id="decisionBookCta">
+        <p class="dbc-label">Prefer to talk it through live instead of waiting for a reply? Bring this same decision to a 30-minute session.</p>
+        <div class="dbc-row">
+          <button type="button" class="dbc-btn" onclick="openBookingModal('kunal')">Book 30 min with Kunal →</button>
+          <button type="button" class="dbc-btn" onclick="openBookingModal('abhilash')">Book 30 min with Abhilash →</button>
+        </div>
       </div>
 
       <div class="scarcity-note">
@@ -3753,6 +3860,17 @@
   </div><!-- /modal-box -->
   </div><!-- /modal-inner -->
 </div><!-- /modal-overlay -->
+
+<!-- Booking lightbox — shared between Kunal and Abhilash, populated by openBookingModal() -->
+<div class="booking-modal-overlay" id="bookingModal">
+  <div class="booking-modal-inner">
+    <button class="booking-modal-close" id="bookingModalClose" aria-label="Close">✕</button>
+    <div class="booking-modal-box">
+      <iframe id="bookingIframe" src="" title="Book a 30-minute Decision Session" loading="lazy"></iframe>
+    </div>
+    <a class="booking-modal-fallback" id="bookingFallbackLink" href="#" target="_blank" rel="noopener">Trouble loading? Open booking page directly ↗</a>
+  </div>
+</div>
 
 
 <!-- ══ COOKIE CONSENT BANNER ══════════════════════════════════════════
@@ -3887,6 +4005,7 @@
 
   /* ── MODAL ─────────────────────────────────────────────────── */
   const modal      = document.getElementById('sessionModal')
+  const bookingModal = document.getElementById('bookingModal')
   let   currentStep = 1
   let   selectedInterest = null
 
@@ -3934,7 +4053,11 @@
 
   modal.addEventListener('click', e => { if (e.target === modal) closeModal() })
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal() })
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return
+    if (bookingModal.classList.contains('open')) { closeBookingModal(); return }
+    closeModal()
+  })
 
   function showStep(n) {
     currentStep = n
@@ -3984,6 +4107,15 @@
     const enough = v.length >= DECISION_THRESHOLD
     document.getElementById('step2Next').disabled = !enough
 
+    const hint = document.getElementById('decisionHint')
+    if (hint) {
+      const remaining = DECISION_THRESHOLD - v.length
+      hint.textContent = enough
+        ? '✓ Good — you can continue, or book time directly below.'
+        : `Needs at least 80 characters — ${remaining} more to go.`
+      hint.classList.toggle('met', enough)
+    }
+
     const qualBox = document.getElementById('qualBox')
     const qualText = document.getElementById('qualText')
 
@@ -3994,7 +4126,48 @@
     } else {
       qualBox.classList.remove('show')
     }
+
+    document.getElementById('decisionBookCta').classList.toggle('show', enough)
   }
+
+  /* ── Direct-booking modal (shared — reads BOOKING_LINKS below) ── */
+  const BOOKING_LINKS = {
+    kunal: {
+      // CONFIG: same working values as BOOKING_PAGE_URL / BOOKING_EMBED_URL
+      // in card-kunal.html — copy them here once confirmed.
+      page:  'https://calendar.app.google/CuUs83WasYR2LTnw8',
+      embed: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1QN6X7RJi0QNjgw1s_xTLXGwyXhVImUFD-hPePC17zqw1WwWG9ukKNxGu3V8VUl6fng7JRABl1?gv=true',
+      label: 'Kunal Kansra'
+    },
+    abhilash: {
+      // CONFIG: same working values as BOOKING_PAGE_URL / BOOKING_EMBED_URL
+      // in card-abhilash.html — copy them here once confirmed.
+      page:  'https://calendar.app.google/REPLACE_WITH_ABHILASH_SHORT_LINK',
+      embed: 'https://calendar.google.com/calendar/appointments/schedules/REPLACE_WITH_ABHILASH_SCHEDULE_ID?gv=true',
+      label: 'Abhilash Warrier'
+    }
+  }
+
+  function openBookingModal(founder) {
+    const cfg = BOOKING_LINKS[founder]
+    if (!cfg) return
+    const iframe   = document.getElementById('bookingIframe')
+    const fallback = document.getElementById('bookingFallbackLink')
+    iframe.title  = `Book a 30-minute Decision Session with ${cfg.label}`
+    iframe.src    = cfg.embed
+    fallback.href = cfg.page
+    bookingModal.classList.add('open')
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeBookingModal() {
+    bookingModal.classList.remove('open')
+    document.getElementById('bookingIframe').src = ''
+    if (!modal.classList.contains('open')) document.body.style.overflow = ''
+  }
+
+  document.getElementById('bookingModalClose').addEventListener('click', closeBookingModal)
+  bookingModal.addEventListener('click', e => { if (e.target === bookingModal) closeBookingModal() })
 
   /* Step 3 validation — name, valid email, AND consent checkbox all required */
   function checkStep3() {
