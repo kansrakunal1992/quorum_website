@@ -188,6 +188,25 @@
   .fm-callout { border-left: 2px solid var(--gold-lo); padding-left: 28px; margin-top: 36px; max-width: 680px; }
   .fm-callout p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 21px; line-height: 1.55; color: var(--t1); }
 
+  /* ══ JOURNEY — "what happens next", kept deliberately linear and
+     plain so it reads in a glance, not as another section to study ══ */
+  .fm-journey-lede { font-size: 15px; color: var(--t4); margin-bottom: 40px; max-width: 480px; }
+  .fm-journey { max-width: 460px; }
+  .fm-journey-step { position: relative; padding: 0 0 32px 32px; border-left: 1px solid var(--b1); }
+  .fm-journey-step:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .fm-journey-step::before { content: ''; position: absolute; left: -5px; top: 3px; width: 9px; height: 9px; border-radius: 50%; background: var(--b1); }
+  .fm-journey-step.gold::before { background: var(--gold); box-shadow: 0 0 12px rgba(201,168,76,0.5); }
+  .fm-journey-step p { font-size: 15.5px; color: var(--t3); line-height: 1.5; }
+  .fm-journey-step.gold p { color: var(--t1); font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 19px; }
+
+  /* ══ REFLECT — one quiet, non-promotional pause; the emotional beat.
+     No eyebrow/heading here on purpose — it should feel different from
+     the informational sections around it. ══════════════════════════ */
+  .fm-reflect { text-align: center; padding: 96px 0; }
+  .fm-reflect-mark { width: 34px; height: 1px; background: var(--gold-lo); margin: 0 auto 34px; }
+  .fm-reflect p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; font-size: clamp(21px, 2.6vw, 27px); line-height: 1.6; color: var(--t1); max-width: 640px; margin: 0 auto; }
+  .fm-reflect p + p { margin-top: 18px; color: var(--t3); font-size: clamp(18px,2.2vw,22px); }
+
   /* ══ FINAL CTA ═══════════════════════════════════════════════ */
   #fm-cta { text-align: center; padding: 130px 0 140px; }
   .fm-cta-hl { font-size: clamp(38px,5.2vw,64px); max-width: 720px; margin: 0 auto 26px; }
@@ -227,6 +246,8 @@
     .fm-video-row { gap: 48px; }
     .fm-callout { padding-left: 18px; }
     .fm-callout p { font-size: 18px; }
+    .fm-reflect { padding: 64px 0; }
+    .fm-reflect-mark { margin-bottom: 26px; }
     .fm-price-card { padding: 26px 22px; }
     #fm-cta { padding: 88px 0 100px; }
     footer { padding: 30px 16px; }
@@ -264,11 +285,11 @@
     </h1>
 
     <p class="hero-sub h-up" style="--d:0.2s">
-      Founding Membership is a small, standing cohort for people who bring their real decisions to Quorum early — while the Judgment OS is still being built, not after. It comes with terms that won't be offered again once the cohort is closed.
+      A small, standing cohort for people who bring their real decisions to Quorum early — while it's still being built. Terms that won't be offered again once it closes.
     </p>
 
     <p class="hero-standing h-up" style="--d:0.3s">
-      This isn't a discount code. It's a standing seat in a product that compounds — priced and structured accordingly.
+      This isn't a discount code. It's a standing seat in a product that compounds.
     </p>
 
     <a href="#what-it-is" class="scroll-cue h-up" style="--d:0.4s">
@@ -287,8 +308,8 @@
       <span class="eyebrow">What it is</span>
       <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">A standing seat, not a coupon.</h2>
     </div>
-    <p class="fm-lede r d1">Founding Membership is a permanent cohort marker layered on top of Quorum Elite — the tier that unlocks Mirror, Quorum's Judgment Operating System. It isn't a limited-time promo code that quietly disappears from your invoice later. <span class="hi">Once you're in, your founding pricing and founding status stay attached to your account for as long as you remain subscribed.</span></p>
-    <p class="fm-lede r d2">In practice, that means two things: you get Elite's full feature set — Bias Fingerprint, Confidence Calibration, Contradiction Detector, and the rest of Mirror — at founding pricing, and you're recognized as part of the small group Quorum was actually built around in its early months.</p>
+    <p class="fm-lede r d1">Founding Membership sits on top of Quorum Elite — the tier that unlocks Mirror, Quorum's Judgment Operating System. It isn't a promo code that quietly disappears from your invoice. <span class="hi">Once you're in, your pricing and status stay attached to your account for as long as you remain subscribed.</span></p>
+    <p class="fm-lede r d2">You get all of Elite, at founding pricing — and a place among the small group Quorum was actually built around.</p>
   </div>
 </div>
 
@@ -301,18 +322,18 @@
       <span class="eyebrow">Why now</span>
       <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">Judgment infrastructure compounds. It needs real decisions early — not eventually.</h2>
     </div>
-    <p class="fm-lede r d1">Mirror gets sharper the longer it runs and the earlier real, high-stakes decisions start flowing through it. Founding Members are the first real record behind the product's own judgment — not a beta test, a starting point. Being early isn't a marketing angle here; it's structurally different from joining later, because the Judgment OS is literally built from accumulated decision history.</p>
+    <p class="fm-lede r d1">Mirror gets sharper the longer it runs, and the earlier real decisions start flowing through it. Founding Members aren't beta testers — they're the starting point. Being early is structural here, not a marketing angle: the Judgment OS is built from accumulated decision history.</p>
 
     <div class="fm-why-strip r d2">
       <div class="fm-why-item">
         <div class="fm-why-n">00</div>
         <div class="fm-why-title">Compounding starts now</div>
-        <div class="fm-why-desc">The earlier your decision record starts, the more it has accumulated by the time it matters most.</div>
+        <div class="fm-why-desc">The earlier your record starts, the more it's accumulated when it matters.</div>
       </div>
       <div class="fm-why-item">
         <div class="fm-why-n">01</div>
         <div class="fm-why-title">Shaped with you, not for you later</div>
-        <div class="fm-why-desc">Founding feedback has a direct line to the roadmap while Mirror is still actively being built.</div>
+        <div class="fm-why-desc">Founding feedback shapes the roadmap while Mirror is still being built.</div>
       </div>
       <div class="fm-why-item">
         <div class="fm-why-n">02</div>
@@ -335,11 +356,11 @@
     <div class="fm-who-grid r d1">
       <div class="fm-who-card yes">
         <div class="fm-who-tag">A good fit</div>
-        <p>Founders, CXOs, and family office principals weighing decisions where being wrong is expensive — a stake sale, a succession call, an exit. People who already think carefully and want a system that keeps pace with that, and want to help shape the tool while it's still forming.</p>
+        <p>Founders, CXOs, and family office principals weighing decisions where being wrong is expensive. People who already think carefully, and want to help shape the tool while it's still forming.</p>
       </div>
       <div class="fm-who-card no">
         <div class="fm-who-tag">Probably not yet</div>
-        <p>If you're looking for a quick answer to a low-stakes, everyday choice, or a shortcut for avoiding the work of deciding, Founding Membership — and Quorum generally — isn't built for that. The free tier is still the right place to start and see for yourself.</p>
+        <p>If you want a quick answer to an everyday choice, or a shortcut around deciding — this isn't built for that. Start with the free tier and see for yourself.</p>
       </div>
     </div>
   </div>
@@ -361,11 +382,12 @@
         <div class="fm-video-intro">
           <span class="video-eyebrow">Why it's built this way</span>
           <h3>Not vibes. Established decision science.</h3>
-          <p>The thinking behind Quorum's structural read, the Council, and the Examiner — and why none of this is styled as a chatbot with a personality.</p>
+          <p>The thinking behind the structural read, the Council, and the Examiner — and why none of it is styled as a chatbot with a personality.</p>
         </div>
         <div class="fm-video-wrap" id="fmResearchWrap">
-          <video id="fmResearchVideo" controls playsinline preload="metadata">
+          <video id="fmResearchVideo" controls playsinline preload="none" poster="/videos/quorum-research-poster.jpg">
             <source src="/videos/quorum-research.mp4" type="video/mp4" />
+            <track kind="captions" src="/videos/quorum-research.vtt" srclang="en" label="English" default />
           </video>
           <div class="fm-video-fallback">
             <div class="fm-video-fallback-icon">
@@ -381,11 +403,12 @@
         <div class="fm-video-intro">
           <span class="video-eyebrow">How it works · 2 minutes</span>
           <h3>How a decision actually moves through Quorum.</h3>
-          <p>Structural Analysis, the Council, the Examiner, Synthesis, and Mirror — the full path a single decision takes, start to finish.</p>
+          <p>The full path a single decision takes — Structural Analysis, the Council, the Examiner, Synthesis, Mirror.</p>
         </div>
         <div class="fm-video-wrap" id="fmExplainerWrap">
-          <video id="fmExplainerVideo" controls playsinline preload="metadata">
+          <video id="fmExplainerVideo" controls playsinline preload="none" poster="/videos/quorum-explainer-poster.jpg">
             <source src="/videos/quorum-explainer.mp4" type="video/mp4" />
+            <track kind="captions" src="/videos/quorum-explainer.vtt" srclang="en" label="English" default />
           </video>
           <div class="fm-video-fallback">
             <div class="fm-video-fallback-icon">
@@ -409,6 +432,33 @@
 
 <hr class="rule" />
 
+<!-- ══ WHAT HAPPENS NEXT — a plain, linear journey; purpose is to
+     remove uncertainty, not to persuade ══════════════════════════ -->
+<div class="wrap" id="journey">
+  <div class="s" style="padding-top: 88px; padding-bottom: 88px;">
+    <div class="sh r">
+      <span class="eyebrow">What happens next</span>
+      <h2 class="display" style="font-size: clamp(28px,3vw,38px);">No leap of faith required.</h2>
+    </div>
+    <div class="fm-journey r d1">
+      <div class="fm-journey-step">
+        <p>Bring one real decision.</p>
+      </div>
+      <div class="fm-journey-step">
+        <p>Experience Quorum, free.</p>
+      </div>
+      <div class="fm-journey-step">
+        <p>Mirror begins building your decision record.</p>
+      </div>
+      <div class="fm-journey-step gold">
+        <p>If it genuinely helps you think better — Founding Membership becomes available.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
 <!-- ══ WHAT YOU GET ════════════════════════════════════════════ -->
 <div class="wrap" id="what-you-get">
   <div class="s">
@@ -421,11 +471,11 @@
       <div class="fm-get-list r d1">
         <div class="fm-get-item">
           <div class="fm-get-dot"></div>
-          <p>Bias Fingerprint<span class="fm-get-sub">Your patterns, named and specific to your own decision history.</span></p>
+          <p>Bias Fingerprint<span class="fm-get-sub">Your patterns, named — specific to your history.</span></p>
         </div>
         <div class="fm-get-item">
           <div class="fm-get-dot"></div>
-          <p>Confidence Calibration<span class="fm-get-sub">The gap between how confident you were and how right you actually were.</span></p>
+          <p>Confidence Calibration<span class="fm-get-sub">The gap between how confident you were and how right you were.</span></p>
         </div>
         <div class="fm-get-item">
           <div class="fm-get-dot"></div>
@@ -437,7 +487,7 @@
         </div>
         <div class="fm-get-item">
           <div class="fm-get-dot"></div>
-          <p>Patterns &amp; Session Reliability Index<span class="fm-get-sub">Which structural rules recur, how often, and how reliable each decision was.</span></p>
+          <p>Patterns &amp; Session Reliability Index<span class="fm-get-sub">Which rules recur, how often, and how reliable each decision was.</span></p>
         </div>
         <div class="fm-get-item">
           <div class="fm-get-dot"></div>
@@ -445,7 +495,7 @@
         </div>
         <div class="fm-get-item">
           <div class="fm-get-dot"></div>
-          <p>Decision Independence Score &amp; Peer Benchmark<span class="fm-get-sub">How much a decision came from you, and how it compares structurally to others.</span></p>
+          <p>Decision Independence Score &amp; Peer Benchmark<span class="fm-get-sub">How much a decision came from you — and how it compares to others.</span></p>
         </div>
         <div class="fm-get-item">
           <div class="fm-get-dot"></div>
@@ -468,7 +518,7 @@
           </div>
           <div class="fm-price-cadence">/year — best value</div>
           <div class="fm-price-divider"></div>
-          <p class="fm-price-note"><strong>Locked in for as long as you stay subscribed.</strong> This offer lives inside the product itself — you'll see it appear once you've experienced Quorum for yourself, not before.</p>
+          <p class="fm-price-note"><strong>Locked in for as long as you stay subscribed.</strong> It appears inside the product itself, once you've experienced Quorum for yourself.</p>
         </div>
       </div>
     </div>
@@ -484,9 +534,9 @@
       <span class="eyebrow">Why limited</span>
       <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">A small number, on purpose.</h2>
     </div>
-    <p class="fm-lede r d1">Mirror's earliest signal comes from real decisions, not synthetic ones. Keeping the founding cohort small means each person's feedback and pattern history actually shapes what gets built next, instead of being averaged into noise across thousands of accounts. It's a deliberate design constraint, not a scarcity tactic borrowed from a checkout page.</p>
+    <p class="fm-lede r d1">Mirror's earliest signal comes from real decisions, not synthetic ones. A small cohort means each person's feedback actually shapes what gets built — instead of disappearing into noise. A design constraint, not a scarcity tactic.</p>
     <div class="fm-callout r d2">
-      <p>Once the cohort fills, it's closed — permanently. Even if a founding member later cancels, their seat isn't reissued to someone else.</p>
+      <p>Once the cohort fills, it's closed — permanently. A seat that lapses isn't reissued to someone else.</p>
     </div>
   </div>
 </div>
@@ -500,7 +550,19 @@
       <span class="eyebrow">Why early matters</span>
       <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">The earlier you start, the further ahead your Mirror already is.</h2>
     </div>
-    <p class="fm-lede r d1">Because Mirror compounds off session history, someone who starts today ends up with a longer, richer decision record than someone who joins the identical product six months from now — same features, different starting line. Founding pricing is fixed for as long as you stay subscribed, so the earliest members get both a head start on their own Judgment OS and terms that won't come back around once the cohort is full.</p>
+    <p class="fm-lede r d1">Mirror compounds off session history. Someone who starts today ends up with a longer, richer record than someone joining the same product later — same features, different starting line. And founding pricing, once fixed, doesn't come back around.</p>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ REFLECT — the one emotional beat; deliberately quiet, no
+     eyebrow, no CTA. A pause before the final ask. ═══════════════ -->
+<div class="wrap">
+  <div class="fm-reflect r">
+    <div class="fm-reflect-mark"></div>
+    <p>Most tools are encountered fully formed — after every decision about what they should become has already been made by someone else.</p>
+    <p>Founding Membership is what it looks like to be in the room a little earlier than that.</p>
   </div>
 </div>
 
@@ -511,7 +573,7 @@
   <div id="fm-cta">
     <span class="eyebrow r" style="margin-bottom:22px; display:block;">Begin</span>
     <h2 class="display fm-cta-hl r d1">Bring one real decision.<br />See what Quorum finds.</h2>
-    <p class="fm-cta-sub r d2">Founding pricing appears inside Mirror once you've experienced Quorum for yourself — after your first few decisions. This isn't a checkout page. It's where you start.</p>
+    <p class="fm-cta-sub r d2">Founding pricing appears inside Mirror once you've experienced Quorum for yourself. This isn't a checkout page — it's where you start.</p>
     <div class="r d3">
       <a href="https://app.quorumvault.org?utm_source=founding_member_page&utm_medium=cta&utm_campaign=founding_member&utm_content=final_cta" target="_blank" class="btn-cta">
         Open Quorum
@@ -557,20 +619,17 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' })
   document.querySelectorAll('.r').forEach(el => ro.observe(el))
 
-  /* ── Video error fallback — show the placeholder only when the
-     MP4 itself genuinely fails to load. Missing optional poster or
-     caption files must not trigger the fallback. ── */
+  /* ── Video error fallback — if a file 404s (not yet uploaded to
+     Railway), swap to a calm placeholder instead of a broken player.
+     Both videos use preload="none" so nothing downloads until the
+     visitor actually presses play. ── */
   function initVideoFallback(wrapId, videoId) {
     const wrap  = document.getElementById(wrapId)
     const video = document.getElementById(videoId)
     if (!wrap || !video) return
-    const clearFallback = () => wrap.classList.remove('errored')
-    video.addEventListener('loadedmetadata', clearFallback)
-    video.addEventListener('canplay', clearFallback)
-    video.addEventListener('error', event => {
-      if (event.target === video && video.error) {
-        wrap.classList.add('errored')
-      }
+    video.addEventListener('error', () => wrap.classList.add('errored'), true)
+    video.querySelectorAll('source').forEach(s => {
+      s.addEventListener('error', () => wrap.classList.add('errored'))
     })
   }
   initVideoFallback('fmResearchWrap', 'fmResearchVideo')

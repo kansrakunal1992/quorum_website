@@ -536,8 +536,10 @@
       </div>
       <p class="booking-hint">Bring one real decision you're currently thinking through. That's all you need.</p>
 
-      <!-- Founding Member teaser — links to the dedicated website page,
-           never straight to payment (see /founding-member). -->
+      <!-- FOUNDING_TEASER:START — stripped server-side when the
+           FOUNDING_MEMBER_ENABLED env var is set to "false" (cohort
+           closed). Links to the dedicated website page, never
+           straight to payment (see /founding-member). -->
       <a class="founding-teaser h-up" style="--d:0.12s" href="/founding-member?ref=abhilash_card">
         <div class="founding-teaser-top">
           <div class="founding-teaser-icon">
@@ -551,6 +553,7 @@
         </div>
         <p class="founding-teaser-desc">Join a small group shaping Quorum from the beginning. Early access, founder access, and special pricing.</p>
       </a>
+      <!-- FOUNDING_TEASER:END -->
 
       <div class="record">
         <div class="record-label">The record</div>
