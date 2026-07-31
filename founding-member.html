@@ -385,9 +385,8 @@
           <p>The thinking behind the structural read, the Council, and the Examiner — and why none of it is styled as a chatbot with a personality.</p>
         </div>
         <div class="fm-video-wrap" id="fmResearchWrap">
-          <video id="fmResearchVideo" controls playsinline preload="none" poster="/videos/quorum-research-poster.jpg">
+          <video id="fmResearchVideo" controls playsinline preload="metadata">
             <source src="/videos/quorum-research.mp4" type="video/mp4" />
-            <track kind="captions" src="/videos/quorum-research.vtt" srclang="en" label="English" default />
           </video>
           <div class="fm-video-fallback">
             <div class="fm-video-fallback-icon">
@@ -406,9 +405,8 @@
           <p>The full path a single decision takes — Structural Analysis, the Council, the Examiner, Synthesis, Mirror.</p>
         </div>
         <div class="fm-video-wrap" id="fmExplainerWrap">
-          <video id="fmExplainerVideo" controls playsinline preload="none" poster="/videos/quorum-explainer-poster.jpg">
+          <video id="fmExplainerVideo" controls playsinline preload="metadata">
             <source src="/videos/quorum-explainer.mp4" type="video/mp4" />
-            <track kind="captions" src="/videos/quorum-explainer.vtt" srclang="en" label="English" default />
           </video>
           <div class="fm-video-fallback">
             <div class="fm-video-fallback-icon">
@@ -619,10 +617,13 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' })
   document.querySelectorAll('.r').forEach(el => ro.observe(el))
 
-  /* ── Video error fallback — if a file 404s (not yet uploaded to
-     Railway), swap to a calm placeholder instead of a broken player.
-     Both videos use preload="none" so nothing downloads until the
-     visitor actually presses play. ── */
+  /* ── Video error fallback — if the mp4 itself 404s (not yet uploaded
+     to Railway), swap to a calm placeholder instead of a broken player.
+     No poster image or caption track is referenced (only the .mp4
+     files exist), so this now only fires on a genuine load failure of
+     the video/source — it won't be tripped by a missing .vtt/.jpg like
+     it was before. preload="metadata" lets the browser grab the first
+     frame as a real thumbnail without downloading the whole file. ── */
   function initVideoFallback(wrapId, videoId) {
     const wrap  = document.getElementById(wrapId)
     const video = document.getElementById(videoId)
