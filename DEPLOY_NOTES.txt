@@ -1,0 +1,44 @@
+Quorum Website — Founding Member flow
+======================================
+4 files, all drop into the existing website Railway project root
+(same directory as the current server.js). No new dependencies,
+no env var changes required.
+
+CHANGED
+-------
+- server.js
+    Added GET /founding-member route (same pattern as /kunal, /abhilash),
+    placed before the catch-all.
+
+- card-kunal.html
+- card-abhilash.html
+    Added the "Interested in becoming a Founding Member?" teaser box,
+    positioned between the booking-hint line and "THE RECORD" section.
+    Links to /founding-member?ref=kunal_card (or abhilash_card) — never
+    straight to payment.
+
+NEW
+---
+- founding-member.html
+    Trust/conversion bridge page. Explains what Founding Membership is,
+    why now, who it's for, both videos, what you get + real founding
+    pricing, why it's limited, why early matters. Final CTA links to
+    https://app.quorumvault.org (absolute URL — separate Railway project).
+
+BEFORE DEPLOYING, CHECK ON RAILWAY
+-----------------------------------
+founding-member.html embeds the SAME two video assets already referenced
+elsewhere on the site:
+  /videos/quorum-research.mp4   (+ quorum-research-poster.jpg, .vtt)
+  /videos/quorum-explainer.mp4  (+ quorum-explainer-poster.jpg, .vtt)
+If those files are already live on Railway (used by index.html today),
+no action needed. If not, the page degrades gracefully to a calm
+"Video loading shortly" placeholder — nothing breaks, but upload them
+for the full experience.
+
+NOT INCLUDED
+------------
+No app-side files are included in this delivery. The Quorum app
+(separate Railway project) already implements the "value before the
+founding pitch" mechanic — lib/founding.ts + the Mirror gate state
+machine in app/mirror/page.tsx — so nothing there needed to change.

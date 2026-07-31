@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Founding Member — Quorum</title>
+<meta name="description" content="A small, permanent cohort helping shape Quorum's Judgment OS from the beginning — locked-in pricing, direct input into the roadmap, and a standing seat that isn't reissued once it's filled." />
+<meta property="og:title" content="Founding Member — Quorum" />
+<meta property="og:description" content="A small, permanent cohort helping shape Quorum's Judgment OS from the beginning." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+
+  /* ══ TOKENS — same system as quorumvault.org ═══════════════════ */
+  :root { --radius: 18px; --radius-sm: 10px; --trans: background 0.38s ease, color 0.38s ease, border-color 0.38s ease; }
+  [data-theme="dark"] {
+    --gold: #c9a84c; --gold-hi: #e2c46e; --gold-lo: #a07828;
+    --gold-alpha: rgba(201,168,76,0.12); --gold-glow: rgba(201,168,76,0.06);
+    --bg: #010204; --bg2: #04060f; --card: #080d1b; --card2: #0b1020; --inset: #050912;
+    --b0: #0d1628; --b1: #182340; --b2: #243658;
+    --t0: #ffffff; --t1: #edf2ff; --t2: #c8d6f0; --t3: #8fa8cc; --t4: #506484; --t5: #263d5e;
+    --overlay: rgba(1,2,4,0.92);
+  }
+  [data-theme="light"] {
+    --gold: #9a7020; --gold-hi: #b88c2a; --gold-lo: #7a5510;
+    --gold-alpha: rgba(154,112,32,0.1); --gold-glow: rgba(154,112,32,0.05);
+    --bg: #f4f1eb; --bg2: #ede9e0; --card: #ffffff; --card2: #f8f6f1; --inset: #edeae2;
+    --b0: #c8cdd8; --b1: #aab2c2; --b2: #8896b0;
+    --t0: #060d1c; --t1: #0e1a30; --t2: #1e2e48; --t3: #3a4f70; --t4: #667a9e; --t5: #a0b0c8;
+    --overlay: rgba(244,241,235,0.94);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  a { text-decoration: none; color: inherit; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 16px; line-height: 1.7;
+    color: var(--t2); background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    transition: var(--trans);
+    overflow-x: hidden;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9000;
+  }
+
+  .display { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; color: var(--t0); }
+  .eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; }
+  .mono { font-family: 'DM Mono', monospace; }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+  .rule { border: none; border-top: 1px solid var(--b0); margin: 0 56px; }
+  .s { padding: 108px 0; }
+  .sh { max-width: 620px; margin-bottom: 44px; }
+  .sh .eyebrow { margin-bottom: 16px; }
+
+  /* ══ REVEAL ══════════════════════════════════════════════════ */
+  .r { opacity: 0; transform: translateY(24px); transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1), transform 0.85s cubic-bezier(0.22,1,0.36,1); }
+  .r.in { opacity: 1; transform: none; }
+  .d1 { transition-delay: 0.08s; }
+  .d2 { transition-delay: 0.18s; }
+  .d3 { transition-delay: 0.3s; }
+  @keyframes up { to { opacity:1; transform:none; } }
+  .h-up { opacity: 0; transform: translateY(16px); animation: up 0.85s cubic-bezier(0.22,1,0.36,1) var(--d,0s) forwards; }
+
+  /* ══ NAV — intentionally minimal; no competing menu on a bridge page ══ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+    height: 68px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; border-bottom: 1px solid transparent;
+    transition: var(--trans), border-color 0.4s, backdrop-filter 0.4s;
+  }
+  nav.stuck { border-color: var(--b0); background: var(--overlay); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
+  .logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--t0); }
+  .logo span { color: var(--gold); }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .nav-back {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em;
+    color: var(--t4); transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--t2); }
+  .toggle { position: relative; width: 50px; height: 25px; border-radius: 13px; background: var(--card); border: 1px solid var(--b1); cursor: pointer; transition: var(--trans); flex-shrink: 0; }
+  .toggle-thumb { position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--gold); transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1); }
+  [data-theme="light"] .toggle-thumb { transform: translateX(25px); }
+  .toggle-label { position: absolute; top: 50%; transform: translateY(-50%); font-size: 9.5px; line-height: 1; color: var(--t4); user-select: none; }
+  .toggle-label.l { left: 6px; opacity: 0; } .toggle-label.r { right: 6px; }
+  [data-theme="light"] .toggle-label.l { opacity: 1; } [data-theme="light"] .toggle-label.r { opacity: 0; }
+
+  /* ══ BUTTONS ═════════════════════════════════════════════════ */
+  .btn-cta { font-size: 14.5px; font-weight: 500; padding: 18px 40px; background: var(--gold); color: var(--bg); border: none; border-radius: var(--radius-sm); cursor: pointer; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 10px; transition: background 0.2s, transform 0.15s; }
+  .btn-cta:hover { background: var(--gold-hi); transform: translateY(-2px); }
+  .btn-open-quorum { display: inline-flex; align-items: center; padding: 16px 34px; border: 1px solid var(--gold); border-radius: var(--radius-sm); color: var(--gold); font-size: 14.5px; font-weight: 500; letter-spacing: 0.05em; background: transparent; transition: background 0.2s, transform 0.15s; }
+  .btn-open-quorum:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); }
+  .cta-note { font-size: 11px; color: var(--t5); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 12px; }
+
+  /* ══ HERO ════════════════════════════════════════════════════ */
+  #hero { min-height: 84vh; display: flex; align-items: center; padding-top: 110px; padding-bottom: 60px; position: relative; }
+  .hero-aura { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 900px; height: 640px; background: radial-gradient(ellipse at 50% 30%, var(--gold-glow) 0%, transparent 62%); pointer-events: none; }
+  .fm-kicker { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 8px; border: 1px solid var(--gold-lo); border-radius: 999px; background: var(--gold-alpha); margin-bottom: 30px; }
+  .fm-kicker-icon { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(201,168,76,0.15); flex-shrink: 0; }
+  .fm-kicker span { font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+  .hero-hl { font-size: clamp(42px, 5.4vw, 72px); max-width: 900px; margin-bottom: 34px; }
+  .hero-hl em { font-style: italic; color: var(--t3); }
+  .hero-sub { font-size: 17.5px; line-height: 1.85; color: var(--t3); max-width: 620px; margin-bottom: 12px; }
+  .hero-standing { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 15px; color: var(--t4); max-width: 560px; margin-top: 22px; line-height: 1.7; }
+  .scroll-cue { display: inline-flex; align-items: center; gap: 8px; margin-top: 52px; font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--t5); }
+  .scroll-cue svg { animation: bob 2s ease-in-out infinite; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+  /* ══ PROSE / LEDE ════════════════════════════════════════════ */
+  .fm-lede { font-size: 16px; line-height: 1.9; color: var(--t2); max-width: 680px; }
+  .fm-lede + .fm-lede { margin-top: 20px; }
+  .fm-lede .hi { color: var(--t1); }
+
+  /* ══ WHY-NOW STRIP (3 col) ═══════════════════════════════════ */
+  .fm-why-strip { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--b0); border-radius: 20px; overflow: hidden; margin-top: 48px; }
+  .fm-why-item { padding: 38px 30px; border-right: 1px solid var(--b0); background: var(--card); }
+  .fm-why-item:last-child { border-right: none; }
+  .fm-why-n { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 46px; font-weight: 300; color: var(--b1); line-height: 1; margin-bottom: 20px; }
+  .fm-why-title { font-size: 14px; font-weight: 500; color: var(--t0); margin-bottom: 10px; letter-spacing: 0.01em; }
+  .fm-why-desc { font-size: 13px; color: var(--t4); line-height: 1.75; }
+
+  /* ══ WHO-CARD ROW ════════════════════════════════════════════ */
+  .fm-who-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 44px; }
+  .fm-who-card { border: 1px solid var(--b0); border-radius: var(--radius); padding: 30px 28px; background: var(--card); }
+  .fm-who-card.no { opacity: 0.75; }
+  .fm-who-tag { font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px; }
+  .fm-who-card.yes .fm-who-tag { color: var(--gold); }
+  .fm-who-card.no .fm-who-tag { color: var(--t5); }
+  .fm-who-card p { font-size: 14px; color: var(--t3); line-height: 1.75; }
+  .fm-who-card.no p { color: var(--t4); }
+
+  /* ══ VIDEOS ══════════════════════════════════════════════════ */
+  .fm-video-block { margin-top: 38px; }
+  .fm-video-intro { max-width: 640px; margin-bottom: 22px; }
+  .fm-video-intro .video-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-lo); margin-bottom: 8px; display: block; }
+  [data-theme="light"] .fm-video-intro .video-eyebrow { color: var(--gold); }
+  .fm-video-intro h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(24px,2.6vw,32px); color: var(--t0); margin-bottom: 8px; }
+  .fm-video-intro p { font-size: 14.5px; color: var(--t4); line-height: 1.7; max-width: 560px; }
+
+  .fm-video-wrap {
+    position: relative; width: 100%; border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--b1); background: var(--card);
+    box-shadow: 0 30px 80px -34px rgba(0,0,0,0.55);
+  }
+  .fm-video-wrap video { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--inset); }
+  /* If the file 404s or hasn't been uploaded yet, fall back to a calm
+     placeholder rather than a broken player — the page still reads as
+     finished, and nothing looks like an error. */
+  .fm-video-fallback {
+    display: none; align-items: center; justify-content: center; flex-direction: column; gap: 10px;
+    width: 100%; aspect-ratio: 16/9; background: linear-gradient(160deg, var(--card2), var(--inset));
+  }
+  .fm-video-wrap.errored video { display: none; }
+  .fm-video-wrap.errored .fm-video-fallback { display: flex; }
+  .fm-video-fallback-icon { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--b1); display: flex; align-items: center; justify-content: center; }
+  .fm-video-fallback span { font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--t5); }
+  .fm-video-row { display: flex; flex-direction: column; gap: 72px; margin-top: 46px; }
+
+  /* ══ GET-LIST (mirrors the real unlock list inside the app's Mirror) ══ */
+  .fm-get-wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; margin-top: 46px; }
+  .fm-get-list { display: flex; flex-direction: column; }
+  .fm-get-item { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--b0); }
+  .fm-get-item:first-child { padding-top: 0; }
+  .fm-get-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: 9px; flex-shrink: 0; }
+  .fm-get-item p { font-size: 14px; color: var(--t2); line-height: 1.65; }
+  .fm-get-item .fm-get-sub { display: block; font-size: 12.5px; color: var(--t4); margin-top: 3px; }
+
+  .fm-price-card { border: 1px solid rgba(201,168,76,0.5); border-radius: var(--radius); padding: 34px 32px; background: linear-gradient(165deg, var(--gold-alpha) 0%, var(--card) 60%); position: relative; }
+  .fm-price-badge { position: absolute; top: -13px; left: 30px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bg); background: var(--gold); padding: 5px 14px; border-radius: 20px; }
+  [data-theme="light"] .fm-price-badge { color: #fff; }
+  .fm-price-tier { font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--t5); margin-bottom: 20px; margin-top: 6px; }
+  .fm-price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .fm-price-now { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 42px; font-weight: 300; color: var(--t0); letter-spacing: -0.02em; }
+  .fm-price-now sub { font-size: 18px; color: var(--t4); vertical-align: baseline; }
+  .fm-price-was { font-size: 14px; color: var(--t5); text-decoration: line-through; }
+  .fm-price-cadence { font-size: 12px; color: var(--t5); margin-bottom: 24px; }
+  .fm-price-divider { height: 1px; background: var(--b0); margin: 20px 0; }
+  .fm-price-note { font-size: 12.5px; color: var(--t4); line-height: 1.7; }
+  .fm-price-note strong { color: var(--gold); font-weight: 500; }
+
+  /* ══ LIMITED / EARLY sections — quote-style callouts ═══════════ */
+  .fm-callout { border-left: 2px solid var(--gold-lo); padding-left: 28px; margin-top: 36px; max-width: 680px; }
+  .fm-callout p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 21px; line-height: 1.55; color: var(--t1); }
+
+  /* ══ FINAL CTA ═══════════════════════════════════════════════ */
+  #fm-cta { text-align: center; padding: 130px 0 140px; }
+  .fm-cta-hl { font-size: clamp(38px,5.2vw,64px); max-width: 720px; margin: 0 auto 26px; }
+  .fm-cta-sub { font-size: 16px; color: var(--t3); max-width: 520px; margin: 0 auto 44px; line-height: 1.85; }
+
+  /* ══ FOOTER ══════════════════════════════════════════════════ */
+  footer { padding: 56px 56px; border-top: 1px solid var(--b0); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--t4); }
+  .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+  .footer-link { font-size: 11.5px; color: var(--t4); letter-spacing: 0.03em; transition: color 0.2s; white-space: nowrap; }
+  .footer-link:hover { color: var(--t1); }
+  .footer-copy { font-size: 12px; color: var(--t4); letter-spacing: 0.04em; white-space: nowrap; }
+
+  /* ══ RESPONSIVE ══════════════════════════════════════════════ */
+  @media (max-width: 980px) {
+    .wrap { padding: 0 24px; }
+    .rule { margin: 0 24px; }
+    nav { padding: 0 20px; }
+    .s { padding: 76px 0; }
+    #hero { padding-top: 100px; min-height: auto; }
+    .fm-why-strip { grid-template-columns: 1fr; border-radius: 16px; }
+    .fm-why-item { border-right: none; border-bottom: 1px solid var(--b0); }
+    .fm-why-item:last-child { border-bottom: none; }
+    .fm-who-grid { grid-template-columns: 1fr; }
+    .fm-get-wrap { grid-template-columns: 1fr; gap: 32px; }
+    footer { padding: 36px 20px; flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 18px; }
+    .rule { margin: 0 18px; }
+    nav { padding: 0 16px; height: 60px; }
+    .logo { font-size: 17px; }
+    #hero { padding-top: 88px; }
+    .fm-kicker { margin-bottom: 22px; padding: 6px 14px 6px 7px; }
+    .hero-hl { margin-bottom: 24px; }
+    .hero-sub { font-size: 16px; }
+    .fm-video-row { gap: 48px; }
+    .fm-callout { padding-left: 18px; }
+    .fm-callout p { font-size: 18px; }
+    .fm-price-card { padding: 26px 22px; }
+    #fm-cta { padding: 88px 0 100px; }
+    footer { padding: 30px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV — minimal on purpose; this page has one job ═══════════ -->
+<nav id="nav">
+  <a href="/" class="logo">Quoru<span>m</span></a>
+  <div class="nav-right">
+    <a href="/kunal" class="nav-back">← Back</a>
+    <button class="toggle" id="themeBtn" aria-label="Toggle light/dark mode">
+      <div class="toggle-thumb"></div>
+      <span class="toggle-label l">☀</span>
+      <span class="toggle-label r">☾</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-aura"></div>
+  <div class="wrap">
+    <div class="fm-kicker h-up">
+      <div class="fm-kicker-icon">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20l-2-9-5 4-3-7-3 7-5-4-2 9Z"/><path d="M4 21h16"/></svg>
+      </div>
+      <span>Founding Member · A small, permanent cohort</span>
+    </div>
+
+    <h1 class="display hero-hl h-up" style="--d:0.08s">
+      You don't have to wait for<br />Quorum to be finished.<br /><em>You can help decide what it becomes.</em>
+    </h1>
+
+    <p class="hero-sub h-up" style="--d:0.2s">
+      Founding Membership is a small, standing cohort for people who bring their real decisions to Quorum early — while the Judgment OS is still being built, not after. It comes with terms that won't be offered again once the cohort is closed.
+    </p>
+
+    <p class="hero-standing h-up" style="--d:0.3s">
+      This isn't a discount code. It's a standing seat in a product that compounds — priced and structured accordingly.
+    </p>
+
+    <a href="#what-it-is" class="scroll-cue h-up" style="--d:0.4s">
+      What Founding Membership actually is
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ══ WHAT IT IS ══════════════════════════════════════════════ -->
+<div class="wrap" id="what-it-is">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">What it is</span>
+      <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">A standing seat, not a coupon.</h2>
+    </div>
+    <p class="fm-lede r d1">Founding Membership is a permanent cohort marker layered on top of Quorum Elite — the tier that unlocks Mirror, Quorum's Judgment Operating System. It isn't a limited-time promo code that quietly disappears from your invoice later. <span class="hi">Once you're in, your founding pricing and founding status stay attached to your account for as long as you remain subscribed.</span></p>
+    <p class="fm-lede r d2">In practice, that means two things: you get Elite's full feature set — Bias Fingerprint, Confidence Calibration, Contradiction Detector, and the rest of Mirror — at founding pricing, and you're recognized as part of the small group Quorum was actually built around in its early months.</p>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ WHY NOW ═════════════════════════════════════════════════ -->
+<div class="wrap" id="why-now">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">Why now</span>
+      <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">Judgment infrastructure compounds. It needs real decisions early — not eventually.</h2>
+    </div>
+    <p class="fm-lede r d1">Mirror gets sharper the longer it runs and the earlier real, high-stakes decisions start flowing through it. Founding Members are the first real record behind the product's own judgment — not a beta test, a starting point. Being early isn't a marketing angle here; it's structurally different from joining later, because the Judgment OS is literally built from accumulated decision history.</p>
+
+    <div class="fm-why-strip r d2">
+      <div class="fm-why-item">
+        <div class="fm-why-n">00</div>
+        <div class="fm-why-title">Compounding starts now</div>
+        <div class="fm-why-desc">The earlier your decision record starts, the more it has accumulated by the time it matters most.</div>
+      </div>
+      <div class="fm-why-item">
+        <div class="fm-why-n">01</div>
+        <div class="fm-why-title">Shaped with you, not for you later</div>
+        <div class="fm-why-desc">Founding feedback has a direct line to the roadmap while Mirror is still actively being built.</div>
+      </div>
+      <div class="fm-why-item">
+        <div class="fm-why-n">02</div>
+        <div class="fm-why-title">Terms fixed once, held permanently</div>
+        <div class="fm-why-desc">Founding pricing and status don't change after the cohort closes — even as standard pricing moves.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ WHO IT'S FOR ════════════════════════════════════════════ -->
+<div class="wrap" id="who">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">Who it's for</span>
+      <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">Not everyone. Deliberately.</h2>
+    </div>
+    <div class="fm-who-grid r d1">
+      <div class="fm-who-card yes">
+        <div class="fm-who-tag">A good fit</div>
+        <p>Founders, CXOs, and family office principals weighing decisions where being wrong is expensive — a stake sale, a succession call, an exit. People who already think carefully and want a system that keeps pace with that, and want to help shape the tool while it's still forming.</p>
+      </div>
+      <div class="fm-who-card no">
+        <div class="fm-who-tag">Probably not yet</div>
+        <p>If you're looking for a quick answer to a low-stakes, everyday choice, or a shortcut for avoiding the work of deciding, Founding Membership — and Quorum generally — isn't built for that. The free tier is still the right place to start and see for yourself.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ SEE IT — BOTH VIDEOS ════════════════════════════════════ -->
+<div class="wrap" id="see-it">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">See it, don't just read about it</span>
+      <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">Two ways to see what you'd be joining.</h2>
+    </div>
+
+    <div class="fm-video-row">
+      <!-- Research video -->
+      <div class="r d1">
+        <div class="fm-video-intro">
+          <span class="video-eyebrow">Why it's built this way</span>
+          <h3>Not vibes. Established decision science.</h3>
+          <p>The thinking behind Quorum's structural read, the Council, and the Examiner — and why none of this is styled as a chatbot with a personality.</p>
+        </div>
+        <div class="fm-video-wrap" id="fmResearchWrap">
+          <video id="fmResearchVideo" controls playsinline preload="none" poster="/videos/quorum-research-poster.jpg">
+            <source src="/videos/quorum-research.mp4" type="video/mp4" />
+            <track kind="captions" src="/videos/quorum-research.vtt" srclang="en" label="English" default />
+          </video>
+          <div class="fm-video-fallback">
+            <div class="fm-video-fallback-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span>Video loading shortly</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explainer / how it works video -->
+      <div class="r d2">
+        <div class="fm-video-intro">
+          <span class="video-eyebrow">How it works · 2 minutes</span>
+          <h3>How a decision actually moves through Quorum.</h3>
+          <p>Structural Analysis, the Council, the Examiner, Synthesis, and Mirror — the full path a single decision takes, start to finish.</p>
+        </div>
+        <div class="fm-video-wrap" id="fmExplainerWrap">
+          <video id="fmExplainerVideo" controls playsinline preload="none" poster="/videos/quorum-explainer-poster.jpg">
+            <source src="/videos/quorum-explainer.mp4" type="video/mp4" />
+            <track kind="captions" src="/videos/quorum-explainer.vtt" srclang="en" label="English" default />
+          </video>
+          <div class="fm-video-fallback">
+            <div class="fm-video-fallback-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span>Video loading shortly</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:56px;" class="r d3">
+      <a href="https://app.quorumvault.org?utm_source=founding_member_page&utm_medium=cta&utm_campaign=founding_member&utm_content=after_videos" target="_blank" class="btn-open-quorum">
+        Open Quorum
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p class="cta-note">Free to start · Bring one real decision</p>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ WHAT YOU GET ════════════════════════════════════════════ -->
+<div class="wrap" id="what-you-get">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">What you get</span>
+      <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">Everything Elite unlocks. Locked in on founding terms.</h2>
+    </div>
+
+    <div class="fm-get-wrap">
+      <div class="fm-get-list r d1">
+        <div class="fm-get-item">
+          <div class="fm-get-dot"></div>
+          <p>Bias Fingerprint<span class="fm-get-sub">Your patterns, named and specific to your own decision history.</span></p>
+        </div>
+        <div class="fm-get-item">
+          <div class="fm-get-dot"></div>
+          <p>Confidence Calibration<span class="fm-get-sub">The gap between how confident you were and how right you actually were.</span></p>
+        </div>
+        <div class="fm-get-item">
+          <div class="fm-get-dot"></div>
+          <p>Decision Rules<span class="fm-get-sub">The implicit operating principles your decisions actually reveal.</span></p>
+        </div>
+        <div class="fm-get-item">
+          <div class="fm-get-dot"></div>
+          <p>Contradiction Detector<span class="fm-get-sub">When a recent decision conflicts with a principle from your own record.</span></p>
+        </div>
+        <div class="fm-get-item">
+          <div class="fm-get-dot"></div>
+          <p>Patterns &amp; Session Reliability Index<span class="fm-get-sub">Which structural rules recur, how often, and how reliable each decision was.</span></p>
+        </div>
+        <div class="fm-get-item">
+          <div class="fm-get-dot"></div>
+          <p>Open Loop — your Monthly Judgment Review<span class="fm-get-sub">A rolling summary of what's decided versus what's still open.</span></p>
+        </div>
+        <div class="fm-get-item">
+          <div class="fm-get-dot"></div>
+          <p>Decision Independence Score &amp; Peer Benchmark<span class="fm-get-sub">How much a decision came from you, and how it compares structurally to others.</span></p>
+        </div>
+        <div class="fm-get-item">
+          <div class="fm-get-dot"></div>
+          <p>A standing Founding Member seat<span class="fm-get-sub">Not reissued once the cohort is full, even if a seat later lapses.</span></p>
+        </div>
+      </div>
+
+      <div class="r d2">
+        <div class="fm-price-card">
+          <div class="fm-price-badge">Founding Elite</div>
+          <div class="fm-price-tier">vs. standard Elite</div>
+          <div class="fm-price-row">
+            <span class="fm-price-now"><sub>₹</sub>999</span>
+            <span class="fm-price-was">₹2,999</span>
+          </div>
+          <div class="fm-price-cadence">/month</div>
+          <div class="fm-price-row">
+            <span class="fm-price-now"><sub>₹</sub>9,999</span>
+            <span class="fm-price-was">₹29,999</span>
+          </div>
+          <div class="fm-price-cadence">/year — best value</div>
+          <div class="fm-price-divider"></div>
+          <p class="fm-price-note"><strong>Locked in for as long as you stay subscribed.</strong> This offer lives inside the product itself — you'll see it appear once you've experienced Quorum for yourself, not before.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ WHY LIMITED ═════════════════════════════════════════════ -->
+<div class="wrap" id="why-limited">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">Why limited</span>
+      <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">A small number, on purpose.</h2>
+    </div>
+    <p class="fm-lede r d1">Mirror's earliest signal comes from real decisions, not synthetic ones. Keeping the founding cohort small means each person's feedback and pattern history actually shapes what gets built next, instead of being averaged into noise across thousands of accounts. It's a deliberate design constraint, not a scarcity tactic borrowed from a checkout page.</p>
+    <div class="fm-callout r d2">
+      <p>Once the cohort fills, it's closed — permanently. Even if a founding member later cancels, their seat isn't reissued to someone else.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ WHY EARLY MATTERS ═══════════════════════════════════════ -->
+<div class="wrap" id="why-early">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">Why early matters</span>
+      <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">The earlier you start, the further ahead your Mirror already is.</h2>
+    </div>
+    <p class="fm-lede r d1">Because Mirror compounds off session history, someone who starts today ends up with a longer, richer decision record than someone who joins the identical product six months from now — same features, different starting line. Founding pricing is fixed for as long as you stay subscribed, so the earliest members get both a head start on their own Judgment OS and terms that won't come back around once the cohort is full.</p>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ FINAL CTA ═══════════════════════════════════════════════ -->
+<div class="wrap">
+  <div id="fm-cta">
+    <span class="eyebrow r" style="margin-bottom:22px; display:block;">Begin</span>
+    <h2 class="display fm-cta-hl r d1">Bring one real decision.<br />See what Quorum finds.</h2>
+    <p class="fm-cta-sub r d2">Founding pricing appears inside Mirror once you've experienced Quorum for yourself — after your first few decisions. This isn't a checkout page. It's where you start.</p>
+    <div class="r d3">
+      <a href="https://app.quorumvault.org?utm_source=founding_member_page&utm_medium=cta&utm_campaign=founding_member&utm_content=final_cta" target="_blank" class="btn-cta">
+        Open Quorum
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p class="cta-note">Free to start · Founding pricing unlocks inside Mirror after your first few sessions</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════ -->
+<footer>
+  <span class="footer-logo">Quorum</span>
+  <div class="footer-links" aria-label="Legal" role="navigation">
+    <a href="/privacy"  class="footer-link">Privacy Policy</a>
+    <a href="/cookies"  class="footer-link">Cookie Policy</a>
+    <a href="/terms"    class="footer-link">Terms</a>
+    <a href="/security" class="footer-link">Security &amp; Trust</a>
+  </div>
+  <span class="footer-copy">© 2026 Quorum</span>
+</footer>
+
+<script>
+  /* ── THEME — shared key with the rest of the site, so preference
+     carries over from index.html / card pages if already set. ── */
+  const html  = document.documentElement
+  const btn   = document.getElementById('themeBtn')
+  const saved = localStorage.getItem('q-theme')
+  if (saved) html.setAttribute('data-theme', saved)
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+    html.setAttribute('data-theme', next)
+    localStorage.setItem('q-theme', next)
+  })
+
+  /* ── NAV backdrop on scroll ── */
+  const nav = document.getElementById('nav')
+  window.addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 40), { passive: true })
+
+  /* ── Scroll-reveal ── */
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target) } })
+  }, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' })
+  document.querySelectorAll('.r').forEach(el => ro.observe(el))
+
+  /* ── Video error fallback — if a file 404s (not yet uploaded to
+     Railway), swap to a calm placeholder instead of a broken player.
+     Both videos use preload="none" so nothing downloads until the
+     visitor actually presses play. ── */
+  function initVideoFallback(wrapId, videoId) {
+    const wrap  = document.getElementById(wrapId)
+    const video = document.getElementById(videoId)
+    if (!wrap || !video) return
+    video.addEventListener('error', () => wrap.classList.add('errored'), true)
+    video.querySelectorAll('source').forEach(s => {
+      s.addEventListener('error', () => wrap.classList.add('errored'))
+    })
+  }
+  initVideoFallback('fmResearchWrap', 'fmResearchVideo')
+  initVideoFallback('fmExplainerWrap', 'fmExplainerVideo')
+
+  /* ── Smooth scroll for in-page anchors ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const el = document.getElementById(a.getAttribute('href').slice(1))
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
+    })
+  })
+</script>
+
+</body>
+</html>

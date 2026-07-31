@@ -717,6 +717,20 @@ app.get('/abhilash', (_req, res) => {
   })
 })
 
+/* ── Founding Member page ─────────────────────────────────────────── */
+// Trust/conversion bridge page linked from the "Interested in becoming
+// a Founding Member?" teaser on /kunal and /abhilash. Never a direct
+// path to payment — the actual purchase happens inside the app (Mirror),
+// gated behind real usage. /founding-member is the canonical URL;
+// /founding-member.html direct hits from old links redirect the same way
+// Express serves the .html anyway via the static middleware above, so
+// this route just adds the clean short path.
+app.get('/founding-member', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'founding-member.html'), (err) => {
+    if (err) res.status(404).send('Not found')
+  })
+})
+
 /* ── Fallback → index.html ────────────────────────────────────────── */
 app.get('*', (_req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
