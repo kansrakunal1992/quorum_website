@@ -56,7 +56,7 @@
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
   .rule { border: none; border-top: 1px solid var(--b0); margin: 0 56px; }
   .s { padding: 108px 0; }
-  .sh { max-width: 620px; margin-bottom: 44px; }
+  .sh { max-width: 620px; margin-bottom: 48px; }
   .sh .eyebrow { margin-bottom: 16px; }
 
   /* ══ REVEAL ══════════════════════════════════════════════════ */
@@ -114,7 +114,7 @@
 
   /* ══ PROSE / LEDE ════════════════════════════════════════════ */
   .fm-lede { font-size: 16px; line-height: 1.9; color: var(--t2); max-width: 680px; }
-  .fm-lede + .fm-lede { margin-top: 20px; }
+  .fm-lede + .fm-lede { margin-top: 24px; }
   .fm-lede .hi { color: var(--t1); }
 
   /* ══ WHY-NOW STRIP (3 col) ═══════════════════════════════════ */
@@ -165,7 +165,7 @@
   /* ══ GET-LIST (mirrors the real unlock list inside the app's Mirror) ══ */
   .fm-get-wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; margin-top: 46px; }
   .fm-get-list { display: flex; flex-direction: column; }
-  .fm-get-item { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--b0); }
+  .fm-get-item { display: flex; gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--b0); }
   .fm-get-item:first-child { padding-top: 0; }
   .fm-get-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: 9px; flex-shrink: 0; }
   .fm-get-item p { font-size: 14px; color: var(--t2); line-height: 1.65; }
@@ -189,15 +189,28 @@
   .fm-callout p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 21px; line-height: 1.55; color: var(--t1); }
 
   /* ══ JOURNEY — "what happens next", kept deliberately linear and
-     plain so it reads in a glance, not as another section to study ══ */
+     plain so it reads in a glance, not as another section to study.
+     Each step gets a small outline icon in a circle, connected by a
+     thin vertical line — reads as a simple timeline, not a feature
+     list, and stays quiet rather than playful. ══════════════════ */
   .fm-journey-lede { font-size: 15px; color: var(--t4); margin-bottom: 40px; max-width: 480px; }
   .fm-journey { max-width: 460px; }
-  .fm-journey-step { position: relative; padding: 0 0 32px 32px; border-left: 1px solid var(--b1); }
-  .fm-journey-step:last-child { border-left-color: transparent; padding-bottom: 0; }
-  .fm-journey-step::before { content: ''; position: absolute; left: -5px; top: 3px; width: 9px; height: 9px; border-radius: 50%; background: var(--b1); }
-  .fm-journey-step.gold::before { background: var(--gold); box-shadow: 0 0 12px rgba(201,168,76,0.5); }
-  .fm-journey-step p { font-size: 15.5px; color: var(--t3); line-height: 1.5; }
-  .fm-journey-step.gold p { color: var(--t1); font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 19px; }
+  .fm-journey-step { display: flex; align-items: flex-start; gap: 16px; position: relative; padding-bottom: 34px; }
+  .fm-journey-step:last-child { padding-bottom: 0; }
+  .fm-journey-step:not(:last-child)::before {
+    content: ''; position: absolute; left: 16px; top: 34px; bottom: 0; width: 1px; background: var(--b1);
+  }
+  .fm-journey-icon {
+    flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--b1); background: var(--card);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .fm-journey-icon svg { width: 15px; height: 15px; stroke: var(--t4); color: var(--t4); }
+  .fm-journey-step.gold .fm-journey-icon { border-color: var(--gold-lo); background: rgba(201,168,76,0.09); box-shadow: 0 0 14px rgba(201,168,76,0.25); }
+  .fm-journey-step.gold .fm-journey-icon svg { stroke: var(--gold); color: var(--gold); }
+  .fm-journey-step p { font-size: 15.5px; color: var(--t3); line-height: 1.5; padding-top: 7px; }
+  .fm-journey-step.gold p { color: var(--t1); font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 19px; padding-top: 5px; }
 
   /* ══ REFLECT — one quiet, non-promotional pause; the emotional beat.
      No eyebrow/heading here on purpose — it should feel different from
@@ -417,40 +430,54 @@
         </div>
       </div>
     </div>
-
-    <div style="text-align:center; margin-top:56px;" class="r d3">
-      <a href="https://app.quorumvault.org?utm_source=founding_member_page&utm_medium=cta&utm_campaign=founding_member&utm_content=after_videos" target="_blank" class="btn-open-quorum">
-        Open Quorum
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </a>
-      <p class="cta-note">Free to start · Bring one real decision</p>
-    </div>
   </div>
 </div>
 
 <hr class="rule" />
 
-<!-- ══ WHAT HAPPENS NEXT — a plain, linear journey; purpose is to
-     remove uncertainty, not to persuade ══════════════════════════ -->
+<!-- ══ WHAT HAPPENS NEXT — sits right after the videos and right
+     before the "Open Quorum" CTA, on purpose: explain the sequence
+     before asking anyone to click. Purpose is to remove uncertainty,
+     not to persuade. ══════════════════════════════════════════════ -->
 <div class="wrap" id="journey">
-  <div class="s" style="padding-top: 88px; padding-bottom: 88px;">
+  <div class="s" style="padding-top: 92px; padding-bottom: 96px;">
     <div class="sh r">
       <span class="eyebrow">What happens next</span>
       <h2 class="display" style="font-size: clamp(28px,3vw,38px);">No leap of faith required.</h2>
     </div>
     <div class="fm-journey r d1">
       <div class="fm-journey-step">
+        <div class="fm-journey-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>
+        </div>
         <p>Bring one real decision.</p>
       </div>
       <div class="fm-journey-step">
+        <div class="fm-journey-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg>
+        </div>
         <p>Experience Quorum, free.</p>
       </div>
       <div class="fm-journey-step">
+        <div class="fm-journey-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h8M4 12h11M4 16h14"/></svg>
+        </div>
         <p>Mirror begins building your decision record.</p>
       </div>
       <div class="fm-journey-step gold">
+        <div class="fm-journey-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20l-2-9-5 4-3-7-3 7-5-4-2 9Z"/><path d="M4 21h16"/></svg>
+        </div>
         <p>If it genuinely helps you think better — Founding Membership becomes available.</p>
       </div>
+    </div>
+
+    <div style="text-align:center; margin-top:64px;" class="r d2">
+      <a href="https://app.quorumvault.org?utm_source=founding_member_page&utm_medium=cta&utm_campaign=founding_member&utm_content=after_videos" target="_blank" class="btn-open-quorum">
+        Open Quorum
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p class="cta-note">Free to start · Bring one real decision</p>
     </div>
   </div>
 </div>
@@ -548,7 +575,7 @@
       <span class="eyebrow">Why early matters</span>
       <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">The earlier you start, the further ahead your Mirror already is.</h2>
     </div>
-    <p class="fm-lede r d1">Mirror compounds off session history. Someone who starts today ends up with a longer, richer record than someone joining the same product later — same features, different starting line. And founding pricing, once fixed, doesn't come back around.</p>
+    <p class="fm-lede r d1">Mirror becomes more useful with every important decision you bring to it. Someone who starts today ends up with a longer, richer record than someone joining the same product later — same features, different starting line. And founding pricing, once fixed, doesn't come back around.</p>
   </div>
 </div>
 
@@ -569,8 +596,8 @@
 <!-- ══ FINAL CTA ═══════════════════════════════════════════════ -->
 <div class="wrap">
   <div id="fm-cta">
-    <span class="eyebrow r" style="margin-bottom:22px; display:block;">Begin</span>
-    <h2 class="display fm-cta-hl r d1">Bring one real decision.<br />See what Quorum finds.</h2>
+    <span class="eyebrow r" style="margin-bottom:22px; display:block;">Your first decision starts here.</span>
+    <h2 class="display fm-cta-hl r d1">Bring one real decision.<br />See what Quorum sees.</h2>
     <p class="fm-cta-sub r d2">Founding pricing appears inside Mirror once you've experienced Quorum for yourself. This isn't a checkout page — it's where you start.</p>
     <div class="r d3">
       <a href="https://app.quorumvault.org?utm_source=founding_member_page&utm_medium=cta&utm_campaign=founding_member&utm_content=final_cta" target="_blank" class="btn-cta">
