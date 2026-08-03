@@ -15,6 +15,10 @@
  *      teaser per FOUNDING_MEMBER_ENABLED
  *   5. Serve /founding-member — the Founding Member trust/conversion
  *      page — or redirect it to /kunal when the cohort is closed
+ *   6. Serve /journey — "The Record", the four-decision founder
+ *      journey (Track 2 asset). Always on — not gated by
+ *      FOUNDING_MEMBER_ENABLED, since it's proof-of-value content
+ *      independent of whether the cohort itself is open.
  *
  * Required Railway environment variables (set in website project):
  *   SUPABASE_URL         — https://your-project.supabase.co
@@ -108,6 +112,7 @@ app.get(['/card-kunal.html', '/card-abhilash.html'], (req, res) => {
   res.redirect(301, req.path === '/card-kunal.html' ? '/kunal' : '/abhilash')
 })
 app.get('/founding-member.html', (_req, res) => res.redirect(301, '/founding-member'))
+app.get('/journey.html', (_req, res) => res.redirect(301, '/journey'))
 
 // Serve index.html and any public assets (images, fonts, etc.)
 app.use(express.static(__dirname, {
@@ -780,6 +785,18 @@ app.get('/abhilash', (_req, res) => renderCardPage('card-abhilash.html', res))
 app.get('/founding-member', (_req, res) => {
   if (!FOUNDING_MEMBER_ENABLED) return res.redirect(302, '/kunal')
   res.sendFile(path.join(__dirname, 'founding-member.html'), (err) => {
+    if (err) res.status(404).send('Not found')
+  })
+})
+
+/* ── The Record (founder journey) ─────────────────────────────────── */
+// Four-decision founder journey — proof-of-compounding-value content.
+// Linked from within /founding-member (the "Why early matters" section)
+// and loops back there via the final CTA. Intentionally NOT gated by
+// FOUNDING_MEMBER_ENABLED: it stands on its own even if the cohort
+// itself is temporarily closed.
+app.get('/journey', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'journey.html'), (err) => {
     if (err) res.status(404).send('Not found')
   })
 })

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>The Record — Quorum</title>
+<meta name="description" content="Four real decisions from one founder's Quorum record, in order — how a decision record starts to reveal a pattern of judgment, not just answer a question." />
+<meta property="og:title" content="The Record — Quorum" />
+<meta property="og:description" content="One decision tells you something. Four decisions begin to reveal you." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+
+  /* ══ TOKENS — same system as founding-member.html / quorumvault.org ══ */
+  :root { --radius: 18px; --radius-sm: 10px; --trans: background 0.38s ease, color 0.38s ease, border-color 0.38s ease; }
+  [data-theme="dark"] {
+    --gold: #c9a84c; --gold-hi: #e2c46e; --gold-lo: #a07828;
+    --gold-alpha: rgba(201,168,76,0.12); --gold-glow: rgba(201,168,76,0.06);
+    --bg: #010204; --bg2: #04060f; --card: #080d1b; --card2: #0b1020; --inset: #050912;
+    --b0: #0d1628; --b1: #182340; --b2: #243658;
+    --t0: #ffffff; --t1: #edf2ff; --t2: #c8d6f0; --t3: #8fa8cc; --t4: #506484; --t5: #263d5e;
+    --overlay: rgba(1,2,4,0.92);
+  }
+  [data-theme="light"] {
+    --gold: #9a7020; --gold-hi: #b88c2a; --gold-lo: #7a5510;
+    --gold-alpha: rgba(154,112,32,0.1); --gold-glow: rgba(154,112,32,0.05);
+    --bg: #f4f1eb; --bg2: #ede9e0; --card: #ffffff; --card2: #f8f6f1; --inset: #edeae2;
+    --b0: #c8cdd8; --b1: #aab2c2; --b2: #8896b0;
+    --t0: #060d1c; --t1: #0e1a30; --t2: #1e2e48; --t3: #3a4f70; --t4: #667a9e; --t5: #a0b0c8;
+    --overlay: rgba(244,241,235,0.94);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  a { text-decoration: none; color: inherit; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 16px; line-height: 1.7;
+    color: var(--t2); background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    transition: var(--trans);
+    overflow-x: hidden;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9000;
+  }
+
+  .display { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; color: var(--t0); }
+  .eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; }
+  .mono { font-family: 'DM Mono', monospace; }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+  .rule { border: none; border-top: 1px solid var(--b0); margin: 0 56px; }
+  .s { padding: 108px 0; }
+  .sh { max-width: 620px; margin-bottom: 48px; }
+  .sh .eyebrow { margin-bottom: 16px; }
+
+  /* ══ REVEAL ══════════════════════════════════════════════════ */
+  .r { opacity: 0; transform: translateY(24px); transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1), transform 0.85s cubic-bezier(0.22,1,0.36,1); }
+  .r.in { opacity: 1; transform: none; }
+  .d1 { transition-delay: 0.08s; }
+  .d2 { transition-delay: 0.18s; }
+  .d3 { transition-delay: 0.3s; }
+  @keyframes up { to { opacity:1; transform:none; } }
+  .h-up { opacity: 0; transform: translateY(16px); animation: up 0.85s cubic-bezier(0.22,1,0.36,1) var(--d,0s) forwards; }
+
+  /* ══ NAV ═════════════════════════════════════════════════════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+    height: 68px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; border-bottom: 1px solid transparent;
+    transition: var(--trans), border-color 0.4s, backdrop-filter 0.4s;
+  }
+  nav.stuck { border-color: var(--b0); background: var(--overlay); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
+  .logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--t0); }
+  .logo span { color: var(--gold); }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .nav-back { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--t4); transition: color 0.2s; }
+  .nav-back:hover { color: var(--t2); }
+  .toggle { position: relative; width: 50px; height: 25px; border-radius: 13px; background: var(--card); border: 1px solid var(--b1); cursor: pointer; transition: var(--trans); flex-shrink: 0; }
+  .toggle-thumb { position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--gold); transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1); }
+  [data-theme="light"] .toggle-thumb { transform: translateX(25px); }
+  .toggle-label { position: absolute; top: 50%; transform: translateY(-50%); font-size: 9.5px; line-height: 1; color: var(--t4); user-select: none; }
+  .toggle-label.l { left: 6px; opacity: 0; } .toggle-label.r { right: 6px; }
+  [data-theme="light"] .toggle-label.l { opacity: 1; } [data-theme="light"] .toggle-label.r { opacity: 0; }
+
+  /* ══ BUTTONS ═════════════════════════════════════════════════ */
+  .btn-cta { font-size: 14.5px; font-weight: 500; padding: 18px 40px; background: var(--gold); color: var(--bg); border: none; border-radius: var(--radius-sm); cursor: pointer; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 10px; transition: background 0.2s, transform 0.15s; }
+  .btn-cta:hover { background: var(--gold-hi); transform: translateY(-2px); }
+  .cta-note { font-size: 11px; color: var(--t5); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 12px; }
+  .cta-note a { color: var(--t4); border-bottom: 1px solid var(--b1); text-transform: none; letter-spacing: 0.02em; transition: color 0.2s, border-color 0.2s; }
+  .cta-note a:hover { color: var(--gold); border-color: var(--gold-lo); }
+
+  /* ══ HERO ════════════════════════════════════════════════════ */
+  #hero { min-height: 70vh; display: flex; align-items: center; padding-top: 130px; padding-bottom: 60px; position: relative; }
+  .hero-aura { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 900px; height: 640px; background: radial-gradient(ellipse at 50% 30%, var(--gold-glow) 0%, transparent 62%); pointer-events: none; }
+  .jr-hero-hl { font-size: clamp(34px, 5vw, 58px); max-width: 760px; margin-bottom: 26px; }
+  .jr-hero-hl em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 16.5px; line-height: 1.85; color: var(--t3); max-width: 540px; }
+  .scroll-cue { display: inline-flex; align-items: center; gap: 8px; margin-top: 48px; font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--t5); }
+  .scroll-cue svg { animation: bob 2s ease-in-out infinite; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+  /* ══ TIMELINE ════════════════════════════════════════════════
+     Each node's connecting thread starts faint and, as the next
+     node scrolls into view, fills gold — a small, literal signal
+     that the record is sharpening as it goes rather than staying
+     a flat feature list. ══════════════════════════════════════ */
+  .jr-timeline { max-width: 840px; }
+  .jr-node { display: grid; grid-template-columns: 56px 1fr; gap: 30px; position: relative; padding-bottom: 88px; }
+  .jr-node:last-child { padding-bottom: 0; }
+  .jr-rail { position: relative; display: flex; flex-direction: column; align-items: center; }
+  .jr-num { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; font-weight: 400; color: var(--t4); line-height: 1; margin-bottom: 14px; }
+  .jr-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px var(--gold-alpha); flex-shrink: 0; }
+  .jr-line { position: absolute; top: 46px; bottom: -88px; left: 50%; width: 1px; transform: translateX(-50%); background: var(--b1); overflow: hidden; }
+  .jr-node:last-child .jr-line { display: none; }
+  .jr-line-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0; background: linear-gradient(var(--gold-lo), var(--gold)); transition: height 1.1s cubic-bezier(0.22,1,0.36,1); }
+  .jr-line.lit .jr-line-fill { height: 100%; }
+
+  .jr-callback { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; padding: 12px 16px; border: 1px solid var(--b0); border-radius: var(--radius-sm); background: var(--card); max-width: 560px; }
+  .jr-callback svg { flex-shrink: 0; margin-top: 3px; stroke: var(--gold-lo); }
+  .jr-callback p { font-size: 12.5px; color: var(--t4); line-height: 1.6; font-style: italic; }
+  .jr-callback p strong { color: var(--t3); font-style: normal; font-weight: 400; }
+
+  .jr-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-lo); background: var(--gold-alpha); padding: 4px 10px; border-radius: 999px; margin-bottom: 16px; }
+  .jr-title { font-size: clamp(24px, 2.8vw, 32px); font-style: italic; margin-bottom: 10px; max-width: 560px; }
+  .jr-meta { font-size: 11.5px; color: var(--t5); letter-spacing: 0.03em; margin-bottom: 22px; }
+  .jr-context { font-size: 14.5px; color: var(--t4); line-height: 1.75; max-width: 540px; margin-bottom: 14px; }
+  .jr-surfaced { font-size: 15px; color: var(--t2); line-height: 1.8; max-width: 560px; margin-bottom: 22px; }
+  .jr-insight { border-left: 2px solid var(--gold-lo); padding-left: 22px; max-width: 520px; }
+  .jr-insight p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.55; color: var(--t1); }
+
+  /* ══ PATTERN STRIP ═══════════════════════════════════════════ */
+  .jr-stats { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--b0); border-radius: 20px; overflow: hidden; margin-top: 44px; margin-bottom: 40px; }
+  .jr-stat { padding: 34px 28px; border-right: 1px solid var(--b0); background: var(--card); }
+  .jr-stat:last-child { border-right: none; }
+  .jr-stat-n { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 14px; }
+  .jr-stat p { font-size: 13px; color: var(--t4); line-height: 1.7; }
+  .jr-quote { border-left: 2px solid var(--gold-lo); padding-left: 28px; max-width: 620px; }
+  .jr-quote p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.6; color: var(--t1); }
+  .jr-quote span { display: block; margin-top: 10px; font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--t5); font-style: normal; }
+
+  /* ══ REFLECT ═════════════════════════════════════════════════ */
+  .jr-reflect { text-align: center; padding: 96px 0; }
+  .jr-reflect-mark { width: 34px; height: 1px; background: var(--gold-lo); margin: 0 auto 34px; }
+  .jr-reflect p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; font-size: clamp(21px, 2.6vw, 27px); line-height: 1.6; color: var(--t1); max-width: 660px; margin: 0 auto; }
+  .jr-reflect p + p { margin-top: 18px; color: var(--t3); font-size: clamp(18px,2.2vw,22px); }
+
+  /* ══ CTA ═════════════════════════════════════════════════════ */
+  #jr-cta { text-align: center; padding: 120px 0 140px; }
+  .jr-cta-hl { font-size: clamp(34px,4.8vw,54px); max-width: 640px; margin: 0 auto 22px; }
+  .jr-cta-sub { font-size: 15.5px; color: var(--t3); max-width: 480px; margin: 0 auto 40px; line-height: 1.85; }
+
+  /* ══ FOOTER ══════════════════════════════════════════════════ */
+  footer { padding: 56px 56px; border-top: 1px solid var(--b0); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--t4); }
+  .footer-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+  .footer-link { font-size: 11.5px; color: var(--t4); letter-spacing: 0.03em; transition: color 0.2s; white-space: nowrap; }
+  .footer-link:hover { color: var(--t1); }
+  .footer-copy { font-size: 12px; color: var(--t4); letter-spacing: 0.04em; white-space: nowrap; }
+
+  /* ══ RESPONSIVE ══════════════════════════════════════════════ */
+  @media (max-width: 980px) {
+    .wrap { padding: 0 24px; }
+    .rule { margin: 0 24px; }
+    nav { padding: 0 20px; }
+    .s { padding: 76px 0; }
+    #hero { padding-top: 110px; min-height: auto; }
+    .jr-stats { grid-template-columns: 1fr; border-radius: 16px; }
+    .jr-stat { border-right: none; border-bottom: 1px solid var(--b0); }
+    .jr-stat:last-child { border-bottom: none; }
+    footer { padding: 36px 20px; flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 18px; }
+    .rule { margin: 0 18px; }
+    nav { padding: 0 16px; height: 60px; }
+    .logo { font-size: 17px; }
+    #hero { padding-top: 96px; }
+    .jr-node { grid-template-columns: 34px 1fr; gap: 16px; padding-bottom: 64px; }
+    .jr-num { display: none; }
+    .jr-line { top: 20px; bottom: -64px; }
+    .jr-callback { padding: 10px 14px; }
+    .jr-title { font-size: 22px; }
+    .jr-insight { padding-left: 16px; }
+    .jr-quote { padding-left: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV — back link points to Founding Member, since that's where
+     this session came from and where it loops back to ═══════════ -->
+<nav id="nav">
+  <a href="/" class="logo">Quoru<span>m</span></a>
+  <div class="nav-right">
+    <a href="/founding-member" class="nav-back">← Founding Member</a>
+    <button class="toggle" id="themeBtn" aria-label="Toggle light/dark mode">
+      <div class="toggle-thumb"></div>
+      <span class="toggle-label l">☀</span>
+      <span class="toggle-label r">☾</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ════════════════════════════════════════════════════ -->
+<div class="wrap">
+  <div id="hero">
+    <div class="hero-aura"></div>
+    <div>
+      <span class="eyebrow r">The Record</span>
+      <h1 class="jr-hero-hl display r d1">One decision tells you something.<br /><em>Four decisions begin to reveal you.</em></h1>
+      <p class="hero-sub r d2">Four real sessions from one founder's Quorum record, in the order they happened — unedited, and structurally linked in ways nobody set out to design.</p>
+      <div class="scroll-cue r d3">
+        <span>Scroll</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ TIMELINE ════════════════════════════════════════════════ -->
+<div class="wrap">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">Four sessions, in order</span>
+      <h2 class="display" style="font-size: clamp(28px,3.2vw,40px);">The same person, four different rooms.</h2>
+    </div>
+
+    <div class="jr-timeline">
+
+      <!-- NODE 1 -->
+      <div class="jr-node r" data-index="1">
+        <div class="jr-rail">
+          <span class="jr-num">01</span>
+          <span class="jr-dot"></span>
+          <div class="jr-line"><span class="jr-line-fill"></span></div>
+        </div>
+        <div class="jr-content">
+          <span class="jr-tag">Identity</span>
+          <h3 class="jr-title display">Quit the job — or keep building on the side?</h3>
+          <p class="jr-meta mono">First entry in the record · no revenue yet</p>
+          <p class="jr-context">Before there was a company to make resource decisions about, there was only this: commit fully, or don't.</p>
+          <p class="jr-surfaced">Every advisor leaned the same way — wait. What read on the surface as a timing question was, underneath, an identity one: the pull toward the startup was emotional, the reasons to stay were structural.</p>
+          <div class="jr-insight"><p>"You're treating the startup's potential as a substitute for the stability you've already built."</p></div>
+        </div>
+      </div>
+
+      <!-- NODE 2 -->
+      <div class="jr-node r" data-index="2">
+        <div class="jr-rail">
+          <span class="jr-num">02</span>
+          <span class="jr-dot"></span>
+          <div class="jr-line"><span class="jr-line-fill"></span></div>
+        </div>
+        <div class="jr-content">
+          <div class="jr-callback">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            <p>This session opened with a direct line from the last one: <strong>"I decided to continue building the company full-time."</strong></p>
+          </div>
+          <span class="jr-tag">Resource allocation</span>
+          <h3 class="jr-title display">Bootstrap further — or raise a seed round now?</h3>
+          <p class="jr-meta mono">$4.5k → $9k MRR · an angel offers an intro to seed funds</p>
+          <p class="jr-context">Revenue is real, and so is the fear of a market window closing.</p>
+          <p class="jr-surfaced">Wait, again — not because the capital wasn't real, but because taking it now would hand roadmap control to someone else before the fit was proven.</p>
+          <div class="jr-insight"><p>"You're trading the fear of missing a crowded window for the clarity of proving what you've already built."</p></div>
+        </div>
+      </div>
+
+      <!-- NODE 3 -->
+      <div class="jr-node r" data-index="3">
+        <div class="jr-rail">
+          <span class="jr-num">03</span>
+          <span class="jr-dot"></span>
+          <div class="jr-line"><span class="jr-line-fill"></span></div>
+        </div>
+        <div class="jr-content">
+          <div class="jr-callback">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            <p>Opened the same way the last one closed: <strong>"I chose to continue bootstrapping."</strong></p>
+          </div>
+          <span class="jr-tag">Resource allocation</span>
+          <h3 class="jr-title display">Hire a GTM leader — or keep selling personally?</h3>
+          <p class="jr-meta mono">$18k MRR · founder still closes every deal</p>
+          <p class="jr-context">It sounded like a hiring question. The record read it differently.</p>
+          <p class="jr-surfaced">Wait, a third time — but this time the record named the real question directly: what does it cost you to be the one who always carries the weight of selling?</p>
+          <div class="jr-insight"><p>"You're outsourcing the weight of the decision before you've fully carried it yourself."</p></div>
+        </div>
+      </div>
+
+      <!-- NODE 4 -->
+      <div class="jr-node r" data-index="4">
+        <div class="jr-rail">
+          <span class="jr-num">04</span>
+          <span class="jr-dot"></span>
+        </div>
+        <div class="jr-content">
+          <div class="jr-callback">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            <p>$30k MRR — nearly double the session before. Two enterprise customers now on the table.</p>
+          </div>
+          <span class="jr-tag">Resource allocation · Challenging my thinking</span>
+          <h3 class="jr-title display">Stay with one ICP — or expand into enterprise?</h3>
+          <p class="jr-meta mono">Decision record #4 · added to Mirror</p>
+          <p class="jr-context">The biggest number yet. The same question underneath.</p>
+          <p class="jr-surfaced">For the first time, the record said the pattern out loud, unprompted: "the structural mechanism is identical to the earlier bootstrap-or-raise choice."</p>
+          <div class="jr-insight"><p>"You favor protecting proven patterns over scaling them, even when the alternative promises greater reach." — added to Mirror after this session.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ WHAT FOUR DECISIONS SHOW ════════════════════════════════ -->
+<div class="wrap">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">What four decisions show</span>
+      <h2 class="display" style="font-size: clamp(28px,3.2vw,40px);">The record started noticing itself.</h2>
+    </div>
+    <p class="fm-lede r d1" style="font-size:16px; color:var(--t2); line-height:1.9; max-width:640px;">None of this was tagged by hand. It's what showed up once there were enough sessions to compare.</p>
+
+    <div class="jr-stats r d2">
+      <div class="jr-stat">
+        <div class="jr-stat-n">3 of 4</div>
+        <p>decisions came back structurally similar enough that Quorum flagged them as one repeating shape — control weighed against growth.</p>
+      </div>
+      <div class="jr-stat">
+        <div class="jr-stat-n">6</div>
+        <p>connections drawn between four decisions, without being asked to look for any.</p>
+      </div>
+      <div class="jr-stat">
+        <div class="jr-stat-n">4 / 4</div>
+        <p>councils reached the same verdict — wait, and protect what's already proven — regardless of the question in front of them.</p>
+      </div>
+    </div>
+
+    <div class="jr-quote r d3">
+      <p>"Should I bootstrap further or raise a seed round now?" keeps resurfacing across the record — often a sign a decision is still unresolved.</p>
+      <span>Surfaced by the Decision Graph, unprompted</span>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ REFLECT ═════════════════════════════════════════════════ -->
+<div class="wrap">
+  <div class="jr-reflect r">
+    <div class="jr-reflect-mark"></div>
+    <p>The first decision answered a question.</p>
+    <p>The fourth is starting to answer a different one — not what should I do, but how do I actually decide.</p>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ CTA ═════════════════════════════════════════════════════ -->
+<div class="wrap">
+  <div id="jr-cta">
+    <span class="eyebrow r" style="margin-bottom:22px; display:block;">Your record starts with one decision</span>
+    <h2 class="display jr-cta-hl r d1">One won't feel like much.<br />Four will.</h2>
+    <p class="jr-cta-sub r d2">Quorum doesn't remember conversations. It remembers judgment.</p>
+    <div class="r d3">
+      <a href="https://app.quorumvault.org?utm_source=journey_page&utm_medium=cta&utm_campaign=founder_journey&utm_content=final_cta" target="_blank" class="btn-cta">
+        Open Quorum
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p class="cta-note">Free to start · <a href="/founding-member?ref=journey#fm-cta">Founding pricing details</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════ -->
+<footer>
+  <span class="footer-logo">Quorum</span>
+  <div class="footer-links" aria-label="Legal" role="navigation">
+    <a href="/privacy"  class="footer-link">Privacy Policy</a>
+    <a href="/cookies"  class="footer-link">Cookie Policy</a>
+    <a href="/terms"    class="footer-link">Terms</a>
+    <a href="/security" class="footer-link">Security &amp; Trust</a>
+  </div>
+  <span class="footer-copy">© 2026 Quorum</span>
+</footer>
+
+<script>
+  /* ── THEME — shared key with the rest of the site ── */
+  const html  = document.documentElement
+  const btn   = document.getElementById('themeBtn')
+  const saved = localStorage.getItem('q-theme')
+  if (saved) html.setAttribute('data-theme', saved)
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+    html.setAttribute('data-theme', next)
+    localStorage.setItem('q-theme', next)
+  })
+
+  /* ── NAV backdrop on scroll ── */
+  const nav = document.getElementById('nav')
+  window.addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 40), { passive: true })
+
+  /* ── Scroll-reveal + thread fill: when a node comes into view, the
+     connecting line ABOVE it fills gold — the record visibly
+     sharpening node to node, not just fading in as generic content. ── */
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return
+      e.target.classList.add('in')
+      const idx = e.target.dataset.index
+      if (idx && idx !== '1') {
+        const prevLine = document.querySelector(`.jr-node[data-index="${idx - 1}"] .jr-line`)
+        if (prevLine) prevLine.classList.add('lit')
+      }
+      ro.unobserve(e.target)
+    })
+  }, { threshold: 0.15, rootMargin: '0px 0px -28px 0px' })
+  document.querySelectorAll('.r').forEach(el => ro.observe(el))
+
+  /* ── Smooth scroll for in-page anchors ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const el = document.getElementById(a.getAttribute('href').slice(1))
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
+    })
+  })
+</script>
+
+</body>
+</html>

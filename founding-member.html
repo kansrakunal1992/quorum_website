@@ -188,6 +188,14 @@
   .fm-callout { border-left: 2px solid var(--gold-lo); padding-left: 28px; margin-top: 36px; max-width: 680px; }
   .fm-callout p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 21px; line-height: 1.55; color: var(--t1); }
 
+  /* ══ INLINE LINK — points into /journey from within this section's
+     own subject (Mirror compounding over time), so it reads as a
+     continuation of the sentence above it, not a new pitch. ═══════ */
+  .fm-journey-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; font-family: 'DM Mono', monospace; font-size: 12.5px; letter-spacing: 0.04em; color: var(--gold); border-bottom: 1px solid var(--gold-lo); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; }
+  .fm-journey-link:hover { color: var(--gold-hi); border-color: var(--gold-hi); }
+  .fm-journey-link svg { transition: transform 0.2s; }
+  .fm-journey-link:hover svg { transform: translateX(3px); }
+
   /* ══ JOURNEY — "what happens next", kept deliberately linear and
      plain so it reads in a glance, not as another section to study.
      Each step gets a small outline icon in a circle, connected by a
@@ -576,6 +584,10 @@
       <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">The earlier you start, the further ahead your Mirror already is.</h2>
     </div>
     <p class="fm-lede r d1">Mirror becomes more useful with every important decision you bring to it. Someone who starts today ends up with a longer, richer record than someone joining the same product later — same features, different starting line. And founding pricing, once fixed, doesn't come back around.</p>
+    <a href="/journey?ref=founding_member_why_early" class="fm-journey-link r d2">
+      See what that looks like across four real decisions
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
   </div>
 </div>
 
