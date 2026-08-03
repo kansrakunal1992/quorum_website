@@ -90,6 +90,15 @@ app.use(express.json({ limit: '512kb' }))
 const FOUNDING_TEASER_BLOCK_RX =
   /\r?\n[ \t]*<!-- FOUNDING_TEASER:START[\s\S]*?FOUNDING_TEASER:END -->\r?\n?/
 
+// Same marker convention, generalized to two swappable variants — used
+// in journey.html, which references /founding-member in a couple of
+// places (nav back-link, secondary CTA link) that need to look correct
+// whether the cohort is open or closed, not just avoid a broken link.
+const FOUNDING_OPEN_BLOCK_RX =
+  /\r?\n?[ \t]*<!-- FOUNDING_OPEN:START[\s\S]*?FOUNDING_OPEN:END -->\r?\n?/g
+const FOUNDING_CLOSED_BLOCK_RX =
+  /\r?\n?[ \t]*<!-- FOUNDING_CLOSED:START[\s\S]*?FOUNDING_CLOSED:END -->\r?\n?/g
+
 function renderCardPage(filename, res) {
   let html
   try {
@@ -100,6 +109,26 @@ function renderCardPage(filename, res) {
   if (!FOUNDING_MEMBER_ENABLED) {
     html = html.replace(FOUNDING_TEASER_BLOCK_RX, '')
   }
+  res.type('html').send(html)
+}
+
+// journey.html always renders (never redirects — see route below), but
+// its two /founding-member references need to match reality: point to
+// the live page when the cohort is open, or degrade to a plain "back
+// to Quorum" link and no pricing mention when it's closed. Same
+// find-file-strip-block approach as renderCardPage, just keeping
+// whichever variant applies instead of only ever removing one.
+function renderJourneyPage(res) {
+  let html
+  try {
+    html = fs.readFileSync(path.join(__dirname, 'journey.html'), 'utf8')
+  } catch {
+    return res.status(404).send('Not found')
+  }
+  html = html.replace(
+    FOUNDING_MEMBER_ENABLED ? FOUNDING_CLOSED_BLOCK_RX : FOUNDING_OPEN_BLOCK_RX,
+    ''
+  )
   res.type('html').send(html)
 }
 
@@ -795,11 +824,7 @@ app.get('/founding-member', (_req, res) => {
 // and loops back there via the final CTA. Intentionally NOT gated by
 // FOUNDING_MEMBER_ENABLED: it stands on its own even if the cohort
 // itself is temporarily closed.
-app.get('/journey', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'journey.html'), (err) => {
-    if (err) res.status(404).send('Not found')
-  })
-})
+app.get('/journey', (_req, res) => renderJourneyPage(res))
 
 /* ── Fallback → index.html ────────────────────────────────────────── */
 app.get('*', (_req, res) => {

@@ -479,6 +479,15 @@
     .sh { margin-bottom: 62px; }
     .sh .eyebrow { margin-bottom: 18px; }
 
+    /* ══ MOMENTS → JOURNEY LINK — always-on entry point into /journey.
+       Lives in the Mirror section (not gated by the founding-member
+       toggle) so it's discoverable for every visitor, cohort open or
+       closed. ══════════════════════════════════════════════════ */
+    .moments-journey-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 56px; font-family: 'DM Mono', monospace; font-size: 12.5px; letter-spacing: 0.04em; color: var(--gold); border-bottom: 1px solid var(--gold-lo); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; }
+    .moments-journey-link:hover { color: var(--gold-hi); border-color: var(--gold-hi); }
+    .moments-journey-link svg { transition: transform 0.2s; }
+    .moments-journey-link:hover svg { transform: translateX(3px); }
+
     /* ══ PROSE ══════════════════════════════════════════════════ */
     .prose p { font-size: 16px; line-height: 1.9; color: var(--t2); margin-bottom: 22px; }
     .prose p:last-child { margin-bottom: 0; }
@@ -3254,7 +3263,10 @@
       </div>
     </div>
 
-    
+    <a href="/journey?ref=index_moments" class="moments-journey-link r">
+      Read a real decision record — four sessions, in order
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
 
   </div>
 </div>
