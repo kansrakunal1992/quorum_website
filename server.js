@@ -9,10 +9,11 @@
  *      using server-side credentials (never exposed in HTML)
  *   3. Serve /privacy, /cookies, /terms, /security as the same page
  *      stub until S3 builds proper legal pages
- *   4. Serve /kunal and /abhilash as short, shareable URLs for the
- *      founders' digital business cards (card-kunal.html /
- *      card-abhilash.html), including/excluding the Founding Member
- *      teaser per FOUNDING_MEMBER_ENABLED
+ *   4. Serve /kunal as a short, shareable URL for the founder's
+ *      digital business card (card-kunal.html), including/excluding
+ *      the Founding Member teaser per FOUNDING_MEMBER_ENABLED.
+ *      /abhilash redirects to / — Abhilash is no longer with Quorum;
+ *      card-abhilash.html and abhilash.vcf have been removed.
  *   5. Serve /founding-member — the Founding Member trust/conversion
  *      page — or redirect it to /kunal when the cohort is closed
  *   6. Serve /journey — "The Record", the four-decision founder
@@ -28,8 +29,8 @@
  * Optional:
  *   FOUNDING_MEMBER_ENABLED — "true" (default) or "false". Set to
  *     "false" to close the Founding Member cohort: removes the teaser
- *     from /kunal and /abhilash, and /founding-member redirects to
- *     /kunal. No code change needed — just the Railway variable.
+ *     from /kunal, and /founding-member redirects to /kunal. No code
+ *     change needed — just the Railway variable.
  *
  * Start command: node server.js
  */
@@ -49,7 +50,7 @@ const PORT      = process.env.PORT ?? 3000
 // deliberately set FOUNDING_MEMBER_ENABLED=false in Railway → website
 // project → Variables (no code change or redeploy of app.quorumvault.org
 // needed). When false:
-//   - /kunal and /abhilash render without the "Interested in becoming a
+//   - /kunal renders without the "Interested in becoming a
 //     Founding Member?" teaser — cards revert to their original state.
 //   - /founding-member redirects to /kunal rather than showing a live
 //     invite with nowhere real for it to have come from.
@@ -82,8 +83,8 @@ function getSupabase() {
 app.use(express.json({ limit: '512kb' }))
 
 /* ── Card rendering (respects FOUNDING_MEMBER_ENABLED) ────────────── */
-// The teaser block in card-kunal.html / card-abhilash.html is wrapped
-// in <!-- FOUNDING_TEASER:START/END --> markers. When the cohort is
+// The teaser block in card-kunal.html is wrapped in
+// <!-- FOUNDING_TEASER:START/END --> markers. When the cohort is
 // closed we strip everything between them so the card renders exactly
 // as it did before the Founding Member feature existed — no partial
 // or broken-looking box, no dead link.
@@ -132,14 +133,18 @@ function renderJourneyPage(res) {
   res.type('html').send(html)
 }
 
-// Direct hits on the raw filenames (e.g. someone bookmarked
+// Direct hits on the raw filename (e.g. someone bookmarked
 // /card-kunal.html, or it's guessed from this source file) are
 // redirected to the canonical short URL below — otherwise Express's
 // static file server would serve the raw, unprocessed file and the
 // toggle above would have no effect on that path.
-app.get(['/card-kunal.html', '/card-abhilash.html'], (req, res) => {
-  res.redirect(301, req.path === '/card-kunal.html' ? '/kunal' : '/abhilash')
-})
+app.get('/card-kunal.html', (_req, res) => res.redirect(301, '/kunal'))
+
+// card-abhilash.html no longer exists — Abhilash is no longer with
+// Quorum. Any old bookmark or shared link for his card/URL lands on
+// the homepage rather than 404ing.
+app.get(['/card-abhilash.html', '/abhilash'], (_req, res) => res.redirect(301, '/'))
+
 app.get('/founding-member.html', (_req, res) => res.redirect(301, '/founding-member'))
 app.get('/journey.html', (_req, res) => res.redirect(301, '/journey'))
 
@@ -793,18 +798,17 @@ app.get('/security', (_req, res) => res.send(LEGAL_SHELL('Security & Trust', `
   </div>
 `)))
 
-/* ── Digital business cards — short, shareable URLs ───────────────── */
+/* ── Digital business card — short, shareable URL ──────────────────── */
 // e.g. quorumvault.org/kunal instead of the raw .html filename. Must be
 // defined before the catch-all fallback below. Rendered dynamically
 // (not sendFile) so the Founding Member teaser can be included or
 // stripped per FOUNDING_MEMBER_ENABLED — see renderCardPage() above.
 app.get('/kunal', (_req, res) => renderCardPage('card-kunal.html', res))
-app.get('/abhilash', (_req, res) => renderCardPage('card-abhilash.html', res))
 
 /* ── Founding Member page ─────────────────────────────────────────── */
 // Trust/conversion bridge page linked from the "Interested in becoming
-// a Founding Member?" teaser on /kunal and /abhilash. Never a direct
-// path to payment — the actual purchase happens inside the app (Mirror),
+// a Founding Member?" teaser on /kunal. Never a direct path to
+// payment — the actual purchase happens inside the app (Mirror),
 // gated behind real usage.
 //
 // When the cohort is closed (FOUNDING_MEMBER_ENABLED=false), the cards

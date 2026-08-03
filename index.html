@@ -905,7 +905,7 @@
     }
     .dbc-btn:hover { border-color: var(--gold); color: var(--gold-hi); background: var(--gold-alpha); }
 
-    /* ══ BOOKING MODAL (shared — Kunal / Abhilash) ═══════════════════ */
+    /* ══ BOOKING MODAL ══════════════════════════════════════════ */
     .booking-modal-overlay {
       position: fixed;
       inset: 0;
@@ -3796,7 +3796,6 @@
         <p class="dbc-label">Prefer to talk it through live instead of waiting for a reply? Bring this same decision to a 30-minute session.</p>
         <div class="dbc-row">
           <button type="button" class="dbc-btn" onclick="openBookingModal('kunal')">Book 30 min with Kunal →</button>
-          <button type="button" class="dbc-btn" onclick="openBookingModal('abhilash')">Book 30 min with Abhilash →</button>
         </div>
       </div>
 
@@ -3873,7 +3872,7 @@
   </div><!-- /modal-inner -->
 </div><!-- /modal-overlay -->
 
-<!-- Booking lightbox — shared between Kunal and Abhilash, populated by openBookingModal() -->
+<!-- Booking lightbox — populated by openBookingModal() -->
 <div class="booking-modal-overlay" id="bookingModal">
   <div class="booking-modal-inner">
     <button class="booking-modal-close" id="bookingModalClose" aria-label="Close">✕</button>
@@ -4142,7 +4141,7 @@
     document.getElementById('decisionBookCta').classList.toggle('show', enough)
   }
 
-  /* ── Direct-booking modal (shared — reads BOOKING_LINKS below) ── */
+  /* ── Direct-booking modal (reads BOOKING_LINKS below) ── */
   const BOOKING_LINKS = {
     kunal: {
       // CONFIG: same working values as BOOKING_PAGE_URL / BOOKING_EMBED_URL
@@ -4150,13 +4149,6 @@
       page:  'https://calendar.app.google/CuUs83WasYR2LTnw8',
       embed: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1QN6X7RJi0QNjgw1s_xTLXGwyXhVImUFD-hPePC17zqw1WwWG9ukKNxGu3V8VUl6fng7JRABl1?gv=true',
       label: 'Kunal Kansra'
-    },
-    abhilash: {
-      // CONFIG: same working values as BOOKING_PAGE_URL / BOOKING_EMBED_URL
-      // in card-abhilash.html — copy them here once confirmed.
-      page:  'https://calendar.app.google/REPLACE_WITH_ABHILASH_SHORT_LINK',
-      embed: 'https://calendar.google.com/calendar/appointments/schedules/REPLACE_WITH_ABHILASH_SCHEDULE_ID?gv=true',
-      label: 'Abhilash Warrier'
     }
   }
 

@@ -3,6 +3,19 @@ Quorum Website — Founding Member flow + cohort toggle + content revamp
 5 files, all drop into the existing website Railway project root
 (same directory as the current server.js). No new dependencies.
 
+UPDATE — Abhilash removed from the website
+--------------------------------------------
+Abhilash is no longer with Quorum. Removed everywhere on the website:
+  - Deleted card-abhilash.html and abhilash.vcf
+  - Deleted the /abhilash route; /abhilash and /card-abhilash.html now
+    301-redirect to / (old bookmarks/shared links won't 404)
+  - Removed the "Book 30 min with Abhilash" button and his entry in
+    BOOKING_LINKS on index.html
+  - Cleaned up comments/docstrings in server.js and env.example that
+    referenced /abhilash
+This was website-only — no app-side, legal, cap table, or access
+changes were made or implied by this update.
+
 WHAT'S NEW IN THIS UPDATE
 --------------------------
 1. FOUNDING_MEMBER_ENABLED env var (server.js, env.example)
