@@ -163,6 +163,40 @@
   .footer-link:hover { color: var(--t1); }
   .footer-copy { font-size: 12px; color: var(--t4); letter-spacing: 0.04em; white-space: nowrap; }
 
+  body.modal-open { overflow: hidden; }
+
+  /* ══ BRIEF LINK — per timeline node ═════════════════════════ */
+  .jr-brief-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--t3); border: 1px solid var(--b1); background: var(--card); padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+  .jr-brief-link:hover { color: var(--gold-hi); border-color: var(--gold-lo); background: var(--gold-alpha); }
+  .jr-brief-link svg { flex-shrink: 0; stroke: currentColor; }
+
+  /* ══ DECISION LIBRARY ════════════════════════════════════════ */
+  .lib-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--b0); border: 1px solid var(--b0); border-radius: 20px; overflow: hidden; margin-top: 44px; }
+  .lib-card { background: var(--card); padding: 34px 32px; cursor: pointer; transition: background 0.25s; display: flex; flex-direction: column; }
+  .lib-card:hover { background: var(--card2); }
+  .lib-card:hover .lib-card-cta { color: var(--gold-hi); }
+  .lib-card-cat { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .lib-card-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; font-style: italic; font-weight: 400; color: var(--t1); margin-bottom: 10px; line-height: 1.4; }
+  .lib-card-desc { font-size: 13.5px; color: var(--t4); line-height: 1.75; margin-bottom: 22px; flex: 1; }
+  .lib-card-cta { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--t4); transition: color 0.2s; }
+  .lib-card-cta svg { stroke: currentColor; }
+
+  /* ══ BRIEF VIEWER MODAL ══════════════════════════════════════ */
+  .brief-modal { position: fixed; inset: 0; z-index: 2000; visibility: hidden; opacity: 0; transition: opacity 0.3s ease, visibility 0s linear 0.3s; }
+  .brief-modal.open { visibility: visible; opacity: 1; transition: opacity 0.3s ease; }
+  .brief-modal-backdrop { position: absolute; inset: 0; background: rgba(1,2,4,0.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  [data-theme="light"] .brief-modal-backdrop { background: rgba(20,18,14,0.5); }
+  .brief-modal-panel { position: relative; width: min(92vw, 860px); height: min(88vh, 920px); margin: 6vh auto 0; background: var(--card); border: 1px solid var(--b1); border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.5); transform: translateY(18px) scale(0.98); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); }
+  .brief-modal.open .brief-modal-panel { transform: translateY(0) scale(1); }
+  .brief-modal-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border-bottom: 1px solid var(--b0); background: var(--card2); flex-shrink: 0; }
+  .brief-modal-eyebrow { display: block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .brief-modal-title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; color: var(--t0); font-weight: 400; line-height: 1.3; }
+  .brief-modal-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .brief-modal-download, .brief-modal-close { width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--b1); background: var(--card); color: var(--t3); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+  .brief-modal-download:hover, .brief-modal-close:hover { color: var(--gold-hi); border-color: var(--gold-lo); background: var(--gold-alpha); }
+  .brief-modal-body { flex: 1; background: #17181c; }
+  .brief-modal-body iframe { width: 100%; height: 100%; border: none; display: block; }
+
   /* ══ RESPONSIVE ══════════════════════════════════════════════ */
   @media (max-width: 980px) {
     .wrap { padding: 0 24px; }
@@ -188,6 +222,10 @@
     .jr-title { font-size: 22px; }
     .jr-insight { padding-left: 16px; }
     .jr-quote { padding-left: 18px; }
+    .lib-grid { grid-template-columns: 1fr; border-radius: 16px; }
+    .lib-card { padding: 26px 22px; }
+    .brief-modal-panel { width: 100vw; height: 100dvh; margin: 0; border-radius: 0; border: none; }
+    .brief-modal-title { font-size: 15px; }
   }
 </style>
 </head>
@@ -254,6 +292,10 @@
           <p class="jr-context">Before there was a company to make resource decisions about, there was only this: commit fully, or don't.</p>
           <p class="jr-surfaced">Every advisor leaned the same way — wait. What read on the surface as a timing question was, underneath, an identity one: the pull toward the startup was emotional, the reasons to stay were structural.</p>
           <div class="jr-insight"><p>"You're treating the startup's potential as a substitute for the stability you've already built."</p></div>
+          <button class="jr-brief-link" data-brief="/decisions/decision-quit-the-job.pdf" data-brief-title="Quit the job — or keep building on the side?" data-brief-tag="Decision Brief · Session 7EA1531E">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Read the full brief
+          </button>
         </div>
       </div>
 
@@ -275,6 +317,10 @@
           <p class="jr-context">Revenue is real, and so is the fear of a market window closing.</p>
           <p class="jr-surfaced">Wait, again — not because the capital wasn't real, but because taking it now would hand roadmap control to someone else before the fit was proven.</p>
           <div class="jr-insight"><p>"You're trading the fear of missing a crowded window for the clarity of proving what you've already built."</p></div>
+          <button class="jr-brief-link" data-brief="/decisions/decision-bootstrap-or-raise.pdf" data-brief-title="Bootstrap further — or raise a seed round now?" data-brief-tag="Decision Brief · Session DCE39B88">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Read the full brief
+          </button>
         </div>
       </div>
 
@@ -296,6 +342,10 @@
           <p class="jr-context">It sounded like a hiring question. The record read it differently.</p>
           <p class="jr-surfaced">Wait, a third time — but this time the record named the real question directly: what does it cost you to be the one who always carries the weight of selling?</p>
           <div class="jr-insight"><p>"You're outsourcing the weight of the decision before you've fully carried it yourself."</p></div>
+          <button class="jr-brief-link" data-brief="/decisions/decision-gtm-leader.pdf" data-brief-title="Hire a GTM leader — or keep selling personally?" data-brief-tag="Decision Brief · Session B8130C0F">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Read the full brief
+          </button>
         </div>
       </div>
 
@@ -316,6 +366,10 @@
           <p class="jr-context">The biggest number yet. The same question underneath.</p>
           <p class="jr-surfaced">For the first time, the record said the pattern out loud, unprompted: "the structural mechanism is identical to the earlier bootstrap-or-raise choice."</p>
           <div class="jr-insight"><p>"You favor protecting proven patterns over scaling them, even when the alternative promises greater reach." — added to Mirror after this session.</p></div>
+          <button class="jr-brief-link" data-brief="/decisions/decision-icp-or-enterprise.pdf" data-brief-title="Stay with one ICP — or expand into enterprise?" data-brief-tag="Decision Brief · Session F9D7D9DB">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Read the full brief
+          </button>
         </div>
       </div>
 
@@ -389,6 +443,27 @@
   </div>
 </div>
 
+<hr class="rule" />
+
+<!-- ══ DECISION LIBRARY — breadth, not narrative ══════════════════
+     Same four briefs, reframed as standalone examples by decision
+     type rather than as steps in one founder's arc. Built as a small
+     data-driven grid (see libraryItems in the script below) so more
+     standalone decisions can be added later without touching this
+     markup. ═══════════════════════════════════════════════════ -->
+<div class="wrap">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">Beyond this record</span>
+      <h2 class="display" style="font-size: clamp(26px,3vw,36px);">The same structure, on its own.</h2>
+    </div>
+    <p class="r d1" style="font-size:15px; color:var(--t3); line-height:1.85; max-width:600px;">
+      This record traced one founder across four connected decisions. Each one also stands alone — a single decision, a single brief, no throughline required.
+    </p>
+    <div class="lib-grid r d2" id="libGrid" role="list"></div>
+  </div>
+</div>
+
 <!-- ══ FOOTER ══════════════════════════════════════════════════ -->
 <footer>
   <span class="footer-logo">Quorum</span>
@@ -400,6 +475,34 @@
   </div>
   <span class="footer-copy">© 2026 Quorum</span>
 </footer>
+
+<!-- ══ BRIEF VIEWER MODAL ══════════════════════════════════════
+     Opens any decision brief PDF inline, on this page — no
+     redirect, no forced download. Same overlay serves both the
+     timeline "Read the full brief" buttons and the Decision
+     Library cards below. ═══════════════════════════════════════ -->
+<div class="brief-modal" id="briefModal" aria-hidden="true">
+  <div class="brief-modal-backdrop" data-close></div>
+  <div class="brief-modal-panel" role="dialog" aria-modal="true" aria-labelledby="briefModalTitle">
+    <div class="brief-modal-head">
+      <div>
+        <span class="brief-modal-eyebrow mono" id="briefModalTag">Decision Brief</span>
+        <h3 class="brief-modal-title" id="briefModalTitle">—</h3>
+      </div>
+      <div class="brief-modal-actions">
+        <a class="brief-modal-download" id="briefModalDownload" href="#" target="_blank" rel="noopener" aria-label="Open in a new tab" title="Open in a new tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <button class="brief-modal-close" id="briefModalClose" data-close aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="brief-modal-body">
+      <iframe id="briefModalFrame" title="Decision brief PDF viewer" src=""></iframe>
+    </div>
+  </div>
+</div>
 
 <script>
   /* ── THEME — shared key with the rest of the site ── */
@@ -440,6 +543,82 @@
       const el = document.getElementById(a.getAttribute('href').slice(1))
       if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
     })
+  })
+
+  /* ── DECISION LIBRARY — data-driven so new standalone examples can
+     be added later by extending this array; no markup changes needed. ── */
+  const libraryItems = [
+    { cat: 'Identity', title: 'Quit the job — or keep building on the side?', desc: 'Weighing full-time commitment against the stability already built, before there was revenue to point to.', pdf: '/decisions/decision-quit-the-job.pdf', tag: 'Decision Brief · Session 7EA1531E' },
+    { cat: 'Capital', title: 'Bootstrap further — or raise a seed round now?', desc: 'An angel-backed opening against the discipline of proving fit on revenue that already exists.', pdf: '/decisions/decision-bootstrap-or-raise.pdf', tag: 'Decision Brief · Session DCE39B88' },
+    { cat: 'Hiring', title: 'Hire a GTM leader — or keep selling personally?', desc: 'Whether to delegate the sales motion before it is repeatable enough to hand off.', pdf: '/decisions/decision-gtm-leader.pdf', tag: 'Decision Brief · Session B8130C0F' },
+    { cat: 'Strategy', title: 'Stay with one ICP — or expand into enterprise?', desc: 'Testing whether a larger opportunity is worth the focus it would cost to chase.', pdf: '/decisions/decision-icp-or-enterprise.pdf', tag: 'Decision Brief · Session F9D7D9DB' },
+  ]
+  const libGrid = document.getElementById('libGrid')
+  if (libGrid) {
+    libraryItems.forEach(item => {
+      const card = document.createElement('div')
+      card.className = 'lib-card'
+      card.setAttribute('role', 'listitem')
+      card.setAttribute('tabindex', '0')
+      card.dataset.brief = item.pdf
+      card.dataset.briefTitle = item.title
+      card.dataset.briefTag = item.tag
+      card.innerHTML = `
+        <span class="lib-card-cat mono">${item.cat}</span>
+        <h3 class="lib-card-title">${item.title}</h3>
+        <p class="lib-card-desc">${item.desc}</p>
+        <span class="lib-card-cta">Read the brief
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </span>`
+      libGrid.appendChild(card)
+    })
+  }
+
+  /* ── BRIEF VIEWER MODAL ──────────────────────────────────────
+     Drives both the "Read the full brief" buttons on the timeline
+     and the Decision Library cards above — anything with
+     [data-brief] opens inline via delegated click, plus Enter/Space
+     for keyboard users on the library cards. ── */
+  const briefModal   = document.getElementById('briefModal')
+  const briefFrame    = document.getElementById('briefModalFrame')
+  const briefTitleEl  = document.getElementById('briefModalTitle')
+  const briefTagEl    = document.getElementById('briefModalTag')
+  const briefDownload = document.getElementById('briefModalDownload')
+  let lastFocused = null
+
+  function openBrief(pdf, title, tag) {
+    if (!pdf) return
+    lastFocused = document.activeElement
+    briefFrame.src = pdf + '#toolbar=0&navpanes=0'
+    briefTitleEl.textContent = title || 'Decision Brief'
+    briefTagEl.textContent = tag || 'Decision Brief'
+    briefDownload.href = pdf
+    briefModal.classList.add('open')
+    briefModal.setAttribute('aria-hidden', 'false')
+    document.body.classList.add('modal-open')
+    document.getElementById('briefModalClose').focus()
+  }
+
+  function closeBrief() {
+    briefModal.classList.remove('open')
+    briefModal.setAttribute('aria-hidden', 'true')
+    document.body.classList.remove('modal-open')
+    setTimeout(() => { briefFrame.src = '' }, 300)
+    if (lastFocused && lastFocused.focus) lastFocused.focus()
+  }
+
+  document.addEventListener('click', e => {
+    const trigger = e.target.closest('[data-brief]')
+    if (trigger) { openBrief(trigger.dataset.brief, trigger.dataset.briefTitle, trigger.dataset.briefTag); return }
+    if (e.target.closest('[data-close]')) closeBrief()
+  })
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && briefModal.classList.contains('open')) { closeBrief(); return }
+    if (e.key === 'Enter' || e.key === ' ') {
+      const card = e.target.closest('.lib-card')
+      if (card) { e.preventDefault(); openBrief(card.dataset.brief, card.dataset.briefTitle, card.dataset.briefTag) }
+    }
   })
 </script>
 
