@@ -493,43 +493,11 @@
     .rec-journey-cta svg { transition: transform 0.2s; }
     .rec-journey-cta:hover svg { transform: translateX(3px); }
 
-    .rec-library-title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 400; font-size: 24px; color: var(--t1); line-height: 1.35; margin-bottom: 14px; }
-    .rec-library-desc { font-size: 14px; color: var(--t4); line-height: 1.8; margin-bottom: 20px; }
-    .rec-lib-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--b0); border: 1px solid var(--b0); border-radius: 16px; overflow: hidden; }
-    .rec-lib-card { background: var(--card); padding: 22px 22px; cursor: pointer; transition: background 0.25s; }
-    .rec-lib-card:hover { background: var(--card2); }
-    .rec-lib-card:hover .rec-lib-cta { color: var(--gold-hi); }
-    .rec-lib-cat { display: block; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-    .rec-lib-title { font-size: 14.5px; color: var(--t2); line-height: 1.5; margin-bottom: 14px; }
-    .rec-lib-cta { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--t4); transition: color 0.2s; }
-    .rec-lib-cta svg { stroke: currentColor; }
-
-    /* ══ BRIEF VIEWER MODAL — shared by journey teaser link-outs and
-       the Decision Library cards above. Same component as /journey. ══ */
-    body.modal-open { overflow: hidden; }
-    .brief-modal { position: fixed; inset: 0; z-index: 2000; visibility: hidden; opacity: 0; transition: opacity 0.3s ease, visibility 0s linear 0.3s; }
-    .brief-modal.open { visibility: visible; opacity: 1; transition: opacity 0.3s ease; }
-    .brief-modal-backdrop { position: absolute; inset: 0; background: rgba(1,2,4,0.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-    [data-theme="light"] .brief-modal-backdrop { background: rgba(20,18,14,0.5); }
-    .brief-modal-panel { position: relative; width: min(92vw, 860px); height: min(88vh, 920px); margin: 6vh auto 0; background: var(--card); border: 1px solid var(--b1); border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.5); transform: translateY(18px) scale(0.98); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); }
-    .brief-modal.open .brief-modal-panel { transform: translateY(0) scale(1); }
-    .brief-modal-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border-bottom: 1px solid var(--b0); background: var(--card2); flex-shrink: 0; }
-    .brief-modal-eyebrow { display: block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-    .brief-modal-title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; color: var(--t0); font-weight: 400; line-height: 1.3; }
-    .brief-modal-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-    .brief-modal-download, .brief-modal-close { width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--b1); background: var(--card); color: var(--t3); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: color 0.2s, border-color 0.2s, background 0.2s; }
-    .brief-modal-download:hover, .brief-modal-close:hover { color: var(--gold-hi); border-color: var(--gold-lo); background: var(--gold-alpha); }
-    .brief-modal-body { flex: 1; background: #17181c; }
-    .brief-modal-body iframe { width: 100%; height: 100%; border: none; display: block; }
-
     @media (max-width: 980px) {
       .rec-layout { grid-template-columns: 1fr; gap: 32px; }
     }
     @media (max-width: 600px) {
       .rec-journey { padding: 30px 26px; }
-      .rec-lib-grid { grid-template-columns: 1fr; }
-      .brief-modal-panel { width: 100vw; height: 100dvh; margin: 0; border-radius: 0; border: none; }
-      .brief-modal-title { font-size: 15px; }
     }
 
     /* ══ PROSE ══════════════════════════════════════════════════ */
@@ -3323,7 +3291,7 @@
       <span class="eyebrow">Proof, not a pitch</span>
       <h2 class="display" style="font-size: clamp(28px,3.2vw,40px);">See a real record.</h2>
     </div>
-    <p class="r d1" style="font-size:16px; color:var(--t2); line-height:1.9; max-width:640px; margin-bottom:8px;">One founder, four real decisions. Read them as a single connected arc, or open any one on its own.</p>
+    <p class="r d1" style="font-size:16px; color:var(--t2); line-height:1.9; max-width:640px; margin-bottom:8px;">Follow one founder's connected record — or browse decisions across founders, executives, investors, boards, and institutions, each standing on its own.</p>
 
     <div class="rec-layout r d2">
       <div class="rec-journey">
@@ -3336,11 +3304,14 @@
         </a>
       </div>
 
-      <div class="rec-library">
+      <div class="rec-journey">
         <span class="rec-tag">Decision Library</span>
-        <h3 class="rec-library-title">Or take one on its own.</h3>
-        <p class="rec-library-desc">The same four briefs, each one standing alone — no throughline required.</p>
-        <div class="rec-lib-grid" id="recLibGrid" role="list"></div>
+        <h3 class="rec-journey-title">Twenty decisions. Five kinds of high-stakes call.</h3>
+        <p class="rec-journey-desc">Founders, executives, investors, boards, institutions — real briefs, browsable by category, growing as new sessions happen.</p>
+        <a href="/decision-library?ref=index_record" class="rec-journey-cta">
+          Browse the Decision Library
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -3965,31 +3936,6 @@
   </div>
 </div>
 
-<!-- ══ BRIEF VIEWER MODAL — opens Decision Library PDFs inline, on
-     this page. Same component as /journey. ═══════════════════════ -->
-<div class="brief-modal" id="briefModal" aria-hidden="true">
-  <div class="brief-modal-backdrop" data-brief-close></div>
-  <div class="brief-modal-panel" role="dialog" aria-modal="true" aria-labelledby="briefModalTitle">
-    <div class="brief-modal-head">
-      <div>
-        <span class="brief-modal-eyebrow mono" id="briefModalTag">Decision Brief</span>
-        <h3 class="brief-modal-title" id="briefModalTitle">—</h3>
-      </div>
-      <div class="brief-modal-actions">
-        <a class="brief-modal-download" id="briefModalDownload" href="#" target="_blank" rel="noopener" aria-label="Open in a new tab" title="Open in a new tab">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-        <button class="brief-modal-close" id="briefModalClose" data-brief-close aria-label="Close">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="brief-modal-body">
-      <iframe id="briefModalFrame" title="Decision brief PDF viewer" src=""></iframe>
-    </div>
-  </div>
-</div>
-
 
 <!-- ══ COOKIE CONSENT BANNER ══════════════════════════════════════════
      S1-01: shown on first visit, after 900ms, if no consent stored.
@@ -4513,79 +4459,9 @@
     })
   })
 
-  /* ── THE RECORD: Decision Library grid ───────────────────────
-     Same four briefs as /journey's library section. Data-driven —
-     extend this array to add standalone examples later. ── */
-  const recLibraryItems = [
-    { cat: 'Identity', title: 'Quit the job — or keep building on the side?', pdf: '/decisions/decision-quit-the-job.pdf', tag: 'Decision Brief · Session 7EA1531E' },
-    { cat: 'Capital', title: 'Bootstrap further — or raise a seed round now?', pdf: '/decisions/decision-bootstrap-or-raise.pdf', tag: 'Decision Brief · Session DCE39B88' },
-    { cat: 'Hiring', title: 'Hire a GTM leader — or keep selling personally?', pdf: '/decisions/decision-gtm-leader.pdf', tag: 'Decision Brief · Session B8130C0F' },
-    { cat: 'Strategy', title: 'Stay with one ICP — or expand into enterprise?', pdf: '/decisions/decision-icp-or-enterprise.pdf', tag: 'Decision Brief · Session F9D7D9DB' },
-  ]
-  const recLibGrid = document.getElementById('recLibGrid')
-  if (recLibGrid) {
-    recLibraryItems.forEach(item => {
-      const card = document.createElement('div')
-      card.className = 'rec-lib-card'
-      card.setAttribute('role', 'listitem')
-      card.setAttribute('tabindex', '0')
-      card.dataset.brief = item.pdf
-      card.dataset.briefTitle = item.title
-      card.dataset.briefTag = item.tag
-      card.innerHTML = `
-        <span class="rec-lib-cat mono">${item.cat}</span>
-        <p class="rec-lib-title">${item.title}</p>
-        <span class="rec-lib-cta">Read the brief
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </span>`
-      recLibGrid.appendChild(card)
-    })
-  }
-
-  /* ── BRIEF VIEWER MODAL — separate from the sessionModal/bookingModal
-     above; own state, own Escape/backdrop handling, no shared names. ── */
-  const briefModal    = document.getElementById('briefModal')
-  const briefFrame     = document.getElementById('briefModalFrame')
-  const briefTitleEl   = document.getElementById('briefModalTitle')
-  const briefTagEl     = document.getElementById('briefModalTag')
-  const briefDownload  = document.getElementById('briefModalDownload')
-  let briefLastFocused = null
-
-  function openBrief(pdf, title, tag) {
-    if (!pdf || !briefModal) return
-    briefLastFocused = document.activeElement
-    briefFrame.src = pdf + '#toolbar=0&navpanes=0'
-    briefTitleEl.textContent = title || 'Decision Brief'
-    briefTagEl.textContent = tag || 'Decision Brief'
-    briefDownload.href = pdf
-    briefModal.classList.add('open')
-    briefModal.setAttribute('aria-hidden', 'false')
-    document.body.classList.add('modal-open')
-    document.getElementById('briefModalClose').focus()
-  }
-
-  function closeBrief() {
-    if (!briefModal) return
-    briefModal.classList.remove('open')
-    briefModal.setAttribute('aria-hidden', 'true')
-    document.body.classList.remove('modal-open')
-    setTimeout(() => { briefFrame.src = '' }, 300)
-    if (briefLastFocused && briefLastFocused.focus) briefLastFocused.focus()
-  }
-
-  document.addEventListener('click', e => {
-    const trigger = e.target.closest('[data-brief]')
-    if (trigger) { openBrief(trigger.dataset.brief, trigger.dataset.briefTitle, trigger.dataset.briefTag); return }
-    if (e.target.closest('[data-brief-close]')) closeBrief()
-  })
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && briefModal && briefModal.classList.contains('open')) { closeBrief(); return }
-    if (e.key === 'Enter' || e.key === ' ') {
-      const card = e.target.closest('.rec-lib-card')
-      if (card) { e.preventDefault(); openBrief(card.dataset.brief, card.dataset.briefTitle, card.dataset.briefTag) }
-    }
-  })
+  /* ── THE RECORD section now links out to /journey and
+     /decision-library directly (see the two .rec-journey cards
+     above) rather than embedding a duplicate grid inline. ── */
 </script>
 
 </body>

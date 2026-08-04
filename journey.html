@@ -170,16 +170,15 @@
   .jr-brief-link:hover { color: var(--gold-hi); border-color: var(--gold-lo); background: var(--gold-alpha); }
   .jr-brief-link svg { flex-shrink: 0; stroke: currentColor; }
 
-  /* ══ DECISION LIBRARY ════════════════════════════════════════ */
-  .lib-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--b0); border: 1px solid var(--b0); border-radius: 20px; overflow: hidden; margin-top: 44px; }
-  .lib-card { background: var(--card); padding: 34px 32px; cursor: pointer; transition: background 0.25s; display: flex; flex-direction: column; }
-  .lib-card:hover { background: var(--card2); }
-  .lib-card:hover .lib-card-cta { color: var(--gold-hi); }
-  .lib-card-cat { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-  .lib-card-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; font-style: italic; font-weight: 400; color: var(--t1); margin-bottom: 10px; line-height: 1.4; }
-  .lib-card-desc { font-size: 13.5px; color: var(--t4); line-height: 1.75; margin-bottom: 22px; flex: 1; }
-  .lib-card-cta { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--t4); transition: color 0.2s; }
-  .lib-card-cta svg { stroke: currentColor; }
+  /* ══ LIBRARY CROSS-LINK ══════════════════════════════════════
+     Subtle pointer to the standalone Decision Library (breadth
+     layer) — not a repeat of this record's own four briefs. ══ */
+  .lib-out { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 40px; padding: 26px 30px; border: 1px solid var(--b0); border-radius: var(--radius); background: var(--card); }
+  .lib-out p { font-size: 13.5px; color: var(--t4); line-height: 1.7; max-width: 460px; }
+  .lib-out-link { flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: var(--gold); border-bottom: 1px solid var(--gold-lo); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; }
+  .lib-out-link:hover { color: var(--gold-hi); border-color: var(--gold-hi); }
+  .lib-out-link svg { transition: transform 0.2s; }
+  .lib-out-link:hover svg { transform: translateX(3px); }
 
   /* ══ BRIEF VIEWER MODAL ══════════════════════════════════════ */
   .brief-modal { position: fixed; inset: 0; z-index: 2000; visibility: hidden; opacity: 0; transition: opacity 0.3s ease, visibility 0s linear 0.3s; }
@@ -222,8 +221,7 @@
     .jr-title { font-size: 22px; }
     .jr-insight { padding-left: 16px; }
     .jr-quote { padding-left: 18px; }
-    .lib-grid { grid-template-columns: 1fr; border-radius: 16px; }
-    .lib-card { padding: 26px 22px; }
+    .lib-out { flex-direction: column; align-items: flex-start; padding: 22px 24px; }
     .brief-modal-panel { width: 100vw; height: 100dvh; margin: 0; border-radius: 0; border: none; }
     .brief-modal-title { font-size: 15px; }
   }
@@ -445,22 +443,20 @@
 
 <hr class="rule" />
 
-<!-- ══ DECISION LIBRARY — breadth, not narrative ══════════════════
-     Same four briefs, reframed as standalone examples by decision
-     type rather than as steps in one founder's arc. Built as a small
-     data-driven grid (see libraryItems in the script below) so more
-     standalone decisions can be added later without touching this
-     markup. ═══════════════════════════════════════════════════ -->
+<!-- ══ LIBRARY CROSS-LINK — small and subtle, per design brief.
+     This record is the depth layer (one founder, compounding). The
+     Decision Library is the breadth layer (many founders, executives,
+     investors, boards, institutions) and lives on its own page —
+     not reproduced here. ═══════════════════════════════════════ -->
 <div class="wrap">
-  <div class="s">
-    <div class="sh r">
-      <span class="eyebrow">Beyond this record</span>
-      <h2 class="display" style="font-size: clamp(26px,3vw,36px);">The same structure, on its own.</h2>
+  <div class="s" style="padding-top:0;">
+    <div class="lib-out r">
+      <p>This record traced one founder across four connected decisions. The Decision Library holds many more, across founders, executives, investors, boards, and institutions.</p>
+      <a href="/decision-library?ref=journey" class="lib-out-link">
+        Browse the Decision Library
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
-    <p class="r d1" style="font-size:15px; color:var(--t3); line-height:1.85; max-width:600px;">
-      This record traced one founder across four connected decisions. Each one also stands alone — a single decision, a single brief, no throughline required.
-    </p>
-    <div class="lib-grid r d2" id="libGrid" role="list"></div>
   </div>
 </div>
 
@@ -545,40 +541,11 @@
     })
   })
 
-  /* ── DECISION LIBRARY — data-driven so new standalone examples can
-     be added later by extending this array; no markup changes needed. ── */
-  const libraryItems = [
-    { cat: 'Identity', title: 'Quit the job — or keep building on the side?', desc: 'Weighing full-time commitment against the stability already built, before there was revenue to point to.', pdf: '/decisions/decision-quit-the-job.pdf', tag: 'Decision Brief · Session 7EA1531E' },
-    { cat: 'Capital', title: 'Bootstrap further — or raise a seed round now?', desc: 'An angel-backed opening against the discipline of proving fit on revenue that already exists.', pdf: '/decisions/decision-bootstrap-or-raise.pdf', tag: 'Decision Brief · Session DCE39B88' },
-    { cat: 'Hiring', title: 'Hire a GTM leader — or keep selling personally?', desc: 'Whether to delegate the sales motion before it is repeatable enough to hand off.', pdf: '/decisions/decision-gtm-leader.pdf', tag: 'Decision Brief · Session B8130C0F' },
-    { cat: 'Strategy', title: 'Stay with one ICP — or expand into enterprise?', desc: 'Testing whether a larger opportunity is worth the focus it would cost to chase.', pdf: '/decisions/decision-icp-or-enterprise.pdf', tag: 'Decision Brief · Session F9D7D9DB' },
-  ]
-  const libGrid = document.getElementById('libGrid')
-  if (libGrid) {
-    libraryItems.forEach(item => {
-      const card = document.createElement('div')
-      card.className = 'lib-card'
-      card.setAttribute('role', 'listitem')
-      card.setAttribute('tabindex', '0')
-      card.dataset.brief = item.pdf
-      card.dataset.briefTitle = item.title
-      card.dataset.briefTag = item.tag
-      card.innerHTML = `
-        <span class="lib-card-cat mono">${item.cat}</span>
-        <h3 class="lib-card-title">${item.title}</h3>
-        <p class="lib-card-desc">${item.desc}</p>
-        <span class="lib-card-cta">Read the brief
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </span>`
-      libGrid.appendChild(card)
-    })
-  }
-
   /* ── BRIEF VIEWER MODAL ──────────────────────────────────────
-     Drives both the "Read the full brief" buttons on the timeline
-     and the Decision Library cards above — anything with
-     [data-brief] opens inline via delegated click, plus Enter/Space
-     for keyboard users on the library cards. ── */
+     Drives the "Read the full brief" buttons on the timeline —
+     anything with [data-brief] opens inline via delegated click.
+     The Decision Library (breadth layer) is a separate page at
+     /decision-library with its own instance of this same component. ── */
   const briefModal   = document.getElementById('briefModal')
   const briefFrame    = document.getElementById('briefModalFrame')
   const briefTitleEl  = document.getElementById('briefModalTitle')
@@ -614,11 +581,7 @@
   })
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && briefModal.classList.contains('open')) { closeBrief(); return }
-    if (e.key === 'Enter' || e.key === ' ') {
-      const card = e.target.closest('.lib-card')
-      if (card) { e.preventDefault(); openBrief(card.dataset.brief, card.dataset.briefTitle, card.dataset.briefTag) }
-    }
+    if (e.key === 'Escape' && briefModal.classList.contains('open')) closeBrief()
   })
 </script>
 

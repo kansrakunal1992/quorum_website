@@ -20,6 +20,9 @@
  *      journey (Track 2 asset). Always on — not gated by
  *      FOUNDING_MEMBER_ENABLED, since it's proof-of-value content
  *      independent of whether the cohort itself is open.
+ *   7. Serve /decision-library — the standalone Decision Library
+ *      (breadth layer): 20 decision slots across five categories,
+ *      independent of /journey. Also always on, same reasoning.
  *
  * Required Railway environment variables (set in website project):
  *   SUPABASE_URL         — https://your-project.supabase.co
@@ -147,6 +150,7 @@ app.get(['/card-abhilash.html', '/abhilash'], (_req, res) => res.redirect(301, '
 
 app.get('/founding-member.html', (_req, res) => res.redirect(301, '/founding-member'))
 app.get('/journey.html', (_req, res) => res.redirect(301, '/journey'))
+app.get('/decision-library.html', (_req, res) => res.redirect(301, '/decision-library'))
 
 // Serve index.html and any public assets (images, fonts, etc.)
 app.use(express.static(__dirname, {
@@ -829,6 +833,19 @@ app.get('/founding-member', (_req, res) => {
 // FOUNDING_MEMBER_ENABLED: it stands on its own even if the cohort
 // itself is temporarily closed.
 app.get('/journey', (_req, res) => renderJourneyPage(res))
+
+/* ── Decision Library (breadth layer) ─────────────────────────────── */
+// 20 decision placeholders across five categories — founders,
+// leadership, investing, governance, institutions. Independent from
+// /journey (linked from it, and from index.html's #record section,
+// only via small cross-links). Not gated by FOUNDING_MEMBER_ENABLED,
+// same reasoning as /journey. Plain sendFile — no Founding Member
+// references in this page to template in/out.
+app.get('/decision-library', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'decision-library.html'), (err) => {
+    if (err && !res.headersSent) res.status(404).send('Not found')
+  })
+})
 
 /* ── Fallback → index.html ────────────────────────────────────────── */
 app.get('*', (_req, res) => {

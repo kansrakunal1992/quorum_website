@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Decision Library — Quorum</title>
+<meta name="description" content="Twenty high-stakes decisions across founders, executives, investors, boards, and institutions — real Quorum briefs, browsable by category." />
+<meta property="og:title" content="Decision Library — Quorum" />
+<meta property="og:description" content="Founders, executives, investors, boards, institutions — the same structural read, applied wherever the cost of being wrong is high." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+
+  /* ══ TOKENS — same system as journey.html / founding-member.html / quorumvault.org ══ */
+  :root { --radius: 18px; --radius-sm: 10px; --trans: background 0.38s ease, color 0.38s ease, border-color 0.38s ease; }
+  [data-theme="dark"] {
+    --gold: #c9a84c; --gold-hi: #e2c46e; --gold-lo: #a07828;
+    --gold-alpha: rgba(201,168,76,0.12); --gold-glow: rgba(201,168,76,0.06);
+    --bg: #010204; --bg2: #04060f; --card: #080d1b; --card2: #0b1020; --inset: #050912;
+    --b0: #0d1628; --b1: #182340; --b2: #243658;
+    --t0: #ffffff; --t1: #edf2ff; --t2: #c8d6f0; --t3: #8fa8cc; --t4: #506484; --t5: #263d5e;
+    --overlay: rgba(1,2,4,0.92);
+  }
+  [data-theme="light"] {
+    --gold: #9a7020; --gold-hi: #b88c2a; --gold-lo: #7a5510;
+    --gold-alpha: rgba(154,112,32,0.1); --gold-glow: rgba(154,112,32,0.05);
+    --bg: #f4f1eb; --bg2: #ede9e0; --card: #ffffff; --card2: #f8f6f1; --inset: #edeae2;
+    --b0: #c8cdd8; --b1: #aab2c2; --b2: #8896b0;
+    --t0: #060d1c; --t1: #0e1a30; --t2: #1e2e48; --t3: #3a4f70; --t4: #667a9e; --t5: #a0b0c8;
+    --overlay: rgba(244,241,235,0.94);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  a { text-decoration: none; color: inherit; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 16px; line-height: 1.7;
+    color: var(--t2); background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    transition: var(--trans);
+    overflow-x: hidden;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9000;
+  }
+  body.modal-open { overflow: hidden; }
+
+  .display { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; color: var(--t0); }
+  .eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; }
+  .mono { font-family: 'DM Mono', monospace; }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+  .rule { border: none; border-top: 1px solid var(--b0); margin: 0 56px; }
+  .s { padding: 108px 0; }
+  .sh { max-width: 640px; margin-bottom: 48px; }
+  .sh .eyebrow { margin-bottom: 16px; }
+
+  /* ══ REVEAL ══════════════════════════════════════════════════ */
+  .r { opacity: 0; transform: translateY(24px); transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1), transform 0.85s cubic-bezier(0.22,1,0.36,1); }
+  .r.in { opacity: 1; transform: none; }
+  .d1 { transition-delay: 0.08s; }
+  .d2 { transition-delay: 0.18s; }
+  .d3 { transition-delay: 0.3s; }
+
+  /* ══ NAV ═════════════════════════════════════════════════════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+    height: 68px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; border-bottom: 1px solid transparent;
+    transition: var(--trans), border-color 0.4s, backdrop-filter 0.4s;
+  }
+  nav.stuck { border-color: var(--b0); background: var(--overlay); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
+  .logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--t0); }
+  .logo span { color: var(--gold); }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .nav-back { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--t4); transition: color 0.2s; }
+  .nav-back:hover { color: var(--t2); }
+  .toggle { position: relative; width: 50px; height: 25px; border-radius: 13px; background: var(--card); border: 1px solid var(--b1); cursor: pointer; transition: var(--trans); flex-shrink: 0; }
+  .toggle-thumb { position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--gold); transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1); }
+  [data-theme="light"] .toggle-thumb { transform: translateX(25px); }
+  .toggle-label { position: absolute; top: 50%; transform: translateY(-50%); font-size: 9.5px; line-height: 1; color: var(--t4); user-select: none; }
+  .toggle-label.l { left: 6px; opacity: 0; } .toggle-label.r { right: 6px; }
+  [data-theme="light"] .toggle-label.l { opacity: 1; } [data-theme="light"] .toggle-label.r { opacity: 0; }
+
+  /* ══ HERO ════════════════════════════════════════════════════
+     Deliberately NOT the founder-journey hero: no single narrative
+     line, no scroll cue into a timeline — a wide, breadth-first
+     opening with the category rail visible on load. ═══════════ */
+  #hero { min-height: 56vh; display: flex; align-items: center; padding-top: 150px; padding-bottom: 56px; position: relative; }
+  .hero-aura { position: absolute; top: -14%; left: 18%; width: 760px; height: 560px; background: radial-gradient(ellipse at 50% 30%, var(--gold-glow) 0%, transparent 62%); pointer-events: none; }
+  .lib-hero-hl { font-size: clamp(34px, 4.6vw, 54px); max-width: 780px; margin-bottom: 22px; }
+  .lib-hero-hl em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 16.5px; line-height: 1.85; color: var(--t3); max-width: 580px; margin-bottom: 20px; }
+  .hero-stats { display: flex; gap: 28px; margin-bottom: 26px; flex-wrap: wrap; }
+  .hero-stat-num { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 30px; color: var(--t0); font-weight: 400; line-height: 1; }
+  .hero-stat-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--t4); margin-top: 6px; }
+  .hero-relate { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11.5px; letter-spacing: 0.03em; color: var(--t4); border-bottom: 1px solid var(--b1); padding-bottom: 3px; transition: color 0.2s, border-color 0.2s; }
+  .hero-relate:hover { color: var(--gold-hi); border-color: var(--gold-lo); }
+  .hero-relate svg { transition: transform 0.2s; }
+  .hero-relate:hover svg { transform: translateX(3px); }
+
+  /* ══ CATEGORY RAIL ═══════════════════════════════════════════
+     Five cards, one per category — the primary navigation device
+     for a breadth page, replacing the journey's linear timeline. ══ */
+  .cat-rail { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--b0); border: 1px solid var(--b0); border-radius: var(--radius); overflow: hidden; }
+  .cat-card { background: var(--card); padding: 30px 22px 26px; display: flex; flex-direction: column; align-items: flex-start; cursor: pointer; transition: background 0.25s; text-align: left; border: none; font-family: inherit; }
+  .cat-card:hover, .cat-card:focus-visible { background: var(--card2); }
+  .cat-icon { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--b1); border-radius: 10px; color: var(--gold); margin-bottom: 18px; transition: border-color 0.2s, color 0.2s; }
+  .cat-card:hover .cat-icon { border-color: var(--gold-lo); color: var(--gold-hi); }
+  .cat-icon svg { width: 16px; height: 16px; }
+  .cat-title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 16.5px; color: var(--t1); line-height: 1.35; margin-bottom: 10px; }
+  .cat-count { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.05em; color: var(--t5); text-transform: uppercase; }
+  .cat-count b { color: var(--gold); font-weight: 400; }
+  @media (max-width: 980px) { .cat-rail { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .cat-rail { grid-template-columns: 1fr; } }
+
+  /* ══ CATEGORY SECTION ════════════════════════════════════════ */
+  .cat-section { scroll-margin-top: 90px; padding: 96px 0; }
+  .cat-section + .cat-section { border-top: 1px solid var(--b0); }
+  .cat-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 44px; }
+  .cat-head-icon { width: 46px; height: 46px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 1px solid var(--b1); border-radius: 13px; color: var(--gold); }
+  .cat-head-icon svg { width: 21px; height: 21px; }
+  .cat-head-title { font-size: clamp(24px, 2.6vw, 32px); margin-bottom: 8px; }
+  .cat-head-desc { font-size: 14.5px; color: var(--t4); line-height: 1.8; max-width: 560px; }
+
+  .sub-block + .sub-block { margin-top: 44px; }
+  .sub-label { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .sub-label span { font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--t4); white-space: nowrap; }
+  .sub-label::after { content: ''; height: 1px; flex: 1; background: var(--b0); }
+
+  .dec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--b0); border: 1px solid var(--b0); border-radius: 16px; overflow: hidden; }
+  @media (max-width: 720px) { .dec-grid { grid-template-columns: 1fr; } }
+
+  /* ── Decision card (live) ── */
+  .dec-card { background: var(--card); padding: 30px 30px 26px; display: flex; flex-direction: column; min-height: 190px; transition: background 0.25s; }
+  .dec-card.is-live { cursor: pointer; }
+  .dec-card.is-live:hover, .dec-card.is-live:focus-visible { background: var(--card2); }
+  .dec-card-title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18.5px; font-weight: 400; color: var(--t1); line-height: 1.4; margin-bottom: 12px; }
+  .dec-card-desc { font-size: 13.5px; color: var(--t4); line-height: 1.75; margin-bottom: 20px; flex: 1; }
+  .dec-card-cta { display: inline-flex; align-items: center; gap: 7px; font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--t4); transition: color 0.2s; }
+  .dec-card.is-live:hover .dec-card-cta { color: var(--gold-hi); }
+  .dec-card-cta svg { stroke: currentColor; transition: transform 0.2s; }
+  .dec-card.is-live:hover .dec-card-cta svg { transform: translateX(2px); }
+
+  /* ── Decision card (placeholder / "coming soon") ──
+     Visibly inert: dashed border, muted type, no hover lift, no
+     cursor change — reads as "not yet", not as a broken link. ── */
+  .dec-card.is-placeholder { background: var(--inset); position: relative; }
+  .dec-card.is-placeholder::before {
+    content: ''; position: absolute; inset: 8px; border: 1px dashed var(--b1); border-radius: 10px; pointer-events: none;
+  }
+  .dec-card.is-placeholder .dec-card-title { color: var(--t4); }
+  .dec-card.is-placeholder .dec-card-desc { color: var(--t5); }
+  .soon-badge { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--t5); }
+  .soon-badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--t5); }
+
+  /* ══ FOOTER LINK-OUT ═════════════════════════════════════════ */
+  .lib-footnote { text-align: center; padding: 6px 0 0; }
+  .lib-footnote p { font-size: 13.5px; color: var(--t4); margin-bottom: 14px; }
+
+  /* ══ FOOTER ══════════════════════════════════════════════════ */
+  footer { padding: 56px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; border-top: 1px solid var(--b0); }
+  .footer-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--t3); }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-link { font-size: 12.5px; color: var(--t4); transition: color 0.2s; }
+  .footer-link:hover { color: var(--t2); }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--t5); }
+
+  /* ══ BRIEF VIEWER MODAL — identical component to /journey, so
+     opening a brief feels like the same product moment everywhere. ══ */
+  .brief-modal { position: fixed; inset: 0; z-index: 2000; visibility: hidden; opacity: 0; transition: opacity 0.3s ease, visibility 0s linear 0.3s; }
+  .brief-modal.open { visibility: visible; opacity: 1; transition: opacity 0.3s ease; }
+  .brief-modal-backdrop { position: absolute; inset: 0; background: rgba(1,2,4,0.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  [data-theme="light"] .brief-modal-backdrop { background: rgba(20,18,14,0.5); }
+  .brief-modal-panel { position: relative; width: min(92vw, 860px); height: min(88vh, 920px); margin: 6vh auto 0; background: var(--card); border: 1px solid var(--b1); border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.5); transform: translateY(18px) scale(0.98); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); }
+  .brief-modal.open .brief-modal-panel { transform: translateY(0) scale(1); }
+  .brief-modal-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border-bottom: 1px solid var(--b0); background: var(--card2); flex-shrink: 0; }
+  .brief-modal-eyebrow { display: block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .brief-modal-title { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; color: var(--t0); font-weight: 400; line-height: 1.3; }
+  .brief-modal-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .brief-modal-download, .brief-modal-close { width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--b1); background: var(--card); color: var(--t3); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+  .brief-modal-download:hover, .brief-modal-close:hover { color: var(--gold-hi); border-color: var(--gold-lo); background: var(--gold-alpha); }
+  .brief-modal-body { flex: 1; background: #17181c; }
+  .brief-modal-body iframe { width: 100%; height: 100%; border: none; display: block; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 24px; }
+    .rule { margin: 0 24px; }
+    .s { padding: 72px 0; }
+    .cat-section { padding: 64px 0; }
+    nav { padding: 0 22px; }
+    footer { padding: 40px 24px; }
+    .brief-modal-panel { width: 100vw; height: 100dvh; margin: 0; border-radius: 0; border: none; }
+    .brief-modal-title { font-size: 15px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ═════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="/" class="logo">Quoru<span>m</span></a>
+  <div class="nav-right">
+    <a href="/" class="nav-back">← Quorum</a>
+    <button class="toggle" id="themeBtn" aria-label="Toggle light/dark mode">
+      <div class="toggle-thumb"></div>
+      <span class="toggle-label l">☀</span>
+      <span class="toggle-label r">☾</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO — breadth-first, not narrative-first ═════════════════ -->
+<div class="wrap">
+  <div id="hero">
+    <div class="hero-aura"></div>
+    <div>
+      <span class="eyebrow r">Decision Library</span>
+      <h1 class="lib-hero-hl display r d1">Not one story. <em>Many rooms.</em></h1>
+      <p class="hero-sub r d2">Real Quorum briefs across the kinds of high-stakes calls people actually bring — founders, executives, investors, boards, and the institutions they run. Each one stands on its own.</p>
+      <div class="hero-stats r d2">
+        <div><div class="hero-stat-num" id="statLive">–</div><div class="hero-stat-label">Live briefs</div></div>
+        <div><div class="hero-stat-num" id="statTotal">–</div><div class="hero-stat-label">Total decisions</div></div>
+        <div><div class="hero-stat-num" id="statCats">–</div><div class="hero-stat-label">Categories</div></div>
+      </div>
+      <a href="/journey" class="hero-relate r d3">
+        Prefer one connected story? See the featured founder journey
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ CATEGORY RAIL ══════════════════════════════════════════════ -->
+<div class="wrap">
+  <div class="s" style="padding-bottom:0;">
+    <div class="sh r">
+      <span class="eyebrow">Browse by category</span>
+      <h2 class="display" style="font-size: clamp(26px,3vw,36px);">Five kinds of high-stakes decision.</h2>
+    </div>
+    <div class="cat-rail r d1" id="catRail"></div>
+  </div>
+</div>
+
+<!-- ══ CATEGORY SECTIONS — populated from LIBRARY config below ══ -->
+<div class="wrap">
+  <div id="catSections"></div>
+</div>
+
+<div class="wrap">
+  <div class="lib-footnote r" style="padding: 20px 0 88px;">
+    <p>That's the library as it stands today — more briefs are added as real sessions happen.</p>
+    <a href="/journey" class="hero-relate">
+      See the featured founder journey instead
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════ -->
+<footer>
+  <span class="footer-logo">Quorum</span>
+  <div class="footer-links" aria-label="Legal" role="navigation">
+    <a href="/privacy"  class="footer-link">Privacy Policy</a>
+    <a href="/cookies"  class="footer-link">Cookie Policy</a>
+    <a href="/terms"    class="footer-link">Terms</a>
+    <a href="/security" class="footer-link">Security &amp; Trust</a>
+  </div>
+  <span class="footer-copy">© 2026 Quorum</span>
+</footer>
+
+<!-- ══ BRIEF VIEWER MODAL ══════════════════════════════════════ -->
+<div class="brief-modal" id="briefModal" aria-hidden="true">
+  <div class="brief-modal-backdrop" data-close></div>
+  <div class="brief-modal-panel" role="dialog" aria-modal="true" aria-labelledby="briefModalTitle">
+    <div class="brief-modal-head">
+      <div>
+        <span class="brief-modal-eyebrow mono" id="briefModalTag">Decision Brief</span>
+        <h3 class="brief-modal-title" id="briefModalTitle">—</h3>
+      </div>
+      <div class="brief-modal-actions">
+        <a class="brief-modal-download" id="briefModalDownload" href="#" target="_blank" rel="noopener" aria-label="Open in a new tab" title="Open in a new tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <button class="brief-modal-close" id="briefModalClose" data-close aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="brief-modal-body">
+      <iframe id="briefModalFrame" title="Decision brief PDF viewer" src=""></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ══════════════════════════════════════════════════════════════
+     SINGLE CONFIG OBJECT — the entire page (category rail, section
+     headers, subcategory clusters, and every card) renders from
+     this. To add a brief later: drop the PDF in /decisions and add
+     one object to the right subcategory's `items` array — no other
+     markup changes needed. `status: 'live'` requires `pdf` + `tag`;
+     `status: 'placeholder'` needs neither and renders as "Coming
+     soon" automatically.
+     ══════════════════════════════════════════════════════════════ */
+  const LIBRARY = [
+    {
+      id: 'founders',
+      title: 'Founders & Startups',
+      desc: 'The calls founders face before there is a company yet, and after there almost wasn\u2019t.',
+      icon: '<path d="M12 2c2.5 2 4 5.5 4 9.5 0 2-.5 3.7-1.2 5.1l-2.8 3.4-2.8-3.4C8.5 15.2 8 13.5 8 11.5 8 7.5 9.5 4 12 2z"/><circle cx="12" cy="10.2" r="1.5"/><path d="M8.6 15.6 6 18.5M15.4 15.6 18 18.5"/>',
+      subcategories: [
+        {
+          label: 'Founding & Commitment',
+          items: [
+            { status: 'live', title: 'Leave the stable role — or keep building on the side?', desc: 'Weighing a $180k executive salary against ten months of runway and unproven traction.', pdf: '/decisions/decision-quit-executive-role.pdf', tag: 'Decision Brief \u00b7 Session 6FD80237' },
+            { status: 'placeholder', title: 'Split equity with a co-founder before product-market fit?' },
+          ],
+        },
+        {
+          label: 'Growth, Exit & Capital',
+          items: [
+            { status: 'live', title: 'Open-source the core product — or protect the moat?', desc: 'Community adoption and engineering enthusiasm against the proprietary workflow that makes the product defensible.', pdf: '/decisions/decision-open-source-ai.pdf', tag: 'Decision Brief \u00b7 Session F7BA5D53' },
+            { status: 'live', title: 'Accept a $32M acquisition offer — or hold for a larger exit?', desc: 'A certain payout today against the possibility of a company worth multiples more in a few years.', pdf: '/decisions/decision-acquisition-offer.pdf', tag: 'Decision Brief \u00b7 Session C6BD4448' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'leadership',
+      title: 'Leadership & Organisations',
+      desc: 'People decisions where the numbers and the culture are pulling in different directions.',
+      icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+      subcategories: [
+        {
+          label: 'Executive Performance',
+          items: [
+            { status: 'live', title: 'Replace a high-performing but culturally difficult executive?', desc: 'Forty percent of this quarter\u2019s revenue growth against a culture quietly eroding under one leader\u2019s presence.', pdf: '/decisions/decision-replace-vp-sales.pdf', tag: 'Decision Brief \u00b7 Session FD5C44C3' },
+            { status: 'placeholder', title: 'Promote from within — or hire an external VP of Engineering?' },
+          ],
+        },
+        {
+          label: 'Culture & Change',
+          items: [
+            { status: 'placeholder', title: 'Mandate a return to office after two years remote?' },
+            { status: 'placeholder', title: 'Restructure a team that has quietly stopped performing?' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'investing',
+      title: 'Investing & Capital Allocation',
+      desc: 'Where to put capital when the upside is real but so is the resemblance to prior bubbles.',
+      icon: '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
+      subcategories: [
+        {
+          label: 'Portfolio Strategy',
+          items: [
+            { status: 'live', title: 'Increase family office exposure to AI infrastructure?', desc: 'Strong recent performance against valuations that resemble the technology bubbles that came before.', pdf: '/decisions/decision-family-office-ai-exposure.pdf', tag: 'Decision Brief \u00b7 Session C5163086' },
+            { status: 'placeholder', title: 'Concentrate a public portfolio — or stay diversified?' },
+          ],
+        },
+        {
+          label: 'Personal Capital',
+          items: [
+            { status: 'placeholder', title: 'Exercise startup options before a potential IPO?' },
+            { status: 'placeholder', title: 'Buy a second property — or invest the capital instead?' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'governance',
+      title: 'Boards & Governance',
+      desc: 'The decisions a board makes on a founder\u2019s behalf, and what those decisions signal.',
+      icon: '<path d="M2 10l10-6 10 6"/><path d="M4 10v11M20 10v11M9 10v11M15 10v11"/><path d="M2 21h20"/>',
+      subcategories: [
+        {
+          label: 'Leadership Transitions',
+          items: [
+            { status: 'live', title: 'Replace the CEO before the next funding round?', desc: 'A board\u2019s push for enterprise-scaling experience against a founder\u2019s cultural capital and investor trust.', pdf: '/decisions/decision-replace-ceo.pdf', tag: 'Decision Brief \u00b7 Session 471278B8' },
+            { status: 'placeholder', title: 'Appoint an independent board chair?' },
+          ],
+        },
+        {
+          label: 'Oversight & Risk',
+          items: [
+            { status: 'placeholder', title: 'Approve a related-party transaction?' },
+            { status: 'placeholder', title: 'Adopt a dual-class share structure before IPO?' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'institutions',
+      title: 'Institutions & Public Systems',
+      desc: 'Decisions made at institutional scale, where trust takes years to build and one misstep to spend.',
+      icon: '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+      subcategories: [
+        {
+          label: 'Technology Adoption',
+          items: [
+            { status: 'live', title: 'Deploy an AI diagnostic system across every department?', desc: 'A 35% speed gain in willing pilot departments against physician trust built over decades.', pdf: '/decisions/decision-hospital-ai-rollout.pdf', tag: 'Decision Brief \u00b7 Session 5EC391D3' },
+            { status: 'placeholder', title: 'Roll out algorithmic policing tools city-wide?' },
+          ],
+        },
+        {
+          label: 'Policy & Reform',
+          items: [
+            { status: 'placeholder', title: 'Shift a public pension fund\u2019s core asset allocation?' },
+            { status: 'placeholder', title: 'Consolidate two public school districts?' },
+          ],
+        },
+      ],
+    },
+  ]
+
+  /* ── THEME — shared key with the rest of the site ── */
+  const html  = document.documentElement
+  const btn   = document.getElementById('themeBtn')
+  const saved = localStorage.getItem('q-theme')
+  if (saved) html.setAttribute('data-theme', saved)
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+    html.setAttribute('data-theme', next)
+    localStorage.setItem('q-theme', next)
+  })
+
+  /* ── NAV backdrop on scroll ── */
+  const nav = document.getElementById('nav')
+  window.addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 40), { passive: true })
+
+  /* ── RENDER: category rail + sections, all from LIBRARY ── */
+  const catRail = document.getElementById('catRail')
+  const catSections = document.getElementById('catSections')
+  let liveCount = 0, totalCount = 0
+
+  LIBRARY.forEach(cat => {
+    let catLive = 0, catTotal = 0
+
+    // -- decision cards, grouped by subcategory --
+    const subHtml = cat.subcategories.map(sub => {
+      const cardsHtml = sub.items.map(item => {
+        catTotal++; totalCount++
+        if (item.status === 'live') {
+          catLive++; liveCount++
+          return `
+            <div class="dec-card is-live" role="listitem" tabindex="0"
+                 data-brief="${item.pdf}" data-brief-title="${item.title.replace(/"/g, '&quot;')}" data-brief-tag="${item.tag}">
+              <h4 class="dec-card-title">${item.title}</h4>
+              <p class="dec-card-desc">${item.desc || ''}</p>
+              <span class="dec-card-cta">Read the brief
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </span>
+            </div>`
+        }
+        return `
+            <div class="dec-card is-placeholder" role="listitem" aria-disabled="true">
+              <h4 class="dec-card-title">${item.title}</h4>
+              <p class="dec-card-desc">A future Quorum session, not yet recorded.</p>
+              <span class="soon-badge"><span class="dot"></span>Coming soon</span>
+            </div>`
+      }).join('')
+      return `
+        <div class="sub-block">
+          <div class="sub-label"><span class="mono">${sub.label}</span></div>
+          <div class="dec-grid" role="list">${cardsHtml}</div>
+        </div>`
+    }).join('')
+
+    catSections.insertAdjacentHTML('beforeend', `
+      <section class="cat-section r" id="cat-${cat.id}">
+        <div class="cat-head">
+          <div class="cat-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${cat.icon}</svg></div>
+          <div>
+            <span class="eyebrow" style="margin-bottom:8px;">${cat.title}</span>
+            <p class="cat-head-desc">${cat.desc}</p>
+          </div>
+        </div>
+        ${subHtml}
+      </section>`)
+
+    // -- rail card for this category --
+    const card = document.createElement('button')
+    card.className = 'cat-card'
+    card.type = 'button'
+    card.innerHTML = `
+      <span class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${cat.icon}</svg></span>
+      <span class="cat-title">${cat.title}</span>
+      <span class="cat-count"><b>${catLive}</b> live \u00b7 ${catTotal - catLive} coming soon</span>`
+    card.addEventListener('click', () => {
+      document.getElementById(`cat-${cat.id}`).scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+    catRail.appendChild(card)
+  })
+
+  document.getElementById('statLive').textContent = liveCount
+  document.getElementById('statTotal').textContent = totalCount
+  document.getElementById('statCats').textContent = LIBRARY.length
+
+  /* ── Scroll-reveal ── */
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return
+      e.target.classList.add('in')
+      ro.unobserve(e.target)
+    })
+  }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' })
+  document.querySelectorAll('.r').forEach(el => ro.observe(el))
+
+  /* ── BRIEF VIEWER MODAL — same component/behaviour as /journey ── */
+  const briefModal    = document.getElementById('briefModal')
+  const briefFrame     = document.getElementById('briefModalFrame')
+  const briefTitleEl   = document.getElementById('briefModalTitle')
+  const briefTagEl     = document.getElementById('briefModalTag')
+  const briefDownload  = document.getElementById('briefModalDownload')
+  let lastFocused = null
+
+  function openBrief(pdf, title, tag) {
+    if (!pdf) return
+    lastFocused = document.activeElement
+    briefFrame.src = pdf + '#toolbar=0&navpanes=0'
+    briefTitleEl.textContent = title || 'Decision Brief'
+    briefTagEl.textContent = tag || 'Decision Brief'
+    briefDownload.href = pdf
+    briefModal.classList.add('open')
+    briefModal.setAttribute('aria-hidden', 'false')
+    document.body.classList.add('modal-open')
+    document.getElementById('briefModalClose').focus()
+  }
+
+  function closeBrief() {
+    briefModal.classList.remove('open')
+    briefModal.setAttribute('aria-hidden', 'true')
+    document.body.classList.remove('modal-open')
+    setTimeout(() => { briefFrame.src = '' }, 300)
+    if (lastFocused && lastFocused.focus) lastFocused.focus()
+  }
+
+  document.addEventListener('click', e => {
+    const trigger = e.target.closest('[data-brief]')
+    if (trigger) { openBrief(trigger.dataset.brief, trigger.dataset.briefTitle, trigger.dataset.briefTag); return }
+    if (e.target.closest('[data-close]')) closeBrief()
+  })
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && briefModal.classList.contains('open')) { closeBrief(); return }
+    if (e.key === 'Enter' || e.key === ' ') {
+      const card = e.target.closest('.dec-card.is-live')
+      if (card) { e.preventDefault(); openBrief(card.dataset.brief, card.dataset.briefTitle, card.dataset.briefTag) }
+    }
+  })
+</script>
+
+</body>
+</html>
