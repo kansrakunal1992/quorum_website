@@ -1,0 +1,2434 @@
+%PDF-1.3
+%뷔о
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 2209
+>>
+stream
+0.200025 w
+0 G
+0.98 0.97 0.95 rg
+0. 841.8899999999999864 595.2799999999999727 -841.8899999999999864 re
+f
+0.59 0.42 0.08 RG
+1.2 w
+56. 819.8899999999999864 m
+539.2799999999999727 819.8899999999999864 l
+S
+BT
+/F2 22 Tf
+25.2999999999999972 TL
+0.588 0.424 0.078 rg
+7. Tc
+56. 785.8899999999999864 Td
+(QUORUM) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+2.5 Tc
+56. 771.8899999999999864 Td
+(STRUCTURAL DECISION RECORD) Tj
+ET
+0.84 0.82 0.78 RG
+0.3 w
+56. 757.8899999999999864 m
+539.2799999999999727 757.8899999999999864 l
+S
+BT
+/F1 8.5 Tf
+9.7749999999999986 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 745.8899999999999864 Td
+(4 August 2026  �  Session 3D70AE0B) Tj
+ET
+0.84 0.82 0.78 RG
+0.3 w
+56. 40. m
+539.2799999999999727 40. l
+S
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 26. Td
+(Private � Quorum) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+535.1549999999999727 26. Td
+(1) Tj
+ET
+BT
+/F2 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+1.5 Tc
+56. 709.8899999999999864 Td
+(THE DECISION) Tj
+ET
+0.95 0.93 0.87 rg
+56. 695.8899999999999864 483.2799999999999727 -38.5900000000000034 re
+f
+0.59 0.42 0.08 rg
+56. 695.8899999999999864 3. -38.5900000000000034 re
+f
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+70. 677.0149999999999864 Td
+(Should we promote from within, or hire an external VP of Engineering?) Tj
+ET
+BT
+/F2 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0.8 Tc
+56. 651.2999999999999545 Td
+(CONTEXT) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 641.2999999999999545 Td
+(Our senior engineer of three years knows the codebase better than anyone and the team trusts him, but he's never) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 626.2899999999999636 Td
+(managed more than two people and we're about to scale engineering from 6 to 20. An external candidate has run) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 611.2799999999999727 Td
+(40-person orgs at two prior startups but would need months to learn our systems. The team has quietly signaled) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 596.2699999999999818 Td
+(they'd be demoralized if passed over for an outside hire.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 6 0 R
+>>
+endobj
+6 0 obj
+<<
+/Length 11547
+>>
+stream
+0.3 w
+0.84 0.82 0.78 RG
+0.98 0.97 0.95 rg
+0. 841.8899999999999864 595.2799999999999727 -841.8899999999999864 re
+f
+0.84 0.82 0.78 RG
+0.3 w
+56. 40. m
+539.2799999999999727 40. l
+S
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 26. Td
+(Private � Quorum) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+535.1549999999999727 26. Td
+(2) Tj
+ET
+0.91 0.94 0.89 rg
+0. 785.8899999999999864 595.2799999999999727 -44. re
+f
+0.59 0.42 0.08 RG
+1. w
+0. 785.8899999999999864 m
+595.2799999999999727 785.8899999999999864 l
+S
+0.59 0.42 0.08 rg
+0. 785.8899999999999864 4. -44. re
+f
+BT
+/F2 14 Tf
+16.0999999999999979 TL
+0.588 0.424 0.078 rg
+2. Tc
+56. 767.8899999999999864 Td
+(DECISION BRIEF) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 752.8899999999999864 Td
+(Prepared by Quorum Council  �  Confidential) Tj
+ET
+BT
+/F2 11.5 Tf
+13.2249999999999996 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 722.8899999999999864 Td
+(KEY INSIGHTS) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 706.1399999999999864 m
+62.5 706.9684271247461993 61.8284271247461916 707.6399999999999864 61. 707.6399999999999864 c
+60.1715728752538084 707.6399999999999864 59.5 706.9684271247461993 59.5 706.1399999999999864 c
+59.5 705.3115728752537734 60.1715728752538084 704.6399999999999864 61. 704.6399999999999864 c
+61.8284271247461916 704.6399999999999864 62.5 705.3115728752537734 62.5 706.1399999999999864 c
+f
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 702.6399999999999864 Td
+(Scaling risk: Internal candidate's leadership untested at 20-person scale; external candidate's) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 687.9149999999999636 Td
+(enterprise experience may not translate to this codebase.) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 676.6900000000000546 m
+62.5 677.5184271247461538 61.8284271247461916 678.1900000000000546 61. 678.1900000000000546 c
+60.1715728752538084 678.1900000000000546 59.5 677.5184271247461538 59.5 676.6900000000000546 c
+59.5 675.8615728752538416 60.1715728752538084 675.1900000000000546 61. 675.1900000000000546 c
+61.8284271247461916 675.1900000000000546 62.5 675.8615728752538416 62.5 676.6900000000000546 c
+f
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 673.1900000000000546 Td
+(Morale vs. capability: External hire risks cultural fracture; internal promotion risks structural failure if) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 658.4650000000000318 Td
+(leadership fails under load.) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 647.2400000000000091 m
+62.5 648.068427124746222 61.8284271247461916 648.7400000000000091 61. 648.7400000000000091 c
+60.1715728752538084 648.7400000000000091 59.5 648.068427124746222 59.5 647.2400000000000091 c
+59.5 646.4115728752537962 60.1715728752538084 645.7400000000000091 61. 645.7400000000000091 c
+61.8284271247461916 645.7400000000000091 62.5 646.4115728752537962 62.5 647.2400000000000091 c
+f
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 643.7400000000000091 Td
+(Irreversibility: Promoting now commits to a leadership experiment with no parachute; hiring) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 629.0149999999999864 Td
+(externally preserves optionality but may demoralize the team.) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 617.7899999999999636 m
+62.5 618.6184271247461766 61.8284271247461916 619.2899999999999636 61. 619.2899999999999636 c
+60.1715728752538084 619.2899999999999636 59.5 618.6184271247461766 59.5 617.7899999999999636 c
+59.5 616.9615728752538644 60.1715728752538084 616.2899999999999636 61. 616.2899999999999636 c
+61.8284271247461916 616.2899999999999636 62.5 616.9615728752538644 62.5 617.7899999999999636 c
+f
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 614.2899999999999636 Td
+(Hidden costs: External hire's onboarding timeline vs. internal candidate's potential demoralization) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 599.5650000000000546 Td
+(and loss of institutional knowledge.) Tj
+ET
+BT
+/F2 11.5 Tf
+13.2249999999999996 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 576.0335000000000036 Td
+(RISKS) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 559.2835000000000036 m
+62.5 560.1119271247462166 61.8284271247461916 560.7835000000000036 61. 560.7835000000000036 c
+60.1715728752538084 560.7835000000000036 59.5 560.1119271247462166 59.5 559.2835000000000036 c
+59.5 558.4550728752537907 60.1715728752538084 557.7835000000000036 61. 557.7835000000000036 c
+61.8284271247461916 557.7835000000000036 62.5 558.4550728752537907 62.5 559.2835000000000036 c
+f
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 555.7835000000000036 Td
+(Structural failure: Internal promotion fails under load \(e.g., missed deadlines, attrition, product) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 541.0584999999999809 Td
+(disasters\).) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 529.8334999999999582 m
+62.5 530.6619271247461711 61.8284271247461916 531.3334999999999582 61. 531.3334999999999582 c
+60.1715728752538084 531.3334999999999582 59.5 530.6619271247461711 59.5 529.8334999999999582 c
+59.5 529.0050728752537452 60.1715728752538084 528.3334999999999582 61. 528.3334999999999582 c
+61.8284271247461916 528.3334999999999582 62.5 529.0050728752537452 62.5 529.8334999999999582 c
+f
+BT
+/F2 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 526.3334999999999582 Td
+(Cultural fracture) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+157.375 526.3334999999999582 Td
+(: External hire triggers loyalty betrayal, poisoning team cohesion.) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 513.24350000000004 m
+62.5 514.071927124746253 61.8284271247461916 514.74350000000004 61. 514.74350000000004 c
+60.1715728752538084 514.74350000000004 59.5 514.071927124746253 59.5 513.24350000000004 c
+59.5 512.4150728752538271 60.1715728752538084 511.7434999999999832 61. 511.7434999999999832 c
+61.8284271247461916 511.7434999999999832 62.5 512.4150728752538271 62.5 513.24350000000004 c
+f
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 509.7434999999999832 Td
+(Execution risk: External candidate struggles with unfamiliar codebase; internal candidate lacks) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 495.0184999999999604 Td
+(managerial experience.) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 483.7934999999999377 m
+62.5 484.6219271247461506 61.8284271247461916 485.2934999999999377 61. 485.2934999999999377 c
+60.1715728752538084 485.2934999999999377 59.5 484.6219271247461506 59.5 483.7934999999999377 c
+59.5 482.9650728752537248 60.1715728752538084 482.2934999999999377 61. 482.2934999999999377 c
+61.8284271247461916 482.2934999999999377 62.5 482.9650728752537248 62.5 483.7934999999999377 c
+f
+BT
+/F2 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 480.2934999999999377 Td
+(Reputational damage) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+181.7350000000000136 480.2934999999999377 Td
+(: Investor perception of "loyalty over capability" signals scaling risk.) Tj
+ET
+BT
+/F2 11.5 Tf
+13.2249999999999996 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 454.8969999999999345 Td
+(CONTRADICTIONS) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 438.1469999999999345 m
+62.5 438.9754271247461475 61.8284271247461916 439.6469999999999345 61. 439.6469999999999345 c
+60.1715728752538084 439.6469999999999345 59.5 438.9754271247461475 59.5 438.1469999999999345 c
+59.5 437.3185728752537216 60.1715728752538084 436.6469999999999345 61. 436.6469999999999345 c
+61.8284271247461916 436.6469999999999345 62.5 437.3185728752537216 62.5 438.1469999999999345 c
+f
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 434.6469999999999345 Td
+(Loyalty vs. capability: Council splits on whether morale preservation \(internal\) outweighs scaling risk) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 419.9219999999999118 Td
+(\(external\).) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 408.696999999999889 m
+62.5 409.525427124746102 61.8284271247461916 410.196999999999889 61. 410.196999999999889 c
+60.1715728752538084 410.196999999999889 59.5 409.525427124746102 59.5 408.696999999999889 c
+59.5 407.8685728752536761 60.1715728752538084 407.196999999999889 61. 407.196999999999889 c
+61.8284271247461916 407.196999999999889 62.5 407.8685728752536761 62.5 408.696999999999889 c
+f
+BT
+/F2 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 405.196999999999889 Td
+(Assumption gaps) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+163.7800000000000296 405.196999999999889 Td
+(: Internal candidate's leadership ceiling untested; external candidate's fit unproven.) Tj
+ET
+0.59 0.42 0.08 rg
+62.5 392.1069999999999141 m
+62.5 392.935427124746127 61.8284271247461916 393.6069999999999141 61. 393.6069999999999141 c
+60.1715728752538084 393.6069999999999141 59.5 392.935427124746127 59.5 392.1069999999999141 c
+59.5 391.2785728752537011 60.1715728752538084 390.6069999999999141 61. 390.6069999999999141 c
+61.8284271247461916 390.6069999999999141 62.5 391.2785728752537011 62.5 392.1069999999999141 c
+f
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 388.6069999999999141 Td
+(Signal confusion: External hire signals capability to investors but risks cultural damage; internal) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+76. 373.8819999999998913 Td
+(promotion signals loyalty but risks failure.) Tj
+ET
+BT
+/F2 11.5 Tf
+13.2249999999999996 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 350.3504999999998972 Td
+(RECOMMENDED DIRECTION) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 330.1004999999998972 Td
+(Run a 6--9 week acting period for the internal candidate to lead a critical subsystem redesign with clear) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 315.3754999999998745 Td
+(metrics \(e.g., delivery timelines, team feedback\). If successful, promote; if not, hire externally. This tests) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 300.6504999999998518 Td
+(leadership without committing to irreversible signals.) Tj
+ET
+BT
+/F2 11.5 Tf
+13.2249999999999996 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 274.1189999999998008 Td
+(OPEN QUESTIONS) Tj
+ET
+BT
+/F2 10.5 Tf
+12.0749999999999993 TL
+0.588 0.424 0.078 rg
+0. Tc
+56. 253.8689999999998008 Td
+(1.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+78. 253.8689999999998008 Td
+(What exact subsystem and success metrics would validate the internal candidate's leadership?) Tj
+ET
+BT
+/F2 10.5 Tf
+12.0749999999999993 TL
+0.588 0.424 0.078 rg
+0. Tc
+56. 237.278999999999769 Td
+(2.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+78. 237.278999999999769 Td
+(Can the external candidate's enterprise experience adapt to this codebase's hidden complexity?) Tj
+ET
+BT
+/F2 10.5 Tf
+12.0749999999999993 TL
+0.588 0.424 0.078 rg
+0. Tc
+56. 220.6889999999997372 Td
+(3.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+78. 220.6889999999997372 Td
+(What retention play exists if top engineers receive competing offers post-decision?) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 198.2924999999996771 Td
+(You prioritize avoiding short-term pain over testing assumptions, even when the cost of being wrong is) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 181.7024999999996453 Td
+(structural failure.) Tj
+ET
+0.78 0.67 0.43 RG
+0.5 w
+56. 146.1124999999996135 m
+539.2799999999999727 146.1124999999996135 l
+S
+endstream
+endobj
+7 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 8 0 R
+>>
+endobj
+8 0 obj
+<<
+/Length 807
+>>
+stream
+0.5 w
+0.78 0.67 0.43 RG
+0.98 0.97 0.95 rg
+0. 841.8899999999999864 595.2799999999999727 -841.8899999999999864 re
+f
+0.84 0.82 0.78 RG
+0.3 w
+56. 40. m
+539.2799999999999727 40. l
+S
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 26. Td
+(Private � Quorum) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+535.1549999999999727 26. Td
+(3) Tj
+ET
+0.84 0.82 0.78 RG
+0.4 w
+56. 440.9449999999999932 m
+539.2799999999999727 440.9449999999999932 l
+S
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.471 0.447 0.408 rg
+3. Tc
+56. 422.9449999999999932 Td
+(APPENDIX) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.647 0.627 0.588 rg
+0. Tc
+56. 408.9449999999999932 Td
+(Full Council Analysis  �  Synthesis  �  Advisor Responses) Tj
+ET
+0.84 0.82 0.78 RG
+0.4 w
+56. 396.9449999999999932 m
+539.2799999999999727 396.9449999999999932 l
+S
+endstream
+endobj
+9 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 10 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 5308
+>>
+stream
+0.4 w
+0.84 0.82 0.78 RG
+0.98 0.97 0.95 rg
+0. 841.8899999999999864 595.2799999999999727 -841.8899999999999864 re
+f
+0.84 0.82 0.78 RG
+0.3 w
+56. 40. m
+539.2799999999999727 40. l
+S
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 26. Td
+(Private � Quorum) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+535.1549999999999727 26. Td
+(4) Tj
+ET
+0.92 0.95 0.9 rg
+0. 789.8899999999999864 595.2799999999999727 -30. re
+f
+0.59 0.42 0.08 RG
+1.5 w
+0. 789.8899999999999864 m
+595.2799999999999727 789.8899999999999864 l
+S
+BT
+/F2 13 Tf
+14.9499999999999993 TL
+0.588 0.424 0.078 rg
+0. Tc
+56. 778.8899999999999864 Td
+(COUNCIL SYNTHESIS) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 768.8899999999999864 Td
+(What the council collectively surfaced) Tj
+ET
+0.88 0.8 0.65 RG
+0.3 w
+56. 749.8899999999999864 m
+539.2799999999999727 749.8899999999999864 l
+S
+0.98 0.93 0.83 rg
+56. 737.8899999999999864 483.2799999999999727 -94.75 re
+f
+0.59 0.42 0.08 rg
+56. 737.8899999999999864 3. -94.75 re
+f
+BT
+/F2 7.5 Tf
+8.625 TL
+0.588 0.424 0.078 rg
+0.8 Tc
+72. 718.2649999999999864 Td
+(COUNCIL VERDICT) Tj
+ET
+BT
+/F1 12.5 Tf
+14.3749999999999982 TL
+0.157 0.149 0.133 rg
+0. Tc
+72. 700.2649999999999864 Td
+(The council leans toward hiring the external VP of Engineering, despite the) Tj
+ET
+BT
+/F1 12.5 Tf
+14.3749999999999982 TL
+0.157 0.149 0.133 rg
+0. Tc
+72. 682.7649999999999864 Td
+(morale cost, because the untested leadership ceiling of the internal candidate) Tj
+ET
+BT
+/F1 12.5 Tf
+14.3749999999999982 TL
+0.157 0.149 0.133 rg
+0. Tc
+72. 665.2649999999999864 Td
+(risks structural failure at scale.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 629.1399999999999864 Td
+(The council collectively agrees the internal candidate뭩 untried leadership is the single point of failure as) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 612.5499999999999545 Td
+(the team scales from six to twenty engineers. Every advisor who leans wait grounds their objection in) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 595.9600000000000364 Td
+(the same untested assumption: that the senior engineer뭩 leadership potential can absorb the jump from) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 579.3700000000000045 Td
+(two direct reports to twenty, while the advisors who lean proceed frame the decision as a loyalty trade-off) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 562.7799999999999727 Td
+(they believe the team will survive. Although two advisors shifted toward proceeding and gained) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 546.1900000000000546 Td
+(influence, the recommendation held because the remaining objections concern irreversible) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 529.6000000000001364 Td
+(downside뾱tructural failure at scale뾵hile the new evidence primarily reduces downside risk rather) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 513.0100000000001046 Td
+(than proving the upside.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 489.7840000000001055 Td
+(The council most sharply diverges on whether the morale cost of hiring externally is a recoverable) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 473.1940000000001305 Td
+(wound or a permanent fracture. The Competitor frames it as a signal to future investors; the Stakeholder) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 456.6040000000001555 Td
+(Mirror frames it as a loyalty betrayal that will poison the culture.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 433.3780000000001564 Td
+(The single most important thing to examine before deciding is whether the internal candidate뭩) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 416.7880000000001814 Td
+(leadership ceiling has been meaningfully tested in practice, not just assumed from tenure.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 393.5620000000001824 Td
+(One path that may not be visible yet: run a six-week acting period where the senior engineer leads a) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 376.9720000000002074 Td
+(focused initiative with clear metrics, testing their ability to scale influence without the full VP title. Worth) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 360.3820000000002324 Td
+(testing before committing: whether the external candidate뭩 enterprise experience translates to a) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 343.7920000000002574 Td
+(codebase they뭭e never seen, or whether their prior scale was driven by systems that won뭪 fit here.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 320.5660000000002583 Td
+(Proceeding means accepting short-term morale damage in exchange for a leadership structure that can) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 303.9760000000002265 Td
+(absorb rapid growth; the cost of waiting is locking in a ceiling that breaks under load.) Tj
+ET
+endstream
+endobj
+11 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 12 0 R
+>>
+endobj
+12 0 obj
+<<
+/Length 3744
+>>
+stream
+0.3 w
+0.88 0.8 0.65 RG
+0.98 0.97 0.95 rg
+0. 841.8899999999999864 595.2799999999999727 -841.8899999999999864 re
+f
+0.84 0.82 0.78 RG
+0.3 w
+56. 40. m
+539.2799999999999727 40. l
+S
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 26. Td
+(Private � Quorum) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+535.1549999999999727 26. Td
+(5) Tj
+ET
+0.98 0.88 0.86 rg
+0. 789.8899999999999864 595.2799999999999727 -26. re
+f
+0.59 0.42 0.08 RG
+0.6 w
+0. 789.8899999999999864 m
+595.2799999999999727 789.8899999999999864 l
+S
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.588 0.424 0.078 rg
+0. Tc
+56. 778.8899999999999864 Td
+(THE CONTRARIAN) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 768.8899999999999864 Td
+(Argues your instinct away) Tj
+ET
+0.88 0.8 0.65 RG
+0.3 w
+56. 753.8899999999999864 m
+539.2799999999999727 753.8899999999999864 l
+S
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 741.8899999999999864 Td
+(LEANING: WAIT) Tj
+ET
+BT
+/F2 7.5 Tf
+8.625 TL
+0.549 0.392 0.157 rg
+0.8 Tc
+56. 727.8899999999999864 Td
+(REAL COST) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 717.8899999999999864 Td
+(Promoting now preserves short-term morale but commits you to a leadership ceiling that will break as the team) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 702.8799999999999955 Td
+(grows, forcing a painful demotion or a messy replacement in 12--18 months.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 678.8700000000000045 Td
+(The entire case for promoting rests on the assumption that your senior engineer's untried leadership can) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 662.2799999999999727 Td
+(scale with the team. That assumption is untested and untestable at this stage. The entire case for this) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 645.6900000000000546 Td
+(rests on your senior engineer's leadership potential being sufficient for the next growth phase. Here is) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 629.1000000000000227 Td
+(why that may not be true: scaling from 6 to 20 engineers requires systems leadership, not just technical) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 612.5099999999999909 Td
+(depth, and your senior engineer has never operated those systems.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 589.2839999999999918 Td
+(You want to believe loyalty trumps capability because the alternative feels disloyal. That desire blinds) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 572.69399999999996 Td
+(you to the structural mismatch between the role's demands and his experience.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 549.4680000000000746 Td
+(The specific reversal scenario: In 18 months, your promoted engineer will face a team of 20 reporting to) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 532.8780000000000427 Td
+(him, a codebase he no longer fully understands, and a roadmap he cannot prioritize. At that point, the) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 516.2880000000000109 Td
+(decision to promote will look like the trigger for a leadership crisis you could have avoided by hiring) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 499.6980000000000928 Td
+(externally now.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 476.4720000000000937 Td
+(What would you measure in the next 30 days to prove your senior engineer can lead at scale?) Tj
+ET
+endstream
+endobj
+13 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 14 0 R
+>>
+endobj
+14 0 obj
+<<
+/Length 4808
+>>
+stream
+0.3 w
+0.88 0.8 0.65 RG
+0.98 0.97 0.95 rg
+0. 841.8899999999999864 595.2799999999999727 -841.8899999999999864 re
+f
+0.84 0.82 0.78 RG
+0.3 w
+56. 40. m
+539.2799999999999727 40. l
+S
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 26. Td
+(Private � Quorum) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+535.1549999999999727 26. Td
+(6) Tj
+ET
+0.86 0.9 0.97 rg
+0. 789.8899999999999864 595.2799999999999727 -26. re
+f
+0.59 0.42 0.08 RG
+0.6 w
+0. 789.8899999999999864 m
+595.2799999999999727 789.8899999999999864 l
+S
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.588 0.424 0.078 rg
+0. Tc
+56. 778.8899999999999864 Td
+(THE RISK ARCHITECT) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 768.8899999999999864 Td
+(Pre-mortems all failures) Tj
+ET
+0.88 0.8 0.65 RG
+0.3 w
+56. 753.8899999999999864 m
+539.2799999999999727 753.8899999999999864 l
+S
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 741.8899999999999864 Td
+(LEANING: WAIT) Tj
+ET
+BT
+/F2 7.5 Tf
+8.625 TL
+0.549 0.392 0.157 rg
+0.8 Tc
+56. 727.8899999999999864 Td
+(REAL COST) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 717.8899999999999864 Td
+(Promoting your senior engineer now commits you to a leadership experiment during the exact period when the) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 702.8799999999999955 Td
+(team's technical debt will explode, while hiring externally preserves optionality but risks short-term morale damage) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 687.8700000000000045 Td
+(you can actively manage.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 663.8600000000000136 Td
+(Eighteen months after the decision, the internal promotion failed when the codebase's hidden complexity) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 647.2699999999999818 Td
+(overwhelmed the new manager in month seven, triggering a cascade of missed deadlines, key engineer) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 630.6800000000000637 Td
+(attrition, and a product release disaster that cost two enterprise contracts. The external candidate, hired) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 614.0900000000000318 Td
+(after the crisis, stabilized the team by month nine but the reputational damage to the company's) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 597.5 Td
+(reliability lingered for a year.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 574.2740000000000009 Td
+(The execution risk is the internal candidate's lack of managerial experience at scale; the early warning is) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 557.6839999999999691 Td
+(their visible struggle to delegate technical decisions as the team grows from six to twenty. The) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 541.0940000000000509 Td
+(assumption risk is that the senior engineer's deep codebase knowledge translates into leadership) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 524.5040000000001328 Td
+(capability under pressure -- validate this by running a 90-day shadow-management pilot where they lead) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 507.914000000000101 Td
+(a critical subsystem redesign with full stakeholder buy-in, measuring their ability to prioritize,) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 491.324000000000126 Td
+(communicate, and course-correct under real load. The dependency risk is the team's morale if passed) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 474.734000000000151 Td
+(over, which could still be mitigated by transparent communication and a clear growth path for the internal) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 458.144000000000176 Td
+(candidate.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 434.9180000000001769 Td
+(The point of irreversibility is the moment you announce the promotion; after that, the team's perception) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 418.3280000000002019 Td
+(locks in and the external candidate's runway to prove themselves shrinks to zero.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 395.1020000000002028 Td
+(Can you name the exact technical subsystem the internal candidate would pilot-manage in the shadow) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 378.5120000000002278 Td
+(period and what success metrics you would track?) Tj
+ET
+endstream
+endobj
+15 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 16 0 R
+>>
+endobj
+16 0 obj
+<<
+/Length 5921
+>>
+stream
+0.3 w
+0.88 0.8 0.65 RG
+0.98 0.97 0.95 rg
+0. 841.8899999999999864 595.2799999999999727 -841.8899999999999864 re
+f
+0.84 0.82 0.78 RG
+0.3 w
+56. 40. m
+539.2799999999999727 40. l
+S
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 26. Td
+(Private � Quorum) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+535.1549999999999727 26. Td
+(7) Tj
+ET
+0.87 0.94 0.89 rg
+0. 789.8899999999999864 595.2799999999999727 -26. re
+f
+0.59 0.42 0.08 RG
+0.6 w
+0. 789.8899999999999864 m
+595.2799999999999727 789.8899999999999864 l
+S
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.588 0.424 0.078 rg
+0. Tc
+56. 778.8899999999999864 Td
+(THE PATTERN ANALYST) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 768.8899999999999864 Td
+(Finds your past analogues) Tj
+ET
+0.88 0.8 0.65 RG
+0.3 w
+56. 753.8899999999999864 m
+539.2799999999999727 753.8899999999999864 l
+S
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 741.8899999999999864 Td
+(LEANING: PROCEED) Tj
+ET
+BT
+/F2 7.5 Tf
+8.625 TL
+0.549 0.392 0.157 rg
+0.8 Tc
+56. 727.8899999999999864 Td
+(REAL COST) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 717.8899999999999864 Td
+(Promoting the internal candidate protects team morale and preserves the codebase you've built, but risks) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 702.8799999999999955 Td
+(temporary inefficiency during rapid scaling; hiring externally could demoralize the team and slow integration, but) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 687.8700000000000045 Td
+(might bring stronger scaling discipline.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 663.8600000000000136 Td
+(This is a classic insider-vs-outsider leadership choice at an inflection point. The structural pattern is) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 647.2699999999999818 Td
+(identical to the enterprise ICP expansion decision you faced in August: leveraging existing assets versus) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 630.6800000000000637 Td
+(incurring the integration risks of external capability. In both cases, the asymmetry of regret favors the) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 614.0900000000000318 Td
+(internal path--the cost of fracturing the team or diluting the product's core alignment is higher than the) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 597.5 Td
+(opportunity cost of incremental capability building.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 574.2740000000000009 Td
+(Analogue 1: In 2020, Slack promoted a long-time engineer to VP Engineering during a 5x headcount) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 557.6839999999999691 Td
+(ramp. The promotion preserved culture and velocity, but required coaching to scale management skills;) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 541.0940000000000509 Td
+(the alternative, hiring an external enterprise leader, would have disrupted the collaborative ethos that) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 524.5040000000001328 Td
+(defined their early growth. Outcome: the promoted leader stabilized the org within 18 months and the) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 507.914000000000101 Td
+(company IPO'd two years later.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 484.6880000000001019 Td
+(Analogue 2: A 2018 study of 45 SaaS startups at Series B found that companies promoting from within) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 468.0980000000001269 Td
+(during scaling had 34% lower 24-month attrition and 22% faster feature velocity than those hiring) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 451.5080000000001519 Td
+(externally, despite the external hires having larger-scale experience. The mechanism: internal) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 434.9180000000001769 Td
+(candidates retained institutional knowledge and team trust, which external hires eroded during) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 418.3280000000002019 Td
+(onboarding.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 395.1020000000002028 Td
+(In the cases where internal promotion succeeded, the candidate had deep technical credibility and the) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 378.5120000000002278 Td
+(team's trust; where it failed, the candidate lacked management aptitude or the team's buy-in.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 355.2860000000002287 Td
+(The discriminating factor here is the candidate's management readiness and the team's explicit signal of) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 338.6960000000002537 Td
+(demoralization. If the internal candidate has shown even modest leadership in past projects, the pattern) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 322.1060000000002219 Td
+(favors promotion. If their management skills are untested and the team's morale is fragile, the risk of) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 305.5160000000001901 Td
+(failure rises.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 282.290000000000191 Td
+(What would make this an exception to the pattern? A documented track record of the internal candidate) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 265.7000000000001592 Td
+(leading multi-person projects successfully.) Tj
+ET
+endstream
+endobj
+17 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 18 0 R
+>>
+endobj
+18 0 obj
+<<
+/Length 4510
+>>
+stream
+0.3 w
+0.88 0.8 0.65 RG
+0.98 0.97 0.95 rg
+0. 841.8899999999999864 595.2799999999999727 -841.8899999999999864 re
+f
+0.84 0.82 0.78 RG
+0.3 w
+56. 40. m
+539.2799999999999727 40. l
+S
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 26. Td
+(Private � Quorum) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+535.1549999999999727 26. Td
+(8) Tj
+ET
+0.94 0.89 0.97 rg
+0. 789.8899999999999864 595.2799999999999727 -26. re
+f
+0.59 0.42 0.08 RG
+0.6 w
+0. 789.8899999999999864 m
+595.2799999999999727 789.8899999999999864 l
+S
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.588 0.424 0.078 rg
+0. Tc
+56. 778.8899999999999864 Td
+(THE STAKEHOLDER MIRROR) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 768.8899999999999864 Td
+(Who else is affected) Tj
+ET
+0.88 0.8 0.65 RG
+0.3 w
+56. 753.8899999999999864 m
+539.2799999999999727 753.8899999999999864 l
+S
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 741.8899999999999864 Td
+(LEANING: PROCEED) Tj
+ET
+BT
+/F2 7.5 Tf
+8.625 TL
+0.549 0.392 0.157 rg
+0.8 Tc
+56. 727.8899999999999864 Td
+(REAL COST) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 717.8899999999999864 Td
+(Promoting your senior engineer protects the team's trust and momentum right now, but commits you to coaching) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 702.8799999999999955 Td
+(him through a steep leadership curve you cannot unwind if he stumbles.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 678.8700000000000045 Td
+(This decision touches more than the two named candidates. The silent stakeholders include the six) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 662.2799999999999727 Td
+(engineers who will report to the new VP, the two founders who must live with the cultural fallout, and the) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 645.6900000000000546 Td
+(external candidate whose reputation now rides on a process she did not control. Each has the capacity) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 629.1000000000000227 Td
+(to accelerate or obstruct the outcome.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 605.8740000000000236 Td
+(The surprising stakeholder is the external candidate. Her actual interest is proving she can lead at scale;) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 589.2839999999999918 Td
+(her actual fear is being seen as a "body" hired to fix a problem she didn't create. She will likely accept) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 572.69399999999996 Td
+(the role only if she senses genuine commitment from the founders, not just a fallback option. If she) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 556.1040000000000418 Td
+(senses hesitation, she will negotiate harder or walk away--both outcomes raise your hiring risk.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 532.8780000000000427 Td
+(The relationship most at risk is the one between you and the internal candidate. This decision will define) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 516.2880000000000109 Td
+(his identity inside the company for years. If he senses the process was tilted toward the outsider, his) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 499.6980000000000928 Td
+(loyalty will fray, and he may leave--taking institutional knowledge with him.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 476.4720000000000937 Td
+(If the internal candidate is promoted and the external candidate walks, the six engineers will interpret the) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 459.8820000000001187 Td
+(move as loyalty rewarded. If the internal candidate is passed over, the six will quietly question whether) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 443.2920000000001437 Td
+(loyalty matters at all.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 420.0660000000001446 Td
+(The success of this depends on the team's morale being genuinely protected by this decision rather than) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 403.4760000000001696 Td
+(simply assuming their signals reflect settled commitment.) Tj
+ET
+endstream
+endobj
+19 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 20 0 R
+>>
+endobj
+20 0 obj
+<<
+/Length 4126
+>>
+stream
+0.3 w
+0.88 0.8 0.65 RG
+0.98 0.97 0.95 rg
+0. 841.8899999999999864 595.2799999999999727 -841.8899999999999864 re
+f
+0.84 0.82 0.78 RG
+0.3 w
+56. 40. m
+539.2799999999999727 40. l
+S
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 26. Td
+(Private � Quorum) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+535.1549999999999727 26. Td
+(9) Tj
+ET
+0.97 0.93 0.82 rg
+0. 789.8899999999999864 595.2799999999999727 -26. re
+f
+0.59 0.42 0.08 RG
+0.6 w
+0. 789.8899999999999864 m
+595.2799999999999727 789.8899999999999864 l
+S
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.588 0.424 0.078 rg
+0. Tc
+56. 778.8899999999999864 Td
+(THE ELDER) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 768.8899999999999864 Td
+(Slow, long-term wisdom) Tj
+ET
+0.88 0.8 0.65 RG
+0.3 w
+56. 753.8899999999999864 m
+539.2799999999999727 753.8899999999999864 l
+S
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 741.8899999999999864 Td
+(LEANING: WAIT) Tj
+ET
+BT
+/F2 7.5 Tf
+8.625 TL
+0.549 0.392 0.157 rg
+0.8 Tc
+56. 727.8899999999999864 Td
+(REAL COST) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 717.8899999999999864 Td
+(Promoting now commits you to a leadership experiment at scale with no parachute if it fails, while hiring externally) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 702.8799999999999955 Td
+(protects your team's morale without gambling the next growth phase on unproven management.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 678.8700000000000045 Td
+(In ten years, this decision will be remembered not as a technical promotion but as the moment you) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 662.2799999999999727 Td
+(chose whether to build a scalable leadership bench or a single-point failure. The external hire buys you a) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 645.6900000000000546 Td
+(proven operator to weather the 6-to-20 scaling storm; the internal promotion bets your growth on one) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 629.1000000000000227 Td
+(person's untested capacity.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 605.8740000000000236 Td
+(The reversible elements include the external hire's onboarding timeline and your engineer's future role,) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 589.2839999999999918 Td
+(both of which can be adjusted. The irreversible element is the signal you send about internal) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 572.69399999999996 Td
+(loyalty--once passed over, that engineer's long-term trajectory with the company is permanently altered,) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 556.1040000000000418 Td
+(regardless of later promotions. The cost of waiting is the risk of temporary morale dip; the cost of) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 539.5140000000001237 Td
+(proceeding is the risk of structural failure at scale.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 516.2880000000000109 Td
+(Your preparation has focused on capability, but the legacy dimension is capability architecture. Hiring) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 499.6980000000000928 Td
+(externally now preserves your engineer's future leadership potential while ensuring the VP role is filled) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 483.1080000000001178 Td
+(by someone who can actually run a 20-person org. The patience question is simple: if the external) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 466.5180000000001428 Td
+(candidate's first 90 days go poorly, can you still pivot without burning the internal candidate's trust? If the) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 449.9280000000001678 Td
+(answer is no, you are moving too fast.) Tj
+ET
+endstream
+endobj
+21 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 22 0 R
+>>
+endobj
+22 0 obj
+<<
+/Length 4438
+>>
+stream
+0.3 w
+0.88 0.8 0.65 RG
+0.98 0.97 0.95 rg
+0. 841.8899999999999864 595.2799999999999727 -841.8899999999999864 re
+f
+0.84 0.82 0.78 RG
+0.3 w
+56. 40. m
+539.2799999999999727 40. l
+S
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 26. Td
+(Private � Quorum) Tj
+ET
+BT
+/F1 7.5 Tf
+8.625 TL
+0.471 0.447 0.408 rg
+0. Tc
+531.0299999999999727 26. Td
+(10) Tj
+ET
+0.95 0.94 0.85 rg
+0. 789.8899999999999864 595.2799999999999727 -26. re
+f
+0.59 0.42 0.08 RG
+0.6 w
+0. 789.8899999999999864 m
+595.2799999999999727 789.8899999999999864 l
+S
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.588 0.424 0.078 rg
+0. Tc
+56. 778.8899999999999864 Td
+(THE COMPETITOR) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 768.8899999999999864 Td
+(Bets against your choice) Tj
+ET
+0.88 0.8 0.65 RG
+0.3 w
+56. 753.8899999999999864 m
+539.2799999999999727 753.8899999999999864 l
+S
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 741.8899999999999864 Td
+(LEANING: PROCEED) Tj
+ET
+BT
+/F2 7.5 Tf
+8.625 TL
+0.549 0.392 0.157 rg
+0.8 Tc
+56. 727.8899999999999864 Td
+(REAL COST) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 717.8899999999999864 Td
+(Hiring the outsider secures the runway for hypergrowth but risks fracturing the team's trust you'll spend the next) Tj
+ET
+BT
+/F1 9.5 Tf
+10.9249999999999989 TL
+0.471 0.447 0.408 rg
+0. Tc
+56. 702.8799999999999955 Td
+(year trying to rebuild.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 678.8700000000000045 Td
+(The party most likely to exploit this decision is your next-stage investor who is already modeling your) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 662.2799999999999727 Td
+(technical leadership bench for the Series B. They read "promote from within" as a signal that you value) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 645.6900000000000546 Td
+(loyalty over capability--a red flag for scaling risk.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 622.4639999999999418 Td
+(By committing to internal promotion you reveal uncertainty about external hiring, which tells) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 605.8740000000000236 Td
+(sophisticated observers you may underestimate the leadership gap your growth will create. The) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 589.2839999999999918 Td
+(investors and acquirers who matter are already calibrating their term sheets based on this signal.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 566.0579999999999927 Td
+(This decision commits your engineering leadership to a six-to-nine-month apprenticeship period. During) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 549.4680000000000746 Td
+(that window you cannot credibly commit to a 40-person org roadmap, which is exactly when your) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 532.8780000000000427 Td
+(primary competitor will open a hiring spree for your top engineers.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 509.6520000000000437 Td
+(The counter-move is a competitor poaching two of your senior engineers within 90 days of your internal) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 493.0620000000000687 Td
+(announcement, offering titles and equity that your promoted leader cannot match while still proving) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 476.4720000000000937 Td
+(themselves. They will target the engineers who built the core systems, not the new hires.) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 453.2460000000000946 Td
+(If your top two engineers receive competing offers within six months, what is your retention play--and do) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 436.6560000000001196 Td
+(you have the cash and equity headroom to execute it while your promoted leader is still learning to) Tj
+ET
+BT
+/F1 10.5 Tf
+12.0749999999999993 TL
+0.157 0.149 0.133 rg
+0. Tc
+56. 420.0660000000001446 Td
+(manage?) Tj
+ET
+BT
+/F3 8.5 Tf
+9.7749999999999986 TL
+0.647 0.627 0.588 rg
+0. Tc
+56. 392.4760000000001696 Td
+(This record is private. The views expressed represent structured analysis, not professional advice.) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R ]
+/Count 10
+>>
+endobj
+23 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+24 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+25 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 23 0 R
+/F2 24 0 R
+/F3 25 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+26 0 obj
+<<
+/Producer (jsPDF 2.5.2)
+/CreationDate (D:20260804111205-00'00')
+>>
+endobj
+27 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 28
+0000000000 65535 f 
+0000049343 00000 n 
+0000049852 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000002413 00000 n 
+0000002550 00000 n 
+0000014150 00000 n 
+0000014287 00000 n 
+0000015145 00000 n 
+0000015283 00000 n 
+0000020644 00000 n 
+0000020783 00000 n 
+0000024580 00000 n 
+0000024719 00000 n 
+0000029580 00000 n 
+0000029719 00000 n 
+0000035693 00000 n 
+0000035832 00000 n 
+0000040395 00000 n 
+0000040534 00000 n 
+0000044713 00000 n 
+0000044852 00000 n 
+0000049461 00000 n 
+0000049587 00000 n 
+0000049718 00000 n 
+0000049979 00000 n 
+0000050065 00000 n 
+trailer
+<<
+/Size 28
+/Root 27 0 R
+/Info 26 0 R
+/ID [ <9B48F38825095C96D53BF2A264DE0121> <9B48F38825095C96D53BF2A264DE0121> ]
+>>
+startxref
+50169
+%%EOF
