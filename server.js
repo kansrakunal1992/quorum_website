@@ -241,6 +241,22 @@ const LEGAL_SHELL = (title, bodyHtml) => `<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1015465961468881');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1015465961468881&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
   <style>
     :root {
       --gold: #c9a84c; --gold-hi: #e2c46e; --gold-dim: rgba(201,168,76,0.25);
@@ -637,9 +653,11 @@ app.get('/cookies', (_req, res) => res.send(LEGAL_SHELL('Cookie Policy', `
   <hr class="legal-rule" />
 
   <p class="legal-lead">
-    Quorum does not use traditional HTTP cookies. Instead, we use browser
+    Quorum's own application does not use traditional HTTP cookies. Instead, we use browser
     <strong>local storage</strong> — a similar technology that stores small pieces of data
     in your browser. This page lists every key we store, what it contains, and how to manage it.
+    The one exception is the Meta Pixel described under Analytics below, which does set
+    conventional first-party cookies.
   </p>
 
   <div class="legal-section">
@@ -710,11 +728,22 @@ app.get('/cookies', (_req, res) => res.send(LEGAL_SHELL('Cookie Policy', `
         <p class="cookie-card-duration">Duration: Per Supabase session defaults</p>
       </div>
     </div>
+
+    <div class="cookie-card">
+      <div class="cookie-card-head">
+        <code class="cookie-card-key">_fbp / _fbc</code>
+        <span class="cookie-badge badge-functional">Advertising — consent required</span>
+      </div>
+      <div class="cookie-card-body">
+        <p class="cookie-card-purpose">Set by the Meta Pixel (see Analytics below) on our domain. Used by Meta to measure the effectiveness of our ads and to attribute a session back to the ad that led to it.</p>
+        <p class="cookie-card-duration">Duration: Set by Meta; typically up to 90 days</p>
+      </div>
+    </div>
   </div>
 
   <div class="legal-section">
     <h2>Analytics</h2>
-    <p>Quorum does not currently use any third-party analytics, advertising trackers, or cross-site tracking technologies. The analytics toggle in your consent preferences is reserved for potential future use and is off by default.</p>
+    <p>Quorum uses the Meta Pixel (Meta/Facebook) on our public marketing pages to measure the performance of our Meta ad campaigns — for example, recording a page visit or a completed booking so we know an ad led to it. The Pixel is not used inside the signed-in Quorum application, and no decision content is ever shared with Meta. See <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta's Privacy Policy</a> for how Meta itself handles this data. Beyond the Meta Pixel, Quorum does not use any other third-party analytics or cross-site tracking technologies. The analytics toggle in your consent preferences is reserved for potential future use and is off by default.</p>
   </div>
 
   <div class="legal-section">

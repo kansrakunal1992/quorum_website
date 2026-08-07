@@ -11,6 +11,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1015465961468881');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1015465961468881&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <style>
 
   /* ══ TOKENS — same system as quorumvault.org ═══════════════════ */
@@ -567,7 +583,7 @@
         <span class="film-caption">Watch the overview · 60s</span>
       </div>
 
-      <div class="cta-row">
+      <div class="cta-row" id="decisionSprintOffer">
         <!-- Primary: Live Decision Session (₹299, guest checkout — no
              login). Payment happens in a Razorpay popup right here on the
              page; on verified success this same JS opens the existing
@@ -719,6 +735,82 @@
 
       const STORAGE_KEY = 'quorum_decision_session_token_v1'
 
+      // ── Meta Pixel — Decision Sprint funnel events ────────────────────────
+      // The base pixel (Dataset ID 1015465961468881) is initialized in
+      // <head> and fires PageView on its own. Everything below layers the
+      // funnel-specific events on top of that. fbq can be undefined if the
+      // base script was blocked (ad blocker, offline, etc.) — every call is
+      // guarded so a missing pixel can never break payment or booking.
+      const FB_CONTENT = {
+        content_name:     'Live Decision Session',
+        content_category: 'Decision Sprint',
+        content_ids:      ['decision-sprint-299'],
+        content_type:     'product',
+      }
+      function trackMeta(eventName, extraData) {
+        try {
+          if (typeof fbq !== 'function') return
+          fbq('track', eventName, Object.assign({}, FB_CONTENT, extraData || {}))
+        } catch {}
+      }
+
+      // ViewContent — fires once, the first time the ₹299 offer (the pay
+      // button + price) actually scrolls into view, rather than on page
+      // load — the card has other sections (name, film) above it.
+      ;(function () {
+        const offerEl = document.getElementById('decisionSprintOffer')
+        if (!offerEl) return
+        let fired = false
+        function fireViewContent() {
+          if (fired) return
+          fired = true
+          trackMeta('ViewContent', { value: 299, currency: 'INR' })
+        }
+        if (typeof IntersectionObserver === 'function') {
+          const io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                fireViewContent()
+                io.disconnect()
+              }
+            })
+          }, { threshold: 0.4 })
+          io.observe(offerEl)
+        } else {
+          fireViewContent() // no IntersectionObserver support — fall back to on-load
+        }
+      })()
+
+      // Purchase idempotency guard — keyed on the Razorpay payment ID
+      // (falls back to order ID). Prevents a second Purchase event for the
+      // same transaction if this code path is ever re-entered for a payment
+      // that's already been tracked (e.g. the Razorpay handler firing more
+      // than once). A page refresh never re-enters this path at all — see
+      // note below — but this guard makes duplication impossible either way.
+      const PURCHASE_TRACKED_KEY = 'quorum_fb_purchase_tracked_v1'
+      function getTrackedPurchaseIds() {
+        try {
+          const parsed = JSON.parse(localStorage.getItem(PURCHASE_TRACKED_KEY) || '[]')
+          return Array.isArray(parsed) ? parsed : []
+        } catch { return [] }
+      }
+      function trackPurchaseOnce(paymentId, orderId) {
+        const dedupeId = paymentId || orderId
+        if (!dedupeId) return
+        const ids = getTrackedPurchaseIds()
+        if (ids.indexOf(dedupeId) !== -1) return // already sent for this payment
+        try {
+          if (typeof fbq === 'function') {
+            // eventID lets Meta dedupe this against any future server-side
+            // (Conversions API) send of the same event for the same payment.
+            fbq('track', 'Purchase', { value: 299, currency: 'INR' }, { eventID: 'purchase_' + dedupeId })
+          }
+        } finally {
+          ids.push(dedupeId)
+          try { localStorage.setItem(PURCHASE_TRACKED_KEY, JSON.stringify(ids)) } catch {}
+        }
+      }
+
       const payTrigger = document.getElementById('bookTrigger')
       const payLabel   = document.getElementById('bookTriggerLabel')
       const payError   = document.getElementById('bookTriggerError')
@@ -845,6 +937,10 @@
                 })
                 const result = await verifyRes.json()
                 if (!verifyRes.ok || !result.verified) throw new Error()
+                // Purchase fires here and only here — after our own backend
+                // (via /api/decision-session/verify-order) has confirmed the
+                // payment, never merely because Razorpay's handler ran.
+                trackPurchaseOnce(response.razorpay_payment_id, response.razorpay_order_id)
                 storeToken(result.token)
                 setPaidState()
                 setLoading(false)
@@ -864,6 +960,11 @@
             setLoading(false)
             showError("Payment wasn't completed. You haven't been charged — try again whenever you're ready.")
           })
+          // InitiateCheckout — the order exists and the Razorpay popup is
+          // about to open, i.e. the user is genuinely beginning the payment
+          // process (not merely clicking the CTA — order creation above may
+          // still fail before this point).
+          trackMeta('InitiateCheckout', { value: 299, currency: 'INR', num_items: 1 })
           rzp.open()
         } catch (err) {
           setLoading(false)
