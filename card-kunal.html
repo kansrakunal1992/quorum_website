@@ -221,6 +221,46 @@
     color: #0c0a06;
   }
   .btn-meet:active { background: var(--gold-hi); }
+  .btn-meet.is-loading { opacity: 0.7; pointer-events: none; }
+
+  /* ── Decision Session pay CTA — error / no-JS states ── */
+  .pay-cta-wrap { width: 100%; }
+  .pay-error {
+    display: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #e0847e;
+    text-align: center;
+    margin-top: 9px;
+  }
+  .pay-noscript {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--t4);
+    text-align: center;
+    margin-top: 9px;
+  }
+  .pay-noscript a { color: var(--gold); border-bottom: 1px solid var(--gold-lo); }
+
+  /* ── Price / refund line (below booking-hint) ── */
+  .booking-price {
+    width: 100%;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: var(--t5);
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  /* ── Ad-link entry highlight (?session=1) ── */
+  @keyframes cta-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.45); }
+    50%      { box-shadow: 0 0 0 8px rgba(201,168,76,0); }
+  }
+  .btn-meet.pulse { animation: cta-pulse 1.6s ease-out 2; }
 
   /* ── The Record (contact ledger) ── */
   .record {
@@ -528,13 +568,23 @@
       </div>
 
       <div class="cta-row">
+        <!-- Primary: Live Decision Session (₹299, guest checkout — no
+             login). Payment happens in a Razorpay popup right here on the
+             page; on verified success this same JS opens the existing
+             Google Calendar booking modal below automatically. No real
+             href fallback — a payment flow has no meaningful non-JS path,
+             see .pay-noscript below. -->
+        <div class="pay-cta-wrap">
+          <a href="#" id="bookTrigger" class="btn-meet">
+            <span id="bookTriggerLabel">Book My Decision Session — ₹299</span>
+          </a>
+          <p class="pay-error" id="bookTriggerError" role="alert"></p>
+          <noscript><p class="pay-noscript">Enable JavaScript to book, or email <a href="mailto:kunal@quorumvault.org">kunal@quorumvault.org</a> directly.</p></noscript>
+        </div>
         <a href="https://app.quorumvault.org?utm_source=founder_card&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=kunal_card" target="_blank" class="btn-open-quorum">Open Quorum</a>
-        <!-- Calendar-driven booking: real href is the Google Calendar
-             booking page (works with JS disabled); JS intercepts the
-             click to open it in the in-page modal instead. -->
-        <a href="#" id="bookTrigger" class="btn-meet">Book a 30-minute Decision Session</a>
       </div>
-      <p class="booking-hint">Bring one real decision you're currently thinking through. That's all you need.</p>
+      <p class="booking-hint">Bring one real decision you're currently thinking through. We'll work through it live with Quorum and you'll leave with a structured decision brief.</p>
+      <p class="booking-price">₹299 · Refundable if you genuinely don't find the session valuable.</p>
 
       <!-- FOUNDING_TEASER:START — stripped server-side when the
            FOUNDING_MEMBER_ENABLED env var is set to "false" (cohort
@@ -638,42 +688,208 @@
     })()
 
     ;(function () {
-      // ── CONFIG: replace with Kunal's real Google Calendar appointment
+      // ── Live Quorum Decision Session — pay (₹299) then book ──────────────
+      // Sprint DS-1. One button, two popups, no page navigation:
+      //   1. #bookTrigger opens a Razorpay checkout popup for a one-time
+      //      ₹299 order (guest checkout — no Quorum account needed).
+      //   2. On a SERVER-VERIFIED successful payment (never trusted from
+      //      the browser alone — see /api/decision-session/verify-order),
+      //      this same code opens the pre-existing Google Calendar booking
+      //      modal below. Nobody reaches the booking modal without a
+      //      verified payment: there is no plain href fallback on the pay
+      //      button, and the token that unlocks it only ever comes from a
+      //      verified server response.
+      //   3. The verified token is cached in localStorage so a page reload
+      //      after paying goes straight to "choose your slot" instead of
+      //      asking for payment again.
+      //
+      // CONFIG: replace with Kunal's real Google Calendar appointment
       // schedule links once created (see setup steps shared separately).
-      // PAGE_URL  = the normal booking page link (Copy link)
+      // PAGE_URL  = the normal booking page link (Copy link) — used only
+      //             as the "trouble loading" fallback link inside the modal.
       // EMBED_URL = the "Website embed → Inline booking page" src URL
       const BOOKING_PAGE_URL  = 'https://calendar.app.google/CuUs83WasYR2LTnw8'
       const BOOKING_EMBED_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1QN6X7RJi0QNjgw1s_xTLXGwyXhVImUFD-hPePC17zqw1WwWG9ukKNxGu3V8VUl6fng7JRABl1?gv=true'
 
-      const trigger  = document.getElementById('bookTrigger')
-      const modal    = document.getElementById('bookingModal')
-      const closeBtn = document.getElementById('bookingModalClose')
-      const iframe   = document.getElementById('bookingIframe')
-      const fallback = document.getElementById('bookingFallbackLink')
-      if (!trigger || !modal || !iframe) return
+      // Injected server-side by server.js (renderCardPage) from the APP_URL
+      // env var — see that function's doc comment. Falls back to the
+      // production app domain if the placeholder was somehow left intact
+      // (e.g. viewing the raw file directly).
+      const APP_URL = '%%APP_URL%%'.indexOf('%%') === 0 ? 'https://app.quorumvault.org' : '%%APP_URL%%'
 
-      // Real href so the button still works as a plain link if JS fails.
-      trigger.href = BOOKING_PAGE_URL
+      const STORAGE_KEY = 'quorum_decision_session_token_v1'
+
+      const payTrigger = document.getElementById('bookTrigger')
+      const payLabel   = document.getElementById('bookTriggerLabel')
+      const payError   = document.getElementById('bookTriggerError')
+      const modal      = document.getElementById('bookingModal')
+      const closeBtn   = document.getElementById('bookingModalClose')
+      const iframe     = document.getElementById('bookingIframe')
+      const fallback   = document.getElementById('bookingFallbackLink')
+      if (!payTrigger || !modal || !iframe) return
+
       fallback.href = BOOKING_PAGE_URL
 
+      // ── Booking modal (unchanged mechanics from before) ──────────────────
       let iframeLoaded = false
-      function open(e) {
-        e.preventDefault()
+      function openBookingModal() {
         if (!iframeLoaded) {
-          iframe.src = BOOKING_EMBED_URL // lazy-load on first open
+          iframe.src = BOOKING_EMBED_URL
           iframeLoaded = true
         }
         modal.classList.add('open')
         document.body.style.overflow = 'hidden'
       }
-      function close() {
+      function closeBookingModal() {
         modal.classList.remove('open')
         document.body.style.overflow = ''
       }
-      trigger.addEventListener('click', open)
-      closeBtn.addEventListener('click', close)
-      modal.addEventListener('click', (e) => { if (e.target === modal) close() })
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close() })
+      closeBtn.addEventListener('click', closeBookingModal)
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeBookingModal() })
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBookingModal() })
+
+      // ── Paid-token cache (refresh-safe — don't ask a paid visitor to
+      // pay again just because they reloaded or came back later) ──────────
+      function getStoredToken() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY)
+          if (!raw) return null
+          const parsed = JSON.parse(raw)
+          return (parsed && parsed.token) ? parsed.token : null
+        } catch { return null }
+      }
+      function storeToken(token) {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ token: token, at: Date.now() })) } catch {}
+      }
+
+      function setPaidState() {
+        if (payLabel) payLabel.textContent = 'Choose My Slot'
+      }
+
+      const existingToken = getStoredToken()
+      if (existingToken) setPaidState()
+
+      // ── Razorpay checkout.js loader (idempotent) ──────────────────────────
+      function loadRazorpayScript() {
+        return new Promise((resolve) => {
+          if (typeof window !== 'undefined' && window.Razorpay) { resolve(true); return }
+          const script = document.createElement('script')
+          script.src = 'https://checkout.razorpay.com/v1/checkout.js'
+          script.async = true
+          script.onload = () => resolve(true)
+          script.onerror = () => resolve(false)
+          document.body.appendChild(script)
+        })
+      }
+
+      function setLoading(isLoading) {
+        payTrigger.classList.toggle('is-loading', isLoading)
+        if (payLabel) {
+          payLabel.textContent = isLoading
+            ? 'Opening checkout…'
+            : (getStoredToken() ? 'Choose My Slot' : 'Book My Decision Session — ₹299')
+        }
+      }
+      function showError(msg) {
+        if (!payError) return
+        payError.textContent = msg
+        payError.style.display = 'block'
+      }
+      function clearError() {
+        if (!payError) return
+        payError.style.display = 'none'
+        payError.textContent = ''
+      }
+
+      async function startCheckout() {
+        clearError()
+        setLoading(true)
+        try {
+          const params = new URLSearchParams(window.location.search)
+          const res = await fetch(APP_URL + '/api/decision-session/create-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              utmSource:   params.get('utm_source')   || (params.has('session') ? 'instagram_ad' : undefined),
+              utmCampaign: params.get('utm_campaign') || undefined,
+              utmContent:  params.get('utm_content')  || undefined,
+            }),
+          })
+          if (!res.ok) throw new Error('Could not start checkout. Please try again.')
+          const order = await res.json()
+
+          const loaded = await loadRazorpayScript()
+          if (!loaded) throw new Error('Checkout failed to load. Please refresh and try again.')
+
+          const rzp = new window.Razorpay({
+            key:         order.keyId,
+            order_id:    order.orderId,
+            amount:      order.amount,
+            currency:    order.currency,
+            name:        'Quorum',
+            image:       'https://app.quorumvault.org/icon-512.png',
+            description: 'Live Quorum Decision Session (₹299)',
+            theme: { color: '#c9a84c', backdrop_color: '#08111f' },
+            // handler fires on successful payment — but we still verify
+            // server-side before treating this visitor as paid.
+            handler: async function (response) {
+              try {
+                const verifyRes = await fetch(APP_URL + '/api/decision-session/verify-order', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    razorpayOrderId:   response.razorpay_order_id,
+                    razorpayPaymentId: response.razorpay_payment_id,
+                    razorpaySignature: response.razorpay_signature,
+                  }),
+                })
+                const result = await verifyRes.json()
+                if (!verifyRes.ok || !result.verified) throw new Error()
+                storeToken(result.token)
+                setPaidState()
+                setLoading(false)
+                openBookingModal()
+              } catch {
+                setLoading(false)
+                showError("Payment succeeded but we couldn't confirm it automatically — email kunal@quorumvault.org with your payment details and we'll get your slot booked directly.")
+              }
+            },
+            modal: {
+              backdropclose: false,
+              escape:        false,
+              ondismiss: function () { setLoading(false) },
+            },
+          })
+          rzp.on('payment.failed', function () {
+            setLoading(false)
+            showError("Payment wasn't completed. You haven't been charged — try again whenever you're ready.")
+          })
+          rzp.open()
+        } catch (err) {
+          setLoading(false)
+          showError((err && err.message) || 'Something went wrong. Please try again.')
+        }
+      }
+
+      payTrigger.addEventListener('click', function (e) {
+        e.preventDefault()
+        const token = getStoredToken()
+        if (token) {
+          openBookingModal()
+          return
+        }
+        startCheckout()
+      })
+
+      // Ad-link entry point (/kunal?session=1): draw the eye to the CTA
+      // without auto-opening a real payment popup. Programmatic popups not
+      // tied to a user gesture get blocked on mobile Safari/Chrome anyway,
+      // and auto-launching a checkout on page load is poor practice for a
+      // real payment flow regardless of platform.
+      if (new URLSearchParams(window.location.search).has('session') && !existingToken) {
+        payTrigger.classList.add('pulse')
+        payTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
     })()
   </script>
 

@@ -23,6 +23,14 @@
  *   7. Serve /decision-library — the standalone Decision Library
  *      (breadth layer): 20 decision slots across five categories,
  *      independent of /journey. Also always on, same reasoning.
+ *   8. (Sprint DS-1) card-kunal.html's Live Decision Session CTA (₹299,
+ *      guest checkout) pays and books entirely client-side against the
+ *      app's own API (Razorpay popup, then /api/decision-session/*  —
+ *      see app.quorumvault.org). This server's only involvement is
+ *      injecting APP_URL into the page at render time (see
+ *      renderCardPage) so that JS knows which origin to call — nothing
+ *      payment-related touches this Express server or its Supabase
+ *      client at all.
  *
  * Required Railway environment variables (set in website project):
  *   SUPABASE_URL         — https://your-project.supabase.co
@@ -34,6 +42,9 @@
  *     "false" to close the Founding Member cohort: removes the teaser
  *     from /kunal, and /founding-member redirects to /kunal. No code
  *     change needed — just the Railway variable.
+ *   APP_URL — already existed (Privacy Center links); now also used to
+ *     point card-kunal.html's Decision Session payment calls at the
+ *     right app domain. Defaults to https://app.quorumvault.org.
  *
  * Start command: node server.js
  */
@@ -113,6 +124,12 @@ function renderCardPage(filename, res) {
   if (!FOUNDING_MEMBER_ENABLED) {
     html = html.replace(FOUNDING_TEASER_BLOCK_RX, '')
   }
+  // Sprint DS-1: card-kunal.html's Decision Session payment JS needs to
+  // know which origin to call for /api/decision-session/*  (the app lives
+  // on a different domain from this website). Reuses the same APP_URL env
+  // var already used elsewhere in this file for Privacy Center links —
+  // one source of truth for "where the app is", no new env var.
+  html = html.split('%%APP_URL%%').join(APP_URL)
   res.type('html').send(html)
 }
 
