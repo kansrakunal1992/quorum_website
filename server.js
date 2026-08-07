@@ -227,6 +227,46 @@ app.post('/api/waitlist', async (req, res) => {
   }
 })
 
+/* ── /kunal visit counter (social proof) ──────────────────────────────
+ * Backed by a single-row Supabase table (kunal_card_visits) + a
+ * Postgres function (increment_kunal_visits) that increments it
+ * atomically — see supabase-visit-counter.sql for the one-time setup
+ * to run in the Supabase SQL editor. Seeded at 301.
+ *
+ * GET  /api/kunal/visit — read-only, doesn't increment. Used on repeat
+ *      views within the same browser session (see sessionStorage guard
+ *      in card-kunal.html) so refreshing doesn't inflate the count.
+ * POST /api/kunal/visit — increments by 1, returns the new count. Called
+ *      once per browser session on first load.
+ */
+app.get('/api/kunal/visit', async (_req, res) => {
+  try {
+    const supabase = getSupabase()
+    const { data, error } = await supabase
+      .from('kunal_card_visits')
+      .select('count')
+      .eq('id', 1)
+      .single()
+    if (error) throw error
+    return res.status(200).json({ count: data.count })
+  } catch (err) {
+    console.error('[Visits] Read error:', err.message)
+    return res.status(500).json({ error: 'Failed to read visit count' })
+  }
+})
+
+app.post('/api/kunal/visit', async (_req, res) => {
+  try {
+    const supabase = getSupabase()
+    const { data, error } = await supabase.rpc('increment_kunal_visits')
+    if (error) throw error
+    return res.status(200).json({ count: data })
+  } catch (err) {
+    console.error('[Visits] Increment error:', err.message)
+    return res.status(500).json({ error: 'Failed to increment visit count' })
+  }
+})
+
 
 /* ── Shared legal page shell ──────────────────────────────────────── */
 // APP_URL: where the Quorum app lives (for links to Privacy Center etc.)
