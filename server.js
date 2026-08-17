@@ -14,6 +14,14 @@
  *      the Founding Member teaser per FOUNDING_MEMBER_ENABLED.
  *      /abhilash redirects to / — Abhilash is no longer with Quorum;
  *      card-abhilash.html and abhilash.vcf have been removed.
+ *
+ *      Card variants (added Aug 2026):
+ *        /kunal        — Kunal Kansra, ₹299 paid Decision Session (original)
+ *        /kunal_elite  — Kunal Kansra, same card, free direct booking
+ *        /vedant       — Vedant [surname], Decision Facilitator, ₹299 paid
+ *        /vedant_elite — Vedant [surname], same card, free direct booking
+ *      All four follow the same renderCardPage() pipeline (Founding
+ *      Member teaser toggle applies to all of them equally).
  *   5. Serve /founding-member — the Founding Member trust/conversion
  *      page — or redirect it to /kunal when the cohort is closed
  *   6. Serve /journey — "The Record", the four-decision founder
@@ -159,6 +167,9 @@ function renderJourneyPage(res) {
 // static file server would serve the raw, unprocessed file and the
 // toggle above would have no effect on that path.
 app.get('/card-kunal.html', (_req, res) => res.redirect(301, '/kunal'))
+app.get('/card-kunal-elite.html', (_req, res) => res.redirect(301, '/kunal_elite'))
+app.get('/card-vedant.html', (_req, res) => res.redirect(301, '/vedant'))
+app.get('/card-vedant-elite.html', (_req, res) => res.redirect(301, '/vedant_elite'))
 
 // card-abhilash.html no longer exists — Abhilash is no longer with
 // Quorum. Any old bookmark or shared link for his card/URL lands on
@@ -894,6 +905,16 @@ app.get('/security', (_req, res) => res.send(LEGAL_SHELL('Security & Trust', `
 // (not sendFile) so the Founding Member teaser can be included or
 // stripped per FOUNDING_MEMBER_ENABLED — see renderCardPage() above.
 app.get('/kunal', (_req, res) => renderCardPage('card-kunal.html', res))
+
+// Free variant of Kunal's card — same person, same booking calendar,
+// no ₹299 payment gate. See card-kunal-elite.html.
+app.get('/kunal_elite', (_req, res) => renderCardPage('card-kunal-elite.html', res))
+
+// Vedant's cards — same design system, ₹299-paid and free variants,
+// mirroring /kunal and /kunal_elite. See card-vedant.html /
+// card-vedant-elite.html.
+app.get('/vedant', (_req, res) => renderCardPage('card-vedant.html', res))
+app.get('/vedant_elite', (_req, res) => renderCardPage('card-vedant-elite.html', res))
 
 /* ── Founding Member page ─────────────────────────────────────────── */
 // Trust/conversion bridge page linked from the "Interested in becoming
