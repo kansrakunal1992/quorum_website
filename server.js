@@ -179,6 +179,7 @@ app.get(['/card-abhilash.html', '/abhilash'], (_req, res) => res.redirect(301, '
 app.get('/founding-member.html', (_req, res) => res.redirect(301, '/founding-member'))
 app.get('/journey.html', (_req, res) => res.redirect(301, '/journey'))
 app.get('/decision-library.html', (_req, res) => res.redirect(301, '/decision-library'))
+app.get('/insights-what-ai-misses-in-hard-decisions.html', (_req, res) => res.redirect(301, '/insights/what-ai-misses-in-hard-decisions'))
 
 // Serve index.html and any public assets (images, fonts, etc.)
 app.use(express.static(__dirname, {
@@ -950,6 +951,19 @@ app.get('/journey', (_req, res) => renderJourneyPage(res))
 // references in this page to template in/out.
 app.get('/decision-library', (_req, res) => {
   res.sendFile(path.join(__dirname, 'decision-library.html'), (err) => {
+    if (err && !res.headersSent) res.status(404).send('Not found')
+  })
+})
+
+/* ── Insights / Experiment: "What AI Misses in Hard Decisions" ─────
+ * Flagship editorial/research page documenting a real experiment
+ * comparing a general-purpose AI (Gemini) with Quorum across five
+ * difficult decisions. Standalone static page, same reasoning as
+ * /journey and /decision-library — not gated by any toggle, no
+ * Founding Member references to template in/out. Plain sendFile.
+ */
+app.get('/insights/what-ai-misses-in-hard-decisions', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'insights-what-ai-misses-in-hard-decisions.html'), (err) => {
     if (err && !res.headersSent) res.status(404).send('Not found')
   })
 })
