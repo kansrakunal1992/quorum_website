@@ -607,6 +607,21 @@
     .step-name { font-size: 14px; font-weight: 500; color: var(--t0); margin-bottom: 10px; letter-spacing: 0.02em; }
     .step-desc { font-size: 13px; color: var(--t4); line-height: 1.78; }
 
+    /* ══ DECISION LOOP — compact recap between "Next Move" and "Mirror";
+       static, no animation. Reuses DM Mono label convention + theme vars
+       already used across .step-tag / .eyebrow. ═══════════════════════ */
+    .decision-loop { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--b0); }
+    .dl-track { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 4px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .dl-node { color: var(--t2); padding: 7px 14px; border: 1px solid var(--b0); border-radius: 20px; background: var(--card); }
+    .dl-node.dl-learn { color: var(--gold); border-color: rgba(201,168,76,0.35); }
+    .dl-arrow { color: var(--t5); font-size: 13px; }
+    .dl-arrow.dl-return { color: var(--gold); font-size: 15px; margin-left: 2px; }
+    .dl-caption { margin-top: 18px; font-size: 13px; color: var(--t4); line-height: 1.7; max-width: 480px; }
+    @media (max-width: 640px) {
+      .dl-track { gap: 8px 4px; }
+      .dl-node { padding: 6px 11px; font-size: 10px; }
+    }
+
     /* ══ PRICING ════════════════════════════════════════════════ */
     .pg { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
     .pc { border: 1px solid var(--b0); border-radius: 22px; padding: 42px 36px; background: var(--card); display: flex; flex-direction: column; position: relative; }
@@ -2587,6 +2602,9 @@
       .es-output-text { font-size: 17px; }
       .es-output-body { padding: 22px 18px 18px; }
 
+      .mirror-payoff-card { padding: 30px 20px 26px !important; border-radius: 16px !important; }
+      .decision-loop { margin-top: 32px; }
+
       .who-card     { padding: 32px 22px; }
       .macro-card   { padding: 32px 22px; }
       .mv-panel     { aspect-ratio: 4 / 3; }
@@ -3236,7 +3254,16 @@
   <div class="s">
     <div class="sh r">
       <span class="eyebrow">The process</span>
-      <h2 class="display" style="font-size: clamp(38px,4vw,54px); margin-top:16px; max-width:560px;">Quorum doesn't just give you a recommendation. It examines the decision.</h2>
+      <h2 class="display" style="font-size: clamp(38px,4vw,54px); margin-top:16px; max-width:560px;">Quorum reads the decision before it answers.</h2>
+      <p class="r d1" style="font-size:16px; color:var(--t2); line-height:1.9; max-width:620px; margin-top:20px;">A difficult decision isn't just a question with an answer. Quorum examines what you're actually deciding, then challenges the reasoning — before helping you decide what to do.</p>
+    </div>
+
+    <!-- Compact process contrast — general AI vs. Quorum. Text only, no
+         new visual system; reuses the existing DM Mono label convention
+         (.step-tag / .eyebrow) already used throughout this page. -->
+    <div class="r d1" style="display:flex; flex-wrap:wrap; gap:10px 32px; align-items:baseline; margin-top:26px; font-family:'DM Mono', monospace; font-size:11px; letter-spacing:0.05em;">
+      <span style="color:var(--t5);">General AI &nbsp;·&nbsp; Question → Answer</span>
+      <span style="color:var(--gold);">Quorum &nbsp;·&nbsp; Decision → Examination → Challenge → Updated decision → Action → Learning</span>
     </div>
 
     <!-- Explainer video — Video 3. Upload the final MP4 on Railway at
@@ -3272,21 +3299,21 @@
     <div class="steps r d1">
       <div class="step">
         <div class="step-n">01</div>
-        <div class="step-tag">Silent · automatic</div>
-        <div class="step-name">Structural Read</div>
-        <div class="step-desc">What are you actually deciding? Before any advisor responds, your decision is read for what kind of decision this actually is — not just what you wrote. Everything that follows is shaped by what this finds.</div>
+        <div class="step-tag">Free</div>
+        <div class="step-name">Examiner</div>
+        <div class="step-desc">What's missing? What are you assuming? Before the Council speaks, Quorum asks the one question that actually matters for this decision — not derived from a template, but from what you brought. Sometimes the answer is a redirect: the decision isn't ready to be made yet.</div>
       </div>
       <div class="step">
         <div class="step-n">02</div>
         <div class="step-tag">Free</div>
-        <div class="step-name">Council</div>
-        <div class="step-desc">Six perspectives attack the decision from different angles — Contrarian, Risk Architect, Pattern Analyst, Stakeholder Mirror, Elder, Competitor — surfacing what a single answer would miss.</div>
+        <div class="step-name">Structural Read</div>
+        <div class="step-desc">What are you actually deciding? Your decision is read for what kind of decision this actually is — surfacing the trade-offs, assumptions and stakeholders underneath your framing. Everything that follows is shaped by what this finds.</div>
       </div>
       <div class="step">
         <div class="step-n">03</div>
         <div class="step-tag">Free</div>
-        <div class="step-name">Examiner</div>
-        <div class="step-desc">What's missing? What are you assuming? The one question that actually matters for this decision — not derived from a template, but from what the structural read found in what you brought. Sometimes the answer is a redirect: the decision isn't ready to be made yet.</div>
+        <div class="step-name">Council</div>
+        <div class="step-desc">Six perspectives attack the decision from different angles — Contrarian, Risk Architect, Pattern Analyst, Stakeholder Mirror, Elder, Competitor — surfacing what a single answer would miss.</div>
       </div>
       <div class="step">
         <div class="step-n">04</div>
@@ -3304,14 +3331,34 @@
         <div class="step-n">06</div>
         <div class="step-tag">Free</div>
         <div class="step-name">Next Move</div>
-        <div class="step-desc">What needs to happen before you act? Every session closes with a reliability score and a clear next step — what has to be true, tested, or resolved first.</div>
+        <div class="step-desc">What needs to happen before you act? Every session closes with a clear next step — what has to be true, tested, or resolved first.</div>
       </div>
-      <div class="step">
-        <div class="step-n">07</div>
-        <div class="step-tag">Mirror · Judgment OS</div>
-        <div class="step-name">Mirror</div>
-        <div class="step-desc">The part that compounds. Every decision you bring builds a clearer picture of how you think — where your confidence is reliable, and where it isn't.</div>
+    </div>
+
+    <!-- ══ DECISION LOOP — compact recap sitting between "Next Move" and
+         Mirror below: the six steps above resolve one decision; Mirror is
+         what watches the loop repeat across many. Static, no animation. ══ -->
+    <div class="r d2 decision-loop">
+      <div class="dl-track">
+        <span class="dl-node">Decide</span><span class="dl-arrow">→</span>
+        <span class="dl-node">Challenge</span><span class="dl-arrow">→</span>
+        <span class="dl-node">Update</span><span class="dl-arrow">→</span>
+        <span class="dl-node">Act</span><span class="dl-arrow">→</span>
+        <span class="dl-node dl-learn">Learn</span><span class="dl-arrow dl-return">↺</span>
       </div>
+      <p class="dl-caption">The first answer isn't the finish line. It's the beginning of the examination.</p>
+    </div>
+
+    <!-- Mirror — pulled out of the six-card grid above so it reads as the
+         longitudinal payoff rather than a seventh feature card, per the
+         "Mirror is the payoff, not another feature" design note. Reuses
+         .step-n/.step-tag/.step-name/.step-desc typography; only the
+         outer wrapper differs (single full-width card vs. grid). -->
+    <div class="r d2 mirror-payoff-card" style="border:1px solid var(--b0); border-radius:22px; background:var(--card); padding:44px 44px 40px; margin-top:32px;">
+      <div class="step-n" style="font-size:40px; margin-bottom:12px;">07</div>
+      <div class="step-tag">Mirror · Judgment OS</div>
+      <div class="step-name" style="font-size:17px; margin-bottom:12px;">Mirror</div>
+      <div class="step-desc" style="font-size:14px; max-width:640px;">The part that compounds. Every decision you bring builds a clearer picture of how you think — where your confidence is calibrated and where it isn't, including a reliability score for every session on Elite.</div>
     </div>
   </div>
 </div>
