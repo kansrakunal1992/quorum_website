@@ -743,7 +743,7 @@ fbq('track', 'PageView');
       <a href="https://app.quorumvault.org?utm_source=insights&utm_medium=cta&utm_campaign=ai_misses_hard_decisions&utm_content=primary_cta"
          target="_blank" rel="noopener" class="btn-cta"
          data-track="insight_article_quorum_cta_click"
-         data-track-final="insight_article_final_cta_click">
+         data-track2="cta_article_mid">
         Bring one real decision
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
@@ -771,6 +771,25 @@ fbq('track', 'PageView');
       </ol>
       <p class="note">The scenarios are illustrative/composite and do not represent published private decisions from other people.</p>
     </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ SECTION 18 — FINAL CTA — the second and last product
+     conversion point in the article, per the CTA hierarchy pass.
+     Reuses .btn-cta exactly as Section 16 does. ═════════════════ -->
+<div class="wrap">
+  <div id="ins-final-cta" style="text-align:center; padding: 72px 0 88px;">
+    <h2 class="display" style="font-size: clamp(28px,3.2vw,40px); margin-bottom:16px;">Bring one real decision.</h2>
+    <p style="font-size:15px; color:var(--t3); max-width:480px; margin:0 auto 30px; line-height:1.8;">Don't give Quorum a hypothetical. Give it the decision you're actually wrestling with.</p>
+    <a href="https://app.quorumvault.org?utm_source=insights&utm_medium=cta&utm_campaign=ai_misses_hard_decisions&utm_content=final_cta"
+       target="_blank" rel="noopener" class="btn-cta"
+       data-track="insight_article_final_cta_click"
+       data-track2="cta_article_final">
+      Bring one real decision
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </a>
   </div>
 </div>
 
@@ -840,6 +859,7 @@ fbq('track', 'PageView');
     if (!t) return
     track(t.dataset.track)
     if (t.dataset.trackFinal) track(t.dataset.trackFinal)
+    if (t.dataset.track2) track(t.dataset.track2)
   })
 </script>
 
