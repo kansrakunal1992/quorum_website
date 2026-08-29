@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>The Record — Quorum</title>
-<meta name="description" content="Four real decisions from one founder's Quorum record, in order — how a decision record starts to reveal a pattern of judgment, not just answer a question." />
+<meta name="description" content="Four composite decisions from one founder's Quorum record, in order — how a decision record starts to reveal a pattern of judgment, not just answer a question." />
 <meta property="og:title" content="The Record — Quorum" />
 <meta property="og:description" content="One decision tells you something. Four decisions begin to reveal you." />
 <meta property="og:type" content="website" />
@@ -67,6 +67,9 @@ fbq('track', 'PageView');
 
   .display { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; color: var(--t0); }
   .eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; }
+  /* Provenance badge — matches the same component added on the homepage proof section */
+  .prov-badge { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 10px; border-radius: 100px; border: 1px solid var(--b1); color: var(--t4); background: transparent; margin-bottom: 14px; }
+  .prov-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--t5); }
   .mono { font-family: 'DM Mono', monospace; }
 
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
@@ -269,9 +272,10 @@ fbq('track', 'PageView');
   <div id="hero">
     <div class="hero-aura"></div>
     <div>
+      <span class="prov-badge r">Illustrative / composite</span>
       <span class="eyebrow r">The Record</span>
       <h1 class="jr-hero-hl display r d1">One decision tells you something.<br /><em>Four decisions begin to reveal you.</em></h1>
-      <p class="hero-sub r d2">Four real sessions from one founder's Quorum record, in the order they happened — unedited, and structurally linked in ways nobody set out to design.</p>
+      <p class="hero-sub r d2">Four composite sessions, built from one founder's Quorum record, in the order they'd happen — illustrating how they connect in ways nobody set out to design.</p>
       <div class="scroll-cue r d3">
         <span>Scroll</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
