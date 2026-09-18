@@ -1262,5 +1262,31 @@ fbq('track', 'PageView');
     })()
   </script>
 
+  <script>
+    // GTM attribution: logs one row per browser session per card, tagged
+    // with whatever utm_source/campaign/content are on the URL right now.
+    // Wholly separate from the visit-counter script above — never touches
+    // that UI or its counter. Fire-and-forget; failures are silent by design
+    // (see /api/card-visit in server.js).
+    ;(function () {
+      try {
+        var LOGGED_KEY = 'quorum_card_visit_logged_kunal'
+        if (sessionStorage.getItem(LOGGED_KEY)) return
+        var params = new URLSearchParams(window.location.search)
+        fetch('/api/card-visit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            card: 'kunal',
+            utmSource: params.get('utm_source'),
+            utmCampaign: params.get('utm_campaign'),
+            utmContent: params.get('utm_content'),
+          }),
+        }).catch(function () {})
+        sessionStorage.setItem(LOGGED_KEY, '1')
+      } catch (e) { /* sessionStorage unavailable — skip silently */ }
+    })()
+  </script>
+
 </body>
 </html>

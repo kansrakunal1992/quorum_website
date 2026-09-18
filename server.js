@@ -279,6 +279,42 @@ app.post('/api/kunal/visit', async (_req, res) => {
   }
 })
 
+/*
+ * POST /api/card-visit — GTM attribution logging, separate from the
+ * social-proof counter above (that one is UI-facing and untouched by this).
+ * Logs ONE row per browser session per card, tagged with whatever
+ * utm_source/utm_campaign/utm_content are on the URL at that moment, so a
+ * visit to a founder-led card can be traced back to the specific outreach
+ * email/post that drove it. See supabase/add_card_visit_log.sql.
+ *
+ * Fire-and-forget from the client (card-kunal.html, card-kunal-elite.html)
+ * — a failure here must never block the page or the booking flow, so this
+ * always returns 200 even on a logging failure (logged server-side only).
+ */
+app.post('/api/card-visit', async (req, res) => {
+  try {
+    const { card, utmSource, utmCampaign, utmContent } = req.body || {}
+    if (!card || typeof card !== 'string') {
+      return res.status(200).json({ ok: false, reason: 'missing card' })
+    }
+    const supabase = getSupabase()
+    const { error } = await supabase.from('card_visit_log').insert({
+      card:         card.slice(0, 64),
+      utm_source:   utmSource   ? String(utmSource).slice(0, 200)   : null,
+      utm_campaign: utmCampaign ? String(utmCampaign).slice(0, 200) : null,
+      utm_content:  utmContent  ? String(utmContent).slice(0, 200)  : null,
+    })
+    if (error) {
+      console.error('[card-visit] insert error:', error.message)
+      return res.status(200).json({ ok: false }) // non-fatal for the client either way
+    }
+    return res.status(200).json({ ok: true })
+  } catch (err) {
+    console.error('[card-visit] unexpected error:', err.message)
+    return res.status(200).json({ ok: false })
+  }
+})
+
 
 /* ── Shared legal page shell ──────────────────────────────────────── */
 // APP_URL: where the Quorum app lives (for links to Privacy Center etc.)
