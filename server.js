@@ -315,6 +315,60 @@ app.post('/api/card-visit', async (req, res) => {
   }
 })
 
+/*
+ * GET /go/:code — clean branded redirect for outreach/nurture links.
+ *
+ * Why this exists: a raw link like
+ *   quorumvault.org/kunal_elite?utm_source=gtm_head&utm_campaign=cold_outreach_email
+ * visibly tells the recipient "this is automated outreach" before they've
+ * even clicked, which hurts reply rates. This route is what GTM Head now
+ * puts in outreach/nurture emails instead: quorumvault.org/go/aB3xK9 — a
+ * short, clean link on your own trusted domain that resolves server-side
+ * and redirects to the real (still fully tracked) destination, so nothing
+ * about the tracking is visible to the recipient.
+ *
+ * GTM Head creates the gtm_short_links row when it drafts the email (see
+ * lib/shortLink.ts there); this route only ever reads it. Also logs the
+ * click into card_visit_log server-side — more reliable than the
+ * client-side JS on the card pages (this fires even if the recipient's
+ * email client blocks scripts), which is why this exists here and not
+ * only as a JS snippet.
+ */
+app.get('/go/:code', async (req, res) => {
+  try {
+    const { code } = req.params
+    const supabase = getSupabase()
+    const { data, error } = await supabase
+      .from('gtm_short_links')
+      .select('destination_url, card')
+      .eq('code', code)
+      .maybeSingle()
+
+    if (error || !data) {
+      // Unknown/expired code — fail open to the homepage rather than a dead end.
+      return res.redirect(302, '/')
+    }
+
+    // Best-effort click log — a failure here must never block the redirect.
+    try {
+      const destUrl = new URL(data.destination_url)
+      await supabase.from('card_visit_log').insert({
+        card:         data.card || 'unknown',
+        utm_source:   destUrl.searchParams.get('utm_source'),
+        utm_campaign: destUrl.searchParams.get('utm_campaign'),
+        utm_content:  destUrl.searchParams.get('utm_content'),
+      })
+    } catch (logErr) {
+      console.error('[go] click-log error:', logErr.message)
+    }
+
+    return res.redirect(302, data.destination_url)
+  } catch (err) {
+    console.error('[go] unexpected error:', err.message)
+    return res.redirect(302, '/')
+  }
+})
+
 
 /* ── Shared legal page shell ──────────────────────────────────────── */
 // APP_URL: where the Quorum app lives (for links to Privacy Center etc.)
