@@ -1,0 +1,42 @@
+--- index.html (before)
++++ index.html (after)
+@@ -2758,2 +2758,18 @@
+         }
++      },
++      {
++        "@type": "Question",
++        "name": "What happens after I decide?",
++        "acceptedAnswer": {
++          "@type": "Answer",
++          "text": "You commit to what you'll do and choose a date to check back. On that date Quorum asks how it turned out and keeps the answer with the decision. With a few decisions on record it starts to show early observations, labelled as early, and once you have recorded outcomes it can show where your confidence ran ahead of what happened. It doesn't claim to know you from one or two decisions."
++        }
++      },
++      {
++        "@type": "Question",
++        "name": "Do I need an account to start?",
++        "acceptedAnswer": {
++          "@type": "Answer",
++          "text": "No. You can start without one and bring a decision straight away. Linking your email afterwards keeps your record across devices and lets Quorum bring a decision back to you on the date you chose. Nothing about your decisions is shared without your permission."
++        }
+       }
+@@ -2875,3 +2891,3 @@
+     <p class="r d2" style="text-align:center; max-width:520px; margin:28px auto 0; font-size:15px; color:var(--t3); line-height:1.8;">
+-      Challenge the decision. Identify what could change the answer. Decide what to do next.
++      Challenge the decision. Identify what could change the answer. Decide what to do next. Then Quorum checks back on how it went.
+     </p>
+@@ -3663,3 +3679,3 @@
+             <li>A clear, directional view — not just a summary</li>
+-            <li>A first look at Mirror after your third decision</li>
++            <li>A first look at your Mirror once your decisions support one: what Quorum has learned, what to watch, what to try next</li>
+           </ul>
+@@ -3724,2 +3740,10 @@
+         <p>Judgment Compounding is the process of improving future decisions by systematically learning from past decisions, reasoning, outcomes, and feedback. Unlike a single good decision, Judgment Compounding asks whether each consequential decision improves the quality of the next one. Quorum Vault supports this by connecting your decision record, reasoning, confidence, and eventual outcomes over time.</p>
++      </details>
++      <details class="faq-item">
++        <summary>What happens after I decide?</summary>
++        <p>You commit to what you'll do and choose a date to check back. On that date Quorum asks how it turned out and keeps the answer with the decision. With a few decisions on record it starts to show early observations, labelled as early, and once you have recorded outcomes it can show where your confidence ran ahead of what happened. It doesn't claim to know you from one or two decisions.</p>
++      </details>
++      <details class="faq-item">
++        <summary>Do I need an account to start?</summary>
++        <p>No. You can start without one and bring a decision straight away. Linking your email afterwards keeps your record across devices and lets Quorum bring a decision back to you on the date you chose. Nothing about your decisions is shared without your permission.</p>
+       </details>

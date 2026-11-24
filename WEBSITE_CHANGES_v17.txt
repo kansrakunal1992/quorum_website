@@ -1,0 +1,48 @@
+Quorum Website: v17 alignment edits (24 Nov 2026)
+==================================================
+ONE file changed: index.html   (26 lines added, 2 removed; nothing else in the site is touched)
+
+Drop it into the website Railway project root, replacing the existing index.html, and redeploy. No new dependencies, no
+environment variables, no SQL. server.js serves index.html as a static file and as the fallback page, so no code change is needed.
+
+WHAT CHANGED, AND WHY
+---------------------
+1. Pricing, Free tier. Was: "A first look at Mirror after your third decision".
+   Now: "A first look at your Mirror once your decisions support one: what Quorum has learned, what to watch, what to try next".
+   Why: the app no longer makes people wait for a third decision. The Mirror opens with a free overview built only from what a
+   person's decisions support, labelled early when the evidence is thin, and says so plainly when nothing is solid yet. "After
+   your third decision" was out of date, and it understated what Free now includes.
+
+2. Three-step line under the "Most AI / Quorum" comparison. Added a last sentence:
+   "Then Quorum checks back on how it went."
+   Why: the product's loop does not end at the decision. It records a check-in date and asks how it turned out. The page described
+   the front half only, and the check-back is the reason to return.
+
+3. FAQ, two new questions (and the same two in the FAQPage schema, so search results match the page):
+   - "What happens after I decide?"  Commit, choose a check-in date, Quorum asks how it turned out and keeps the answer; early
+     observations are labelled early; it does not claim to know you from one or two decisions.
+   - "Do I need an account to start?"  No. Start without one. Linking an email keeps the record across devices and lets Quorum bring a
+     decision back on the date chosen.
+   Both answers describe what the app does today. See the dependency below.
+
+WHAT I DELIBERATELY DID NOT CHANGE
+----------------------------------
+- The hero headline and sub-line ("See what you're actually deciding."), the title, the meta description, the audience copy, pricing
+  amounts and tiers, the waitlist form, and every legal page. These are positioning and commercial decisions, not accuracy fixes, and
+  the question of who the site and the app should be aimed at is open (see the separate point of view). Changing the headline now would
+  mean changing it again.
+- The site already names its audience in the FAQ ("Founders, CXOs, and family office principals ... It isn't built for everyday,
+  low-stakes choices") and in "Quorum is built for decisions like these". That is the strongest audience copy in the whole product;
+  the app front door is broader than it.
+
+DEPENDENCY TO CHECK BEFORE PUBLISHING
+-------------------------------------
+"Do I need an account to start?" answers No. That is true for the first decisions today. If NEXT_PUBLIC_AUTH_GATE_MODE is still
+"d3" in the app's Railway variables, a person is stopped at their third decision until they sign in. Remove that variable (unset
+behaves as off) and redeploy the app with a fresh build, or soften this answer to "You can start without one."
+
+OTHER FILES
+-----------
+- index_updated_v1.html is an older variant of index.html, not served by server.js (it is not referenced). It is stale next to
+  index.html and could be deleted to avoid confusion. I did not touch it.
+- To revert: put the previous index.html back. The exact before/after is in index.html.diff in this folder.
