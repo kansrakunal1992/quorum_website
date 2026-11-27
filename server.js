@@ -62,6 +62,7 @@ import { createClient } from '@supabase/supabase-js'
 import path       from 'path'
 import fs         from 'fs'
 import { fileURLToPath } from 'url'
+import { parseWaitlistBody, saveSessionRequest } from './waitlist-fields.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const app       = express()
@@ -189,43 +190,20 @@ app.use(express.static(__dirname, {
 }))
 
 /* ── POST /api/waitlist ───────────────────────────────────────────── */
-const EMAIL_RX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
+// Validation, row building and the legacy-column fallback live in waitlist-fields.js (unit-tested, no database needed).
+// The form now also sends founder-qualification fields (company, role, size, decisions per quarter, review process),
+// the UTM tags from the page URL and the button that opened the form. If the new columns are not in Supabase yet
+// (add_session_requests_founder_fields.sql not run), the insert falls back to the original columns and keeps the
+// answers as text in additional_context, so this can be deployed before the migration.
 app.post('/api/waitlist', async (req, res) => {
   try {
-    const {
-      interest_type,
-      decision_summary,
-      name,
-      email,
-      whatsapp,
-      additional_context,
-    } = req.body ?? {}
+    const parsed = parseWaitlistBody(req.body)
+    if (!parsed.ok) return res.status(400).json({ error: parsed.error })
 
-    /* Validate required fields */
-    if (!interest_type?.trim()) {
-      return res.status(400).json({ error: 'interest_type is required' })
+    const { error, usedFallback } = await saveSessionRequest(getSupabase(), parsed)
+    if (usedFallback) {
+      console.warn('[Waitlist] session_requests has no founder columns yet; saved with legacy columns. Run add_session_requests_founder_fields.sql.')
     }
-    if (!name?.trim()) {
-      return res.status(400).json({ error: 'name is required' })
-    }
-    if (!email?.trim() || !EMAIL_RX.test(email.trim())) {
-      return res.status(400).json({ error: 'A valid email address is required' })
-    }
-
-    /* Insert into Supabase */
-    const supabase = getSupabase()
-    const { error } = await supabase
-      .from('session_requests')
-      .insert({
-        interest_type:      interest_type.trim(),
-        decision_summary:   decision_summary?.trim()     ?? null,
-        name:               name.trim(),
-        email:              email.trim().toLowerCase(),
-        whatsapp:           whatsapp?.trim()             ?? null,
-        additional_context: additional_context?.trim()   ?? null,
-      })
-
     if (error) {
       console.error('[Waitlist] Supabase error:', error.message)
       return res.status(500).json({ error: 'Failed to save request. Please try again.' })

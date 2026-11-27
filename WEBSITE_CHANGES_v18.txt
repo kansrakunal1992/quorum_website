@@ -1,0 +1,42 @@
+QUORUM WEBSITE v18 — FOUNDER POSITIONING (drop v1)
+Overlay these files on the website project root (same paths). Only new or revised files are included.
+
+REVISED   index.html                      hero, founder-decisions block, record, fit, pilot, pricing, FAQ + schema, meta, nav, access modal
+REVISED   journey.html                    final CTA: "Bring a real decision" + "Start a founder pilot" (story unchanged)
+REVISED   decision-library.html           one intro line (founder decisions already came first)
+REVISED   server.js                       /api/waitlist now uses waitlist-fields.js
+NEW       waitlist-fields.js              validation, row building, legacy-column fallback
+NEW       tests/waitlist-fields.test.mjs  node --test tests/waitlist-fields.test.mjs   (12 tests, no dependencies)
+NEW       add_session_requests_founder_fields.sql   run once in Supabase (see below)
+
+DEPLOY ORDER
+1. Deploy the files. The form works immediately: until the SQL is run, new answers are saved as text in additional_context
+   under "[qualification]" and server logs a one-line warning.
+2. Run add_session_requests_founder_fields.sql in the website's Supabase project (safe to re-run). From then on the answers
+   land in real columns: segment, company, role, company_size, decisions_per_quarter, has_review_process, utm_*, cta.
+3. Optional: the app v18 zip must be live for the six scenario links (?scenario=...) and the ?decision= prefill to work.
+
+PAGE ORDER (index.html)
+hero > founder-decisions > record > ai-contrast > problem > how > proof > research-video > moments > experiment >
+proof-close > fit ("Beyond founders") > judgment-compounding > differentiator > challenge > pilot > pricing > faq > contact
+
+MODAL: five options (founder is preselected): founder, feeder, champion, institution, exploring. Step 2 has six one-tap
+starters. Step 3 adds company, role, size, decisions per quarter, structured review. Role is required except "Just exploring".
+The mobile "Get access" button now goes through openModal() like the others (it used to skip setup).
+
+DECISIONS I MADE (change if you disagree)
+- No public pilot price; pricing card says "Per company / agreed with you".
+- Private price removed from pricing and modal; the FAQ still states it (Rs 9,999/user/month).
+- Dropped the old "Something else" modal option (handoff lists five).
+- No new response-time promise; the existing "within 48 hours" wording is unchanged.
+- Hero H1 font size reduced (longer headline). Only CSS added: a.ft, .prefill-*, and .field select reuses the input style.
+
+NOT CHANGED, WORTH A LOOK
+- Modal "Signal detected" box still names the six advisors (qualPatterns in index.html).
+- Pricing free-tier bullet still says "Challenged from six different angles".
+- server.js serves its whole folder via express.static, so server.js / env.example / *.sql are publicly readable.
+- /journey and /decision-library overflow ~260-470px sideways at 375px wide; this was already so (decorative .hero-aura).
+
+TESTED: index.html in Chromium at 1280 and 375 (no overflow, no JS errors, modal flow and posted payload checked);
+waitlist-fields.js 12/12 unit tests; server.js passes node --check.
+NOT TESTED: server.js running under Express (express could not be installed offline); the SQL against a real database.

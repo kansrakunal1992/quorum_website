@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quorum Vault | Private Decision Intelligence</title>
-  <meta name="description" content="Quorum Vault is a private decision intelligence platform that examines assumptions, challenges reasoning, and helps judgment compound across high-stakes decisions." />
+  <meta name="description" content="A decision review for founders and owner-operators. Bring a real business decision: Quorum structures it, exposes your assumptions, has independent perspectives challenge it, and gives you a documented brief. Then it tracks what happened." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://quorumvault.org/" />
 
@@ -13,13 +13,13 @@
   <meta property="og:locale" content="en_IN" />
   <meta property="og:site_name" content="Quorum Vault" />
   <meta property="og:title" content="Quorum Vault | Private Decision Intelligence" />
-  <meta property="og:description" content="Examine the decision. Challenge the reasoning. Compound your judgment." />
+  <meta property="og:description" content="A decision review for founders and owner-operators. Bring a real business decision: Quorum structures it, exposes your assumptions, has independent perspectives challenge it, and gives you a documented brief. Then it tracks what happened." />
   <meta property="og:url" content="https://quorumvault.org/" />
 
   <!-- X / Twitter -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Quorum Vault | Private Decision Intelligence" />
-  <meta name="twitter:description" content="Examine the decision. Challenge the reasoning. Compound your judgment." />
+  <meta name="twitter:description" content="A decision review for founders and owner-operators. Bring a real business decision: Quorum structures it, exposes your assumptions, has independent perspectives challenge it, and gives you a documented brief. Then it tracks what happened." />
 
   <!-- Entity and product data. Claims mirror visible page content. -->
   <script type="application/ld+json">
@@ -334,9 +334,9 @@
     @keyframes up { to { opacity:1; transform:none; } }
 
     .hero-eye   { --d: 0.1s; margin-bottom: 30px; }
-    .hero-hl    { --d: 0.28s; font-size: clamp(60px, 8vw, 112px); max-width: 900px; }
+    .hero-hl    { --d: 0.28s; font-size: clamp(40px, 5.4vw, 78px); max-width: 900px; }
     .hero-hl em { font-style: italic; color: var(--t3); }
-    .hero-sub   { --d: 0.46s; margin-top: 48px; max-width: 510px; font-size: 17px; line-height: 1.85; color: var(--t3); }
+    .hero-sub   { --d: 0.46s; margin-top: 40px; max-width: 580px; font-size: 17px; line-height: 1.85; color: var(--t3); }
     .hero-cta   { --d: 0.62s; margin-top: 58px; display:flex; align-items:center; gap:28px; }
 
     .btn-cta {
@@ -866,7 +866,7 @@
       margin-bottom: 10px;
     }
 
-    .field input, .field textarea {
+    .field input, .field textarea, .field select {
       width: 100%;
       background: var(--card);
       border: 1px solid var(--b1);
@@ -880,11 +880,13 @@
       resize: none;
     }
 
-    [data-theme="light"] .field input, [data-theme="light"] .field textarea {
+    [data-theme="light"] .field input, [data-theme="light"] .field textarea, [data-theme="light"] .field select {
       background: var(--bg2);
     }
 
-    .field input:focus, .field textarea:focus { border-color: var(--gold); }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--gold); }
+
+    .field select { cursor: pointer; }
 
     .field input::placeholder, .field textarea::placeholder { color: var(--t5); }
 
@@ -2680,7 +2682,7 @@
       .rule         { margin: 0 16px; }
       #hero         { padding: 100px 16px 72px; }
 
-      .hero-hl      { font-size: clamp(44px, 11vw, 68px) !important; }
+      .hero-hl      { font-size: clamp(34px, 9vw, 56px) !important; }
       .hero-sub     { font-size: 15px; margin-top: 28px; }
 
       .advisor-grid { grid-template-columns: 1fr; }
@@ -2718,6 +2720,13 @@
       .interest-grid { gap: 10px; }
     }
 
+    /* ══ FOUNDER POSITIONING (v18) — the only new CSS; everything else reuses existing components ══ */
+    a.ft { display: block; text-decoration: none; color: inherit; }
+    .prefill-label { display: block; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--t5); margin-bottom: 10px; }
+    .prefill-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .prefill-chip { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--t3); background: transparent; border: 1px solid var(--b1); border-radius: 20px; padding: 7px 14px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+    .prefill-chip:hover { border-color: var(--gold); color: var(--t0); }
+
   </style>
 
   <script type="application/ld+json">
@@ -2746,7 +2755,7 @@
         "name": "Who is Quorum Vault built for?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Quorum Vault is built for founders, CXOs, and family office principals making decisions where being wrong is expensive."
+          "text": "Founders and owner-operators of established businesses who make consequential decisions and have no structured way to review them. Family offices, institutions and public-sector teams use it too, but we build for founders first."
         }
       },
       {
@@ -2772,6 +2781,22 @@
           "@type": "Answer",
           "text": "No. You can start without one and bring a decision straight away. Linking your email afterwards keeps your record across devices and lets Quorum bring a decision back to you on the date you chose. Nothing about your decisions is shared without your permission."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Quorum for small, everyday choices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Built for consequential business decisions. You can bring anything, and Quorum will examine it, but the review is designed for decisions where being wrong is expensive."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the founder pilot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A four-week engagement for a company: three to five of your real decisions, each reviewed and documented, with review dates, recorded outcomes and a closing review. Talk to us and we will tell you what it involves."
+        }
       }
     ]
   }
@@ -2784,22 +2809,23 @@
   <a href="#" class="logo" aria-label="Quorum Vault home">Quoru<span>m</span> Vault</a>
 
   <ul class="nav-links">
+    <li><a href="#founder-decisions">Decisions</a></li>
+    <li><a href="#record">The Record</a></li>
     <li><a href="#how">How it works</a></li>
     <li><a href="#proof">Proof</a></li>
-    <li><a href="#moments">Mirror</a></li>
-    <li><a href="#record">The Record</a></li>
+    <li><a href="#pilot">Pilot</a></li>
     <li><a href="#pricing">Access</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
 
   <div class="nav-right">
-    <button class="btn-request-mobile" id="openModalMobile" onclick="document.getElementById('sessionModal').classList.add('open')">Get access →</button>
+    <button class="btn-request-mobile" id="openModalMobile" data-cta="nav_access_mobile" onclick="openModal()">Get access →</button>
     <button class="toggle" id="themeBtn" aria-label="Toggle light/dark mode">
       <div class="toggle-thumb"></div>
       <span class="toggle-label l">☀</span>
       <span class="toggle-label r">☾</span>
     </button>
-    <button class="btn-request" id="openModal">Get access</button>
+    <button class="btn-request" id="openModal" data-cta="nav_access">Get access</button>
   </div>
 </nav>
 
@@ -2808,9 +2834,9 @@
   <div class="hero-aura"></div>
   <div class="hero-body">
     <div class="hero-left">
-      <span class="eyebrow h-up hero-eye">QUORUM VAULT · PRIVATE DECISION INTELLIGENCE</span>
+      <span class="eyebrow h-up hero-eye">QUORUM VAULT · DECISION REVIEW FOR FOUNDERS</span>
       <h1 class="display hero-hl h-up">
-        See what you're <em>actually deciding.</em>
+        A decision review for <em>the calls only a founder can make.</em>
       </h1>
 
       <!-- Intro video — placeholder. Upload the final MP4 on Railway at
@@ -2841,33 +2867,126 @@
            Hidden by default — if the video never loads, this stays hidden
            and the original hero-right CTA (unchanged) is what's visible,
            exactly as before this change. -->
-      <div class="hero-video-cta" id="heroVideoCta">
-        <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=hero_video" target="_blank" class="btn-open-quorum" data-track="cta_home_hero">
-          Bring one real decision
+      <div class="hero-video-cta" id="heroVideoCta" style="flex-wrap:wrap;">
+        <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=hero_primary" target="_blank" class="btn-open-quorum" data-track="cta_home_hero">
+          Bring a real decision
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
-        <p class="hero-open-note">Free · Bring one real decision</p>
+        <button type="button" class="btn-open-quorum" onclick="openModal('founder')" data-track="cta_hero_pilot" style="cursor:pointer; border-color:var(--b1); color:var(--t3);">Start a founder pilot</button>
+        <p class="hero-open-note" style="flex-basis:100%;">Free · Bring one real decision</p>
       </div>
 
       <p class="hero-sub h-up">
-        When a decision matters, an answer isn't enough. Quorum helps you uncover the assumptions, trade-offs and unknowns behind the decision — then shows you what to resolve before you act.
+        Bring a real business decision: raise or bootstrap, hire or hold, enter a market or focus. Quorum structures it, exposes the assumptions you are relying on, has independent perspectives argue it, and gives you a documented decision brief. Then it tracks what happened.
+      </p>
+      <p class="hero-open-note h-up" style="margin-top:22px; text-transform:none; letter-spacing:0.02em; font-size:13px;">
+        <a href="/journey?ref=index_hero" style="color:var(--gold); border-bottom:1px solid var(--gold-lo);">Four decisions, one founder. See the record →</a>
       </p>
     </div>
     <div class="hero-right h-up" id="heroRightCta">
-      <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=hero_fallback" target="_blank" class="btn-open-quorum" data-track="cta_home_hero">
-        Bring one real decision
+      <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=hero_primary_fallback" target="_blank" class="btn-open-quorum" data-track="cta_home_hero" style="align-self:stretch; justify-content:center;">
+        Bring a real decision
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
+      <button type="button" class="btn-open-quorum" onclick="openModal('founder')" data-track="cta_hero_pilot" style="align-self:stretch; justify-content:center; cursor:pointer; border-color:var(--b1); color:var(--t3);">Start a founder pilot</button>
       <p class="hero-open-note">Free · Bring one real decision</p>
       <a href="#how" class="hero-open-note" style="display:inline-block; margin-top:10px; text-decoration:underline; text-underline-offset:3px;">See how Quorum works</a>
     </div>
   </div>
 </section>
 
+<!-- ══ FOUNDER DECISIONS — the commercial entry point, directly under the hero. Six calls a founder rarely gets to
+     review properly; each opens the app with that decision already in the box (editable, never auto-submitted).
+     Reuses .feature-tiles / .ft; no new layout CSS. ═════════════════════════════════════════════ -->
+<div class="wrap" id="founder-decisions">
+  <div class="s" style="padding-top:72px; padding-bottom:120px;">
+    <div class="sh r" style="margin-bottom:0;">
+      <span class="eyebrow">Decisions founders bring</span>
+      <h2 class="display" style="font-size: clamp(32px,3.6vw,48px);">Six calls that rarely get a proper review.</h2>
+    </div>
+    <div class="feature-tiles r d1" style="margin-top:44px;">
+      <a class="ft" href="https://app.quorumvault.org/?scenario=raise_or_bootstrap&utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=decision_raise_or_bootstrap" target="_blank" rel="noopener" data-track="cta_founder_decision">
+        <div class="ft-title">Raise funding or keep bootstrapping</div>
+        <div class="ft-body">Runway, control, and what you would do with the money.</div>
+        <span class="ft-label" style="margin:16px 0 0;">Bring this decision →</span>
+      </a>
+      <a class="ft" href="https://app.quorumvault.org/?scenario=hire_senior_leader&utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=decision_hire_senior_leader" target="_blank" rel="noopener" data-track="cta_founder_decision">
+        <div class="ft-title">Hire a senior leader or keep managing it</div>
+        <div class="ft-body">Whether the role is defined, and what breaks if you wait.</div>
+        <span class="ft-label" style="margin:16px 0 0;">Bring this decision →</span>
+      </a>
+      <a class="ft" href="https://app.quorumvault.org/?scenario=new_market&utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=decision_new_market" target="_blank" rel="noopener" data-track="cta_founder_decision">
+        <div class="ft-title">Enter a new market or focus</div>
+        <div class="ft-body">What you would stop doing to make the move.</div>
+        <span class="ft-label" style="margin:16px 0 0;">Bring this decision →</span>
+      </a>
+      <a class="ft" href="https://app.quorumvault.org/?scenario=add_cofounder&utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=decision_add_cofounder" target="_blank" rel="noopener" data-track="cta_founder_decision">
+        <div class="ft-title">Bring on a co-founder or stay independent</div>
+        <div class="ft-body">Equity, fit, and what you actually need help with.</div>
+        <span class="ft-label" style="margin:16px 0 0;">Bring this decision →</span>
+      </a>
+      <a class="ft" href="https://app.quorumvault.org/?scenario=change_pricing&utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=decision_change_pricing" target="_blank" rel="noopener" data-track="cta_founder_decision">
+        <div class="ft-title">Change pricing or packaging</div>
+        <div class="ft-body">Which customers it affects, and what you are assuming about them.</div>
+        <span class="ft-label" style="margin:16px 0 0;">Bring this decision →</span>
+      </a>
+      <a class="ft" href="https://app.quorumvault.org/?scenario=sell_or_scale&utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=decision_sell_or_scale" target="_blank" rel="noopener" data-track="cta_founder_decision">
+        <div class="ft-title">Sell the company or keep scaling</div>
+        <div class="ft-body">What a good outcome is, and whether you are deciding for the right reasons.</div>
+        <span class="ft-label" style="margin:16px 0 0;">Bring this decision →</span>
+      </a>
+    </div>
+    <p class="r d2" style="margin-top:32px; font-size:14px; color:var(--t4); line-height:1.9;">
+      Something else? Anything you are weighing works, and the review is the same.<br />
+      <a href="https://app.quorumvault.org/?scenario=leave_job&utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=decision_leave_job" target="_blank" rel="noopener" style="color:var(--gold); border-bottom:1px solid var(--gold-lo);">Thinking of leaving a job to start something of your own?</a>
+    </p>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ THE RECORD — homepage discovery point for both the connected
+     founder journey and the standalone Decision Library. Library
+     cards open PDFs in the same inline modal used on /journey; the
+     Journey card links out to the full page. ═════════════════════ -->
+<div class="wrap" id="record">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">Proof, not a pitch</span>
+      <h2 class="display" style="font-size: clamp(28px,3.2vw,40px);">One decision → a pattern.</h2>
+    </div>
+    <p class="r d1" style="font-size:16px; color:var(--t2); line-height:1.9; max-width:640px; margin-bottom:8px;">A single decision can show a useful read. Several decisions, connected, start to reveal how someone repeatedly approaches risk, uncertainty, and trade-offs. Here's what that looks like.</p>
+
+    <div class="rec-layout r d2" style="grid-template-columns:1fr;">
+      <div class="rec-journey">
+        <span class="prov-badge illustrative" style="align-self:flex-start;">Illustrative</span>
+        <span class="rec-tag">The Journey</span>
+        <h3 class="rec-journey-title">Four decisions. One person. A pattern that started noticing itself.</h3>
+        <p class="rec-journey-desc">One founder's composite record, in order — illustrative, and structurally linked in ways nobody set out to design.</p>
+        <a href="/journey?ref=index_record" class="rec-journey-cta">
+          Read the full record
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <p class="r d3" style="font-size:14px; color:var(--t4); margin-top:28px; line-height:1.7;">
+      <a href="/decision-library?ref=index_record" style="color:var(--gold); border-bottom:1px solid var(--gold-lo);">Browse the Decision Library: twenty decisions across five kinds of high-stakes call →</a>
+    </p>
+
+    <p class="r d3" style="font-size:13px; color:var(--t4); margin-top:20px; line-height:1.7;">
+      Curious what changes when the recommendation gets challenged?
+      <a href="/insights/what-ai-misses-in-hard-decisions?ref=index_record" style="color:var(--gold); border-bottom:1px solid var(--gold-lo);">Read the AI vs. Quorum experiment →</a>
+    </p>
+  </div>
+</div>
+
+<hr class="rule" />
+
 <!-- ══ MOST AI vs QUORUM — reuses existing .demo component (same one used
      in the Mirror/Contradiction card below) so no new CSS is introduced ══ -->
 <div class="wrap" id="ai-contrast">
-  <div class="s" style="padding-top:40px; padding-bottom:60px;">
+  <div class="s" style="padding-top:96px; padding-bottom:60px;">
     <div class="demo r d1" style="max-width:820px; margin:0 auto;">
       <div class="demo-hd">
         <span class="demo-tag tn">Most AI</span>
@@ -2924,6 +3043,122 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
+<!-- ══ HOW IT WORKS ═══════════════════════════════════════════════ -->
+<div class="wrap" id="how">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">The process</span>
+      <h2 class="display" style="font-size: clamp(38px,4vw,54px); margin-top:16px; max-width:560px;">Quorum reads the decision before it answers.</h2>
+      <p class="r d1" style="font-size:16px; color:var(--t2); line-height:1.9; max-width:620px; margin-top:20px;">A difficult decision isn't just a question with an answer. Quorum examines what you're actually deciding, then challenges the reasoning — before helping you decide what to do.</p>
+    </div>
+
+    <!-- Compact process contrast — general AI vs. Quorum. Text only, no
+         new visual system; reuses the existing DM Mono label convention
+         (.step-tag / .eyebrow) already used throughout this page. -->
+    <div class="r d1" style="display:flex; flex-wrap:wrap; gap:10px 32px; align-items:baseline; margin-top:26px; font-family:'DM Mono', monospace; font-size:11px; letter-spacing:0.05em;">
+      <span style="color:var(--t5);">General AI &nbsp;·&nbsp; Question → Answer</span>
+      <span style="color:var(--gold);">Quorum &nbsp;·&nbsp; Decision → Examination → Challenge → Updated decision → Action → Learning</span>
+    </div>
+
+    <!-- Explainer video — Video 3. Upload the final MP4 on Railway at
+         /videos/quorum-explainer.mp4 (same directory as server.js), plus
+         optionally /videos/quorum-explainer-poster.jpg and
+         /videos/quorum-explainer.vtt. This section sits well below the
+         fold, so it loads lazily (see initLazyVideo below) and stays
+         display:none — no layout shift, nothing broken — until the file
+         actually exists at that path. -->
+    <div class="explainer-video-wrap" id="explainerVideoWrap">
+      <video
+        id="explainerVideo"
+        controls
+        playsinline
+        preload="none"
+        poster="/videos/quorum-explainer-poster.jpg"
+      >
+        <track kind="captions" src="/videos/quorum-explainer.vtt" srclang="en" label="English" default />
+      </video>
+    </div>
+
+    <!-- New CTA — shown only once the explainer video above has loaded
+         (see .explainer-video-cta CSS). No video, no CTA; nothing changes
+         from today's layout if the file isn't uploaded yet. -->
+    <div class="explainer-video-cta">
+      <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=explainer_video" target="_blank" class="btn-open-quorum">
+        Open Quorum
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p class="hero-open-note">Free · Bring one real decision</p>
+    </div>
+
+    <div class="steps r d1">
+      <div class="step">
+        <div class="step-n">01</div>
+        <div class="step-tag">Free</div>
+        <div class="step-name">Examiner</div>
+        <div class="step-desc">What's missing? What are you assuming? Before the Council speaks, Quorum asks the one question that actually matters for this decision — not derived from a template, but from what you brought. Sometimes the answer is a redirect: the decision isn't ready to be made yet.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <div class="step-tag">Free</div>
+        <div class="step-name">Structural Read</div>
+        <div class="step-desc">What are you actually deciding? Your decision is read for what kind of decision this actually is — surfacing the trade-offs, assumptions and stakeholders underneath your framing. Everything that follows is shaped by what this finds.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div class="step-tag">Free</div>
+        <div class="step-name">Council</div>
+        <div class="step-desc">Six perspectives attack the decision from different angles — Contrarian, Risk Architect, Pattern Analyst, Stakeholder Mirror, Elder, Competitor — surfacing what a single answer would miss.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <div class="step-tag">Free</div>
+        <div class="step-name">Challenge</div>
+        <div class="step-desc">Try to prove the current recommendation wrong. A challenge is treated as new information for the whole Council — each advisor reassesses independently and may keep, strengthen, weaken, or reverse its position.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">05</div>
+        <div class="step-tag">Free</div>
+        <div class="step-name">Synthesis</div>
+        <div class="step-desc">What does the evidence now support? A directional call, integrating every view — including anything that shifted under challenge. Not a summary — a position. You can see exactly what shaped it.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">06</div>
+        <div class="step-tag">Free</div>
+        <div class="step-name">Next Move</div>
+        <div class="step-desc">What needs to happen before you act? Every session closes with a clear next step — what has to be true, tested, or resolved first.</div>
+      </div>
+    </div>
+
+    <!-- ══ DECISION LOOP — compact recap sitting between "Next Move" and
+         Mirror below: the six steps above resolve one decision; Mirror is
+         what watches the loop repeat across many. Static, no animation. ══ -->
+    <div class="r d2 decision-loop">
+      <div class="dl-track">
+        <span class="dl-node">Decide</span><span class="dl-arrow">→</span>
+        <span class="dl-node">Challenge</span><span class="dl-arrow">→</span>
+        <span class="dl-node">Update</span><span class="dl-arrow">→</span>
+        <span class="dl-node">Act</span><span class="dl-arrow">→</span>
+        <span class="dl-node dl-learn">Learn</span><span class="dl-arrow dl-return">↺</span>
+      </div>
+      <p class="dl-caption">The first answer isn't the finish line. It's the beginning of the examination.</p>
+    </div>
+
+    <!-- Mirror — pulled out of the six-card grid above so it reads as the
+         longitudinal payoff rather than a seventh feature card, per the
+         "Mirror is the payoff, not another feature" design note. Reuses
+         .step-n/.step-tag/.step-name/.step-desc typography; only the
+         outer wrapper differs (single full-width card vs. grid). -->
+    <div class="r d2 mirror-payoff-card" style="border:1px solid var(--b0); border-radius:22px; background:var(--card); padding:44px 44px 40px; margin-top:32px;">
+      <div class="step-n" style="font-size:40px; margin-bottom:12px;">07</div>
+      <div class="step-tag">Mirror · Judgment Compounding</div>
+      <div class="step-name" style="font-size:17px; margin-bottom:12px;">Mirror</div>
+      <div class="step-desc" style="font-size:14px; max-width:640px;">The part that compounds. Every decision you bring builds a clearer picture of how you think — where your confidence is calibrated and where it isn't, including a reliability score for every session on Elite.</div>
     </div>
   </div>
 </div>
@@ -3232,51 +3467,6 @@
 
 <hr class="rule" />
 
-<!-- ══ THE RECORD — homepage discovery point for both the connected
-     founder journey and the standalone Decision Library. Library
-     cards open PDFs in the same inline modal used on /journey; the
-     Journey card links out to the full page. ═════════════════════ -->
-<div class="wrap" id="record">
-  <div class="s">
-    <div class="sh r">
-      <span class="eyebrow">Proof, not a pitch</span>
-      <h2 class="display" style="font-size: clamp(28px,3.2vw,40px);">One decision → a pattern.</h2>
-    </div>
-    <p class="r d1" style="font-size:16px; color:var(--t2); line-height:1.9; max-width:640px; margin-bottom:8px;">A single decision can show a useful read. Several decisions, connected, start to reveal how someone repeatedly approaches risk, uncertainty, and trade-offs. Here's what that looks like.</p>
-
-    <div class="rec-layout r d2">
-      <div class="rec-journey">
-        <span class="prov-badge illustrative">Illustrative</span>
-        <span class="rec-tag">The Journey</span>
-        <h3 class="rec-journey-title">Four decisions. One person. A pattern that started noticing itself.</h3>
-        <p class="rec-journey-desc">One founder's composite record, in order — illustrative, and structurally linked in ways nobody set out to design.</p>
-        <a href="/journey?ref=index_record" class="rec-journey-cta">
-          Read the full record
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-
-      <div class="rec-journey">
-        <span class="prov-badge illustrative">Illustrative</span>
-        <span class="rec-tag">Decision Library</span>
-        <h3 class="rec-journey-title">Twenty decisions. Five kinds of high-stakes call.</h3>
-        <p class="rec-journey-desc">Founders, executives, investors, boards, institutions — composite briefs, browsable by category, growing as new sessions happen.</p>
-        <a href="/decision-library?ref=index_record" class="rec-journey-cta">
-          Browse the Decision Library
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <p class="r d3" style="font-size:13px; color:var(--t4); margin-top:28px; line-height:1.7;">
-      Curious what changes when the recommendation gets challenged?
-      <a href="/insights/what-ai-misses-in-hard-decisions?ref=index_record" style="color:var(--gold); border-bottom:1px solid var(--gold-lo);">Read the AI vs. Quorum experiment →</a>
-    </p>
-  </div>
-</div>
-
-<hr class="rule" />
-
 <!-- ══ THE EXPERIMENT — reuses the .sh / .rec-journey-cta components
      already used in "The Record" section above ══ -->
 <div class="wrap" id="experiment">
@@ -3317,9 +3507,9 @@
 <div class="wrap" id="fit">
   <div class="s">
     <div class="r" style="max-width:640px; margin-bottom:44px;">
-      <span class="eyebrow" style="margin-bottom:20px">Decision fit</span>
+      <span class="eyebrow" style="margin-bottom:20px">Beyond founders</span>
       <h2 class="display" style="font-size: clamp(38px,3.8vw,56px);">Quorum is built for decisions like these.</h2>
-      <p style="font-size:16px; color:var(--t3); line-height:1.85; margin-top:16px; max-width:560px;">Where the outcome matters, and there's no obviously right answer.</p>
+      <p style="font-size:16px; color:var(--t3); line-height:1.85; margin-top:16px; max-width:560px;">Quorum is built first for founders and owner-operators. The same review also fits family offices, institutions and public-sector teams, where these calls recur. Where the outcome matters, and there's no obviously right answer.</p>
     </div>
 
     <div class="dec-examples r d1">
@@ -3421,121 +3611,6 @@
 
 <hr class="rule" />
 
-<!-- ══ HOW IT WORKS ═══════════════════════════════════════════════ -->
-<div class="wrap" id="how">
-  <div class="s">
-    <div class="sh r">
-      <span class="eyebrow">The process</span>
-      <h2 class="display" style="font-size: clamp(38px,4vw,54px); margin-top:16px; max-width:560px;">Quorum reads the decision before it answers.</h2>
-      <p class="r d1" style="font-size:16px; color:var(--t2); line-height:1.9; max-width:620px; margin-top:20px;">A difficult decision isn't just a question with an answer. Quorum examines what you're actually deciding, then challenges the reasoning — before helping you decide what to do.</p>
-    </div>
-
-    <!-- Compact process contrast — general AI vs. Quorum. Text only, no
-         new visual system; reuses the existing DM Mono label convention
-         (.step-tag / .eyebrow) already used throughout this page. -->
-    <div class="r d1" style="display:flex; flex-wrap:wrap; gap:10px 32px; align-items:baseline; margin-top:26px; font-family:'DM Mono', monospace; font-size:11px; letter-spacing:0.05em;">
-      <span style="color:var(--t5);">General AI &nbsp;·&nbsp; Question → Answer</span>
-      <span style="color:var(--gold);">Quorum &nbsp;·&nbsp; Decision → Examination → Challenge → Updated decision → Action → Learning</span>
-    </div>
-
-    <!-- Explainer video — Video 3. Upload the final MP4 on Railway at
-         /videos/quorum-explainer.mp4 (same directory as server.js), plus
-         optionally /videos/quorum-explainer-poster.jpg and
-         /videos/quorum-explainer.vtt. This section sits well below the
-         fold, so it loads lazily (see initLazyVideo below) and stays
-         display:none — no layout shift, nothing broken — until the file
-         actually exists at that path. -->
-    <div class="explainer-video-wrap" id="explainerVideoWrap">
-      <video
-        id="explainerVideo"
-        controls
-        playsinline
-        preload="none"
-        poster="/videos/quorum-explainer-poster.jpg"
-      >
-        <track kind="captions" src="/videos/quorum-explainer.vtt" srclang="en" label="English" default />
-      </video>
-    </div>
-
-    <!-- New CTA — shown only once the explainer video above has loaded
-         (see .explainer-video-cta CSS). No video, no CTA; nothing changes
-         from today's layout if the file isn't uploaded yet. -->
-    <div class="explainer-video-cta">
-      <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=explainer_video" target="_blank" class="btn-open-quorum">
-        Open Quorum
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </a>
-      <p class="hero-open-note">Free · Bring one real decision</p>
-    </div>
-
-    <div class="steps r d1">
-      <div class="step">
-        <div class="step-n">01</div>
-        <div class="step-tag">Free</div>
-        <div class="step-name">Examiner</div>
-        <div class="step-desc">What's missing? What are you assuming? Before the Council speaks, Quorum asks the one question that actually matters for this decision — not derived from a template, but from what you brought. Sometimes the answer is a redirect: the decision isn't ready to be made yet.</div>
-      </div>
-      <div class="step">
-        <div class="step-n">02</div>
-        <div class="step-tag">Free</div>
-        <div class="step-name">Structural Read</div>
-        <div class="step-desc">What are you actually deciding? Your decision is read for what kind of decision this actually is — surfacing the trade-offs, assumptions and stakeholders underneath your framing. Everything that follows is shaped by what this finds.</div>
-      </div>
-      <div class="step">
-        <div class="step-n">03</div>
-        <div class="step-tag">Free</div>
-        <div class="step-name">Council</div>
-        <div class="step-desc">Six perspectives attack the decision from different angles — Contrarian, Risk Architect, Pattern Analyst, Stakeholder Mirror, Elder, Competitor — surfacing what a single answer would miss.</div>
-      </div>
-      <div class="step">
-        <div class="step-n">04</div>
-        <div class="step-tag">Free</div>
-        <div class="step-name">Challenge</div>
-        <div class="step-desc">Try to prove the current recommendation wrong. A challenge is treated as new information for the whole Council — each advisor reassesses independently and may keep, strengthen, weaken, or reverse its position.</div>
-      </div>
-      <div class="step">
-        <div class="step-n">05</div>
-        <div class="step-tag">Free</div>
-        <div class="step-name">Synthesis</div>
-        <div class="step-desc">What does the evidence now support? A directional call, integrating every view — including anything that shifted under challenge. Not a summary — a position. You can see exactly what shaped it.</div>
-      </div>
-      <div class="step">
-        <div class="step-n">06</div>
-        <div class="step-tag">Free</div>
-        <div class="step-name">Next Move</div>
-        <div class="step-desc">What needs to happen before you act? Every session closes with a clear next step — what has to be true, tested, or resolved first.</div>
-      </div>
-    </div>
-
-    <!-- ══ DECISION LOOP — compact recap sitting between "Next Move" and
-         Mirror below: the six steps above resolve one decision; Mirror is
-         what watches the loop repeat across many. Static, no animation. ══ -->
-    <div class="r d2 decision-loop">
-      <div class="dl-track">
-        <span class="dl-node">Decide</span><span class="dl-arrow">→</span>
-        <span class="dl-node">Challenge</span><span class="dl-arrow">→</span>
-        <span class="dl-node">Update</span><span class="dl-arrow">→</span>
-        <span class="dl-node">Act</span><span class="dl-arrow">→</span>
-        <span class="dl-node dl-learn">Learn</span><span class="dl-arrow dl-return">↺</span>
-      </div>
-      <p class="dl-caption">The first answer isn't the finish line. It's the beginning of the examination.</p>
-    </div>
-
-    <!-- Mirror — pulled out of the six-card grid above so it reads as the
-         longitudinal payoff rather than a seventh feature card, per the
-         "Mirror is the payoff, not another feature" design note. Reuses
-         .step-n/.step-tag/.step-name/.step-desc typography; only the
-         outer wrapper differs (single full-width card vs. grid). -->
-    <div class="r d2 mirror-payoff-card" style="border:1px solid var(--b0); border-radius:22px; background:var(--card); padding:44px 44px 40px; margin-top:32px;">
-      <div class="step-n" style="font-size:40px; margin-bottom:12px;">07</div>
-      <div class="step-tag">Mirror · Judgment Compounding</div>
-      <div class="step-name" style="font-size:17px; margin-bottom:12px;">Mirror</div>
-      <div class="step-desc" style="font-size:14px; max-width:640px;">The part that compounds. Every decision you bring builds a clearer picture of how you think — where your confidence is calibrated and where it isn't, including a reliability score for every session on Elite.</div>
-    </div>
-  </div>
-</div>
-
-<hr class="rule" />
 <!-- ══ JUDGMENT COMPOUNDING — canonical, quotable definition ══ -->
 <div class="wrap" id="judgment-compounding">
   <div class="s">
@@ -3564,7 +3639,9 @@
     </div>
   </div>
 </div>
+
 <hr class="rule" />
+
 <!-- ══ THE QUORUM VAULT DIFFERENCE — reuses existing .dec-examples / .dec-item
      components from the Decision Fit section above, single-column ══ -->
 <div class="wrap" id="differentiator">
@@ -3651,13 +3728,38 @@
 
 <hr class="rule" />
 
+<!-- ══ FOUNDER PILOT — a four-week engagement for one company. Deliberately no price on the page: the price is a
+     hypothesis to test in founder conversations first (see HANDOFF Q3). CTA opens the access modal on the founder path. ══ -->
+<div class="wrap" id="pilot">
+  <div class="s">
+    <div class="sh r">
+      <span class="eyebrow">Founder pilot</span>
+      <h2 class="display" style="font-size: clamp(32px,3.8vw,52px); max-width:640px;">The decision review process your company doesn’t have yet.</h2>
+      <p style="margin-top:20px; font-size:16px; color:var(--t3); max-width:560px; line-height:1.85;">Most founder-led companies make their biggest decisions alone or in a small circle, with no structured review and no later check of what was assumed against what happened. A four-week pilot gives you one.</p>
+    </div>
+    <div class="pc feat r d1" style="max-width:640px;">
+      <div class="pc-tier">Four weeks · one company</div>
+      <ul class="pc-list">
+        <li>Three to five of your real decisions, each reviewed and documented.</li>
+        <li>A decision brief for each, to take to a co-founder, your board or your team.</li>
+        <li>Review dates set and outcomes recorded, so you can see what held.</li>
+        <li>A closing review of what the four weeks showed.</li>
+      </ul>
+      <p style="font-size:13.5px; color:var(--t4); line-height:1.7; margin-bottom:28px;">Founders and CEOs of established, founder-led companies. A COO, Chief of Staff or head of strategy can take part.</p>
+      <button type="button" class="pc-btn g" onclick="openModal('founder')" data-track="cta_pilot">Start a founder pilot →</button>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" />
+
 <!-- ══ PRICING ═════════════════════════════════════════ -->
 <div class="wrap" id="pricing">
   <div class="s">
     <div class="sh r">
       <span class="eyebrow">Access</span>
       <h2 class="display" style="font-size: clamp(42px,5vw,68px); margin-top:16px; max-width:440px;">Simple<br />pricing.</h2>
-      <p style="margin-top:20px; font-size:16px; color:var(--t3); max-width:420px; line-height:1.85;">The core session is free. Elite adds Mirror, the decision record that enables Judgment Compounding. Private is your own infrastructure, for teams. Most people start by bringing one real decision to the free tier — that's the whole point.</p>
+      <p style="margin-top:20px; font-size:16px; color:var(--t3); max-width:420px; line-height:1.85;">Your first decisions are free. Elite is for one person building their own record. The founder pilot is for a company. Most people start by bringing one real decision to the free tier — that's the whole point.</p>
     </div>
     <div>
       <!-- Billing toggle pill -->
@@ -3671,7 +3773,7 @@
         <div class="pc r d1">
           <div class="pc-tier">Free · always</div>
           <div class="pc-price">₹0</div>
-          <div class="pc-cadence">Start your decision record here</div>
+          <div class="pc-cadence">Your first decisions, reviewed.</div>
           <ul class="pc-list">
             <li>Every decision read before it's answered — automatically, before anything responds</li>
             <li>Challenged from six different angles</li>
@@ -3684,7 +3786,7 @@
         <div class="pc feat r d2">
           <div class="pc-badge" id="eliteBadge">Best value</div>
           <div class="pc-tier">Elite</div>
-          <div class="pc-tier-sub">Includes Mirror — the part that compounds</div>
+          <div class="pc-tier-sub">For one person building their own record. Includes Mirror — the part that compounds.</div>
           <div class="pc-price" id="elitePrice"><sub>₹</sub>29,999</div>
           <div class="pc-cadence" id="eliteCadence">/year · 2 months free</div>
           <ul class="pc-list">
@@ -3702,21 +3804,21 @@
           <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=pricing_elite" target="_blank" class="pc-btn g">Get Elite →</a>
         </div>
         <div class="pc r d3">
-          <div class="pc-tier">Private</div>
-          <div class="pc-tier-sub">Your own infrastructure. Your choice of model.</div>
-          <div class="pc-price"><sub>₹</sub>9,999</div>
-          <div class="pc-cadence">/user/mo · starting price, scoped to your org</div>
+          <div class="pc-tier">Founder pilot</div>
+          <div class="pc-tier-sub">For a company. Four weeks, agreed per company.</div>
+          <div class="pc-price" style="font-size:34px; line-height:1.15;">Per company</div>
+          <div class="pc-cadence">Four weeks · pricing agreed with you</div>
           <ul class="pc-list">
-            <li>Runs entirely inside your own infrastructure — nothing leaves it</li>
-            <li>Choose your self-hosted model family: Qwen or Mistral</li>
-            <li>Everything in Elite, deployed at organizational scale</li>
-            <li>Aggregate views never surface a group smaller than 20 people, enforced at the database level — no one's individual pattern can be isolated inside a portfolio-wide view</li>
-            <li>Pricing scoped to your organization's size and needs</li>
+            <li>Three to five of your real decisions, each reviewed and documented</li>
+            <li>A decision brief for each, for a co-founder, your board or your team</li>
+            <li>Review dates set and outcomes recorded, so you can see what held</li>
+            <li>A closing review of what the four weeks showed</li>
           </ul>
-          <button class="pc-btn o" onclick="openModal('private')">Talk to us about Private →</button>
-          <div class="pc-scarcity">Reviewed individually<br/>Scoped to your organization</div>
+          <button class="pc-btn o" onclick="openModal('founder')" data-track="cta_pricing_pilot">Start a founder pilot →</button>
+          <div class="pc-scarcity">Reviewed individually<br/>For established, founder-led companies</div>
         </div>
       </div>
+      <p class="r d3" style="text-align:center; font-size:13.5px; color:var(--t4); margin-top:32px; line-height:1.7;">Need it on your own infrastructure? <a href="#" data-cta="pricing_private" onclick="openModal('institution'); return false;" style="color:var(--gold); border-bottom:1px solid var(--gold-lo);">Talk to us.</a></p>
     </div>
   </div>
 </div>
@@ -3757,11 +3859,19 @@
       </details>
       <details class="faq-item">
         <summary>Who is Quorum actually built for?</summary>
-        <p>Founders, CXOs, and family office principals — people making decisions where being wrong is expensive. It isn't built for everyday, low-stakes choices.</p>
+        <p>Founders and owner-operators of established businesses who make consequential decisions and have no structured way to review them. Family offices, institutions and public-sector teams use it too, but we build for founders first.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is Quorum for small, everyday choices?</summary>
+        <p>Built for consequential business decisions. You can bring anything, and Quorum will examine it, but the review is designed for decisions where being wrong is expensive.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is the founder pilot?</summary>
+        <p>A four-week engagement for a company: three to five of your real decisions, each reviewed and documented, with review dates, recorded outcomes and a closing review. Talk to us and we will tell you what it involves.</p>
       </details>
       <details class="faq-item">
         <summary>What does it cost?</summary>
-        <p>The Council — the core six-advisor session — is free. Elite adds Mirror, which compounds insight across your decisions over time, for ₹2,999/mo or ₹29,999/yr. Private is a custom enterprise deployment, starting at ₹9,999/user/month — priced once we understand your organization's needs.</p>
+        <p>The Council — the core six-advisor session — is free. Elite adds Mirror, which compounds insight across your decisions over time, for ₹2,999/mo or ₹29,999/yr. For a company, the founder pilot is a four-week engagement, priced per company. Private is a custom enterprise deployment, starting at ₹9,999/user/month — priced once we understand your organization's needs.</p>
       </details>
       <details class="faq-item">
         <summary>What's the difference between the Council and Mirror?</summary>
@@ -3817,7 +3927,7 @@
     <p class="r d2" style="font-size:17px; color:var(--t3); max-width:560px; margin:0 auto 56px; line-height:1.9;">Don't give Quorum a hypothetical. Give it the decision you're actually wrestling with.</p>
     <div class="r d3" style="display:flex; gap:18px; justify-content:center; flex-wrap:wrap; align-items:center;">
       <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=final_cta" target="_blank" class="btn-cta" data-track="cta_home_final">Bring one real decision →</a>
-      <button class="btn-request" onclick="openModal()">Get access</button>
+      <button class="btn-request" data-cta="contact_access" onclick="openModal()">Get access</button>
     </div>
     <p class="r d3" style="margin-top:22px; font-size:14px; color:var(--t4);">Not sure if your situation fits? <a href="https://quorumgtm-production.up.railway.app/?source=website" target="_blank" rel="noopener" style="color:var(--gold);">Talk it through first →</a></p>
   </div>
@@ -3858,20 +3968,30 @@
       <p class="modal-sub">Select the option that fits. You can always change this later.</p>
 
       <div class="interest-grid">
-        <div class="interest-opt" data-val="private" onclick="selectInterest(this)">
-          <div class="io-price">Starting at ₹9,999/user/mo</div>
-          <div class="io-label">Private — enterprise deployment</div>
-          <div class="io-desc">A custom, self-hosted deployment for your firm — your own infrastructure, your choice of model. Pricing is scoped to your organization's size and needs.</div>
+        <div class="interest-opt" data-val="founder" onclick="selectInterest(this)" style="grid-column: 1 / -1;">
+          <div class="io-price">Founders and owner-operators</div>
+          <div class="io-label">I run a company and have a decision in front of me</div>
+          <div class="io-desc">Bring a real business decision. We’ll talk about a four-week founder pilot, or start with a free review.</div>
         </div>
-        <div class="interest-opt" data-val="explore" onclick="selectInterest(this)">
+        <div class="interest-opt" data-val="feeder" onclick="selectInterest(this)">
+          <div class="io-price">Before you start</div>
+          <div class="io-label">I’m thinking of starting something</div>
+          <div class="io-desc">Leaving a job, or about to launch. Bring the decision you’re weighing.</div>
+        </div>
+        <div class="interest-opt" data-val="champion" onclick="selectInterest(this)">
+          <div class="io-price">Leaders</div>
+          <div class="io-label">I lead a team or function</div>
+          <div class="io-desc">COO, Chief of Staff, strategy or another function lead.</div>
+        </div>
+        <div class="interest-opt" data-val="institution" onclick="selectInterest(this)">
+          <div class="io-price">We’ll talk it through</div>
+          <div class="io-label">Family office, institution or public sector</div>
+          <div class="io-desc">A custom, self-hosted deployment for your firm — your own infrastructure, your choice of model. Scoped to your organization’s size and needs.</div>
+        </div>
+        <div class="interest-opt" data-val="exploring" onclick="selectInterest(this)">
           <div class="io-price">Free · always</div>
-          <div class="io-label">Just Exploring</div>
-          <div class="io-desc">Open Quorum and bring a real decision. The Council runs free, no commitment.</div>
-        </div>
-        <div class="interest-opt" data-val="other" onclick="selectInterest(this)" style="grid-column: 1 / -1;">
-          <div class="io-price">Let's talk</div>
-          <div class="io-label">Something Else</div>
-          <div class="io-desc">Partnership, enterprise, or a use case that doesn't fit the above.</div>
+          <div class="io-label">Just exploring</div>
+          <div class="io-desc">Open Quorum and bring a real decision. Your first decisions are free, no commitment.</div>
         </div>
       </div>
 
@@ -3885,11 +4005,21 @@
     <div class="modal-step" id="step2">
       <p class="modal-eyebrow">Step 2 of 3</p>
       <h2 class="modal-title">Tell us<br />more.</h2>
-      <p class="modal-sub">We read every request personally. For a Private deployment, tell us about your organization; for anything else, tell us what you're trying to solve.</p>
+      <p class="modal-sub">We read every request personally. Tell us about the decision in front of you. For a family office, institution or public-sector team, tell us about your organization instead.</p>
+
+      <span class="prefill-label">Start from one of these</span>
+      <div class="prefill-chips" id="prefillChips">
+          <button type="button" class="prefill-chip" data-fill="I’m deciding whether to raise funding or keep bootstrapping. " onclick="applyPrefill(this)">Raise or bootstrap</button>
+          <button type="button" class="prefill-chip" data-fill="I’m deciding whether to hire a senior leader or keep managing this myself. " onclick="applyPrefill(this)">Hire a senior leader</button>
+          <button type="button" class="prefill-chip" data-fill="I’m deciding whether to enter a new market or stay focused on the one we’re in. " onclick="applyPrefill(this)">New market or focus</button>
+          <button type="button" class="prefill-chip" data-fill="I’m deciding whether to bring on a co-founder or continue independently. " onclick="applyPrefill(this)">Add a co-founder</button>
+          <button type="button" class="prefill-chip" data-fill="I’m deciding whether to change our pricing or packaging. " onclick="applyPrefill(this)">Change pricing</button>
+          <button type="button" class="prefill-chip" data-fill="I’m deciding whether to sell the company or keep scaling. " onclick="applyPrefill(this)">Sell or keep scaling</button>
+      </div>
 
       <div class="field">
         <label for="decisionInput">What are you working with?</label>
-        <textarea id="decisionInput" placeholder="E.g. We're a family office with 3 principals evaluating a self-hosted deployment... — or — I'm considering exiting a business I've built for 8 years and want to understand if Quorum is the right fit..." oninput="onDecisionInput(this)"></textarea>
+        <textarea id="decisionInput" placeholder="E.g. We're 40 people, B2B SaaS, profitable. I'm deciding whether to raise a Series A or keep growing on revenue, and I'm not sure my reasons are the right ones..." oninput="onDecisionInput(this)"></textarea>
         <p class="decision-hint" id="decisionHint">Needs at least 80 characters — enough for us (or a live session) to actually work with.</p>
       </div>
 
@@ -3934,6 +4064,55 @@
         </div>
       </div>
 
+      <div class="field-row" style="align-items:end;">
+        <div class="field">
+          <label for="inputCompany">Company (optional)</label>
+          <input type="text" id="inputCompany" maxlength="120" placeholder="Company name" autocomplete="organization" />
+        </div>
+        <div class="field">
+          <label for="inputRole">Your role <span id="roleOptNote"></span></label>
+          <select id="inputRole" onchange="checkStep3()">
+            <option value="">Select…</option>
+            <option value="founder_ceo">Founder / CEO</option>
+            <option value="coo_cos_strategy">COO / Chief of Staff / Strategy</option>
+            <option value="other_leadership">Other leadership</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row" style="align-items:end;">
+        <div class="field">
+          <label for="inputSize">Company size (optional)</label>
+          <select id="inputSize">
+            <option value="">Select…</option>
+            <option value="1-10">1–10</option>
+            <option value="11-50">11–50</option>
+            <option value="51-200">51–200</option>
+            <option value="200+">200+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="inputDecisions">Consequential decisions in a typical quarter (optional)</label>
+          <select id="inputDecisions">
+            <option value="">Select…</option>
+            <option value="1-2">1–2</option>
+            <option value="3-5">3–5</option>
+            <option value="6+">6+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="inputReview">Do you have a structured decision review today? (optional)</label>
+        <select id="inputReview">
+          <option value="">Select…</option>
+          <option value="no">No</option>
+          <option value="informal">Informally</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+
       <div class="field">
         <label for="inputWhatsapp">WhatsApp (optional)</label>
         <input type="tel" id="inputWhatsapp" placeholder="+91 98765 43210" />
@@ -3949,7 +4128,7 @@
         <label class="consent-lbl">
           <input type="checkbox" id="consentCheck" onchange="checkStep3()" />
           <span class="consent-txt">
-            I agree that Quorum may store my name, email, and decision summary to process this request.
+            I agree that Quorum may store my name, email, decision summary, and the company details I add, to process this request.
             I have read and accept the
             <a href="/terms" target="_blank" rel="noopener">Terms of Service</a>
             and <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.
@@ -3970,8 +4149,8 @@
       <div class="modal-success">
         <div class="success-icon">◆</div>
         <h2 class="success-title">Request<br />received.</h2>
-        <p class="success-body" id="successBody">We'll review your decision and reach out within 48 hours. In the meantime, you can open Quorum and bring the same decision — the Council runs free.</p>
-        <a href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=sprint1_reposition&utm_content=modal_success" target="_blank" class="btn-cta" style="display:inline-block; margin-bottom:24px;">Open Quorum →</a><br/>
+        <p class="success-body" id="successBody">We'll review your decision and reach out within 48 hours. In the meantime, you can open Quorum and bring the same decision.</p>
+        <a id="successCta" href="https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=modal_success" target="_blank" class="btn-cta" style="display:inline-block; margin-bottom:24px;">Open Quorum →</a><br/>
         <button class="success-close" onclick="closeModal()">Close this window</button>
       </div>
     </div>
@@ -4150,16 +4329,28 @@
     }
   }
 
+  // Which button opened the form. data-track wins (it is the analytics name); data-cta is for buttons that have no
+  // analytics event of their own. Captured in the capture phase so it is set before any onclick runs.
+  let lastCta = null
+  let modalCta = null
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-track], [data-cta]')
+    if (t) lastCta = (t.dataset.track || t.dataset.cta || '').slice(0, 100) || null
+  }, true)
+
+  // Older presets (and any cached page) still resolve to a current option.
+  const PRESET_ALIAS = { private: 'institution', explore: 'exploring', other: 'institution' }
+
   function openModal(preset) {
     currentStep = 1
     showStep(1)
     modal.classList.add('open')
     document.body.style.overflow = 'hidden'
-    if (preset) {
-      // pre-select interest from pricing buttons
-      const opt = document.querySelector(`.interest-opt[data-val="${preset}"]`)
-      if (opt) selectInterest(opt)
-    }
+    modalCta = lastCta
+    // Founder path is the default; a preset (hero pilot button, "talk to us") selects its own option.
+    const key = PRESET_ALIAS[preset] || preset || 'founder'
+    const opt = document.querySelector(`.interest-opt[data-val="${key}"]`)
+    if (opt) selectInterest(opt)
   }
 
   function closeModal() {
@@ -4198,6 +4389,19 @@
 
   function goStep(n) {
     showStep(n)
+    if (n === 3) checkStep3()
+  }
+
+  /* One-tap starters on step 2: fill the box (or add to it), then hand the cursor back to the person. */
+  function applyPrefill(btn) {
+    const box = document.getElementById('decisionInput')
+    const text = btn.dataset.fill
+    const fills = [...document.querySelectorAll('.prefill-chip')].map(c => c.dataset.fill.trim())
+    const cur = box.value.trim()
+    box.value = (!cur || fills.includes(cur)) ? text : box.value.replace(/\s+$/, '') + '\n' + text
+    onDecisionInput(box)
+    box.focus()
+    box.setSelectionRange(box.value.length, box.value.length)
   }
 
   /* Interest selection */
@@ -4286,9 +4490,14 @@
     const name    = document.getElementById('inputName').value.trim()
     const email   = document.getElementById('inputEmail').value.trim()
     const consent = document.getElementById('consentCheck')?.checked ?? false
+    // Role is the one qualification field that is required, except for people who are only exploring.
+    const roleNeeded = selectedInterest !== 'exploring'
+    const roleOk     = !roleNeeded || !!document.getElementById('inputRole').value
+    document.getElementById('roleOptNote').textContent = roleNeeded ? '' : '(optional)'
     const valid   = name.length > 0
                     && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
                     && consent
+                    && roleOk
     document.getElementById('step3Next').disabled = !valid
   }
 
@@ -4300,24 +4509,52 @@
     nextBtn.disabled = true
     nextBtn.innerHTML = 'Sending <span class="loading-dots"><span></span><span></span><span></span></span>'
 
+    const val = id => document.getElementById(id).value.trim() || null
+    // Campaign tags come from the page URL at submit time. Nothing is stored in the browser for this.
+    const utm = {}
+    try {
+      const q = new URLSearchParams(location.search)
+      ;['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(k => {
+        const v = (q.get(k) || '').trim()
+        if (v) utm[k] = v.slice(0, 200)
+      })
+    } catch (e) {}
+
     const payload = {
       interest_type:     selectedInterest,
+      segment:           selectedInterest,
       decision_summary:  document.getElementById('decisionInput').value.trim(),
       name:              document.getElementById('inputName').value.trim(),
       email:             document.getElementById('inputEmail').value.trim(),
-      whatsapp:          document.getElementById('inputWhatsapp').value.trim() || null,
-      additional_context: document.getElementById('inputContext').value.trim() || null,
+      whatsapp:          val('inputWhatsapp'),
+      additional_context: val('inputContext'),
+      company:               val('inputCompany'),
+      role:                  val('inputRole'),
+      company_size:          val('inputSize'),
+      decisions_per_quarter: val('inputDecisions'),
+      has_review_process:    val('inputReview'),
+      cta:               modalCta,
+      ...utm,
     }
 
     try {
       await insertSessionRequest(payload)
-      // Success messaging based on interest
+      // Success messaging based on who they said they are
       const msgs = {
-        private: 'We\'ll review your deployment request and reach out within 48 hours to scope next steps for a Private deployment.',
-        explore: 'You can open Quorum now and add the decision you described. The structural analysis and Council run free — your record starts from session one.',
-        other:   'We\'ll read your request and respond personally within 48 hours.'
+        founder:     'Thank you. A person will read your request and reply to you personally within 48 hours. You don’t have to wait to start: you can bring the same decision to Quorum now.',
+        feeder:      'Thank you. A person will read your request and reply to you personally within 48 hours. You can also bring the decision you’re weighing to Quorum now.',
+        champion:    'Thank you. A person will read your request and reply to you personally within 48 hours. You can also bring a real decision to Quorum now.',
+        institution: 'Thank you. We’ll read your request and get back to you personally within 48 hours to talk it through.',
+        exploring:   'You can open Quorum now and add the decision you described. Your first decisions are free, and your record starts from session one.'
       }
-      document.getElementById('successBody').textContent = msgs[selectedInterest] || msgs.private
+      document.getElementById('successBody').textContent = msgs[selectedInterest] || msgs.exploring
+      // Hand the decision they just typed to the app (editable there, never auto-submitted; the app caps it at 600 characters).
+      const cta = document.getElementById('successCta')
+      let href = 'https://app.quorumvault.org?utm_source=website&utm_medium=cta&utm_campaign=founder_positioning&utm_content=modal_success'
+      const d = payload.decision_summary
+      if (selectedInterest !== 'institution' && d && d.length <= 600) href += '&decision=' + encodeURIComponent(d)
+      cta.href = href
+      cta.textContent = selectedInterest === 'institution' ? 'Open Quorum →' : 'Bring your decision now →'
       showStep('success')
     } catch (err) {
       errDiv.textContent = 'Something went wrong. Please try again in a moment.'
