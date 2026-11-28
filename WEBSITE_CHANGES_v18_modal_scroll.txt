@@ -1,0 +1,18 @@
+QUORUM WEBSITE v18 — ACCESS FORM SCROLL FIX (drop v3). Overlay on v18 (v1) + overflow fix (v2).
+
+REVISED  index.html   (only file; contains everything from v1 plus this fix)
+
+Problem: the "Get access" form could not be scrolled in some browsers, so the lower options and the Continue button were
+unreachable. The scrolling was a nested box (max-height 90vh) inside an overlay that was transformed and blurred, which
+some browsers (Safari-type engines in particular) do not scroll reliably.
+
+Fix (CSS + one JS line):
+- .modal-overlay is now the scroll container (overflow-y: auto, overscroll-behavior: contain).
+- .modal-inner gets margin: auto: centred when the form fits, scrolls from the top when it does not (no clipped top).
+- .modal-box loses max-height / overflow-y.
+- The dim + blur moved to a fixed ::before on the overlay, with pointer-events: none so scrolling works over the margins too.
+- On changing step the form scrolls back to the top via the overlay (modal.scrollTop = 0).
+
+Checked in Chromium at 375x667, 675x950, 1280x640: Continue and Submit reachable, wheel scrolls from the card and the
+margin, scroll resets on next step, close restores page scroll, full form submit still posts the same payload.
+NOT checked: Safari/WebKit and Firefox (not installed in my test environment). Please try it in the browser where it failed.
