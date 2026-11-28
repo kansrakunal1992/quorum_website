@@ -1,0 +1,12 @@
+QUORUM WEBSITE v18 — PHONE OVERFLOW FIX (drop v2). Overlay on the v18 website zip.
+
+REVISED  journey.html           #hero gets overflow-x: clip
+REVISED  decision-library.html  #hero gets overflow-x: clip
+
+Cause: the decorative gold glow (.hero-aura, 760-900px wide, positioned off-centre) stuck out past the right edge of the
+screen on phones, making the page 260-470px wider than the viewport. body had overflow-x: hidden but html did not, and
+mobile browsers can still pan or shrink the layout to fit. Clipping the hero sideways keeps the glow identical on screen
+and stops it widening the page. "clip" (not "hidden") leaves vertical overflow alone, so the glow's upward bleed is kept.
+
+Checked in Chromium at 320, 375, 414, 768 and 1280px wide on journey, decision-library and index: scrollable overflow is 0
+at every width (was 263 and 468 at 375 on the two pages). index.html never had it.
